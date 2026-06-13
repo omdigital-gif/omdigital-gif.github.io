@@ -958,6 +958,15 @@ footer {
     btn.disabled = true;
     btn.textContent = 'Отправляем...';
     const tgText = `📨 НОВАЯ ЗАЯВКА С САЙТА\n━━━━━━━━━━━━━━━━━━\n👤 Имя: ${name}\n📞 Контакт: ${contact}\n💬 Задача:\n${message}\n━━━━━━━━━━━━━━━━━━\n#сайт #новая_заявка`;
+    const replySubject = encodeURIComponent(`Ответ на заявку с сайта OM-Digital`);
+    const replyBody = encodeURIComponent(`Здравствуйте, ${name}!\n\nСпасибо за обращение в OM-Digital.\n\nМы получили вашу заявку и готовы помочь.\n\nС уважением,\nКоманда OM-Digital\nhttps://omdigital-gif.github.io`);
+    const mailtoUrl = `mailto:${contact}?subject=${replySubject}&body=${replyBody}`;
+    const replyMarkup = {
+      inline_keyboard: [[
+        { text: '📧 Ответить клиенту', url: mailtoUrl },
+        { text: '✅ Взять в работу', callback_data: `site_accept_${Date.now()}` }
+      ]]
+    };
     let sent = false;
     try {
       const controller = new AbortController();
@@ -965,7 +974,7 @@ footer {
       const res = await fetch(`https://api.telegram.org/bot8873337285:AAEYvrOlbsiqmbbm546jfr8oA7e33o7YlVU/sendMessage`, {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({chat_id: '2088867074', text: tgText}),
+        body: JSON.stringify({chat_id: '2088867074', text: tgText, reply_markup: replyMarkup}),
         signal: controller.signal
       });
       clearTimeout(timer);
