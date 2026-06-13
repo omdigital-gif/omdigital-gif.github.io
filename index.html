@@ -957,16 +957,33 @@ footer {
     if (!name || !contact || !message) return;
     btn.disabled = true;
     btn.textContent = 'Отправляем...';
+    const orderId = `site_${Date.now()}`;
     const tgText = `📨 НОВАЯ ЗАЯВКА С САЙТА\n━━━━━━━━━━━━━━━━━━\n👤 Имя: ${name}\n📞 Контакт: ${contact}\n💬 Задача:\n${message}\n━━━━━━━━━━━━━━━━━━\n#сайт #новая_заявка`;
-    const replySubject = encodeURIComponent(`Ответ на заявку с сайта OM-Digital`);
-    const replyBody = encodeURIComponent(`Здравствуйте, ${name}!\n\nСпасибо за обращение в OM-Digital.\n\nМы получили вашу заявку и готовы помочь.\n\nС уважением,\nКоманда OM-Digital\nhttps://omdigital-gif.github.io`);
-    const mailtoUrl = `mailto:${contact}?subject=${replySubject}&body=${replyBody}`;
-    const replyMarkup = {
-      inline_keyboard: [[
-        { text: '📧 Ответить клиенту', url: mailtoUrl },
-        { text: '✅ Взять в работу', callback_data: `site_accept_${Date.now()}` }
-      ]]
-    };
+
+    // Определяем тип контакта и формируем кнопку ответа
+    const contactTrimmed = contact.trim();
+    let contactUrl = null;
+    let contactBtnText = '💬 Написать клиенту';
+    if (contactTrimmed.startsWith('@')) {
+      // Telegram username
+      contactUrl = `https://t.me/${contactTrimmed.slice(1)}`;
+      contactBtnText = '💬 Написать в Telegram';
+    } else if (/^[\+\d][\d\s\-\(\)]{6,}$/.test(contactTrimmed)) {
+      // Phone number
+      const phone = contactTrimmed.replace(/[\s\-\(\)]/g,'');
+      contactUrl = `https://wa.me/${phone.replace('+','')}`;
+      contactBtnText = '📱 WhatsApp';
+    } else if (contactTrimmed.includes('@') && contactTrimmed.includes('.')) {
+      // Email — Telegram не поддерживает mailto: в кнопках, используем t.me
+      contactUrl = `https://t.me/share/url?url=&text=${encodeURIComponent(`Ответ на заявку для ${name}: `)}`;
+      contactBtnText = '✉️ Скопировать email';
+    }
+
+    const buttons = [];
+    if (contactUrl) buttons.push({ text: contactBtnText, url: contactUrl });
+    buttons.push({ text: '✅ Взять в работу', callback_data: `accept_${orderId}` });
+
+    const replyMarkup = { inline_keyboard: [buttons] };
     let sent = false;
     try {
       const controller = new AbortController();
