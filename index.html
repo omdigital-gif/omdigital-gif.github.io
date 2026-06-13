@@ -935,6 +935,11 @@ footer {
     <textarea id="cMessage" placeholder="Опишите задачу — что нужно сделать?" required></textarea>
     <button type="submit" id="cBtn">Отправить заявку →</button>
     <div id="cStatus" style="text-align:center;font-size:14px;display:none;"></div>
+    <div id="cFallback" style="display:none;margin-top:12px;">
+      <p style="font-size:13px;color:rgba(255,255,255,0.8);margin-bottom:8px;">Скопируйте и отправьте нам на почту:</p>
+      <textarea id="cFallbackText" readonly style="width:100%;height:130px;background:rgba(255,255,255,0.1);border:1px solid rgba(255,255,255,0.3);border-radius:8px;padding:10px;color:white;font-size:13px;font-family:Arial,sans-serif;resize:none;"></textarea>
+      <a id="cMailtoBtn" href="#" style="display:block;margin-top:10px;background:white;color:#1F3A6E;text-align:center;padding:12px;border-radius:8px;font-weight:700;font-size:14px;text-decoration:none;">📧 Открыть в почтовом приложении</a>
+    </div>
   </form>
   <div class="contact-links">
     <a href="https://t.me/omdigital" class="contact-link">Telegram<span>@omdigital</span></a>
@@ -972,13 +977,17 @@ footer {
       status.style.color = '#4ade80';
       status.textContent = '✅ Заявка отправлена! Ответим в течение часа.';
       document.getElementById('contactForm').reset();
+      document.getElementById('cFallback').style.display = 'none';
     } else {
-      // Fallback: открываем письмо в почтовом приложении
+      // Показываем текст прямо на странице + ссылку mailto
       const subject = encodeURIComponent(`Заявка с сайта от ${name}`);
-      const body = encodeURIComponent(`Имя: ${name}\nКонтакт: ${contact}\n\nЗадача:\n${message}`);
-      window.location.href = `mailto:newlife2506@yandex.ru?subject=${subject}&body=${body}`;
+      const bodyText = `Имя: ${name}\nКонтакт: ${contact}\n\nЗадача:\n${message}`;
+      const bodyEnc = encodeURIComponent(bodyText);
+      document.getElementById('cFallbackText').value = `Имя: ${name}\nКонтакт: ${contact}\n\nЗадача:\n${message}`;
+      document.getElementById('cMailtoBtn').href = `mailto:newlife2506@yandex.ru?subject=${subject}&body=${bodyEnc}`;
+      document.getElementById('cFallback').style.display = 'block';
       status.style.color = '#fbbf24';
-      status.textContent = '📧 Открываем ваше письмо — отправьте его из почтового приложения. Или напишите в Telegram: @omdigital';
+      status.textContent = '📧 Отправьте нам письмо — текст уже заполнен:';
     }
     status.style.display = 'block';
     btn.disabled = false;
