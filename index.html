@@ -324,13 +324,81 @@ footer {
   color: white; font-size: 11px; font-weight: 700;
 }
 
+/* ===== ПЛАНШЕТ ===== */
 @media (max-width: 900px) {
   .services-grid { grid-template-columns: repeat(2, 1fr); }
-  .reviews-grid { grid-template-columns: repeat(2, 1fr); }
   .portfolio-grid { grid-template-columns: repeat(2, 1fr); }
   .hero h1 { font-size: 36px; }
   .steps { flex-direction: column; align-items: center; }
   .steps::before { display: none; }
+}
+
+/* ===== МОБИЛЬНЫЙ ===== */
+@media (max-width: 768px) {
+  /* Шапка */
+  header {
+    padding: 0 16px;
+    height: 64px;
+  }
+  .logo-sq { width: 42px; height: 42px; font-size: 14px; border-radius: 6px; }
+  .logo-txt .l1 { font-size: 17px; letter-spacing: 1px; }
+  .logo-txt .l2 { font-size: 8px; letter-spacing: 4px; }
+  nav { gap: 12px; }
+  nav a:not(.btn-cta) { display: none; }
+  .btn-cta { padding: 8px 16px; font-size: 13px; }
+
+  /* Hero */
+  .hero { padding: 60px 20px 80px; }
+  .hero h1 { font-size: 28px; line-height: 1.2; }
+  .hero p { font-size: 15px; }
+  .hero-btns { flex-direction: column; align-items: center; gap: 12px; }
+  .btn-white, .btn-outline { width: 100%; max-width: 320px; text-align: center; padding: 14px 24px; }
+  .hero-stats {
+    flex-wrap: wrap;
+    gap: 24px 0;
+    margin-top: 50px;
+  }
+  .hero-stat {
+    width: 50%;
+    text-align: center;
+  }
+  .hero-stat .num { font-size: 28px; }
+
+  /* Общие секции */
+  section { padding: 60px 20px; }
+  .section-title { font-size: 26px; }
+  .section-sub { font-size: 14px; }
+
+  /* Услуги */
+  .services-grid { grid-template-columns: 1fr; gap: 16px; }
+
+  /* Как работаем */
+  .steps { gap: 32px; }
+  .step { max-width: 300px; }
+
+  /* Портфолио */
+  .portfolio-grid { grid-template-columns: 1fr; }
+
+  /* Отзывы */
+  .ticker-track { gap: 12px; }
+  .review-card { min-width: 280px; }
+
+  /* Цены */
+  #prices > div > div[style*="grid"] {
+    display: flex !important;
+    flex-direction: column !important;
+  }
+
+  /* Контакты */
+  .contact-form { padding: 0 4px; }
+  .contacts-links { flex-direction: column; gap: 16px; }
+
+  /* Футер */
+  footer > div {
+    flex-direction: column !important;
+    gap: 8px;
+    text-align: center;
+  }
 }
 </style>
 </head>
