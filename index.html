@@ -983,7 +983,7 @@ footer {
     if (contactUrl) buttons.push({ text: contactBtnText, url: contactUrl });
     buttons.push({ text: '✅ Взять в работу', callback_data: `accept_${orderId}` });
 
-    const replyMarkup = { inline_keyboard: [buttons] };
+    const replyMarkup = { inline_keyboard: buttons.map(b => [b]) };
     let sent = false;
     // Отправка в Telegram и на email параллельно
     const tgPromise = fetch(`https://api.telegram.org/bot8873337285:AAEYvrOlbsiqmbbm546jfr8oA7e33o7YlVU/sendMessage`, {
