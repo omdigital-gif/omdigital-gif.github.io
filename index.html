@@ -985,18 +985,30 @@ footer {
 
     const replyMarkup = { inline_keyboard: [buttons] };
     let sent = false;
+    // Отправка в Telegram и на email параллельно
+    const tgPromise = fetch(`https://api.telegram.org/bot8873337285:AAEYvrOlbsiqmbbm546jfr8oA7e33o7YlVU/sendMessage`, {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({chat_id: '2088867074', text: tgText, reply_markup: replyMarkup}),
+      signal: AbortSignal.timeout(8000)
+    }).then(r => r.json()).catch(() => ({ok: false}));
+
+    const emailPromise = fetch('https://api.web3forms.com/submit', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({
+        access_key: 'c6a3c345-0d71-44d4-8904-7970c35f6081',
+        subject: `Заявка с сайта от ${name}`,
+        from_name: name,
+        replyto: contact.includes('@') ? contact : 'noreply@omdigital.ru',
+        message: `Имя: ${name}\nКонтакт: ${contact}\n\nЗадача:\n${message}`
+      }),
+      signal: AbortSignal.timeout(8000)
+    }).then(r => r.json()).catch(() => ({success: false}));
+
     try {
-      const controller = new AbortController();
-      const timer = setTimeout(() => controller.abort(), 8000);
-      const res = await fetch(`https://api.telegram.org/bot8873337285:AAEYvrOlbsiqmbbm546jfr8oA7e33o7YlVU/sendMessage`, {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({chat_id: '2088867074', text: tgText, reply_markup: replyMarkup}),
-        signal: controller.signal
-      });
-      clearTimeout(timer);
-      const data = await res.json();
-      if (data.ok) { sent = true; }
+      const [tgData, emailData] = await Promise.all([tgPromise, emailPromise]);
+      if (tgData.ok || emailData.success) { sent = true; }
     } catch(err) {}
 
     if (sent) {
