@@ -4,74 +4,187 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Studio — OM-Digital Company</title>
-<meta name="description" content="Системные промпты для ChatGPT и Claude, сценарии чатботов для Telegram, FAQ-базы знаний, AI-инструкции для бизнеса. Цены от 1 000 ₽.">
+<meta name="description" content="Промпты для ChatGPT и Claude, сценарии чатботов, FAQ-базы, AI-инструкции для бизнеса. OM-Digital, от 500 ₽">
 <style>
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { scroll-behavior: smooth; overflow-x: hidden; }
-body { font-family: Arial, sans-serif; color: #222; background: #fff; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; }
 
-header { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #e0e4ea; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 80px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-.logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo-sq { width: 54px; height: 54px; background: #1F3A6E; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700; }
-.logo-txt .l1 { font-size: 22px; font-weight: 700; color: #1F3A6E; letter-spacing: 2px; }
-.logo-txt .l2 { font-size: 10px; letter-spacing: 6px; color: #4A7BC4; }
-.btn-back { background: #1F3A6E; color: white; border: none; padding: 10px 22px; border-radius: 7px; font-size: 14px; text-decoration: none; }
+/* HEADER */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,10,10,0.95);
+  border-bottom: 1px solid rgba(0,212,255,0.15);
+  backdrop-filter: blur(12px);
+  padding: 0 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 76px;
+}
+.logo-wrap { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.logo-sq {
+  width: 50px; height: 50px;
+  background: linear-gradient(135deg, #00d4ff, #0088cc);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: #0a0a0a; font-size: 17px; font-weight: 900;
+  box-shadow: 0 0 20px rgba(0,212,255,0.4);
+}
+.logo-txt .l1 {
+  font-size: 20px; font-weight: 900; letter-spacing: 3px;
+  background: linear-gradient(90deg, #00d4ff, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.logo-txt .l2 { font-size: 9px; letter-spacing: 5px; color: #aaa; }
+nav { display: flex; align-items: center; gap: 28px; }
+nav a { color: #fff; text-decoration: none; font-size: 17px; font-weight: 700; transition: color .2s; }
+nav a:hover { color: #00d4ff; }
+.btn-cta {
+  background: transparent; color: #00d4ff; border: 1.5px solid #00d4ff;
+  padding: 9px 22px; border-radius: 6px; font-size: 13px; font-weight: 700;
+  cursor: pointer; text-decoration: none; transition: background .2s, box-shadow .2s;
+}
+.btn-cta:hover { background: rgba(0,212,255,0.1); box-shadow: 0 0 16px rgba(0,212,255,0.3); }
 
-.hero { background: linear-gradient(135deg, #1a3a5c 0%, #2c5282 60%, #1F3A6E 100%); color: white; text-align: center; padding: 80px 40px 100px; }
-.hero-badge { display: inline-block; background: rgba(74,123,196,0.3); border: 1px solid rgba(74,123,196,0.5); color: #a8c8f0; font-size: 12px; letter-spacing: 2px; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; }
-.hero h1 { font-size: 44px; font-weight: 700; line-height: 1.2; margin-bottom: 18px; }
-.hero h1 span { color: #4A7BC4; }
-.hero p { font-size: 17px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 36px; line-height: 1.7; }
-.btn-cta-hero { display: inline-block; background: white; color: #1F3A6E; padding: 14px 36px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: transform .2s; }
-.btn-cta-hero:hover { transform: translateY(-2px); }
+/* DIVIDER */
+.divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(0,212,255,0.2), transparent); }
 
-section { padding: 70px 40px; }
-.section-label { font-size: 12px; letter-spacing: 3px; color: #4A7BC4; text-transform: uppercase; margin-bottom: 12px; }
-.section-title { font-size: 34px; font-weight: 700; color: #1F3A6E; margin-bottom: 14px; }
-.section-sub { font-size: 16px; color: #666; max-width: 620px; line-height: 1.7; margin-bottom: 46px; }
-.center { text-align: center; }
-.center .section-sub { margin-left: auto; margin-right: auto; }
+/* HERO */
+.hero {
+  padding: 100px 48px 80px;
+  position: relative; overflow: hidden;
+  background: radial-gradient(ellipse 800px 400px at 20% 50%, rgba(0,212,255,0.05) 0%, transparent 70%);
+}
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(0,212,255,0.025) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,212,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #aaa; text-decoration: none; font-size: 13px; margin-bottom: 28px;
+  transition: color .2s; position: relative;
+}
+.hero-back:hover { color: #00d4ff; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.3);
+  color: #00d4ff; font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  padding: 6px 18px; border-radius: 20px; margin-bottom: 20px; position: relative;
+}
+.hero h1 {
+  font-size: 56px; font-weight: 900; line-height: 1.1; margin-bottom: 20px; position: relative;
+}
+.hero h1 .grad {
+  background: linear-gradient(90deg, #00d4ff, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero p { font-size: 18px; color: #ccc; max-width: 600px; line-height: 1.8; margin-bottom: 36px; position: relative; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, #00d4ff, #0088cc);
+  color: #0a0a0a; font-weight: 800; padding: 14px 32px; border-radius: 8px; font-size: 15px;
+  text-decoration: none; box-shadow: 0 0 24px rgba(0,212,255,0.4);
+  transition: box-shadow .2s, transform .2s; position: relative;
+}
+.btn-primary:hover { box-shadow: 0 0 40px rgba(0,212,255,0.6); transform: translateY(-2px); }
+.hero-stats { display: flex; gap: 56px; margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06); position: relative; }
+.hero-stat .num { font-size: 36px; font-weight: 900; background: linear-gradient(90deg, #00d4ff, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-stat .lbl { font-size: 12px; color: #666; margin-top: 6px; }
 
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
-.srv { background: #f8f9fb; border-radius: 12px; border: 1px solid #e0e4ea; padding: 28px 24px; }
-.srv-icon { font-size: 36px; margin-bottom: 16px; }
-.srv h3 { font-size: 17px; font-weight: 700; color: #1F3A6E; margin-bottom: 10px; }
-.srv p { font-size: 14px; color: #666; line-height: 1.7; margin-bottom: 14px; }
-.srv .price { font-size: 15px; font-weight: 700; color: #1F3A6E; }
+/* SECTION */
+section { padding: 80px 48px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #00d4ff; margin-bottom: 12px; }
+.section-title { font-size: 36px; font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+.section-title .accent { background: linear-gradient(90deg, #00d4ff, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.section-sub { font-size: 16px; color: #888; line-height: 1.8; max-width: 520px; margin-bottom: 48px; }
 
-.how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
-.how-step { text-align: center; padding: 24px 16px; }
-.how-num { width: 60px; height: 60px; border-radius: 50%; background: #1F3A6E; color: white; font-size: 22px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
-.how-step h4 { font-size: 15px; font-weight: 700; color: #1F3A6E; margin-bottom: 8px; }
-.how-step p { font-size: 13px; color: #777; line-height: 1.6; }
+/* SERVICES */
+.services-section { background: #0d0d0d; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.svc-card {
+  background: #111; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px; padding: 28px 24px;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.svc-card:hover { border-color: rgba(0,212,255,0.25); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,212,255,0.06); }
+.svc-icon { font-size: 28px; margin-bottom: 16px; }
+.svc-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+.svc-card p { font-size: 13px; color: #888; line-height: 1.7; margin-bottom: 14px; }
+.svc-price { color: #f0c040; font-size: 14px; font-weight: 700; }
 
-.cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
-.case { background: white; border-radius: 10px; border: 1px solid #e0e4ea; padding: 28px; }
-.case-tag { font-size: 10px; letter-spacing: 2px; color: #4A7BC4; text-transform: uppercase; margin-bottom: 10px; }
-.case h4 { font-size: 16px; font-weight: 700; color: #1F3A6E; margin-bottom: 10px; }
-.case p { font-size: 14px; color: #666; line-height: 1.65; }
-.case .result { margin-top: 14px; padding: 10px 14px; background: #e8f0f8; border-radius: 6px; font-size: 13px; font-weight: 700; color: #1F3A6E; }
+/* PROCESS */
+.process-section { background: #0a0a0a; }
+.steps { display: flex; gap: 0; max-width: 900px; margin: 0 auto; position: relative; }
+.steps::before {
+  content: ''; position: absolute; top: 35px; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, rgba(0,212,255,0.3), rgba(0,212,255,0.5), rgba(0,212,255,0.3));
+}
+.step { flex: 1; text-align: center; padding: 0 16px; }
+.step-num {
+  width: 70px; height: 70px; border-radius: 50%;
+  background: #111; border: 2px solid rgba(0,212,255,0.4); color: #00d4ff;
+  font-size: 22px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px; position: relative; z-index: 1;
+  box-shadow: 0 0 14px rgba(0,212,255,0.12);
+}
+.step h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.step p { font-size: 13px; color: #666; line-height: 1.6; }
 
-.price-table { width: 100%; border-collapse: collapse; max-width: 800px; margin: 0 auto; }
-.price-table tr { border-bottom: 1px solid #f0f2f5; }
-.price-table tr:nth-child(even) { background: #fafbfc; }
-.price-table td { padding: 13px 24px; font-size: 14px; color: #444; }
-.price-table td:last-child { text-align: right; font-weight: 700; color: #1F3A6E; }
+/* CASES */
+.cases-section { background: #0d0d0d; }
+.cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.case-card {
+  background: #111; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; overflow: hidden;
+  transition: border-color .2s, transform .2s;
+}
+.case-card:hover { border-color: rgba(0,212,255,0.2); transform: translateY(-3px); }
+.case-top { height: 100px; display: flex; align-items: center; justify-content: center; font-size: 38px; }
+.case-c1 { background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,136,204,0.05)); }
+.case-c2 { background: linear-gradient(135deg, rgba(240,192,64,0.1), rgba(200,140,0,0.04)); }
+.case-c3 { background: linear-gradient(135deg, rgba(0,200,120,0.08), rgba(0,150,80,0.04)); }
+.case-body { padding: 20px; }
+.case-cat { font-size: 10px; letter-spacing: 2px; color: #00d4ff; text-transform: uppercase; margin-bottom: 8px; }
+.case-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.case-card p { font-size: 12px; color: #666; line-height: 1.6; }
+.case-result { margin-top: 10px; font-size: 13px; color: #00d4ff; font-weight: 700; }
 
-.contacts-wrap { background: linear-gradient(135deg, #1F3A6E, #2c5282); color: white; text-align: center; padding: 70px 40px; }
-.contacts-wrap .section-title { color: white; }
-.contacts-wrap .section-sub { color: rgba(255,255,255,0.75); margin: 0 auto 36px; }
-.contact-form { max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-.contact-form input, .contact-form textarea { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 8px; padding: 13px 16px; color: white; font-size: 14px; font-family: Arial, sans-serif; outline: none; }
-.contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.45); }
-.contact-form textarea { resize: none; height: 100px; }
-.contact-form button { background: white; color: #1F3A6E; border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; }
+/* CTA */
+.cta-section { background: #0a0a0a; text-align: center; padding: 100px 48px; position: relative; overflow: hidden; }
+.cta-section::before {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.05), transparent 70%);
+}
+.cta-section h2 { font-size: 40px; font-weight: 900; margin-bottom: 18px; position: relative; }
+.cta-section p { font-size: 16px; color: #888; margin-bottom: 36px; position: relative; }
+.cta-form { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+.cta-input {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  color: #fff; padding: 13px 18px; border-radius: 8px; font-size: 14px;
+  width: 240px; outline: none; transition: border-color .2s;
+}
+.cta-input:focus { border-color: rgba(0,212,255,0.4); }
+.cta-input::placeholder { color: #555; }
 
-footer { background: #111c30; color: rgba(255,255,255,0.5); padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
-.footer-sq { width: 32px; height: 32px; background: #1F3A6E; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 11px; font-weight: 700; }
+/* FOOTER */
+footer {
+  background: #060606; border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 48px 48px 32px;
+}
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.footer-brand .fl1 { font-size: 18px; font-weight: 900; letter-spacing: 3px; background: linear-gradient(90deg, #00d4ff, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.footer-brand .fl2 { font-size: 9px; letter-spacing: 5px; color: #444; margin-bottom: 10px; }
+.footer-brand p { font-size: 12px; color: #555; line-height: 1.6; }
+.footer-col h5 { font-size: 10px; letter-spacing: 2px; color: #555; text-transform: uppercase; margin-bottom: 12px; }
+.footer-col a { display: block; color: #777; font-size: 13px; text-decoration: none; margin-bottom: 7px; transition: color .2s; }
+.footer-col a:hover { color: #00d4ff; }
+.footer-bottom { max-width: 1100px; margin: 28px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.04); display: flex; justify-content: space-between; font-size: 12px; color: #444; }
 
-@media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2,1fr); } .how-grid { grid-template-columns: repeat(2,1fr); } .cases-grid { grid-template-columns: 1fr; } }
-@media (max-width: 600px) { header { padding: 0 16px; height: 64px; } section { padding: 50px 20px; } .hero { padding: 60px 20px 80px; } .hero h1 { font-size: 26px; } .services-grid { grid-template-columns: 1fr; } .how-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -79,224 +192,222 @@ footer { background: #111c30; color: rgba(255,255,255,0.5); padding: 28px 40px; 
 <header>
   <a href="index.html" class="logo-wrap">
     <div class="logo-sq">OM</div>
-    <div class="logo-txt"><div class="l1">DIGITAL</div><div class="l2">COMPANY</div></div>
+    <div class="logo-txt"><div class="l1">OM-DIGITAL</div><div class="l2">COMPANY</div></div>
   </a>
-  <a href="index.html" class="btn-back">← Назад на главную</a>
+  <nav>
+    <a href="index.html#services">Услуги</a>
+    <a href="index.html#how">Процесс</a>
+    <a href="index.html#portfolio">Портфолио</a>
+    <a href="index.html#contact">Контакты</a>
+    <a href="index.html#contact" class="btn-cta">Заказать →</a>
+  </nav>
 </header>
 
+
+<!-- HERO -->
 <section class="hero">
+  <div class="hero-grid"></div>
+  <a href="index.html" class="hero-back">← На главную</a>
+  <br>
   <div class="hero-badge">ОТДЕЛ 2 · AI STUDIO</div>
-  <h1>Умные инструменты на базе <span>искусственного интеллекта</span><br>для вашего бизнеса</h1>
-  <p>Проектируем промпты, чатботов и базы знаний, которые работают как опытный сотрудник — без выходных и ошибок из-за усталости.</p>
-  <a href="#contact" class="btn-cta-hero">Заказать AI-решение →</a>
+  <h1>AI-инструменты<br><span class="grad">для вашего бизнеса</span></h1>
+  <p>Промпты для ChatGPT и Claude, сценарии чатботов, FAQ-базы знаний и AI-инструкции. Внедряем искусственный интеллект в ваши процессы — без лишней сложности.</p>
+  <a href="#contact" class="btn-primary">Заказать →</a>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">9</div><div class="lbl">услуг AI Studio</div></div>
+    <div class="hero-stat"><div class="num">от 500 ₽</div><div class="lbl">стоимость</div></div>
+    <div class="hero-stat"><div class="num">48 ч</div><div class="lbl">срок сдачи</div></div>
+  </div>
 </section>
 
-<section style="background:#fff;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <div class="section-label center">Что делаем</div>
-    <h2 class="section-title center">Услуги AI Studio</h2>
-    <div class="section-sub center">Помогаем бизнесу внедрить AI без лишних технических сложностей: от одного промпта до полноценного AI-сотрудника.</div>
+<div class="divider"></div>
+
+<!-- УСЛУГИ -->
+<section class="services-section">
+  <div class="container">
+    <div class="section-label">Услуги</div>
+    <h2 class="section-title">Что мы <span class="accent">делаем</span></h2>
     <div class="services-grid">
-
-      <div class="srv">
-        <div class="srv-icon">🧠</div>
-        <h3>Системные промпты</h3>
-        <p>Пишем детальные инструкции для ChatGPT, Claude и других моделей. Бот будет отвечать строго в рамках вашего бизнеса, стиля и регламентов.</p>
-        <div class="price">от 1 000 ₽</div>
+      <div class="svc-card">
+        <div class="svc-icon">🧠</div>
+        <h3>Промпты для ChatGPT / Claude</h3>
+        <p>Системные промпты для любых задач: поддержка, продажи, анализ, генерация контента</p>
+        <div class="svc-price">от 500 ₽/промпт</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">📦</div>
+      <div class="svc-card">
+        <div class="svc-icon">📦</div>
         <h3>Промпт-пакеты</h3>
-        <p>5–10 промптов под конкретные задачи: генерация контента, обработка заявок, составление документов, анализ данных.</p>
-        <div class="price">от 3 000 ₽ за пакет</div>
+        <p>5–10 промптов под одну задачу: маркетинг, HR, продажи, аналитика</p>
+        <div class="svc-price">от 2 000 ₽/набор</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">🤖</div>
+      <div class="svc-card">
+        <div class="svc-icon">💬</div>
         <h3>Сценарии чатботов</h3>
-        <p>Полный сценарий диалога для Telegram-бота: ветки, условия, кнопки, обработка исключений. Готово для передачи разработчику или в Botmother/SendPulse.</p>
-        <div class="price">от 2 000 ₽</div>
+        <p>Диалоговые деревья для Telegram, WhatsApp, сайта. С ветками и возражениями</p>
+        <div class="svc-price">от 3 000 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">📚</div>
+      <div class="svc-card">
+        <div class="svc-icon">📚</div>
         <h3>FAQ-базы знаний</h3>
-        <p>Структурированные базы из 50–100+ вопросов и ответов для поддержки, продаж, обучения сотрудников. Готово к загрузке в любую LLM.</p>
-        <div class="price">от 2 000 ₽</div>
+        <p>Структурированные Q&A для сайта, бота или корпоративной Wiki</p>
+        <div class="svc-price">от 2 500 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">📋</div>
-        <h3>AI-инструкции для сотрудников</h3>
-        <p>Пошаговые руководства как использовать ChatGPT/Claude в конкретных рабочих процессах. Адаптировано под отдел и задачи.</p>
-        <div class="price">от 1 500 ₽</div>
+      <div class="svc-card">
+        <div class="svc-icon">📋</div>
+        <h3>AI-инструкции для бизнеса</h3>
+        <p>Как использовать ChatGPT в вашем отделе: конкретные кейсы и промпты</p>
+        <div class="svc-price">от 3 500 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">🔍</div>
-        <h3>Аудит существующих промптов</h3>
-        <p>Проверяем текущие промпты, находим слабые места: галлюцинации, выход за рамки роли, нестабильный формат. Даём рекомендации.</p>
-        <div class="price">от 1 500 ₽</div>
+      <div class="svc-card">
+        <div class="svc-icon">🔍</div>
+        <h3>Аудит промптов</h3>
+        <p>Анализ ваших текущих промптов, улучшение качества ответов, устранение галлюцинаций</p>
+        <div class="svc-price">от 1 500 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">🗺</div>
-        <h3>AI-стратегия для бизнеса</h3>
-        <p>Аудит бизнес-процессов, карта точек внедрения AI, приоритизация задач, план автоматизации. Документ на 15–25 страниц.</p>
-        <div class="price">от 5 000 ₽</div>
+      <div class="svc-card">
+        <div class="svc-icon">🗺️</div>
+        <h3>AI-стратегия</h3>
+        <p>Как внедрить AI в процессы: какие инструменты, для каких задач, ROI</p>
+        <div class="svc-price">от 5 000 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">🎯</div>
-        <h3>Промпты для генерации контента</h3>
-        <p>Промпты для стабильной генерации карточек товаров, постов, описаний, статей в нужном формате и стиле бренда.</p>
-        <div class="price">от 800 ₽</div>
+      <div class="svc-card">
+        <div class="svc-icon">✍️</div>
+        <h3>Промпты для контента</h3>
+        <p>Генерация постов, статей, описаний — шаблоны с переменными</p>
+        <div class="svc-price">от 800 ₽/набор</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">⚙️</div>
+      <div class="svc-card">
+        <div class="svc-icon">🔗</div>
         <h3>Интеграционные сценарии</h3>
-        <p>Проектируем логику AI-агентов: как подключить LLM к вашей CRM, базе знаний, каналу поддержки. ТЗ для разработчика в комплекте.</p>
-        <div class="price">от 3 000 ₽</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<section style="background:#f8f9fb;">
-  <div style="max-width:1000px;margin:0 auto;">
-    <div class="section-label center">Как работаем</div>
-    <h2 class="section-title center">От задачи до готового AI-инструмента</h2>
-    <div class="section-sub center">Чёткий процесс без лишних согласований.</div>
-    <div class="how-grid">
-      <div class="how-step">
-        <div class="how-num">1</div>
-        <h4>Бриф</h4>
-        <p>Уточняем задачу: что должен делать AI, кто аудитория, какой формат нужен</p>
-      </div>
-      <div class="how-step">
-        <div class="how-num">2</div>
-        <h4>Проектирование</h4>
-        <p>Создаём архитектуру: структура промпта, ветки диалога, правила поведения модели</p>
-      </div>
-      <div class="how-step">
-        <div class="how-num">3</div>
-        <h4>Тестирование</h4>
-        <p>Прогоняем через реальные кейсы, исправляем баги поведения, добиваемся стабильности</p>
-      </div>
-      <div class="how-step">
-        <div class="how-num">4</div>
-        <h4>Сдача</h4>
-        <p>Передаём готовый промпт/сценарий с инструкцией по применению и правками в течение 7 дней</p>
+        <p>Как соединить ChatGPT с вашим CRM, ботом, базой знаний (сценарий)</p>
+        <div class="svc-price">от 2 000 ₽</div>
       </div>
     </div>
   </div>
 </section>
 
-<section style="background:#fff;">
-  <div style="max-width:1000px;margin:0 auto;">
-    <div class="section-label center">Кейсы</div>
-    <h2 class="section-title center">Примеры внедрений</h2>
-    <div class="section-sub center">Реальные задачи — реальный результат.</div>
+<div class="divider"></div>
+
+<!-- ПРОЦЕСС -->
+<section class="process-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px;">
+      <div class="section-label">Процесс</div>
+      <h2 class="section-title">Как мы <span class="accent">работаем</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Задача</h4>
+        <p>Описываете: что должен делать AI, кто пользователь, какой результат</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Разработка</h4>
+        <p>Пишем, тестируем, итерируем промпт до стабильного результата</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Документация</h4>
+        <p>Инструкция по использованию + примеры ответов</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Поддержка</h4>
+        <p>3 дня — задаёте вопросы, корректируем под задачу</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- КЕЙСЫ -->
+<section class="cases-section">
+  <div class="container">
+    <div class="section-label">Примеры работ</div>
+    <h2 class="section-title">Наши <span class="accent">кейсы</span></h2>
     <div class="cases-grid">
-
-      <div class="case">
-        <div class="case-tag">Корпоративный AI</div>
-        <h4>Системный промпт для HR-бота производственной компании</h4>
-        <p>Промпт на 800 слов: роль, ограничения, база знаний по политикам компании, инструкции по эскалации. Интегрирован в корпоративный Telegram.</p>
-        <div class="result">🤖 Бот закрывает 70% вопросов сотрудников без участия HR</div>
+      <div class="case-card">
+        <div class="case-top case-c1">🤖</div>
+        <div class="case-body">
+          <div class="case-cat">Telegram-бот</div>
+          <h4>Чатбот для юридической компании</h4>
+          <p>Промпт + FAQ-база + сценарий для бота: отвечает на типовые вопросы, квалифицирует лида</p>
+          <div class="case-result">Обрабатывает 80% вопросов без участия юриста</div>
+        </div>
       </div>
-
-      <div class="case">
-        <div class="case-tag">Онлайн-образование</div>
-        <h4>Чатбот-ассистент для онлайн-школы английского</h4>
-        <p>12 веток диалога: запись на курс, подбор уровня, ответы на FAQ, переключение на менеджера. Интегрирован с Google Sheets через Zapier.</p>
-        <div class="result">📚 Конверсия в запись +28%, нагрузка на менеджеров –40%</div>
+      <div class="case-card">
+        <div class="case-top case-c2">📚</div>
+        <div class="case-body">
+          <div class="case-cat">FAQ-база</div>
+          <h4>База знаний для интернет-магазина</h4>
+          <p>127 вопросов и ответов по доставке, оплате, возврату и характеристикам товаров</p>
+          <div class="case-result">↓ Нагрузка на поддержку −45%</div>
+        </div>
       </div>
-
-      <div class="case">
-        <div class="case-tag">E-commerce</div>
-        <h4>Промпты для генерации карточек товаров (маркетплейс)</h4>
-        <p>Пакет из 8 промптов для разных категорий: одежда, электроника, товары для дома. Стабильный формат, ключи из Wordstat включены в шаблон.</p>
-        <div class="result">⚡ 100 карточек за 3 часа вместо 3 дней</div>
+      <div class="case-card">
+        <div class="case-top case-c3">🧠</div>
+        <div class="case-body">
+          <div class="case-cat">Промпты</div>
+          <h4>Промпт-пакет для HR-отдела</h4>
+          <p>12 промптов: анализ резюме, генерация вопросов на собеседование, оффер-письма</p>
+          <div class="case-result">Экономия 3 ч/день на рутинных задачах</div>
+        </div>
       </div>
-
-      <div class="case">
-        <div class="case-tag">SaaS / поддержка</div>
-        <h4>FAQ-база знаний для службы поддержки IT-продукта</h4>
-        <p>120 вопросов с ответами, структурированных по категориям. Интегрирована в Notion + подключена к GPT-4 через API для автоответов.</p>
-        <div class="result">⏱ Среднее время ответа: с 18 мин до 3 мин</div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<section style="background:#f8f9fb;">
-  <div style="max-width:800px;margin:0 auto;">
-    <div class="section-label center">Стоимость</div>
-    <h2 class="section-title center">Прайс-лист — AI Studio</h2>
-    <div class="section-sub center">Итоговая цена зависит от сложности и объёма. Уточняем после брифа.</div>
-    <table class="price-table">
-      <tr><td>Системный промпт для ChatGPT / Claude</td><td>от 1 000 ₽</td></tr>
-      <tr><td>Промпт-пакет (5 промптов под задачи)</td><td>от 3 000 ₽</td></tr>
-      <tr><td>Промпт-пакет (10 промптов)</td><td>от 5 500 ₽</td></tr>
-      <tr><td>Сценарий чатбота (до 10 веток)</td><td>от 2 000 ₽</td></tr>
-      <tr><td>Сценарий чатбота (до 25 веток)</td><td>от 4 000 ₽</td></tr>
-      <tr><td>Сценарий чатбота (до 50 веток + интеграции)</td><td>от 7 000 ₽</td></tr>
-      <tr><td>FAQ-база знаний (до 50 вопросов)</td><td>от 2 000 ₽</td></tr>
-      <tr><td>FAQ-база знаний (до 100 вопросов)</td><td>от 3 500 ₽</td></tr>
-      <tr><td>AI-инструкция для сотрудников</td><td>от 1 500 ₽</td></tr>
-      <tr><td>Аудит текущих промптов + рекомендации</td><td>от 1 500 ₽</td></tr>
-      <tr><td>AI-стратегия для бизнеса (документ)</td><td>от 5 000 ₽</td></tr>
-    </table>
+<div class="divider"></div>
+
+
+<section class="cta-section" id="contact">
+  <div style="position:relative;z-index:1;">
+    <div class="section-label" style="margin-bottom:12px;">Начать</div>
+    <h2>Готовы обсудить задачу?</h2>
+    <p>Ответим за 1 час и предложим решение</p>
+    <div class="cta-form">
+      <input type="text" class="cta-input" placeholder="Ваше имя">
+      <input type="text" class="cta-input" placeholder="Telegram или email">
+      <a href="https://t.me/omdigital_orders_bot" class="btn-primary">Написать в Telegram →</a>
+    </div>
   </div>
 </section>
 
-<section class="contacts-wrap" id="contact">
-  <div class="section-label center" style="color:#8BAFD4;">Заказать</div>
-  <h2 class="section-title center">Оставьте заявку на AI-решение</h2>
-  <div class="section-sub center">Опишите задачу — предложим оптимальный инструмент и стоимость за 1 час.</div>
-  <form class="contact-form" id="contactForm">
-    <input type="text" id="cName" placeholder="Ваше имя" required>
-    <input type="text" id="cContact" placeholder="Telegram или email" required>
-    <textarea id="cMessage" placeholder="Что хотите автоматизировать? (промпт, чатбот, FAQ...)" required></textarea>
-    <button type="submit" id="cBtn">Отправить заявку →</button>
-    <div id="cStatus" style="text-align:center;font-size:14px;margin-top:8px;display:none;"></div>
-  </form>
-</section>
 
 <footer>
-  <div style="display:flex;align-items:center;gap:10px;">
-    <div class="footer-sq">OM</div>
-    <span>OM-DIGITAL COMPANY © 2026</span>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="fl1">OM-DIGITAL</div>
+      <div class="fl2">COMPANY</div>
+      <p>AI-агентство. Москва, 2026<br>Пн–Вс 9:00–21:00 МСК</p>
+    </div>
+    <div class="footer-col">
+      <h5>Отделы</h5>
+      <a href="marketing.html">Интернет-маркетинг</a>
+      <a href="ai-studio.html">AI Studio</a>
+      <a href="business-analytics.html">Бизнес-аналитика</a>
+      <a href="automation.html">Автоматизация и код</a>
+    </div>
+    <div class="footer-col">
+      <h5>Платформы</h5>
+      <a href="https://kwork.ru/user/mg-19720">Kwork</a>
+      <a href="https://fl.ru/users/mg-1972">FL.ru</a>
+      <a href="https://etxt.ru">eTXT</a>
+      <a href="https://advego.com">Advego</a>
+    </div>
+    <div class="footer-col">
+      <h5>Контакты</h5>
+      <a href="https://t.me/omdigital_orders_bot">Telegram-бот</a>
+      <a href="mailto:newlife2506@yandex.ru">newlife2506@yandex.ru</a>
+    </div>
   </div>
-  <div>Москва · 9:00–19:00 МСК</div>
+  <div class="footer-bottom">
+    <span>© 2026 OM-Digital Company</span>
+    <span>Москва · 9:00–21:00 МСК</span>
+  </div>
 </footer>
 
-<script>
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn = document.getElementById('cBtn'); const status = document.getElementById('cStatus');
-  const name = document.getElementById('cName').value.trim();
-  const contact = document.getElementById('cContact').value.trim();
-  const message = document.getElementById('cMessage').value.trim();
-  if (!name || !contact || !message) return;
-  btn.disabled = true; btn.textContent = 'Отправляем...';
-  const tgText = `📨 ЗАЯВКА — AI STUDIO\n━━━━━━━━━━━━━━\n👤 ${name}\n📞 ${contact}\n💬 ${message}\n#ai_studio #сайт`;
-  try {
-    const r = await fetch('https://api.telegram.org/bot8873337285:AAEYvrOlbsiqmbbm546jfr8oA7e33o7YlVU/sendMessage', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({chat_id:'2088867074', text: tgText}), signal: AbortSignal.timeout(8000)
-    });
-    const d = await r.json();
-    if (d.ok) { status.style.color='#4ade80'; status.textContent='✅ Заявка отправлена! Ответим в течение часа.'; document.getElementById('contactForm').reset(); }
-    else { throw new Error(); }
-  } catch(err) { status.style.color='#fbbf24'; status.textContent='Напишите нам: newlife2506@yandex.ru'; }
-  status.style.display='block'; btn.disabled=false; btn.textContent='Отправить заявку →';
-});
-</script>
 </body>
 </html>

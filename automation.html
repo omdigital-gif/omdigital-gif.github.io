@@ -4,71 +4,187 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Автоматизация и код — OM-Digital Company</title>
-<meta name="description" content="Python-скрипты, Telegram-боты, парсинг данных, Excel-автоматизация, SQL, API-интеграции. Цены от 1 200 ₽. Ответ за 1 час.">
+<meta name="description" content="Python-скрипты, Telegram-боты, парсинг данных, Excel/Google Sheets, API-интеграции. OM-Digital, от 800 ₽">
 <style>
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { scroll-behavior: smooth; overflow-x: hidden; }
-body { font-family: Arial, sans-serif; color: #222; background: #fff; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; }
 
-header { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #e0e4ea; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 80px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-.logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo-sq { width: 54px; height: 54px; background: #1F3A6E; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700; }
-.logo-txt .l1 { font-size: 22px; font-weight: 700; color: #1F3A6E; letter-spacing: 2px; }
-.logo-txt .l2 { font-size: 10px; letter-spacing: 6px; color: #4A7BC4; }
-.btn-back { background: #1F3A6E; color: white; border: none; padding: 10px 22px; border-radius: 7px; font-size: 14px; text-decoration: none; }
+/* HEADER */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,10,10,0.95);
+  border-bottom: 1px solid rgba(0,212,255,0.15);
+  backdrop-filter: blur(12px);
+  padding: 0 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 76px;
+}
+.logo-wrap { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.logo-sq {
+  width: 50px; height: 50px;
+  background: linear-gradient(135deg, #00d4ff, #0088cc);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: #0a0a0a; font-size: 17px; font-weight: 900;
+  box-shadow: 0 0 20px rgba(0,212,255,0.4);
+}
+.logo-txt .l1 {
+  font-size: 20px; font-weight: 900; letter-spacing: 3px;
+  background: linear-gradient(90deg, #00d4ff, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.logo-txt .l2 { font-size: 9px; letter-spacing: 5px; color: #aaa; }
+nav { display: flex; align-items: center; gap: 28px; }
+nav a { color: #fff; text-decoration: none; font-size: 17px; font-weight: 700; transition: color .2s; }
+nav a:hover { color: #00d4ff; }
+.btn-cta {
+  background: transparent; color: #00d4ff; border: 1.5px solid #00d4ff;
+  padding: 9px 22px; border-radius: 6px; font-size: 13px; font-weight: 700;
+  cursor: pointer; text-decoration: none; transition: background .2s, box-shadow .2s;
+}
+.btn-cta:hover { background: rgba(0,212,255,0.1); box-shadow: 0 0 16px rgba(0,212,255,0.3); }
 
-.hero { background: linear-gradient(135deg, #163055 0%, #1F3A6E 50%, #1a3a5c 100%); color: white; text-align: center; padding: 80px 40px 100px; }
-.hero-badge { display: inline-block; background: rgba(74,123,196,0.3); border: 1px solid rgba(74,123,196,0.5); color: #a8c8f0; font-size: 12px; letter-spacing: 2px; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; }
-.hero h1 { font-size: 44px; font-weight: 700; line-height: 1.2; margin-bottom: 18px; }
-.hero h1 span { color: #4A7BC4; }
-.hero p { font-size: 17px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 36px; line-height: 1.7; }
-.btn-cta-hero { display: inline-block; background: white; color: #1F3A6E; padding: 14px 36px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: transform .2s; }
-.btn-cta-hero:hover { transform: translateY(-2px); }
+/* DIVIDER */
+.divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(0,212,255,0.2), transparent); }
 
-section { padding: 70px 40px; }
-.section-label { font-size: 12px; letter-spacing: 3px; color: #4A7BC4; text-transform: uppercase; margin-bottom: 12px; }
-.section-title { font-size: 34px; font-weight: 700; color: #1F3A6E; margin-bottom: 14px; }
-.section-sub { font-size: 16px; color: #666; max-width: 620px; line-height: 1.7; margin-bottom: 46px; }
-.center { text-align: center; }
-.center .section-sub { margin-left: auto; margin-right: auto; }
+/* HERO */
+.hero {
+  padding: 100px 48px 80px;
+  position: relative; overflow: hidden;
+  background: radial-gradient(ellipse 800px 400px at 20% 50%, rgba(0,212,255,0.05) 0%, transparent 70%);
+}
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(0,212,255,0.025) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,212,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #aaa; text-decoration: none; font-size: 13px; margin-bottom: 28px;
+  transition: color .2s; position: relative;
+}
+.hero-back:hover { color: #00d4ff; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.3);
+  color: #00d4ff; font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  padding: 6px 18px; border-radius: 20px; margin-bottom: 20px; position: relative;
+}
+.hero h1 {
+  font-size: 56px; font-weight: 900; line-height: 1.1; margin-bottom: 20px; position: relative;
+}
+.hero h1 .grad {
+  background: linear-gradient(90deg, #00d4ff, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero p { font-size: 18px; color: #ccc; max-width: 600px; line-height: 1.8; margin-bottom: 36px; position: relative; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, #00d4ff, #0088cc);
+  color: #0a0a0a; font-weight: 800; padding: 14px 32px; border-radius: 8px; font-size: 15px;
+  text-decoration: none; box-shadow: 0 0 24px rgba(0,212,255,0.4);
+  transition: box-shadow .2s, transform .2s; position: relative;
+}
+.btn-primary:hover { box-shadow: 0 0 40px rgba(0,212,255,0.6); transform: translateY(-2px); }
+.hero-stats { display: flex; gap: 56px; margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06); position: relative; }
+.hero-stat .num { font-size: 36px; font-weight: 900; background: linear-gradient(90deg, #00d4ff, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-stat .lbl { font-size: 12px; color: #666; margin-top: 6px; }
 
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
-.srv { background: #f8f9fb; border-radius: 12px; border: 1px solid #e0e4ea; padding: 28px 24px; }
-.srv-icon { font-size: 36px; margin-bottom: 16px; }
-.srv h3 { font-size: 17px; font-weight: 700; color: #1F3A6E; margin-bottom: 10px; }
-.srv p { font-size: 14px; color: #666; line-height: 1.7; margin-bottom: 14px; }
-.srv .price { font-size: 15px; font-weight: 700; color: #1F3A6E; }
+/* SECTION */
+section { padding: 80px 48px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #00d4ff; margin-bottom: 12px; }
+.section-title { font-size: 36px; font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+.section-title .accent { background: linear-gradient(90deg, #00d4ff, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.section-sub { font-size: 16px; color: #888; line-height: 1.8; max-width: 520px; margin-bottom: 48px; }
 
-.cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
-.case { background: white; border-radius: 10px; border: 1px solid #e0e4ea; padding: 24px; }
-.case-tag { font-size: 10px; letter-spacing: 2px; color: #4A7BC4; text-transform: uppercase; margin-bottom: 10px; }
-.case h4 { font-size: 15px; font-weight: 700; color: #1F3A6E; margin-bottom: 8px; }
-.case p { font-size: 13px; color: #666; line-height: 1.6; }
-.case .result { margin-top: 12px; padding: 8px 12px; background: #e8f0f8; border-radius: 6px; font-size: 12px; font-weight: 700; color: #1F3A6E; }
+/* SERVICES */
+.services-section { background: #0d0d0d; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.svc-card {
+  background: #111; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px; padding: 28px 24px;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.svc-card:hover { border-color: rgba(0,212,255,0.25); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,212,255,0.06); }
+.svc-icon { font-size: 28px; margin-bottom: 16px; }
+.svc-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+.svc-card p { font-size: 13px; color: #888; line-height: 1.7; margin-bottom: 14px; }
+.svc-price { color: #f0c040; font-size: 14px; font-weight: 700; }
 
-.tech-list { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; max-width: 900px; margin: 0 auto; }
-.tech-tag { background: #e8edf5; color: #1F3A6E; font-size: 14px; font-weight: 600; padding: 8px 20px; border-radius: 24px; border: 1px solid #d0d8e8; }
+/* PROCESS */
+.process-section { background: #0a0a0a; }
+.steps { display: flex; gap: 0; max-width: 900px; margin: 0 auto; position: relative; }
+.steps::before {
+  content: ''; position: absolute; top: 35px; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, rgba(0,212,255,0.3), rgba(0,212,255,0.5), rgba(0,212,255,0.3));
+}
+.step { flex: 1; text-align: center; padding: 0 16px; }
+.step-num {
+  width: 70px; height: 70px; border-radius: 50%;
+  background: #111; border: 2px solid rgba(0,212,255,0.4); color: #00d4ff;
+  font-size: 22px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px; position: relative; z-index: 1;
+  box-shadow: 0 0 14px rgba(0,212,255,0.12);
+}
+.step h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.step p { font-size: 13px; color: #666; line-height: 1.6; }
 
-.price-table { width: 100%; border-collapse: collapse; max-width: 800px; margin: 0 auto; }
-.price-table tr { border-bottom: 1px solid #f0f2f5; }
-.price-table tr:nth-child(even) { background: #fafbfc; }
-.price-table td { padding: 13px 24px; font-size: 14px; color: #444; }
-.price-table td:last-child { text-align: right; font-weight: 700; color: #1F3A6E; }
+/* CASES */
+.cases-section { background: #0d0d0d; }
+.cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.case-card {
+  background: #111; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; overflow: hidden;
+  transition: border-color .2s, transform .2s;
+}
+.case-card:hover { border-color: rgba(0,212,255,0.2); transform: translateY(-3px); }
+.case-top { height: 100px; display: flex; align-items: center; justify-content: center; font-size: 38px; }
+.case-c1 { background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,136,204,0.05)); }
+.case-c2 { background: linear-gradient(135deg, rgba(240,192,64,0.1), rgba(200,140,0,0.04)); }
+.case-c3 { background: linear-gradient(135deg, rgba(0,200,120,0.08), rgba(0,150,80,0.04)); }
+.case-body { padding: 20px; }
+.case-cat { font-size: 10px; letter-spacing: 2px; color: #00d4ff; text-transform: uppercase; margin-bottom: 8px; }
+.case-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.case-card p { font-size: 12px; color: #666; line-height: 1.6; }
+.case-result { margin-top: 10px; font-size: 13px; color: #00d4ff; font-weight: 700; }
 
-.contacts-wrap { background: linear-gradient(135deg, #1F3A6E, #2c5282); color: white; text-align: center; padding: 70px 40px; }
-.contacts-wrap .section-title { color: white; }
-.contacts-wrap .section-sub { color: rgba(255,255,255,0.75); margin: 0 auto 36px; }
-.contact-form { max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-.contact-form input, .contact-form textarea { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 8px; padding: 13px 16px; color: white; font-size: 14px; font-family: Arial, sans-serif; outline: none; }
-.contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.45); }
-.contact-form textarea { resize: none; height: 100px; }
-.contact-form button { background: white; color: #1F3A6E; border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; }
+/* CTA */
+.cta-section { background: #0a0a0a; text-align: center; padding: 100px 48px; position: relative; overflow: hidden; }
+.cta-section::before {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.05), transparent 70%);
+}
+.cta-section h2 { font-size: 40px; font-weight: 900; margin-bottom: 18px; position: relative; }
+.cta-section p { font-size: 16px; color: #888; margin-bottom: 36px; position: relative; }
+.cta-form { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+.cta-input {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  color: #fff; padding: 13px 18px; border-radius: 8px; font-size: 14px;
+  width: 240px; outline: none; transition: border-color .2s;
+}
+.cta-input:focus { border-color: rgba(0,212,255,0.4); }
+.cta-input::placeholder { color: #555; }
 
-footer { background: #111c30; color: rgba(255,255,255,0.5); padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
-.footer-sq { width: 32px; height: 32px; background: #1F3A6E; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 11px; font-weight: 700; }
+/* FOOTER */
+footer {
+  background: #060606; border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 48px 48px 32px;
+}
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.footer-brand .fl1 { font-size: 18px; font-weight: 900; letter-spacing: 3px; background: linear-gradient(90deg, #00d4ff, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.footer-brand .fl2 { font-size: 9px; letter-spacing: 5px; color: #444; margin-bottom: 10px; }
+.footer-brand p { font-size: 12px; color: #555; line-height: 1.6; }
+.footer-col h5 { font-size: 10px; letter-spacing: 2px; color: #555; text-transform: uppercase; margin-bottom: 12px; }
+.footer-col a { display: block; color: #777; font-size: 13px; text-decoration: none; margin-bottom: 7px; transition: color .2s; }
+.footer-col a:hover { color: #00d4ff; }
+.footer-bottom { max-width: 1100px; margin: 28px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.04); display: flex; justify-content: space-between; font-size: 12px; color: #444; }
 
-@media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2,1fr); } .cases-grid { grid-template-columns: repeat(2,1fr); } }
-@media (max-width: 600px) { header { padding: 0 16px; height: 64px; } section { padding: 50px 20px; } .hero { padding: 60px 20px 80px; } .hero h1 { font-size: 26px; } .services-grid { grid-template-columns: 1fr; } .cases-grid { grid-template-columns: 1fr; } }
 </style>
 </head>
 <body>
@@ -76,239 +192,222 @@ footer { background: #111c30; color: rgba(255,255,255,0.5); padding: 28px 40px; 
 <header>
   <a href="index.html" class="logo-wrap">
     <div class="logo-sq">OM</div>
-    <div class="logo-txt"><div class="l1">DIGITAL</div><div class="l2">COMPANY</div></div>
+    <div class="logo-txt"><div class="l1">OM-DIGITAL</div><div class="l2">COMPANY</div></div>
   </a>
-  <a href="index.html" class="btn-back">← Назад на главную</a>
+  <nav>
+    <a href="index.html#services">Услуги</a>
+    <a href="index.html#how">Процесс</a>
+    <a href="index.html#portfolio">Портфолио</a>
+    <a href="index.html#contact">Контакты</a>
+    <a href="index.html#contact" class="btn-cta">Заказать →</a>
+  </nav>
 </header>
 
+
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">ОТДЕЛ 4 · АВТОМАТИЗАЦИЯ И КОД</div>
-  <h1>Автоматизируем рутину —<br>вы занимаетесь <span>главным</span></h1>
-  <p>Python-скрипты, Telegram-боты, парсинг, Excel, SQL и API-интеграции. Задачи, которые отнимают часы ручного труда — решаем за 24–72 часа.</p>
-  <a href="#contact" class="btn-cta-hero">Заказать автоматизацию →</a>
+  <div class="hero-grid"></div>
+  <a href="index.html" class="hero-back">← На главную</a>
+  <br>
+  <div class="hero-badge">ОТДЕЛ 4 · АВТОМАТИЗАЦИЯ</div>
+  <h1>Автоматизация и код<br><span class="grad">для вашего бизнеса</span></h1>
+  <p>Python-скрипты, Telegram-боты, парсинг данных с сайтов, автоматизация Excel/Google Sheets и API-интеграции. Рутина — машинам, вы — важным задачам.</p>
+  <a href="#contact" class="btn-primary">Заказать →</a>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">9</div><div class="lbl">направлений</div></div>
+    <div class="hero-stat"><div class="num">от 800 ₽</div><div class="lbl">стоимость</div></div>
+    <div class="hero-stat"><div class="num">24 ч</div><div class="lbl">срок сдачи</div></div>
+  </div>
 </section>
 
-<section style="background:#fff;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <div class="section-label center">Что делаем</div>
-    <h2 class="section-title center">Услуги автоматизации</h2>
-    <div class="section-sub center">Берём любые задачи от простого скрипта до полноценного бота с базой данных и интеграциями.</div>
+<div class="divider"></div>
+
+<!-- УСЛУГИ -->
+<section class="services-section">
+  <div class="container">
+    <div class="section-label">Услуги</div>
+    <h2 class="section-title">Что мы <span class="accent">делаем</span></h2>
     <div class="services-grid">
-
-      <div class="srv">
-        <div class="srv-icon">🐍</div>
+      <div class="svc-card">
+        <div class="svc-icon">🐍</div>
         <h3>Python-скрипты</h3>
-        <p>Автоматизация любых задач: обработка файлов, работа с API, планировщики, CLI-утилиты. Комментарии и документация в комплекте.</p>
-        <div class="price">от 1 500 ₽</div>
+        <p>Автоматизация любых задач: обработка данных, уведомления, интеграции, отчёты</p>
+        <div class="svc-price">от 1 500 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">🤖</div>
+      <div class="svc-card">
+        <div class="svc-icon">🤖</div>
         <h3>Telegram-боты</h3>
-        <p>Боты на python-telegram-bot / aiogram: приём заявок, меню, кнопки, оплата, уведомления, интеграция с Google Sheets, CRM, почтой.</p>
-        <div class="price">от 2 500 ₽</div>
+        <p>На aiogram 3 / PTB. Заявки, рассылки, каталоги, интеграция с CRM</p>
+        <div class="svc-price">от 3 000 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">🕷</div>
+      <div class="svc-card">
+        <div class="svc-icon">🕸️</div>
         <h3>Парсинг данных</h3>
-        <p>Сбор данных с сайтов и маркетплейсов: цены, товары, контакты, вакансии. Requests + BeautifulSoup или Selenium. Выгрузка в Excel/JSON/БД.</p>
-        <div class="price">от 2 000 ₽</div>
+        <p>Сбор цен, товаров, контактов с сайтов → Excel/JSON. Статика и JS-сайты</p>
+        <div class="svc-price">от 2 000 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">📊</div>
-        <h3>Excel-автоматизация</h3>
-        <p>Макросы VBA, Power Query, сложные формулы, сводные таблицы, дашборды. Отчёт, который раньше занимал 2 часа — теперь 5 минут.</p>
-        <div class="price">от 1 200 ₽</div>
+      <div class="svc-card">
+        <div class="svc-icon">📊</div>
+        <h3>Excel и Google Sheets</h3>
+        <p>Сложные формулы, VBA-макросы, Apps Script, сводные таблицы, дашборды</p>
+        <div class="svc-price">от 1 000 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">🗄</div>
-        <h3>SQL и работа с БД</h3>
-        <p>Запросы любой сложности к PostgreSQL, MySQL, SQLite. Оптимизация медленных запросов, построение схем, выборки для аналитики.</p>
-        <div class="price">от 1 000 ₽</div>
-      </div>
-
-      <div class="srv">
-        <div class="srv-icon">🔗</div>
+      <div class="svc-card">
+        <div class="svc-icon">🔌</div>
         <h3>API-интеграции</h3>
-        <p>Связываем два и более сервиса: CRM + Telegram, 1С + сайт, Bitrix24 + Google Sheets, любые REST API. Webhook и polling.</p>
-        <div class="price">от 3 000 ₽</div>
+        <p>Связка двух сервисов через API: передача данных, синхронизация, вебхуки</p>
+        <div class="svc-price">от 3 000 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">📑</div>
-        <h3>Google Sheets автоматизация</h3>
-        <p>Google Apps Script, формулы QUERY / IMPORTRANGE, автоматическое заполнение, уведомления. Превращаем таблицу в инструмент.</p>
-        <div class="price">от 1 200 ₽</div>
+      <div class="svc-card">
+        <div class="svc-icon">📁</div>
+        <h3>Обработка файлов</h3>
+        <p>Массовое переименование, конвертация, сортировка, PDF/Word/Excel через Python</p>
+        <div class="svc-price">от 800 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">🌐</div>
-        <h3>Лендинги и сайты</h3>
-        <p>Одностраничные сайты на чистом HTML/CSS/JS или на конструкторе. Быстро, без лишнего, с мобильной адаптацией и формой заявки.</p>
-        <div class="price">от 5 000 ₽</div>
+      <div class="svc-card">
+        <div class="svc-icon">📧</div>
+        <h3>Email-автоматизация</h3>
+        <p>SMTP-рассылки, уведомления по событиям, парсинг входящих писем</p>
+        <div class="svc-price">от 1 500 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">⏱</div>
-        <h3>Планировщики и cron-задачи</h3>
-        <p>Скрипты, которые работают по расписанию: ежечасная проверка почты, ежедневный отчёт, еженедельный бэкап, мониторинг цен.</p>
-        <div class="price">от 1 500 ₽</div>
+      <div class="svc-card">
+        <div class="svc-icon">📅</div>
+        <h3>Планировщики</h3>
+        <p>Задачи по расписанию: cron, schedule, APScheduler. Windows + Linux</p>
+        <div class="svc-price">от 1 000 ₽</div>
       </div>
-
+      <div class="svc-card">
+        <div class="svc-icon">🌐</div>
+        <h3>Лендинги на HTML/CSS</h3>
+        <p>Быстрые промо-страницы без CMS. Адаптив, SEO, форма обратной связи</p>
+        <div class="svc-price">от 2 500 ₽</div>
+      </div>
     </div>
   </div>
 </section>
 
-<section style="background:#f8f9fb;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <div class="section-label center">Стек технологий</div>
-    <h2 class="section-title center">С чем работаем</h2>
-    <div class="section-sub center">Используем проверенный стек — без экзотики, надёжно и поддерживаемо.</div>
-    <div class="tech-list">
-      <span class="tech-tag">Python 3.10+</span>
-      <span class="tech-tag">aiogram 3</span>
-      <span class="tech-tag">python-telegram-bot</span>
-      <span class="tech-tag">requests / httpx</span>
-      <span class="tech-tag">BeautifulSoup4</span>
-      <span class="tech-tag">Selenium / Playwright</span>
-      <span class="tech-tag">pandas</span>
-      <span class="tech-tag">openpyxl / xlsxwriter</span>
-      <span class="tech-tag">SQLite / PostgreSQL</span>
-      <span class="tech-tag">MySQL</span>
-      <span class="tech-tag">Google Sheets API</span>
-      <span class="tech-tag">Google Apps Script</span>
-      <span class="tech-tag">Excel VBA</span>
-      <span class="tech-tag">REST API</span>
-      <span class="tech-tag">Webhook</span>
-      <span class="tech-tag">JSON / CSV</span>
-      <span class="tech-tag">HTML / CSS / JS</span>
-      <span class="tech-tag">GitHub Pages</span>
-      <span class="tech-tag">FastAPI</span>
-      <span class="tech-tag">schedule / APScheduler</span>
+<div class="divider"></div>
+
+<!-- ПРОЦЕСС -->
+<section class="process-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px;">
+      <div class="section-label">Процесс</div>
+      <h2 class="section-title">Как мы <span class="accent">работаем</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Задача</h4>
+        <p>Описываете: что на входе, что делает, что на выходе</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Оценка</h4>
+        <p>Уточняем детали, оцениваем сложность за 30 мин</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Разработка</h4>
+        <p>Код + тест на реальных данных</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Сдача</h4>
+        <p>Файл + инструкция запуска. Поддержка 3 дня</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section style="background:#fff;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <div class="section-label center">Кейсы</div>
-    <h2 class="section-title center">Примеры выполненных задач</h2>
-    <div class="section-sub center">Конкретные задачи — конкретный результат.</div>
+<div class="divider"></div>
+
+<!-- КЕЙСЫ -->
+<section class="cases-section">
+  <div class="container">
+    <div class="section-label">Примеры работ</div>
+    <h2 class="section-title">Наши <span class="accent">кейсы</span></h2>
     <div class="cases-grid">
-
-      <div class="case">
-        <div class="case-tag">Python / парсинг</div>
-        <h4>Парсер цен для агрегатора</h4>
-        <p>Сбор данных с 5 площадок каждый час, выгрузка в Excel с историей цен, уведомление в Telegram при изменении.</p>
-        <div class="result">⚡ Экономия 15 ч/неделю ручного мониторинга</div>
+      <div class="case-card">
+        <div class="case-top case-c1">🕸️</div>
+        <div class="case-body">
+          <div class="case-cat">Парсинг</div>
+          <h4>Мониторинг цен конкурентов</h4>
+          <p>Python-парсер 5 площадок → Excel-отчёт ежедневно в 9:00 автоматически</p>
+          <div class="case-result">6 ч ручной работы → 5 мин</div>
+        </div>
       </div>
-
-      <div class="case">
-        <div class="case-tag">Telegram-бот</div>
-        <h4>Бот записи клиентов для салона красоты</h4>
-        <p>Выбор мастера, услуги, даты. Запись в Google Sheets, напоминание клиенту за 2 часа, сводка мастеру утром.</p>
-        <div class="result">📅 Снижение неявок на 35%</div>
+      <div class="case-card">
+        <div class="case-top case-c2">🤖</div>
+        <div class="case-body">
+          <div class="case-cat">Telegram-бот</div>
+          <h4>Приём заявок для строительной компании</h4>
+          <p>Бот собирает данные клиента → Google Sheets → уведомление менеджеру в Telegram</p>
+          <div class="case-result">↑ Скорость обработки ×3</div>
+        </div>
       </div>
-
-      <div class="case">
-        <div class="case-tag">Excel / VBA</div>
-        <h4>Финансовый отчёт для ритейла</h4>
-        <p>Макрос агрегирует данные из 12 листов, строит сводные таблицы и дашборд. Работает по кнопке за 40 секунд.</p>
-        <div class="result">⏱ Отчёт: с 2 часов до 40 секунд</div>
+      <div class="case-card">
+        <div class="case-top case-c3">📊</div>
+        <div class="case-body">
+          <div class="case-cat">Excel</div>
+          <h4>Финансовая отчётность торговой сети</h4>
+          <p>VBA-макрос: консолидация 12 файлов филиалов → сводный отчёт + графики автоматически</p>
+          <div class="case-result">Закрытие периода: 4 ч → 20 мин</div>
+        </div>
       </div>
-
-      <div class="case">
-        <div class="case-tag">API-интеграция</div>
-        <h4>Синхронизация CRM и Telegram</h4>
-        <p>При новой заявке в AmoCRM — уведомление в нужный Telegram-канал с кнопками «Взять в работу» и «Отклонить».</p>
-        <div class="result">🔗 Время реакции менеджера: с 30 мин до 3 мин</div>
-      </div>
-
-      <div class="case">
-        <div class="case-tag">Google Sheets</div>
-        <h4>Дашборд продаж для команды из 8 человек</h4>
-        <p>QUERY-формулы, автообновление из форм, цветовые индикаторы выполнения плана, еженедельная рассылка сводки.</p>
-        <div class="result">📊 Все видят актуальные данные в реальном времени</div>
-      </div>
-
-      <div class="case">
-        <div class="case-tag">Python / автоматизация</div>
-        <h4>Рассылка персонализированных КП по базе</h4>
-        <p>Скрипт подставляет имя клиента и специфику из Excel, генерирует PDF через шаблон и отправляет через SMTP.</p>
-        <div class="result">✉️ 200 персонализированных КП за 10 минут</div>
-      </div>
-
     </div>
   </div>
 </section>
 
-<section style="background:#f8f9fb;">
-  <div style="max-width:800px;margin:0 auto;">
-    <div class="section-label center">Стоимость</div>
-    <h2 class="section-title center">Прайс-лист — Автоматизация и код</h2>
-    <div class="section-sub center">Цена зависит от сложности задачи. Оценку делаем после брифа — бесплатно.</div>
-    <table class="price-table">
-      <tr><td>Python-скрипт (простая задача, до 100 строк)</td><td>от 1 500 ₽</td></tr>
-      <tr><td>Python-скрипт (сложная логика, 100–500 строк)</td><td>от 3 000 ₽</td></tr>
-      <tr><td>Telegram-бот (базовый, команды + кнопки)</td><td>от 2 500 ₽</td></tr>
-      <tr><td>Telegram-бот (с БД, оплатой, интеграциями)</td><td>от 5 000 ₽</td></tr>
-      <tr><td>Парсер данных (один сайт, выгрузка в Excel)</td><td>от 2 000 ₽</td></tr>
-      <tr><td>Парсер (несколько сайтов + по расписанию)</td><td>от 4 000 ₽</td></tr>
-      <tr><td>Excel-автоматизация / дашборд</td><td>от 1 200 ₽</td></tr>
-      <tr><td>SQL-запросы / работа с БД</td><td>от 1 000 ₽</td></tr>
-      <tr><td>API-интеграция двух сервисов</td><td>от 3 000 ₽</td></tr>
-      <tr><td>Google Sheets автоматизация</td><td>от 1 200 ₽</td></tr>
-      <tr><td>Лендинг / одностраничный сайт</td><td>от 5 000 ₽</td></tr>
-      <tr><td>Планировщик / cron-задача</td><td>от 1 500 ₽</td></tr>
-    </table>
+<div class="divider"></div>
+
+
+<section class="cta-section" id="contact">
+  <div style="position:relative;z-index:1;">
+    <div class="section-label" style="margin-bottom:12px;">Начать</div>
+    <h2>Готовы обсудить задачу?</h2>
+    <p>Ответим за 1 час и предложим решение</p>
+    <div class="cta-form">
+      <input type="text" class="cta-input" placeholder="Ваше имя">
+      <input type="text" class="cta-input" placeholder="Telegram или email">
+      <a href="https://t.me/omdigital_orders_bot" class="btn-primary">Написать в Telegram →</a>
+    </div>
   </div>
 </section>
 
-<section class="contacts-wrap" id="contact">
-  <div class="section-label center" style="color:#8BAFD4;">Заказать</div>
-  <h2 class="section-title center">Оставьте заявку на автоматизацию</h2>
-  <div class="section-sub center">Опишите задачу — ответим за 1 час и дадим оценку по времени и стоимости.</div>
-  <form class="contact-form" id="contactForm">
-    <input type="text" id="cName" placeholder="Ваше имя" required>
-    <input type="text" id="cContact" placeholder="Telegram или email" required>
-    <textarea id="cMessage" placeholder="Что нужно автоматизировать? (задача, стек, дедлайн)" required></textarea>
-    <button type="submit" id="cBtn">Отправить заявку →</button>
-    <div id="cStatus" style="text-align:center;font-size:14px;margin-top:8px;display:none;"></div>
-  </form>
-</section>
 
 <footer>
-  <div style="display:flex;align-items:center;gap:10px;">
-    <div class="footer-sq">OM</div>
-    <span>OM-DIGITAL COMPANY © 2026</span>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="fl1">OM-DIGITAL</div>
+      <div class="fl2">COMPANY</div>
+      <p>AI-агентство. Москва, 2026<br>Пн–Вс 9:00–21:00 МСК</p>
+    </div>
+    <div class="footer-col">
+      <h5>Отделы</h5>
+      <a href="marketing.html">Интернет-маркетинг</a>
+      <a href="ai-studio.html">AI Studio</a>
+      <a href="business-analytics.html">Бизнес-аналитика</a>
+      <a href="automation.html">Автоматизация и код</a>
+    </div>
+    <div class="footer-col">
+      <h5>Платформы</h5>
+      <a href="https://kwork.ru/user/mg-19720">Kwork</a>
+      <a href="https://fl.ru/users/mg-1972">FL.ru</a>
+      <a href="https://etxt.ru">eTXT</a>
+      <a href="https://advego.com">Advego</a>
+    </div>
+    <div class="footer-col">
+      <h5>Контакты</h5>
+      <a href="https://t.me/omdigital_orders_bot">Telegram-бот</a>
+      <a href="mailto:newlife2506@yandex.ru">newlife2506@yandex.ru</a>
+    </div>
   </div>
-  <div>Москва · 9:00–19:00 МСК</div>
+  <div class="footer-bottom">
+    <span>© 2026 OM-Digital Company</span>
+    <span>Москва · 9:00–21:00 МСК</span>
+  </div>
 </footer>
 
-<script>
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn = document.getElementById('cBtn'); const status = document.getElementById('cStatus');
-  const name = document.getElementById('cName').value.trim();
-  const contact = document.getElementById('cContact').value.trim();
-  const message = document.getElementById('cMessage').value.trim();
-  if (!name || !contact || !message) return;
-  btn.disabled = true; btn.textContent = 'Отправляем...';
-  const tgText = `📨 ЗАЯВКА — АВТОМАТИЗАЦИЯ И КОД\n━━━━━━━━━━━━━━\n👤 ${name}\n📞 ${contact}\n💬 ${message}\n#автоматизация #сайт`;
-  try {
-    const r = await fetch('https://api.telegram.org/bot8873337285:AAEYvrOlbsiqmbbm546jfr8oA7e33o7YlVU/sendMessage', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({chat_id:'2088867074', text: tgText}), signal: AbortSignal.timeout(8000)
-    });
-    const d = await r.json();
-    if (d.ok) { status.style.color='#4ade80'; status.textContent='✅ Заявка отправлена! Ответим в течение часа.'; document.getElementById('contactForm').reset(); }
-    else { throw new Error(); }
-  } catch(err) { status.style.color='#fbbf24'; status.textContent='Напишите нам: newlife2506@yandex.ru'; }
-  status.style.display='block'; btn.disabled=false; btn.textContent='Отправить заявку →';
-});
-</script>
 </body>
 </html>

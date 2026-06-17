@@ -4,67 +4,187 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Бизнес-аналитика — OM-Digital Company</title>
-<meta name="description" content="ТЗ на разработку, бизнес-планы, анализ рынка, регламенты, договоры. Профессиональные документы для бизнеса. Цены от 800 ₽.">
+<meta name="description" content="ТЗ, бизнес-планы, анализ рынка, регламенты, договоры. OM-Digital Company, от 1 500 ₽, Москва">
 <style>
+
 * { box-sizing: border-box; margin: 0; padding: 0; }
-html, body { scroll-behavior: smooth; overflow-x: hidden; }
-body { font-family: Arial, sans-serif; color: #222; background: #fff; }
+html { scroll-behavior: smooth; }
+body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; }
 
-header { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #e0e4ea; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 80px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-.logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
-.logo-sq { width: 54px; height: 54px; background: #1F3A6E; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700; }
-.logo-txt .l1 { font-size: 22px; font-weight: 700; color: #1F3A6E; letter-spacing: 2px; }
-.logo-txt .l2 { font-size: 10px; letter-spacing: 6px; color: #4A7BC4; }
-.btn-back { background: #1F3A6E; color: white; border: none; padding: 10px 22px; border-radius: 7px; font-size: 14px; text-decoration: none; }
+/* HEADER */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,10,10,0.95);
+  border-bottom: 1px solid rgba(0,212,255,0.15);
+  backdrop-filter: blur(12px);
+  padding: 0 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 76px;
+}
+.logo-wrap { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.logo-sq {
+  width: 50px; height: 50px;
+  background: linear-gradient(135deg, #00d4ff, #0088cc);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: #0a0a0a; font-size: 17px; font-weight: 900;
+  box-shadow: 0 0 20px rgba(0,212,255,0.4);
+}
+.logo-txt .l1 {
+  font-size: 20px; font-weight: 900; letter-spacing: 3px;
+  background: linear-gradient(90deg, #00d4ff, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.logo-txt .l2 { font-size: 9px; letter-spacing: 5px; color: #aaa; }
+nav { display: flex; align-items: center; gap: 28px; }
+nav a { color: #fff; text-decoration: none; font-size: 17px; font-weight: 700; transition: color .2s; }
+nav a:hover { color: #00d4ff; }
+.btn-cta {
+  background: transparent; color: #00d4ff; border: 1.5px solid #00d4ff;
+  padding: 9px 22px; border-radius: 6px; font-size: 13px; font-weight: 700;
+  cursor: pointer; text-decoration: none; transition: background .2s, box-shadow .2s;
+}
+.btn-cta:hover { background: rgba(0,212,255,0.1); box-shadow: 0 0 16px rgba(0,212,255,0.3); }
 
-.hero { background: linear-gradient(135deg, #1a3a5c 0%, #1F3A6E 50%, #163055 100%); color: white; text-align: center; padding: 80px 40px 100px; }
-.hero-badge { display: inline-block; background: rgba(74,123,196,0.3); border: 1px solid rgba(74,123,196,0.5); color: #a8c8f0; font-size: 12px; letter-spacing: 2px; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; }
-.hero h1 { font-size: 44px; font-weight: 700; line-height: 1.2; margin-bottom: 18px; }
-.hero h1 span { color: #4A7BC4; }
-.hero p { font-size: 17px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 36px; line-height: 1.7; }
-.btn-cta-hero { display: inline-block; background: white; color: #1F3A6E; padding: 14px 36px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: transform .2s; }
-.btn-cta-hero:hover { transform: translateY(-2px); }
+/* DIVIDER */
+.divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(0,212,255,0.2), transparent); }
 
-section { padding: 70px 40px; }
-.section-label { font-size: 12px; letter-spacing: 3px; color: #4A7BC4; text-transform: uppercase; margin-bottom: 12px; }
-.section-title { font-size: 34px; font-weight: 700; color: #1F3A6E; margin-bottom: 14px; }
-.section-sub { font-size: 16px; color: #666; max-width: 620px; line-height: 1.7; margin-bottom: 46px; }
-.center { text-align: center; }
-.center .section-sub { margin-left: auto; margin-right: auto; }
+/* HERO */
+.hero {
+  padding: 100px 48px 80px;
+  position: relative; overflow: hidden;
+  background: radial-gradient(ellipse 800px 400px at 20% 50%, rgba(0,212,255,0.05) 0%, transparent 70%);
+}
+.hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(0,212,255,0.025) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,212,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.hero-back {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #aaa; text-decoration: none; font-size: 13px; margin-bottom: 28px;
+  transition: color .2s; position: relative;
+}
+.hero-back:hover { color: #00d4ff; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.3);
+  color: #00d4ff; font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+  padding: 6px 18px; border-radius: 20px; margin-bottom: 20px; position: relative;
+}
+.hero h1 {
+  font-size: 56px; font-weight: 900; line-height: 1.1; margin-bottom: 20px; position: relative;
+}
+.hero h1 .grad {
+  background: linear-gradient(90deg, #00d4ff, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+.hero p { font-size: 18px; color: #ccc; max-width: 600px; line-height: 1.8; margin-bottom: 36px; position: relative; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, #00d4ff, #0088cc);
+  color: #0a0a0a; font-weight: 800; padding: 14px 32px; border-radius: 8px; font-size: 15px;
+  text-decoration: none; box-shadow: 0 0 24px rgba(0,212,255,0.4);
+  transition: box-shadow .2s, transform .2s; position: relative;
+}
+.btn-primary:hover { box-shadow: 0 0 40px rgba(0,212,255,0.6); transform: translateY(-2px); }
+.hero-stats { display: flex; gap: 56px; margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06); position: relative; }
+.hero-stat .num { font-size: 36px; font-weight: 900; background: linear-gradient(90deg, #00d4ff, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.hero-stat .lbl { font-size: 12px; color: #666; margin-top: 6px; }
 
-.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
-.srv { background: #f8f9fb; border-radius: 12px; border: 1px solid #e0e4ea; padding: 28px 24px; }
-.srv-icon { font-size: 36px; margin-bottom: 16px; }
-.srv h3 { font-size: 17px; font-weight: 700; color: #1F3A6E; margin-bottom: 10px; }
-.srv p { font-size: 14px; color: #666; line-height: 1.7; margin-bottom: 14px; }
-.srv .price { font-size: 15px; font-weight: 700; color: #1F3A6E; }
+/* SECTION */
+section { padding: 80px 48px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #00d4ff; margin-bottom: 12px; }
+.section-title { font-size: 36px; font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
+.section-title .accent { background: linear-gradient(90deg, #00d4ff, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.section-sub { font-size: 16px; color: #888; line-height: 1.8; max-width: 520px; margin-bottom: 48px; }
 
-.docs-list { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; max-width: 900px; margin: 0 auto; }
-.doc-item { background: white; border: 1px solid #e0e4ea; border-radius: 8px; padding: 20px 24px; display: flex; gap: 16px; align-items: flex-start; }
-.doc-icon { font-size: 28px; flex-shrink: 0; }
-.doc-item h4 { font-size: 15px; font-weight: 700; color: #1F3A6E; margin-bottom: 6px; }
-.doc-item p { font-size: 13px; color: #777; line-height: 1.55; }
+/* SERVICES */
+.services-section { background: #0d0d0d; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.svc-card {
+  background: #111; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 14px; padding: 28px 24px;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.svc-card:hover { border-color: rgba(0,212,255,0.25); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,212,255,0.06); }
+.svc-icon { font-size: 28px; margin-bottom: 16px; }
+.svc-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
+.svc-card p { font-size: 13px; color: #888; line-height: 1.7; margin-bottom: 14px; }
+.svc-price { color: #f0c040; font-size: 14px; font-weight: 700; }
 
-.price-table { width: 100%; border-collapse: collapse; max-width: 800px; margin: 0 auto; }
-.price-table tr { border-bottom: 1px solid #f0f2f5; }
-.price-table tr:nth-child(even) { background: #fafbfc; }
-.price-table td { padding: 13px 24px; font-size: 14px; color: #444; }
-.price-table td:last-child { text-align: right; font-weight: 700; color: #1F3A6E; }
+/* PROCESS */
+.process-section { background: #0a0a0a; }
+.steps { display: flex; gap: 0; max-width: 900px; margin: 0 auto; position: relative; }
+.steps::before {
+  content: ''; position: absolute; top: 35px; left: 10%; right: 10%; height: 1px;
+  background: linear-gradient(90deg, rgba(0,212,255,0.3), rgba(0,212,255,0.5), rgba(0,212,255,0.3));
+}
+.step { flex: 1; text-align: center; padding: 0 16px; }
+.step-num {
+  width: 70px; height: 70px; border-radius: 50%;
+  background: #111; border: 2px solid rgba(0,212,255,0.4); color: #00d4ff;
+  font-size: 22px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 20px; position: relative; z-index: 1;
+  box-shadow: 0 0 14px rgba(0,212,255,0.12);
+}
+.step h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+.step p { font-size: 13px; color: #666; line-height: 1.6; }
 
-.contacts-wrap { background: linear-gradient(135deg, #1F3A6E, #2c5282); color: white; text-align: center; padding: 70px 40px; }
-.contacts-wrap .section-title { color: white; }
-.contacts-wrap .section-sub { color: rgba(255,255,255,0.75); margin: 0 auto 36px; }
-.contact-form { max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
-.contact-form input, .contact-form textarea { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 8px; padding: 13px 16px; color: white; font-size: 14px; font-family: Arial, sans-serif; outline: none; }
-.contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.45); }
-.contact-form textarea { resize: none; height: 100px; }
-.contact-form button { background: white; color: #1F3A6E; border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; }
+/* CASES */
+.cases-section { background: #0d0d0d; }
+.cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.case-card {
+  background: #111; border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 12px; overflow: hidden;
+  transition: border-color .2s, transform .2s;
+}
+.case-card:hover { border-color: rgba(0,212,255,0.2); transform: translateY(-3px); }
+.case-top { height: 100px; display: flex; align-items: center; justify-content: center; font-size: 38px; }
+.case-c1 { background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,136,204,0.05)); }
+.case-c2 { background: linear-gradient(135deg, rgba(240,192,64,0.1), rgba(200,140,0,0.04)); }
+.case-c3 { background: linear-gradient(135deg, rgba(0,200,120,0.08), rgba(0,150,80,0.04)); }
+.case-body { padding: 20px; }
+.case-cat { font-size: 10px; letter-spacing: 2px; color: #00d4ff; text-transform: uppercase; margin-bottom: 8px; }
+.case-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
+.case-card p { font-size: 12px; color: #666; line-height: 1.6; }
+.case-result { margin-top: 10px; font-size: 13px; color: #00d4ff; font-weight: 700; }
 
-footer { background: #111c30; color: rgba(255,255,255,0.5); padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
-.footer-sq { width: 32px; height: 32px; background: #1F3A6E; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 11px; font-weight: 700; }
+/* CTA */
+.cta-section { background: #0a0a0a; text-align: center; padding: 100px 48px; position: relative; overflow: hidden; }
+.cta-section::before {
+  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.05), transparent 70%);
+}
+.cta-section h2 { font-size: 40px; font-weight: 900; margin-bottom: 18px; position: relative; }
+.cta-section p { font-size: 16px; color: #888; margin-bottom: 36px; position: relative; }
+.cta-form { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+.cta-input {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
+  color: #fff; padding: 13px 18px; border-radius: 8px; font-size: 14px;
+  width: 240px; outline: none; transition: border-color .2s;
+}
+.cta-input:focus { border-color: rgba(0,212,255,0.4); }
+.cta-input::placeholder { color: #555; }
 
-@media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2,1fr); } .docs-list { grid-template-columns: 1fr; } }
-@media (max-width: 600px) { header { padding: 0 16px; height: 64px; } section { padding: 50px 20px; } .hero { padding: 60px 20px 80px; } .hero h1 { font-size: 26px; } .services-grid { grid-template-columns: 1fr; } }
+/* FOOTER */
+footer {
+  background: #060606; border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 48px 48px 32px;
+}
+.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
+.footer-brand .fl1 { font-size: 18px; font-weight: 900; letter-spacing: 3px; background: linear-gradient(90deg, #00d4ff, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+.footer-brand .fl2 { font-size: 9px; letter-spacing: 5px; color: #444; margin-bottom: 10px; }
+.footer-brand p { font-size: 12px; color: #555; line-height: 1.6; }
+.footer-col h5 { font-size: 10px; letter-spacing: 2px; color: #555; text-transform: uppercase; margin-bottom: 12px; }
+.footer-col a { display: block; color: #777; font-size: 13px; text-decoration: none; margin-bottom: 7px; transition: color .2s; }
+.footer-col a:hover { color: #00d4ff; }
+.footer-bottom { max-width: 1100px; margin: 28px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.04); display: flex; justify-content: space-between; font-size: 12px; color: #444; }
+
 </style>
 </head>
 <body>
@@ -72,171 +192,222 @@ footer { background: #111c30; color: rgba(255,255,255,0.5); padding: 28px 40px; 
 <header>
   <a href="index.html" class="logo-wrap">
     <div class="logo-sq">OM</div>
-    <div class="logo-txt"><div class="l1">DIGITAL</div><div class="l2">COMPANY</div></div>
+    <div class="logo-txt"><div class="l1">OM-DIGITAL</div><div class="l2">COMPANY</div></div>
   </a>
-  <a href="index.html" class="btn-back">← Назад на главную</a>
+  <nav>
+    <a href="index.html#services">Услуги</a>
+    <a href="index.html#how">Процесс</a>
+    <a href="index.html#portfolio">Портфолио</a>
+    <a href="index.html#contact">Контакты</a>
+    <a href="index.html#contact" class="btn-cta">Заказать →</a>
+  </nav>
 </header>
 
+
+<!-- HERO -->
 <section class="hero">
-  <div class="hero-badge">ОТДЕЛ 3 · БИЗНЕС-АНАЛИТИКА</div>
-  <h1>Документы и аналитика,<br>которые <span>двигают бизнес</span> вперёд</h1>
-  <p>Бизнес-планы для инвесторов, ТЗ для разработчиков, регламенты для команды — профессиональные документы за 24–72 часа.</p>
-  <a href="#contact" class="btn-cta-hero">Заказать документ →</a>
+  <div class="hero-grid"></div>
+  <a href="index.html" class="hero-back">← На главную</a>
+  <br>
+  <div class="hero-badge">ОТДЕЛ 3 · АНАЛИТИКА</div>
+  <h1>Бизнес-аналитика<br><span class="grad">и документация</span></h1>
+  <p>Технические задания, бизнес-планы с финансовой моделью, анализ рынка и конкурентов, регламенты, должностные инструкции и договоры. Всё — под ключ, в срок.</p>
+  <a href="#contact" class="btn-primary">Заказать →</a>
+  <div class="hero-stats">
+    <div class="hero-stat"><div class="num">9</div><div class="lbl">видов документов</div></div>
+    <div class="hero-stat"><div class="num">от 1 500 ₽</div><div class="lbl">стоимость</div></div>
+    <div class="hero-stat"><div class="num">3 дня</div><div class="lbl">срок сдачи</div></div>
+  </div>
 </section>
 
-<section style="background:#fff;">
-  <div style="max-width:1100px;margin:0 auto;">
-    <div class="section-label center">Услуги</div>
-    <h2 class="section-title center">Что мы делаем</h2>
-    <div class="section-sub center">Закрываем все задачи бизнес-аналитики: от разовых документов до комплексных аналитических проектов.</div>
+<div class="divider"></div>
+
+<!-- УСЛУГИ -->
+<section class="services-section">
+  <div class="container">
+    <div class="section-label">Услуги</div>
+    <h2 class="section-title">Что мы <span class="accent">делаем</span></h2>
     <div class="services-grid">
-
-      <div class="srv">
-        <div class="srv-icon">📋</div>
-        <h3>Технические задания</h3>
-        <p>ТЗ на разработку сайта, приложения, бота, CRM. Функциональные требования, user stories, wireframe-описания. Разработчик поймёт с первого раза.</p>
-        <div class="price">от 2 000 ₽</div>
+      <div class="svc-card">
+        <div class="svc-icon">📄</div>
+        <h3>Техническое Задание (ТЗ)</h3>
+        <p>Полное ТЗ для разработки сайта, приложения, CRM. User stories, требования, критерии приёмки</p>
+        <div class="svc-price">от 3 000 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">📊</div>
-        <h3>Бизнес-планы</h3>
-        <p>Для банка, инвестора, партнёра или собственного понимания. Финансовая модель, анализ рынка, стратегия, риски — всё в одном документе.</p>
-        <div class="price">от 3 500 ₽</div>
+      <div class="svc-card">
+        <div class="svc-icon">📊</div>
+        <h3>Бизнес-план</h3>
+        <p>С финансовой моделью, анализом рынка, SWOT. Для инвесторов и кредитов</p>
+        <div class="svc-price">от 5 000 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">🔍</div>
+      <div class="svc-card">
+        <div class="svc-icon">🔍</div>
         <h3>Анализ рынка и конкурентов</h3>
-        <p>Размер рынка, тренды, портрет ЦА, разбор 5–10 конкурентов по ключевым параметрам. С таблицами, выводами и рекомендациями.</p>
-        <div class="price">от 3 000 ₽</div>
+        <p>Объём рынка, ключевые игроки, цены, тренды. Отчёт + рекомендации</p>
+        <div class="svc-price">от 4 000 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">⚙️</div>
+      <div class="svc-card">
+        <div class="svc-icon">📋</div>
         <h3>Регламенты бизнес-процессов</h3>
-        <p>Пошаговые инструкции для команды: продажи, поддержка, онбординг, производство. Убирают хаос и зависимость от «знаний в головах».</p>
-        <div class="price">от 1 500 ₽</div>
+        <p>Пошаговые инструкции «как делаем». Для новых сотрудников и стандартизации</p>
+        <div class="svc-price">от 2 500 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">👤</div>
+      <div class="svc-card">
+        <div class="svc-icon">👤</div>
         <h3>Должностные инструкции</h3>
-        <p>Чёткое описание обязанностей, KPI, прав и ответственности сотрудника. Юридически грамотно, понятно человеку.</p>
-        <div class="price">от 800 ₽</div>
+        <p>Обязанности, KPI, зоны ответственности, полномочия. Под любую роль</p>
+        <div class="svc-price">от 1 500 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">📝</div>
-        <h3>Договоры и оферты</h3>
-        <p>Договор на услуги, публичная оферта, NDA, пользовательское соглашение. Защищает бизнес и понятна клиенту без юриста.</p>
-        <div class="price">от 1 500 ₽</div>
+      <div class="svc-card">
+        <div class="svc-icon">📑</div>
+        <h3>Договоры и шаблоны</h3>
+        <p>Договор оказания услуг, NDA, оферта, акт. Юридически грамотно</p>
+        <div class="svc-price">от 2 000 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">📐</div>
+      <div class="svc-card">
+        <div class="svc-icon">🎯</div>
         <h3>SWOT-анализ</h3>
-        <p>Систематизированный анализ сильных и слабых сторон, возможностей и угроз. С матрицей стратегий и приоритетами.</p>
-        <div class="price">от 1 000 ₽</div>
+        <p>Сильные/слабые стороны, возможности, угрозы. С выводами и стратегией</p>
+        <div class="svc-price">от 2 000 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">🎯</div>
-        <h3>Презентации для инвесторов</h3>
-        <p>Pitch deck до 15 слайдов: проблема, решение, рынок, бизнес-модель, команда, финансы, запрос. Структура по стандарту Y Combinator.</p>
-        <div class="price">от 3 000 ₽</div>
+      <div class="svc-card">
+        <div class="svc-icon">📈</div>
+        <h3>Презентации</h3>
+        <p>Инвестиционные, продуктовые, корпоративные. Структура + тексты</p>
+        <div class="svc-price">от 3 000 ₽</div>
       </div>
-
-      <div class="srv">
-        <div class="srv-icon">🗂</div>
+      <div class="svc-card">
+        <div class="svc-icon">⚙️</div>
         <h3>Операционные документы</h3>
-        <p>Политики компании, корпоративные стандарты, onboarding-материалы, структура отделов. Всё, чтобы бизнес работал как система.</p>
-        <div class="price">от 1 200 ₽</div>
+        <p>Чек-листы, KPI-таблицы, onboarding-планы, скрипты проверок</p>
+        <div class="svc-price">от 1 000 ₽</div>
       </div>
-
     </div>
   </div>
 </section>
 
-<section style="background:#f8f9fb;">
-  <div style="max-width:900px;margin:0 auto;">
-    <div class="section-label center">Что входит в каждый документ</div>
-    <h2 class="section-title center">Стандарт качества</h2>
-    <div class="section-sub center">Каждый документ проходит несколько этапов контроля перед сдачей.</div>
-    <div class="docs-list">
-      <div class="doc-item"><div class="doc-icon">✅</div><div><h4>Структура под задачу</h4><p>Не шаблонный документ — а структура под вашу конкретную ситуацию, отрасль и аудиторию.</p></div></div>
-      <div class="doc-item"><div class="doc-icon">📈</div><div><h4>Реальные данные и цифры</h4><p>Используем открытые источники: Росстат, РБК, отраслевые отчёты, данные конкурентов.</p></div></div>
-      <div class="doc-item"><div class="doc-icon">🔤</div><div><h4>Грамотный русский язык</h4><p>Вычитка корректором — каждый документ без опечаток, с правильной пунктуацией и стилем.</p></div></div>
-      <div class="doc-item"><div class="doc-icon">📄</div><div><h4>Удобный формат</h4><p>Word, PDF или Google Docs — в удобном для вас формате. Таблицы, схемы, нумерация включены.</p></div></div>
-      <div class="doc-item"><div class="doc-icon">🔄</div><div><h4>Правки включены</h4><p>1–2 раунда правок входят в стоимость. Корректируем до полного соответствия вашим ожиданиям.</p></div></div>
-      <div class="doc-item"><div class="doc-icon">⏱</div><div><h4>Соблюдение дедлайна</h4><p>Фиксируем срок в переписке и соблюдаем его. Простой документ — 24 часа, сложный — до 72 часов.</p></div></div>
+<div class="divider"></div>
+
+<!-- ПРОЦЕСС -->
+<section class="process-section">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:52px;">
+      <div class="section-label">Процесс</div>
+      <h2 class="section-title">Как мы <span class="accent">работаем</span></h2>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h4>Интервью</h4>
+        <p>Созвон или анкета — разбираемся в задаче и контексте</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h4>Исследование</h4>
+        <p>Собираем данные, анализируем рынок, конкурентов, документы</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h4>Черновик</h4>
+        <p>Первая версия документа с вопросами на уточнение</p>
+      </div>
+      <div class="step">
+        <div class="step-num">4</div>
+        <h4>Финал</h4>
+        <p>Итоговый документ Word/Excel. 1 правка включена</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section style="background:#fff;">
-  <div style="max-width:800px;margin:0 auto;">
-    <div class="section-label center">Стоимость</div>
-    <h2 class="section-title center">Прайс-лист — Бизнес-аналитика</h2>
-    <div class="section-sub center">Итоговая цена зависит от объёма и сложности. Первичная оценка — бесплатно.</div>
-    <table class="price-table">
-      <tr><td>Техническое задание на разработку</td><td>от 2 000 ₽</td></tr>
-      <tr><td>Бизнес-план (базовый, до 15 стр.)</td><td>от 3 500 ₽</td></tr>
-      <tr><td>Бизнес-план с финансовой моделью</td><td>от 6 000 ₽</td></tr>
-      <tr><td>Анализ рынка и конкурентов</td><td>от 3 000 ₽</td></tr>
-      <tr><td>Регламент бизнес-процесса</td><td>от 1 500 ₽</td></tr>
-      <tr><td>Должностная инструкция</td><td>от 800 ₽</td></tr>
-      <tr><td>Договор / публичная оферта</td><td>от 1 500 ₽</td></tr>
-      <tr><td>SWOT-анализ компании</td><td>от 1 000 ₽</td></tr>
-      <tr><td>Презентация для инвесторов (до 15 слайдов)</td><td>от 3 000 ₽</td></tr>
-      <tr><td>Политика конфиденциальности</td><td>от 1 000 ₽</td></tr>
-      <tr><td>Операционные документы (пакет)</td><td>от 4 000 ₽</td></tr>
-    </table>
+<div class="divider"></div>
+
+<!-- КЕЙСЫ -->
+<section class="cases-section">
+  <div class="container">
+    <div class="section-label">Примеры работ</div>
+    <h2 class="section-title">Наши <span class="accent">кейсы</span></h2>
+    <div class="cases-grid">
+      <div class="case-card">
+        <div class="case-top case-c1">📊</div>
+        <div class="case-body">
+          <div class="case-cat">Бизнес-план</div>
+          <h4>Кофейня в спальном районе Москвы</h4>
+          <p>Полный бизнес-план: анализ трафика, конкурентов, финмодель на 3 года, план открытия</p>
+          <div class="case-result">Получено финансирование 2,5 млн ₽</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-top case-c2">📄</div>
+        <div class="case-body">
+          <div class="case-cat">ТЗ</div>
+          <h4>Мобильное приложение для доставки</h4>
+          <p>30-страничное ТЗ с wireframes-описаниями, API-интеграциями и критериями приёмки</p>
+          <div class="case-result">Разработка сдана без доработок</div>
+        </div>
+      </div>
+      <div class="case-card">
+        <div class="case-top case-c3">🔍</div>
+        <div class="case-body">
+          <div class="case-cat">Анализ рынка</div>
+          <h4>Выход в сегмент B2B-аутсорсинга</h4>
+          <p>Анализ 12 конкурентов, сегментация клиентов, рекомендации по позиционированию</p>
+          <div class="case-result">Нашли незанятую нишу с маржой 40%</div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<section class="contacts-wrap" id="contact">
-  <div class="section-label center" style="color:#8BAFD4;">Заказать</div>
-  <h2 class="section-title center">Оставьте заявку на документ</h2>
-  <div class="section-sub center">Опишите что нужно — ответим в течение часа, уточним детали и назовём цену.</div>
-  <form class="contact-form" id="contactForm">
-    <input type="text" id="cName" placeholder="Ваше имя" required>
-    <input type="text" id="cContact" placeholder="Telegram или email" required>
-    <textarea id="cMessage" placeholder="Какой документ нужен? (тип, цель, дедлайн, отрасль)" required></textarea>
-    <button type="submit" id="cBtn">Отправить заявку →</button>
-    <div id="cStatus" style="text-align:center;font-size:14px;margin-top:8px;display:none;"></div>
-  </form>
+<div class="divider"></div>
+
+
+<section class="cta-section" id="contact">
+  <div style="position:relative;z-index:1;">
+    <div class="section-label" style="margin-bottom:12px;">Начать</div>
+    <h2>Готовы обсудить задачу?</h2>
+    <p>Ответим за 1 час и предложим решение</p>
+    <div class="cta-form">
+      <input type="text" class="cta-input" placeholder="Ваше имя">
+      <input type="text" class="cta-input" placeholder="Telegram или email">
+      <a href="https://t.me/omdigital_orders_bot" class="btn-primary">Написать в Telegram →</a>
+    </div>
+  </div>
 </section>
+
 
 <footer>
-  <div style="display:flex;align-items:center;gap:10px;">
-    <div class="footer-sq">OM</div>
-    <span>OM-DIGITAL COMPANY © 2026</span>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="fl1">OM-DIGITAL</div>
+      <div class="fl2">COMPANY</div>
+      <p>AI-агентство. Москва, 2026<br>Пн–Вс 9:00–21:00 МСК</p>
+    </div>
+    <div class="footer-col">
+      <h5>Отделы</h5>
+      <a href="marketing.html">Интернет-маркетинг</a>
+      <a href="ai-studio.html">AI Studio</a>
+      <a href="business-analytics.html">Бизнес-аналитика</a>
+      <a href="automation.html">Автоматизация и код</a>
+    </div>
+    <div class="footer-col">
+      <h5>Платформы</h5>
+      <a href="https://kwork.ru/user/mg-19720">Kwork</a>
+      <a href="https://fl.ru/users/mg-1972">FL.ru</a>
+      <a href="https://etxt.ru">eTXT</a>
+      <a href="https://advego.com">Advego</a>
+    </div>
+    <div class="footer-col">
+      <h5>Контакты</h5>
+      <a href="https://t.me/omdigital_orders_bot">Telegram-бот</a>
+      <a href="mailto:newlife2506@yandex.ru">newlife2506@yandex.ru</a>
+    </div>
   </div>
-  <div>Москва · 9:00–19:00 МСК</div>
+  <div class="footer-bottom">
+    <span>© 2026 OM-Digital Company</span>
+    <span>Москва · 9:00–21:00 МСК</span>
+  </div>
 </footer>
 
-<script>
-document.getElementById('contactForm').addEventListener('submit', async function(e) {
-  e.preventDefault();
-  const btn = document.getElementById('cBtn'); const status = document.getElementById('cStatus');
-  const name = document.getElementById('cName').value.trim();
-  const contact = document.getElementById('cContact').value.trim();
-  const message = document.getElementById('cMessage').value.trim();
-  if (!name || !contact || !message) return;
-  btn.disabled = true; btn.textContent = 'Отправляем...';
-  const tgText = `📨 ЗАЯВКА — БИЗНЕС-АНАЛИТИКА\n━━━━━━━━━━━━━━\n👤 ${name}\n📞 ${contact}\n💬 ${message}\n#аналитика #сайт`;
-  try {
-    const r = await fetch('https://api.telegram.org/bot8873337285:AAEYvrOlbsiqmbbm546jfr8oA7e33o7YlVU/sendMessage', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({chat_id:'2088867074', text: tgText}), signal: AbortSignal.timeout(8000)
-    });
-    const d = await r.json();
-    if (d.ok) { status.style.color='#4ade80'; status.textContent='✅ Заявка отправлена! Ответим в течение часа.'; document.getElementById('contactForm').reset(); }
-    else { throw new Error(); }
-  } catch(err) { status.style.color='#fbbf24'; status.textContent='Напишите нам: newlife2506@yandex.ru'; }
-  status.style.display='block'; btn.disabled=false; btn.textContent='Отправить заявку →';
-});
-</script>
 </body>
 </html>
