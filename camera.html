@@ -1,126 +1,164 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Фото документа</title>
-  <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <style>
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: #0a0a0a; color: #fff; font-family: sans-serif;
-      display: flex; flex-direction: column; align-items: center;
-      justify-content: center; min-height: 100vh; gap: 18px; padding: 24px;
-    }
-    h2 { font-size: 22px; font-weight: 700; text-align: center; }
-    p.hint { font-size: 14px; color: #aaa; text-align: center; line-height: 1.6; }
-    .btn {
-      background: #00d4ff; color: #000; border: none;
-      padding: 16px 0; border-radius: 12px; font-size: 18px;
-      font-weight: 700; cursor: pointer; width: 100%; max-width: 300px;
-    }
-    .btn:active { opacity: 0.8; }
-    .btn-ghost {
-      background: transparent; color: #aaa; border: 1px solid #333;
-      padding: 12px 0; border-radius: 10px; font-size: 15px;
-      cursor: pointer; width: 100%; max-width: 300px;
-    }
-    #preview {
-      max-width: 280px; max-height: 220px; border-radius: 10px;
-      object-fit: contain; display: none; border: 1px solid #222;
-    }
-    #status { font-size: 14px; color: #00d4ff; text-align: center; line-height: 1.5; }
-    .ok { color: #4cff91; }
-    .warn { color: #f0c040; }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Фото документа — Карманный Юрист</title>
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            background: #1a1a2e;
+            color: #fff;
+            font-family: -apple-system, Arial, sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 24px 16px;
+        }
+        h3 { font-size: 20px; margin-bottom: 8px; }
+        #status {
+            font-size: 14px;
+            color: #aaa;
+            text-align: center;
+            margin: 10px 0 20px;
+            min-height: 20px;
+        }
+        .btn {
+            width: 100%;
+            max-width: 340px;
+            padding: 18px;
+            font-size: 17px;
+            border: none;
+            border-radius: 14px;
+            cursor: pointer;
+            margin: 8px 0;
+            font-weight: bold;
+            display: block;
+        }
+        .btn-camera { background: #00d4ff; color: #000; }
+        .btn-send { background: #00cc66; color: #000; display: none; }
+        .btn-retry { background: #444; color: #fff; display: none; font-weight: normal; }
+        #preview {
+            max-width: 100%;
+            max-height: 320px;
+            border-radius: 10px;
+            margin: 16px 0 8px;
+            display: none;
+            border: 2px solid #00d4ff;
+        }
+        #loader { display: none; color: #00d4ff; font-size: 15px; margin: 12px 0; }
+        .hint { font-size: 12px; color: #666; text-align: center; margin-top: 16px; }
+    </style>
 </head>
 <body>
-  <h2>📄 Сфотографируйте документ</h2>
-  <p class="hint">Направьте камеру на документ.<br>Убедитесь что текст хорошо виден.</p>
+    <h3>📷 Фото документа</h3>
+    <p id="status">Нажмите кнопку — откроется камера</p>
 
-  <input type="file" accept="image/*" capture="environment" id="cam" style="display:none">
-  <img id="preview" alt="preview">
+    <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none">
 
-  <button class="btn" id="btnCamera" onclick="document.getElementById('cam').click()">
-    📷 Открыть камеру
-  </button>
+    <button class="btn btn-camera" id="cameraBtn" onclick="openCamera()">📷 Открыть камеру</button>
+    <img id="preview" alt="Предпросмотр">
+    <button class="btn btn-send" id="sendBtn" onclick="sendPhoto()">✅ Отправить на анализ</button>
+    <button class="btn btn-retry" id="retryBtn" onclick="openCamera()">🔄 Переснять</button>
+    <p id="loader">⏳ Загружаю и отправляю...</p>
+    <p class="hint">Сделайте чёткое фото при хорошем освещении</p>
 
-  <p id="status"></p>
+    <script>
+        const tg = window.Telegram.WebApp;
+        tg.ready();
+        tg.expand();
+        try { tg.setBackgroundColor('#1a1a2e'); } catch(e) {}
 
-  <button class="btn-ghost" id="btnClose" style="display:none" onclick="sendManual()">
-    Закрыть и отправить фото через 📎
-  </button>
+        let photoBlob = null;
 
-  <script>
-    const tg = window.Telegram.WebApp;
-    tg.ready();
-    tg.expand();
+        function openCamera() {
+            document.getElementById('cameraInput').value = '';
+            document.getElementById('cameraInput').click();
+        }
 
-    document.getElementById('cam').addEventListener('change', function(e) {
-      const file = e.target.files[0];
-      if (!file) return;
+        document.getElementById('cameraInput').addEventListener('change', function(e) {
+            const file = e.target.files[0];
+            if (!file) return;
 
-      const st = document.getElementById('status');
-      const btnCam = document.getElementById('btnCamera');
-      const btnClose = document.getElementById('btnClose');
-      const prev = document.getElementById('preview');
+            setStatus('Обрабатываю фото...');
+            document.getElementById('sendBtn').style.display = 'none';
+            document.getElementById('retryBtn').style.display = 'none';
+            document.getElementById('preview').style.display = 'none';
 
-      st.textContent = 'Обрабатываю фото...';
-      btnCam.style.display = 'none';
+            const reader = new FileReader();
+            reader.onload = function(evt) {
+                const img = new Image();
+                img.onload = function() {
+                    const canvas = document.createElement('canvas');
+                    let w = img.width, h = img.height;
+                    const maxSize = 1400;
+                    if (w > maxSize || h > maxSize) {
+                        if (w > h) { h = Math.round(h * maxSize / w); w = maxSize; }
+                        else { w = Math.round(w * maxSize / h); h = maxSize; }
+                    }
+                    canvas.width = w;
+                    canvas.height = h;
+                    canvas.getContext('2d').drawImage(img, 0, 0, w, h);
+                    canvas.toBlob(function(blob) {
+                        photoBlob = blob;
+                        const preview = document.getElementById('preview');
+                        preview.src = URL.createObjectURL(blob);
+                        preview.style.display = 'block';
+                        document.getElementById('sendBtn').style.display = 'block';
+                        document.getElementById('retryBtn').style.display = 'block';
+                        setStatus('Фото готово — проверьте чёткость');
+                    }, 'image/jpeg', 0.82);
+                };
+                img.src = evt.target.result;
+            };
+            reader.readAsDataURL(file);
+        });
 
-      const reader = new FileReader();
-      reader.onload = function(ev) {
-        const img = new Image();
-        img.onload = function() {
-          // Show preview
-          prev.src = ev.target.result;
-          prev.style.display = 'block';
+        async function sendPhoto() {
+            if (!photoBlob) return;
 
-          // Compress in steps to fit Telegram sendData limit (~4000 chars)
-          const canvas = document.createElement('canvas');
-          let w = img.width, h = img.height;
-          const MAX_W = 320;
-          if (w > MAX_W) { h = Math.round(h * MAX_W / w); w = MAX_W; }
-          canvas.width = w; canvas.height = h;
+            document.getElementById('sendBtn').disabled = true;
+            document.getElementById('retryBtn').style.display = 'none';
+            document.getElementById('loader').style.display = 'block';
+            setStatus('Отправляю...');
 
-          let b64 = '';
-          let q = 0.6;
-          let attempts = 0;
-
-          while (attempts < 8) {
-            canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
-            b64 = canvas.toDataURL('image/jpeg', q);
-            if (b64.length <= 3900) break;
-            // Reduce size and quality
-            q = Math.max(0.1, q - 0.12);
-            canvas.width = Math.max(80, Math.round(canvas.width * 0.75));
-            canvas.height = Math.max(80, Math.round(canvas.height * 0.75));
-            attempts++;
-          }
-
-          if (b64.length <= 3900) {
-            st.innerHTML = '<span class="ok">✅ Отправляю на анализ...</span>';
             try {
-              tg.sendData(JSON.stringify({ type: 'photo', data: b64 }));
-              st.innerHTML = '<span class="ok">✅ Фото отправлено! Ждите анализ в чате.</span>';
-            } catch(err) {
-              st.innerHTML = '<span class="warn">⚠️ Отправьте фото через 📎 в чате</span>';
-              btnClose.style.display = 'block';
-            }
-          } else {
-            // Too large even after compression — guide to manual
-            st.innerHTML = '<span class="warn">📸 Фото сделано!<br>Нажмите кнопку ниже, вернитесь в чат<br>и отправьте фото через 📎</span>';
-            btnClose.style.display = 'block';
-          }
-        };
-        img.src = ev.target.result;
-      };
-      reader.readAsDataURL(file);
-    });
+                const formData = new FormData();
+                formData.append('file', photoBlob, 'document.jpg');
 
-    function sendManual() {
-      tg.sendData(JSON.stringify({ type: 'manual' }));
-    }
-  </script>
+                const uploadResp = await fetch('https://telegra.ph/upload', {
+                    method: 'POST',
+                    body: formData
+                });
+
+                if (!uploadResp.ok) throw new Error('upload_error');
+                const uploadResult = await uploadResp.json();
+
+                if (!Array.isArray(uploadResult) || !uploadResult[0] || !uploadResult[0].src) {
+                    throw new Error('bad_response');
+                }
+
+                const imageUrl = 'https://telegra.ph' + uploadResult[0].src;
+                tg.sendData(JSON.stringify({ type: 'photo_url', url: imageUrl }));
+
+                setStatus('Отправлено! Анализирую...');
+                document.getElementById('loader').style.display = 'none';
+                setTimeout(() => tg.close(), 1200);
+
+            } catch (err) {
+                document.getElementById('loader').style.display = 'none';
+                setStatus('Ошибка отправки. Попробуйте ещё раз.');
+                document.getElementById('sendBtn').disabled = false;
+                document.getElementById('retryBtn').style.display = 'block';
+                console.error(err);
+            }
+        }
+
+        function setStatus(text) {
+            document.getElementById('status').textContent = text;
+        }
+    </script>
 </body>
 </html>
