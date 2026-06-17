@@ -4,12 +4,15 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AI Studio — OM-Digital Company</title>
-<meta name="description" content="Промпты для ChatGPT и Claude, сценарии чатботов, FAQ-базы, AI-инструкции для бизнеса. OM-Digital, от 500 ₽">
 <style>
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
-body { font-family: 'Segoe UI', Arial, sans-serif; background: #0a0a0a; color: #fff; overflow-x: hidden; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #0a0a0a;
+  color: #ffffff;
+  overflow-x: hidden;
+}
 
 /* HEADER */
 header {
@@ -32,55 +35,67 @@ header {
 }
 .logo-txt .l1 {
   font-size: 20px; font-weight: 900; letter-spacing: 3px;
-  background: linear-gradient(90deg, #00d4ff, #fff);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.logo-txt .l2 { font-size: 9px; letter-spacing: 5px; color: #aaa; }
+.logo-txt .l2 { font-size: 9px; letter-spacing: 5px; color: #aaaaaa; }
 nav { display: flex; align-items: center; gap: 28px; }
-nav a { color: #fff; text-decoration: none; font-size: 17px; font-weight: 700; transition: color .2s; }
+nav a {
+  color: #ffffff; text-decoration: none; font-size: 17px; font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: color .2s;
+}
 nav a:hover { color: #00d4ff; }
 .btn-cta {
-  background: transparent; color: #00d4ff; border: 1.5px solid #00d4ff;
+  background: transparent; color: #00d4ff;
+  border: 1.5px solid #00d4ff;
   padding: 9px 22px; border-radius: 6px; font-size: 13px; font-weight: 700;
-  cursor: pointer; text-decoration: none; transition: background .2s, box-shadow .2s;
+  cursor: pointer; text-decoration: none;
+  transition: background .2s, box-shadow .2s;
+  letter-spacing: 0.5px;
 }
-.btn-cta:hover { background: rgba(0,212,255,0.1); box-shadow: 0 0 16px rgba(0,212,255,0.3); }
+.btn-cta:hover {
+  background: rgba(0,212,255,0.1);
+  box-shadow: 0 0 16px rgba(0,212,255,0.3);
+}
 
-/* DIVIDER */
-.divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(0,212,255,0.2), transparent); }
-
-/* HERO */
-.hero {
-  padding: 100px 48px 80px;
+/* HERO (department pages) */
+.dept-hero {
+  padding: 80px 48px 70px;
   position: relative; overflow: hidden;
   background: radial-gradient(ellipse 800px 400px at 20% 50%, rgba(0,212,255,0.05) 0%, transparent 70%);
 }
-.hero-grid {
+.dept-hero-grid {
   position: absolute; inset: 0; pointer-events: none;
   background-image: linear-gradient(rgba(0,212,255,0.025) 1px, transparent 1px),
                     linear-gradient(90deg, rgba(0,212,255,0.025) 1px, transparent 1px);
   background-size: 60px 60px;
 }
-.hero-back {
+.back-link {
   display: inline-flex; align-items: center; gap: 6px;
-  color: #aaa; text-decoration: none; font-size: 13px; margin-bottom: 28px;
+  color: #aaaaaa; text-decoration: none; font-size: 13px; margin-bottom: 28px;
   transition: color .2s; position: relative;
 }
-.hero-back:hover { color: #00d4ff; }
+.back-link:hover { color: #00d4ff; }
 .hero-badge {
   display: inline-block;
-  background: rgba(0,212,255,0.08); border: 1px solid rgba(0,212,255,0.3);
-  color: #00d4ff; font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
-  padding: 6px 18px; border-radius: 20px; margin-bottom: 20px; position: relative;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.3);
+  color: #00d4ff;
+  font-size: 14px; letter-spacing: 3px; text-transform: uppercase;
+  padding: 8px 22px; border-radius: 20px; margin-bottom: 20px; font-weight: 600;
+  position: relative;
 }
-.hero h1 {
+.dept-hero h1 {
   font-size: 56px; font-weight: 900; line-height: 1.1; margin-bottom: 20px; position: relative;
 }
-.hero h1 .grad {
-  background: linear-gradient(90deg, #00d4ff, #fff);
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+.dept-hero h1 .grad {
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
-.hero p { font-size: 18px; color: #ccc; max-width: 600px; line-height: 1.8; margin-bottom: 36px; position: relative; }
+.dept-hero p { font-size: 20px; color: #cccccc; max-width: 600px; line-height: 1.8; margin-bottom: 36px; position: relative; }
 .btn-primary {
   display: inline-flex; align-items: center; gap: 8px;
   background: linear-gradient(135deg, #00d4ff, #0088cc);
@@ -89,127 +104,271 @@ nav a:hover { color: #00d4ff; }
   transition: box-shadow .2s, transform .2s; position: relative;
 }
 .btn-primary:hover { box-shadow: 0 0 40px rgba(0,212,255,0.6); transform: translateY(-2px); }
-.hero-stats { display: flex; gap: 56px; margin-top: 56px; padding-top: 40px; border-top: 1px solid rgba(255,255,255,0.06); position: relative; }
-.hero-stat .num { font-size: 36px; font-weight: 900; background: linear-gradient(90deg, #00d4ff, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.hero-stat .lbl { font-size: 12px; color: #666; margin-top: 6px; }
 
-/* SECTION */
-section { padding: 80px 48px; }
+.hero-stats {
+  display: flex; gap: 56px; margin-top: 56px; padding-top: 36px;
+  border-top: 1px solid rgba(255,255,255,0.06); position: relative;
+}
+.hero-stat .num {
+  font-size: 40px; font-weight: 900;
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-stat .lbl { font-size: 16px; color: #cccccc; margin-top: 6px; letter-spacing: 0.5px; font-weight: 500; }
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.2), transparent);
+}
+
+/* SECTION COMMON */
+section { padding: 70px 40px; }
 .container { max-width: 1100px; margin: 0 auto; }
-.section-label { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #00d4ff; margin-bottom: 12px; }
-.section-title { font-size: 36px; font-weight: 800; margin-bottom: 16px; line-height: 1.2; }
-.section-title .accent { background: linear-gradient(90deg, #00d4ff, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.section-sub { font-size: 16px; color: #888; line-height: 1.8; max-width: 520px; margin-bottom: 48px; }
+.section-label {
+  font-size: 14px; letter-spacing: 4px; text-transform: uppercase;
+  color: #00d4ff; margin-bottom: 14px;
+}
+.section-title {
+  font-size: 38px; font-weight: 800; line-height: 1.2;
+  margin-bottom: 18px;
+}
+.section-title .accent {
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-sub { font-size: 18px; color: #bbbbbb; line-height: 1.8; max-width: 540px; margin-bottom: 56px; }
 
-/* SERVICES */
-.services-section { background: #0d0d0d; }
+/* SERVICES GRID */
+.services { background: #0d0d0d; }
 .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.svc-card {
-  background: #111; border: 1px solid rgba(255,255,255,0.06);
-  border-radius: 14px; padding: 28px 24px;
+.service-card {
+  background: #1c1c1c;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 14px; padding: 32px 24px;
   transition: border-color .2s, transform .2s, box-shadow .2s;
 }
-.svc-card:hover { border-color: rgba(0,212,255,0.25); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(0,212,255,0.06); }
-.svc-icon { font-size: 28px; margin-bottom: 16px; }
-.svc-card h3 { font-size: 16px; font-weight: 700; margin-bottom: 10px; }
-.svc-card p { font-size: 13px; color: #888; line-height: 1.7; margin-bottom: 14px; }
-.svc-price { color: #f0c040; font-size: 14px; font-weight: 700; }
+.service-card:hover {
+  border-color: rgba(0,212,255,0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 40px rgba(0,212,255,0.08);
+}
+.service-icon {
+  width: 52px; height: 52px; border-radius: 10px;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 22px; font-size: 24px;
+}
+.service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+.service-card p { font-size: 16px; color: #cccccc; line-height: 1.7; margin-bottom: 20px; }
+.price-val { color: #f0c040; font-weight: 800; font-size: 16px; }
 
-/* PROCESS */
-.process-section { background: #0a0a0a; }
-.steps { display: flex; gap: 0; max-width: 900px; margin: 0 auto; position: relative; }
+/* HOW */
+.how { background: #0a0a0a; }
+.steps { display: flex; gap: 0; max-width: 1000px; margin: 0 auto; position: relative; }
 .steps::before {
-  content: ''; position: absolute; top: 35px; left: 10%; right: 10%; height: 1px;
+  content: '';
+  position: absolute; top: 35px; left: 10%; right: 10%;
+  height: 1px;
   background: linear-gradient(90deg, rgba(0,212,255,0.3), rgba(0,212,255,0.5), rgba(0,212,255,0.3));
+  box-shadow: 0 0 8px rgba(0,212,255,0.2);
 }
 .step { flex: 1; text-align: center; padding: 0 16px; }
 .step-num {
   width: 70px; height: 70px; border-radius: 50%;
-  background: #111; border: 2px solid rgba(0,212,255,0.4); color: #00d4ff;
-  font-size: 22px; font-weight: 800;
+  background: #111;
+  border: 2px solid rgba(0,212,255,0.4);
+  color: #00d4ff; font-size: 22px; font-weight: 800;
   display: flex; align-items: center; justify-content: center;
-  margin: 0 auto 20px; position: relative; z-index: 1;
-  box-shadow: 0 0 14px rgba(0,212,255,0.12);
+  margin: 0 auto 22px;
+  position: relative; z-index: 1;
+  box-shadow: 0 0 16px rgba(0,212,255,0.15);
 }
-.step h4 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
-.step p { font-size: 13px; color: #666; line-height: 1.6; }
+.step h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.step p { font-size: 17px; color: #cccccc; line-height: 1.6; }
 
-/* CASES */
-.cases-section { background: #0d0d0d; }
-.cases-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-.case-card {
-  background: #111; border: 1px solid rgba(255,255,255,0.06);
+/* PORTFOLIO */
+.portfolio { background: #0d0d0d; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.portfolio-card {
+  background: #181818;
+  border: 1px solid rgba(255,255,255,0.08);
   border-radius: 12px; overflow: hidden;
   transition: border-color .2s, transform .2s;
 }
-.case-card:hover { border-color: rgba(0,212,255,0.2); transform: translateY(-3px); }
-.case-top { height: 100px; display: flex; align-items: center; justify-content: center; font-size: 38px; }
-.case-c1 { background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(0,136,204,0.05)); }
-.case-c2 { background: linear-gradient(135deg, rgba(240,192,64,0.1), rgba(200,140,0,0.04)); }
-.case-c3 { background: linear-gradient(135deg, rgba(0,200,120,0.08), rgba(0,150,80,0.04)); }
-.case-body { padding: 20px; }
-.case-cat { font-size: 10px; letter-spacing: 2px; color: #00d4ff; text-transform: uppercase; margin-bottom: 8px; }
-.case-card h4 { font-size: 14px; font-weight: 700; margin-bottom: 8px; }
-.case-card p { font-size: 12px; color: #666; line-height: 1.6; }
-.case-result { margin-top: 10px; font-size: 13px; color: #00d4ff; font-weight: 700; }
+.portfolio-card:hover { border-color: rgba(0,212,255,0.2); transform: translateY(-4px); }
+.portfolio-img { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 42px; }
+.portfolio-img.c1 { background: linear-gradient(135deg, rgba(0,212,255,0.12), rgba(0,136,204,0.06)); }
+.portfolio-img.c2 { background: linear-gradient(135deg, rgba(240,192,64,0.1), rgba(200,140,0,0.05)); }
+.portfolio-img.c3 { background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(80,0,200,0.06)); }
+.portfolio-img.c4 { background: linear-gradient(135deg, rgba(0,200,100,0.08), rgba(0,150,80,0.04)); }
+.portfolio-img.c5 { background: linear-gradient(135deg, rgba(200,60,60,0.08), rgba(150,30,30,0.04)); }
+.portfolio-img.c6 { background: linear-gradient(135deg, rgba(100,60,200,0.1), rgba(60,20,150,0.06)); }
+.portfolio-body { padding: 20px; }
+.portfolio-cat { font-size: 13px; letter-spacing: 2px; color: #00d4ff; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+.portfolio-card h4 { font-size: 22px; font-weight: 800; margin-bottom: 8px; line-height: 1.3; }
+.portfolio-card p { font-size: 15px; color: #cccccc; line-height: 1.6; }
+.portfolio-result { margin-top: 12px; font-size: 14px; color: #00d4ff; font-weight: 700; }
 
 /* CTA */
-.cta-section { background: #0a0a0a; text-align: center; padding: 100px 48px; position: relative; overflow: hidden; }
+.cta-section {
+  background: #0d0d0d; text-align: center; padding: 80px 40px;
+  position: relative; overflow: hidden;
+}
 .cta-section::before {
-  content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  content: '';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
   width: 600px; height: 300px;
   background: radial-gradient(ellipse, rgba(0,212,255,0.05), transparent 70%);
 }
-.cta-section h2 { font-size: 40px; font-weight: 900; margin-bottom: 18px; position: relative; }
-.cta-section p { font-size: 16px; color: #888; margin-bottom: 36px; position: relative; }
+.cta-section h2 { font-size: 54px; font-weight: 900; margin-bottom: 20px; position: relative; }
+.cta-section p.cta-sub { font-size: 18px; color: #cccccc; margin-bottom: 40px; position: relative; }
 .cta-form { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
 .cta-input {
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1);
-  color: #fff; padding: 13px 18px; border-radius: 8px; font-size: 14px;
-  width: 240px; outline: none; transition: border-color .2s;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white; padding: 14px 20px; border-radius: 8px; font-size: 15px;
+  width: 280px; outline: none; transition: border-color .2s;
 }
-.cta-input:focus { border-color: rgba(0,212,255,0.4); }
-.cta-input::placeholder { color: #555; }
+.cta-input:focus { border-color: rgba(0,212,255,0.5); }
+.cta-input::placeholder { color: #bbbbbb; font-weight: 600; }
+.cta-textarea {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white; padding: 14px 20px; border-radius: 8px; font-size: 15px;
+  width: 592px; max-width: 100%; outline: none; resize: vertical; min-height: 100px;
+  font-family: inherit; line-height: 1.6; transition: border-color .2s;
+}
+.cta-textarea:focus { border-color: rgba(0,212,255,0.5); }
+.cta-textarea::placeholder { color: #bbbbbb; font-weight: 600; }
+
+/* PORTFOLIO DETAIL PAGE */
+.port-hero {
+  padding: 70px 48px 60px;
+  position: relative; overflow: hidden;
+  background: radial-gradient(ellipse 700px 350px at 15% 50%, rgba(0,212,255,0.04) 0%, transparent 70%);
+}
+.port-hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(0,212,255,0.02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,212,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.port-hero h1 { font-size: 46px; font-weight: 900; line-height: 1.15; margin-bottom: 18px; position: relative; }
+.port-hero p { font-size: 18px; color: #cccccc; max-width: 680px; line-height: 1.8; position: relative; }
+.port-meta { display: flex; gap: 32px; margin-top: 32px; position: relative; }
+.port-meta-item .pm-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #555; margin-bottom: 4px; }
+.port-meta-item .pm-val { font-size: 16px; font-weight: 700; color: #cccccc; }
+
+.port-section { padding: 56px 48px; }
+.port-section.dark { background: #0d0d0d; }
+.port-section h2 { font-size: 28px; font-weight: 800; margin-bottom: 20px; }
+.port-section h2 .accent {
+  background: linear-gradient(90deg, #00d4ff, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.port-section p { font-size: 16px; color: #cccccc; line-height: 1.8; margin-bottom: 14px; }
+.port-block {
+  background: #141414; border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px; padding: 28px 32px; margin-bottom: 20px;
+}
+.port-block h3 { font-size: 18px; font-weight: 700; margin-bottom: 14px; }
+.port-block p { font-size: 15px; color: #cccccc; line-height: 1.8; margin-bottom: 0; }
+.port-result-box {
+  background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 14px; padding: 32px 40px; text-align: center; margin: 40px 0;
+}
+.port-result-box .result-num {
+  font-size: 56px; font-weight: 900;
+  background: linear-gradient(90deg, #00d4ff, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.port-result-box .result-label { font-size: 18px; color: #cccccc; margin-top: 8px; }
+.port-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+.port-result-card {
+  background: #141414; border: 1px solid rgba(0,212,255,0.15);
+  border-radius: 10px; padding: 24px 20px; text-align: center;
+}
+.port-result-card .r-num {
+  font-size: 36px; font-weight: 900;
+  background: linear-gradient(90deg, #00d4ff, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.port-result-card .r-lbl { font-size: 14px; color: #888; margin-top: 6px; }
+
+.bullets { list-style: none; }
+.bullets li {
+  font-size: 16px; color: #cccccc; line-height: 1.7;
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.bullets li::before { content: "✓"; color: #00d4ff; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.bullets li:last-child { border-bottom: none; }
 
 /* FOOTER */
 footer {
-  background: #060606; border-top: 1px solid rgba(255,255,255,0.05);
-  padding: 48px 48px 32px;
+  background: #060606;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 48px 40px 32px;
 }
-.footer-inner { max-width: 1100px; margin: 0 auto; display: flex; justify-content: space-between; gap: 40px; flex-wrap: wrap; }
-.footer-brand .fl1 { font-size: 18px; font-weight: 900; letter-spacing: 3px; background: linear-gradient(90deg, #00d4ff, #fff); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-.footer-brand .fl2 { font-size: 9px; letter-spacing: 5px; color: #444; margin-bottom: 10px; }
-.footer-brand p { font-size: 12px; color: #555; line-height: 1.6; }
-.footer-col h5 { font-size: 10px; letter-spacing: 2px; color: #555; text-transform: uppercase; margin-bottom: 12px; }
-.footer-col a { display: block; color: #777; font-size: 13px; text-decoration: none; margin-bottom: 7px; transition: color .2s; }
-.footer-col a:hover { color: #00d4ff; }
-.footer-bottom { max-width: 1100px; margin: 28px auto 0; padding-top: 20px; border-top: 1px solid rgba(255,255,255,0.04); display: flex; justify-content: space-between; font-size: 12px; color: #444; }
-
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 40px; flex-wrap: wrap;
+}
+.footer-brand .l1 {
+  font-size: 20px; font-weight: 900; letter-spacing: 3px;
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 4px;
+}
+.footer-brand .l2 { font-size: 9px; letter-spacing: 5px; color: #444; }
+.footer-brand p { font-size: 14px; color: #888; margin-top: 12px; line-height: 1.6; }
+.footer-links h5 { font-size: 12px; letter-spacing: 2px; color: #999; text-transform: uppercase; margin-bottom: 14px; }
+.footer-links a {
+  display: block; color: #aaaaaa; font-size: 15px; text-decoration: none;
+  margin-bottom: 8px; transition: color .2s;
+}
+.footer-links a:hover { color: #00d4ff; }
+.footer-bottom {
+  max-width: 1100px; margin: 32px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: #444;
+}
+.footer-dot { color: #00d4ff; margin: 0 6px; }
 </style>
 </head>
 <body>
-
 <header>
   <a href="index.html" class="logo-wrap">
     <div class="logo-sq">OM</div>
-    <div class="logo-txt"><div class="l1">OM-DIGITAL</div><div class="l2">COMPANY</div></div>
+    <div class="logo-txt">
+      <div class="l1">OM-DIGITAL</div>
+      <div class="l2">COMPANY</div>
+    </div>
   </a>
   <nav>
     <a href="index.html#services">Услуги</a>
     <a href="index.html#how">Процесс</a>
     <a href="index.html#portfolio">Портфолио</a>
+    <a href="index.html#prices">Цены</a>
     <a href="index.html#contact">Контакты</a>
     <a href="index.html#contact" class="btn-cta">Заказать →</a>
   </nav>
 </header>
 
-
-<!-- HERO -->
-<section class="hero">
-  <div class="hero-grid"></div>
-  <a href="index.html" class="hero-back">← На главную</a>
-  <br>
-  <div class="hero-badge">ОТДЕЛ 2 · AI STUDIO</div>
+<section class="dept-hero">
+  <div class="dept-hero-grid"></div>
+  <a href="index.html" class="back-link">← На главную</a><br>
+  <div class="hero-badge">Отдел 2 · AI Studio</div>
   <h1>AI-инструменты<br><span class="grad">для вашего бизнеса</span></h1>
   <p>Промпты для ChatGPT и Claude, сценарии чатботов, FAQ-базы знаний и AI-инструкции. Внедряем искусственный интеллект в ваши процессы — без лишней сложности.</p>
   <a href="#contact" class="btn-primary">Заказать →</a>
@@ -219,185 +378,182 @@ footer {
     <div class="hero-stat"><div class="num">48 ч</div><div class="lbl">срок сдачи</div></div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- УСЛУГИ -->
-<section class="services-section">
+<section class="services">
   <div class="container">
     <div class="section-label">Услуги</div>
     <h2 class="section-title">Что мы <span class="accent">делаем</span></h2>
     <div class="services-grid">
-      <div class="svc-card">
-        <div class="svc-icon">🧠</div>
-        <h3>Промпты для ChatGPT / Claude</h3>
-        <p>Системные промпты для любых задач: поддержка, продажи, анализ, генерация контента</p>
-        <div class="svc-price">от 500 ₽/промпт</div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">📦</div>
-        <h3>Промпт-пакеты</h3>
-        <p>5–10 промптов под одну задачу: маркетинг, HR, продажи, аналитика</p>
-        <div class="svc-price">от 2 000 ₽/набор</div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">💬</div>
-        <h3>Сценарии чатботов</h3>
-        <p>Диалоговые деревья для Telegram, WhatsApp, сайта. С ветками и возражениями</p>
-        <div class="svc-price">от 3 000 ₽</div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">📚</div>
-        <h3>FAQ-базы знаний</h3>
-        <p>Структурированные Q&A для сайта, бота или корпоративной Wiki</p>
-        <div class="svc-price">от 2 500 ₽</div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">📋</div>
-        <h3>AI-инструкции для бизнеса</h3>
-        <p>Как использовать ChatGPT в вашем отделе: конкретные кейсы и промпты</p>
-        <div class="svc-price">от 3 500 ₽</div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">🔍</div>
-        <h3>Аудит промптов</h3>
-        <p>Анализ ваших текущих промптов, улучшение качества ответов, устранение галлюцинаций</p>
-        <div class="svc-price">от 1 500 ₽</div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">🗺️</div>
-        <h3>AI-стратегия</h3>
-        <p>Как внедрить AI в процессы: какие инструменты, для каких задач, ROI</p>
-        <div class="svc-price">от 5 000 ₽</div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">✍️</div>
-        <h3>Промпты для контента</h3>
-        <p>Генерация постов, статей, описаний — шаблоны с переменными</p>
-        <div class="svc-price">от 800 ₽/набор</div>
-      </div>
-      <div class="svc-card">
-        <div class="svc-icon">🔗</div>
-        <h3>Интеграционные сценарии</h3>
-        <p>Как соединить ChatGPT с вашим CRM, ботом, базой знаний (сценарий)</p>
-        <div class="svc-price">от 2 000 ₽</div>
-      </div>
+      <div class="service-card">
+  <div class="service-icon">🧠</div>
+  <h3>Промпты для ChatGPT / Claude</h3>
+  <p>Системные промпты для любых задач: поддержка, продажи, анализ, генерация контента</p>
+  <div class="price-val">от 500 ₽/промпт</div>
+</div>
+      <div class="service-card">
+  <div class="service-icon">📦</div>
+  <h3>Промпт-пакеты</h3>
+  <p>5–10 промптов под одну задачу: маркетинг, HR, продажи, аналитика</p>
+  <div class="price-val">от 2 000 ₽/набор</div>
+</div>
+      <div class="service-card">
+  <div class="service-icon">💬</div>
+  <h3>Сценарии чатботов</h3>
+  <p>Диалоговые деревья для Telegram, WhatsApp, сайта. С ветками и возражениями</p>
+  <div class="price-val">от 3 000 ₽</div>
+</div>
+      <div class="service-card">
+  <div class="service-icon">📚</div>
+  <h3>FAQ-базы знаний</h3>
+  <p>Структурированные Q&A для сайта, бота или корпоративной Wiki</p>
+  <div class="price-val">от 2 500 ₽</div>
+</div>
+      <div class="service-card">
+  <div class="service-icon">📋</div>
+  <h3>AI-инструкции для бизнеса</h3>
+  <p>Как использовать ChatGPT в вашем отделе: конкретные кейсы и промпты</p>
+  <div class="price-val">от 3 500 ₽</div>
+</div>
+      <div class="service-card">
+  <div class="service-icon">🔍</div>
+  <h3>Аудит промптов</h3>
+  <p>Анализ ваших текущих промптов, улучшение качества, устранение галлюцинаций</p>
+  <div class="price-val">от 1 500 ₽</div>
+</div>
+      <div class="service-card">
+  <div class="service-icon">🗺️</div>
+  <h3>AI-стратегия</h3>
+  <p>Как внедрить AI в процессы: какие инструменты, для каких задач, ROI</p>
+  <div class="price-val">от 5 000 ₽</div>
+</div>
+      <div class="service-card">
+  <div class="service-icon">✍️</div>
+  <h3>Промпты для контента</h3>
+  <p>Генерация постов, статей, описаний — шаблоны с переменными</p>
+  <div class="price-val">от 800 ₽/набор</div>
+</div>
+      <div class="service-card">
+  <div class="service-icon">🔗</div>
+  <h3>Интеграционные сценарии</h3>
+  <p>Как соединить ChatGPT с вашим CRM, ботом, базой знаний (сценарий)</p>
+  <div class="price-val">от 2 000 ₽</div>
+</div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- ПРОЦЕСС -->
-<section class="process-section">
+<section class="how">
   <div class="container">
-    <div style="text-align:center;margin-bottom:52px;">
+    <div style="text-align:center; margin-bottom:60px;">
       <div class="section-label">Процесс</div>
       <h2 class="section-title">Как мы <span class="accent">работаем</span></h2>
     </div>
     <div class="steps">
       <div class="step">
-        <div class="step-num">1</div>
-        <h4>Задача</h4>
-        <p>Описываете: что должен делать AI, кто пользователь, какой результат</p>
-      </div>
+  <div class="step-num">1</div>
+  <h4>Задача</h4>
+  <p>Описываете: что должен делать AI, кто пользователь, какой результат</p>
+</div>
       <div class="step">
-        <div class="step-num">2</div>
-        <h4>Разработка</h4>
-        <p>Пишем, тестируем, итерируем промпт до стабильного результата</p>
-      </div>
+  <div class="step-num">2</div>
+  <h4>Разработка</h4>
+  <p>Пишем, тестируем, итерируем промпт до стабильного результата</p>
+</div>
       <div class="step">
-        <div class="step-num">3</div>
-        <h4>Документация</h4>
-        <p>Инструкция по использованию + примеры ответов</p>
-      </div>
+  <div class="step-num">3</div>
+  <h4>Документация</h4>
+  <p>Инструкция по использованию + примеры ответов</p>
+</div>
       <div class="step">
-        <div class="step-num">4</div>
-        <h4>Поддержка</h4>
-        <p>3 дня — задаёте вопросы, корректируем под задачу</p>
-      </div>
+  <div class="step-num">4</div>
+  <h4>Поддержка</h4>
+  <p>3 дня — задаёте вопросы, корректируем под задачу</p>
+</div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- КЕЙСЫ -->
-<section class="cases-section">
+<section class="portfolio">
   <div class="container">
     <div class="section-label">Примеры работ</div>
     <h2 class="section-title">Наши <span class="accent">кейсы</span></h2>
-    <div class="cases-grid">
-      <div class="case-card">
-        <div class="case-top case-c1">🤖</div>
-        <div class="case-body">
-          <div class="case-cat">Telegram-бот</div>
-          <h4>Чатбот для юридической компании</h4>
-          <p>Промпт + FAQ-база + сценарий для бота: отвечает на типовые вопросы, квалифицирует лида</p>
-          <div class="case-result">Обрабатывает 80% вопросов без участия юриста</div>
-        </div>
-      </div>
-      <div class="case-card">
-        <div class="case-top case-c2">📚</div>
-        <div class="case-body">
-          <div class="case-cat">FAQ-база</div>
-          <h4>База знаний для интернет-магазина</h4>
-          <p>127 вопросов и ответов по доставке, оплате, возврату и характеристикам товаров</p>
-          <div class="case-result">↓ Нагрузка на поддержку −45%</div>
-        </div>
-      </div>
-      <div class="case-card">
-        <div class="case-top case-c3">🧠</div>
-        <div class="case-body">
-          <div class="case-cat">Промпты</div>
-          <h4>Промпт-пакет для HR-отдела</h4>
-          <p>12 промптов: анализ резюме, генерация вопросов на собеседование, оффер-письма</p>
-          <div class="case-result">Экономия 3 ч/день на рутинных задачах</div>
-        </div>
-      </div>
+    <div class="portfolio-grid">
+      <div class="portfolio-card">
+  <div class="portfolio-img c1">🤖</div>
+  <div class="portfolio-body">
+    <div class="portfolio-cat">Telegram-бот</div>
+    <h4>Чатбот для юридической компании</h4>
+    <p>Промпт + FAQ-база + сценарий: отвечает на типовые вопросы, квалифицирует лида</p>
+    <div class="portfolio-result">Обрабатывает 80% вопросов без юриста</div>
+  </div>
+</div>
+      <div class="portfolio-card">
+  <div class="portfolio-img c2">📚</div>
+  <div class="portfolio-body">
+    <div class="portfolio-cat">FAQ-база</div>
+    <h4>База знаний для интернет-магазина</h4>
+    <p>127 вопросов и ответов по доставке, оплате, возврату и характеристикам товаров</p>
+    <div class="portfolio-result">↓ Нагрузка на поддержку −45%</div>
+  </div>
+</div>
+      <div class="portfolio-card">
+  <div class="portfolio-img c3">🧠</div>
+  <div class="portfolio-body">
+    <div class="portfolio-cat">Промпты</div>
+    <h4>Промпт-пакет для HR-отдела</h4>
+    <p>12 промптов: анализ резюме, генерация вопросов, оффер-письма</p>
+    <div class="portfolio-result">Экономия 3 ч/день на рутине</div>
+  </div>
+</div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-
 <section class="cta-section" id="contact">
-  <div style="position:relative;z-index:1;">
-    <div class="section-label" style="margin-bottom:12px;">Начать</div>
+  <div style="position:relative; z-index:1;">
+    <div class="section-label" style="margin-bottom:14px;">Начать сотрудничество</div>
     <h2>Готовы обсудить задачу?</h2>
-    <p>Ответим за 1 час и предложим решение</p>
+    <p class="cta-sub">Напишите — ответим за 1 час и предложим решение</p>
     <div class="cta-form">
       <input type="text" class="cta-input" placeholder="Ваше имя">
       <input type="text" class="cta-input" placeholder="Telegram или email">
-      <a href="https://t.me/omdigital_orders_bot" class="btn-primary">Написать в Telegram →</a>
     </div>
+    <div style="display:flex; justify-content:center; margin-top:12px; position:relative;">
+      <textarea class="cta-textarea" placeholder="Опишите вашу задачу — что нужно сделать?"></textarea>
+    </div>
+    <div style="display:flex; justify-content:center; margin-top:12px; position:relative;">
+      <a href="https://t.me/omdigital_orders_bot" class="btn-primary">Отправить заявку →</a>
+    </div>
+    <p style="margin-top: 20px; font-size: 15px; color: #999; font-weight: 500;">
+      Или напрямую: <a href="https://kwork.ru/user/mg-19720" style="color:#00d4ff; font-weight:700;">Kwork</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:newlife2506@yandex.ru" style="color:#00d4ff; font-weight:700;">Email</a>
+    </p>
   </div>
 </section>
-
 
 <footer>
   <div class="footer-inner">
     <div class="footer-brand">
-      <div class="fl1">OM-DIGITAL</div>
-      <div class="fl2">COMPANY</div>
-      <p>AI-агентство. Москва, 2026<br>Пн–Вс 9:00–21:00 МСК</p>
+      <div class="l1">OM-DIGITAL</div>
+      <div class="l2">COMPANY</div>
+      <p>AI-агентство. Москва, 2026<br>Работаем 9:00–21:00 МСК, Пн–Вс</p>
     </div>
-    <div class="footer-col">
-      <h5>Отделы</h5>
+    <div class="footer-links">
+      <h5>Услуги</h5>
       <a href="marketing.html">Интернет-маркетинг</a>
       <a href="ai-studio.html">AI Studio</a>
       <a href="business-analytics.html">Бизнес-аналитика</a>
       <a href="automation.html">Автоматизация и код</a>
     </div>
-    <div class="footer-col">
+    <div class="footer-links">
       <h5>Платформы</h5>
       <a href="https://kwork.ru/user/mg-19720">Kwork</a>
       <a href="https://fl.ru/users/mg-1972">FL.ru</a>
       <a href="https://etxt.ru">eTXT</a>
       <a href="https://advego.com">Advego</a>
     </div>
-    <div class="footer-col">
+    <div class="footer-links">
       <h5>Контакты</h5>
       <a href="https://t.me/omdigital_orders_bot">Telegram-бот</a>
       <a href="mailto:newlife2506@yandex.ru">newlife2506@yandex.ru</a>
@@ -405,9 +561,13 @@ footer {
   </div>
   <div class="footer-bottom">
     <span>© 2026 OM-Digital Company</span>
-    <span>Москва · 9:00–21:00 МСК</span>
+    <span>
+      <span class="footer-dot">●</span>
+      Москва
+      <span class="footer-dot">●</span>
+      Работаем 9:00–21:00 МСК
+    </span>
   </div>
 </footer>
-
 </body>
 </html>

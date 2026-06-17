@@ -3,195 +3,467 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Email-воронка для SaaS — 7 писем | OM-Digital</title>
+<title>Email-серия для онлайн-школы · Кейс — OM-Digital Company</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; background: #fff; }
-.page-header { background: #1F3A6E; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; }
-.back-btn { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14px; border: 1px solid rgba(255,255,255,0.3); padding: 7px 16px; border-radius: 6px; }
-.back-btn:hover { background: rgba(255,255,255,0.1); }
-.logo { color: white; font-size: 18px; font-weight: 700; letter-spacing: 2px; }
-.logo span { color: #4A7BC4; }
-.content { max-width: 900px; margin: 0 auto; padding: 48px 20px 60px; }
-.badge { display: inline-block; background: #e8f5f0; color: #1F3A6E; font-size: 11px; letter-spacing: 2px; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; text-transform: uppercase; }
-h1 { font-size: 30px; font-weight: 700; color: #1F3A6E; line-height: 1.3; margin-bottom: 12px; }
-.meta { font-size: 13px; color: #999; margin-bottom: 32px; }
-.meta span { margin-right: 20px; }
-h2 { font-size: 20px; font-weight: 700; color: #1F3A6E; margin: 36px 0 14px; }
-p { font-size: 15px; color: #444; line-height: 1.8; margin-bottom: 14px; }
-
-/* Статистика */
-.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
-.stat-box { background: #f8f9fb; border: 1px solid #e0e4ea; border-radius: 10px; padding: 18px; text-align: center; }
-.stat-num { font-size: 28px; font-weight: 700; color: #1F3A6E; }
-.stat-label { font-size: 12px; color: #999; margin-top: 4px; }
-
-/* Таблица писем */
-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
-th { background: #1F3A6E; color: white; padding: 11px 14px; text-align: left; }
-td { padding: 10px 14px; border-bottom: 1px solid #e8edf5; color: #444; vertical-align: top; }
-tr:nth-child(even) td { background: #f8f9fb; }
-
-/* Email-превью */
-.email-preview { background: #fff; border: 1px solid #e0e4ea; border-radius: 10px; margin-bottom: 24px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-.email-header { background: #f8f9fb; padding: 14px 20px; border-bottom: 1px solid #e0e4ea; }
-.email-from { font-size: 12px; color: #999; margin-bottom: 4px; }
-.email-subject { font-size: 15px; font-weight: 700; color: #1F3A6E; }
-.email-meta { font-size: 11px; color: #bbb; margin-top: 4px; }
-.email-body { padding: 24px; }
-.email-body p { font-size: 14px; color: #333; }
-.email-stats-row { display: flex; gap: 24px; padding: 12px 20px; background: #f8f9fb; border-top: 1px solid #e0e4ea; }
-.email-stat { font-size: 12px; color: #666; }
-.email-stat strong { color: #1F3A6E; }
-.email-cta { display: inline-block; background: #1F3A6E; color: white; padding: 10px 22px; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none; margin-top: 16px; }
-
-.cta-block { background: linear-gradient(135deg, #1F3A6E, #2c5282); border-radius: 12px; padding: 36px; text-align: center; margin-top: 60px; color: white; }
-.cta-block h3 { font-size: 22px; margin-bottom: 10px; }
-.cta-block p { color: rgba(255,255,255,0.8); margin-bottom: 24px; font-size: 15px; }
-.cta-btn { display: inline-block; background: white; color: #1F3A6E; padding: 13px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; }
-
-@media (max-width: 600px) {
-  .page-header { padding: 14px 16px; }
-  .content { padding: 28px 14px 48px; }
-  h1 { font-size: 22px; }
-  .stats-row { grid-template-columns: repeat(2, 1fr); }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #0a0a0a;
+  color: #ffffff;
+  overflow-x: hidden;
 }
+
+/* HEADER */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,10,10,0.95);
+  border-bottom: 1px solid rgba(0,212,255,0.15);
+  backdrop-filter: blur(12px);
+  padding: 0 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 76px;
+}
+.logo-wrap { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.logo-sq {
+  width: 50px; height: 50px;
+  background: linear-gradient(135deg, #00d4ff, #0088cc);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: #0a0a0a; font-size: 17px; font-weight: 900;
+  box-shadow: 0 0 20px rgba(0,212,255,0.4);
+}
+.logo-txt .l1 {
+  font-size: 20px; font-weight: 900; letter-spacing: 3px;
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.logo-txt .l2 { font-size: 9px; letter-spacing: 5px; color: #aaaaaa; }
+nav { display: flex; align-items: center; gap: 28px; }
+nav a {
+  color: #ffffff; text-decoration: none; font-size: 17px; font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: color .2s;
+}
+nav a:hover { color: #00d4ff; }
+.btn-cta {
+  background: transparent; color: #00d4ff;
+  border: 1.5px solid #00d4ff;
+  padding: 9px 22px; border-radius: 6px; font-size: 13px; font-weight: 700;
+  cursor: pointer; text-decoration: none;
+  transition: background .2s, box-shadow .2s;
+  letter-spacing: 0.5px;
+}
+.btn-cta:hover {
+  background: rgba(0,212,255,0.1);
+  box-shadow: 0 0 16px rgba(0,212,255,0.3);
+}
+
+/* HERO (department pages) */
+.dept-hero {
+  padding: 80px 48px 70px;
+  position: relative; overflow: hidden;
+  background: radial-gradient(ellipse 800px 400px at 20% 50%, rgba(0,212,255,0.05) 0%, transparent 70%);
+}
+.dept-hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(0,212,255,0.025) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,212,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.back-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #aaaaaa; text-decoration: none; font-size: 13px; margin-bottom: 28px;
+  transition: color .2s; position: relative;
+}
+.back-link:hover { color: #00d4ff; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.3);
+  color: #00d4ff;
+  font-size: 14px; letter-spacing: 3px; text-transform: uppercase;
+  padding: 8px 22px; border-radius: 20px; margin-bottom: 20px; font-weight: 600;
+  position: relative;
+}
+.dept-hero h1 {
+  font-size: 56px; font-weight: 900; line-height: 1.1; margin-bottom: 20px; position: relative;
+}
+.dept-hero h1 .grad {
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dept-hero p { font-size: 20px; color: #cccccc; max-width: 600px; line-height: 1.8; margin-bottom: 36px; position: relative; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, #00d4ff, #0088cc);
+  color: #0a0a0a; font-weight: 800; padding: 14px 32px; border-radius: 8px; font-size: 15px;
+  text-decoration: none; box-shadow: 0 0 24px rgba(0,212,255,0.4);
+  transition: box-shadow .2s, transform .2s; position: relative;
+}
+.btn-primary:hover { box-shadow: 0 0 40px rgba(0,212,255,0.6); transform: translateY(-2px); }
+
+.hero-stats {
+  display: flex; gap: 56px; margin-top: 56px; padding-top: 36px;
+  border-top: 1px solid rgba(255,255,255,0.06); position: relative;
+}
+.hero-stat .num {
+  font-size: 40px; font-weight: 900;
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-stat .lbl { font-size: 16px; color: #cccccc; margin-top: 6px; letter-spacing: 0.5px; font-weight: 500; }
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.2), transparent);
+}
+
+/* SECTION COMMON */
+section { padding: 70px 40px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-size: 14px; letter-spacing: 4px; text-transform: uppercase;
+  color: #00d4ff; margin-bottom: 14px;
+}
+.section-title {
+  font-size: 38px; font-weight: 800; line-height: 1.2;
+  margin-bottom: 18px;
+}
+.section-title .accent {
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-sub { font-size: 18px; color: #bbbbbb; line-height: 1.8; max-width: 540px; margin-bottom: 56px; }
+
+/* SERVICES GRID */
+.services { background: #0d0d0d; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.service-card {
+  background: #1c1c1c;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 14px; padding: 32px 24px;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.service-card:hover {
+  border-color: rgba(0,212,255,0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 40px rgba(0,212,255,0.08);
+}
+.service-icon {
+  width: 52px; height: 52px; border-radius: 10px;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 22px; font-size: 24px;
+}
+.service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+.service-card p { font-size: 16px; color: #cccccc; line-height: 1.7; margin-bottom: 20px; }
+.price-val { color: #f0c040; font-weight: 800; font-size: 16px; }
+
+/* HOW */
+.how { background: #0a0a0a; }
+.steps { display: flex; gap: 0; max-width: 1000px; margin: 0 auto; position: relative; }
+.steps::before {
+  content: '';
+  position: absolute; top: 35px; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0,212,255,0.3), rgba(0,212,255,0.5), rgba(0,212,255,0.3));
+  box-shadow: 0 0 8px rgba(0,212,255,0.2);
+}
+.step { flex: 1; text-align: center; padding: 0 16px; }
+.step-num {
+  width: 70px; height: 70px; border-radius: 50%;
+  background: #111;
+  border: 2px solid rgba(0,212,255,0.4);
+  color: #00d4ff; font-size: 22px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 22px;
+  position: relative; z-index: 1;
+  box-shadow: 0 0 16px rgba(0,212,255,0.15);
+}
+.step h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.step p { font-size: 17px; color: #cccccc; line-height: 1.6; }
+
+/* PORTFOLIO */
+.portfolio { background: #0d0d0d; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.portfolio-card {
+  background: #181818;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px; overflow: hidden;
+  transition: border-color .2s, transform .2s;
+}
+.portfolio-card:hover { border-color: rgba(0,212,255,0.2); transform: translateY(-4px); }
+.portfolio-img { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 42px; }
+.portfolio-img.c1 { background: linear-gradient(135deg, rgba(0,212,255,0.12), rgba(0,136,204,0.06)); }
+.portfolio-img.c2 { background: linear-gradient(135deg, rgba(240,192,64,0.1), rgba(200,140,0,0.05)); }
+.portfolio-img.c3 { background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(80,0,200,0.06)); }
+.portfolio-img.c4 { background: linear-gradient(135deg, rgba(0,200,100,0.08), rgba(0,150,80,0.04)); }
+.portfolio-img.c5 { background: linear-gradient(135deg, rgba(200,60,60,0.08), rgba(150,30,30,0.04)); }
+.portfolio-img.c6 { background: linear-gradient(135deg, rgba(100,60,200,0.1), rgba(60,20,150,0.06)); }
+.portfolio-body { padding: 20px; }
+.portfolio-cat { font-size: 13px; letter-spacing: 2px; color: #00d4ff; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+.portfolio-card h4 { font-size: 22px; font-weight: 800; margin-bottom: 8px; line-height: 1.3; }
+.portfolio-card p { font-size: 15px; color: #cccccc; line-height: 1.6; }
+.portfolio-result { margin-top: 12px; font-size: 14px; color: #00d4ff; font-weight: 700; }
+
+/* CTA */
+.cta-section {
+  background: #0d0d0d; text-align: center; padding: 80px 40px;
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.05), transparent 70%);
+}
+.cta-section h2 { font-size: 54px; font-weight: 900; margin-bottom: 20px; position: relative; }
+.cta-section p.cta-sub { font-size: 18px; color: #cccccc; margin-bottom: 40px; position: relative; }
+.cta-form { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+.cta-input {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white; padding: 14px 20px; border-radius: 8px; font-size: 15px;
+  width: 280px; outline: none; transition: border-color .2s;
+}
+.cta-input:focus { border-color: rgba(0,212,255,0.5); }
+.cta-input::placeholder { color: #bbbbbb; font-weight: 600; }
+.cta-textarea {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white; padding: 14px 20px; border-radius: 8px; font-size: 15px;
+  width: 592px; max-width: 100%; outline: none; resize: vertical; min-height: 100px;
+  font-family: inherit; line-height: 1.6; transition: border-color .2s;
+}
+.cta-textarea:focus { border-color: rgba(0,212,255,0.5); }
+.cta-textarea::placeholder { color: #bbbbbb; font-weight: 600; }
+
+/* PORTFOLIO DETAIL PAGE */
+.port-hero {
+  padding: 70px 48px 60px;
+  position: relative; overflow: hidden;
+  background: radial-gradient(ellipse 700px 350px at 15% 50%, rgba(0,212,255,0.04) 0%, transparent 70%);
+}
+.port-hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(0,212,255,0.02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,212,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.port-hero h1 { font-size: 46px; font-weight: 900; line-height: 1.15; margin-bottom: 18px; position: relative; }
+.port-hero p { font-size: 18px; color: #cccccc; max-width: 680px; line-height: 1.8; position: relative; }
+.port-meta { display: flex; gap: 32px; margin-top: 32px; position: relative; }
+.port-meta-item .pm-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #555; margin-bottom: 4px; }
+.port-meta-item .pm-val { font-size: 16px; font-weight: 700; color: #cccccc; }
+
+.port-section { padding: 56px 48px; }
+.port-section.dark { background: #0d0d0d; }
+.port-section h2 { font-size: 28px; font-weight: 800; margin-bottom: 20px; }
+.port-section h2 .accent {
+  background: linear-gradient(90deg, #00d4ff, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.port-section p { font-size: 16px; color: #cccccc; line-height: 1.8; margin-bottom: 14px; }
+.port-block {
+  background: #141414; border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px; padding: 28px 32px; margin-bottom: 20px;
+}
+.port-block h3 { font-size: 18px; font-weight: 700; margin-bottom: 14px; }
+.port-block p { font-size: 15px; color: #cccccc; line-height: 1.8; margin-bottom: 0; }
+.port-result-box {
+  background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 14px; padding: 32px 40px; text-align: center; margin: 40px 0;
+}
+.port-result-box .result-num {
+  font-size: 56px; font-weight: 900;
+  background: linear-gradient(90deg, #00d4ff, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.port-result-box .result-label { font-size: 18px; color: #cccccc; margin-top: 8px; }
+.port-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+.port-result-card {
+  background: #141414; border: 1px solid rgba(0,212,255,0.15);
+  border-radius: 10px; padding: 24px 20px; text-align: center;
+}
+.port-result-card .r-num {
+  font-size: 36px; font-weight: 900;
+  background: linear-gradient(90deg, #00d4ff, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.port-result-card .r-lbl { font-size: 14px; color: #888; margin-top: 6px; }
+
+.bullets { list-style: none; }
+.bullets li {
+  font-size: 16px; color: #cccccc; line-height: 1.7;
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.bullets li::before { content: "✓"; color: #00d4ff; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.bullets li:last-child { border-bottom: none; }
+
+/* FOOTER */
+footer {
+  background: #060606;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 48px 40px 32px;
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 40px; flex-wrap: wrap;
+}
+.footer-brand .l1 {
+  font-size: 20px; font-weight: 900; letter-spacing: 3px;
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 4px;
+}
+.footer-brand .l2 { font-size: 9px; letter-spacing: 5px; color: #444; }
+.footer-brand p { font-size: 14px; color: #888; margin-top: 12px; line-height: 1.6; }
+.footer-links h5 { font-size: 12px; letter-spacing: 2px; color: #999; text-transform: uppercase; margin-bottom: 14px; }
+.footer-links a {
+  display: block; color: #aaaaaa; font-size: 15px; text-decoration: none;
+  margin-bottom: 8px; transition: color .2s;
+}
+.footer-links a:hover { color: #00d4ff; }
+.footer-bottom {
+  max-width: 1100px; margin: 32px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: #444;
+}
+.footer-dot { color: #00d4ff; margin: 0 6px; }
 </style>
 </head>
 <body>
+<header>
+  <a href="../index.html" class="logo-wrap">
+    <div class="logo-sq">OM</div>
+    <div class="logo-txt">
+      <div class="l1">OM-DIGITAL</div>
+      <div class="l2">COMPANY</div>
+    </div>
+  </a>
+  <nav>
+    <a href="../index.html#services">Услуги</a>
+    <a href="../index.html#how">Процесс</a>
+    <a href="../index.html#portfolio">Портфолио</a>
+    <a href="../index.html#prices">Цены</a>
+    <a href="../index.html#contact">Контакты</a>
+    <a href="../index.html#contact" class="btn-cta">Заказать →</a>
+  </nav>
+</header>
 
-<div class="page-header">
-  <a href="/" class="back-btn">← Вернуться на сайт</a>
-  <div class="logo">OM-<span>DIGITAL</span></div>
+<section class="port-hero">
+  <div class="port-hero-grid"></div>
+  <a href="../index.html" class="back-link">← Назад на главную</a><br>
+  <div class="hero-badge">Кейс · Маркетинг · Email</div>
+  <h1>✉️ <span class="grad">Email-серия для онлайн-школы — конверсия 12%</span></h1>
+  <div class="port-meta">
+    <div class="port-meta-item"><div class="pm-label">Клиент</div><div class="pm-val">Онлайн-школа английского языка</div></div>
+    <div class="port-meta-item"><div class="pm-label">Срок</div><div class="pm-val">5 рабочих дней</div></div>
+    <div class="port-meta-item"><div class="pm-label">Бюджет</div><div class="pm-val">7 000 ₽</div></div>
+  </div>
+</section>
+<div class="divider"></div>
+<section class="port-section dark">
+  <div class="container">
+    <h2><span class="accent">Задача</span></h2>
+    <p>Онлайн-школа запускала новый курс. Была база 3 400 подписчиков, но старая серия из 3 писем давала open rate 14% и конверсию 4%. Нужна новая серия, которая продаёт мягко, через ценность.</p>
+  </div>
+</section>
+<div class="divider"></div>
+<section class="port-section">
+  <div class="container">
+    <h2><span class="accent">Что мы сделали</span></h2>
+    <div class="port-block"><h3>Стратегия серии</h3><p>7 писем за 14 дней: знакомство → боль → трансформация → социальное доказательство → возражения → последний шанс → бонус для медленных. Каждое письмо — одна идея.</p></div>
+<div class="port-block"><h3>Копирайтинг</h3><p>Тексты 400–600 слов. Сторителлинг через истории студентов. Без агрессивных продаж — мягкое убеждение через ценность. Все тексты прошли деайишизацию.</p></div>
+<div class="port-block"><h3>Технический аспект</h3><p>HTML-шаблоны с адаптивом под мобильные. A/B тест темы письма для писем 1 и 4. Настройка в GetResponse: сегментация по действиям (открыл / не открыл).</p></div>
+  </div>
+</section>
+<div class="divider"></div>
+<section class="port-section dark">
+  <div class="container">
+    <h2><span class="accent">Результаты</span></h2>
+    <div class="port-results-grid">
+  <div class="port-result-card"><div class="r-num">38%</div><div class="r-lbl">Open Rate</div></div>
+  <div class="port-result-card"><div class="r-num">12%</div><div class="r-lbl">Конверсия в оплату</div></div>
+  <div class="port-result-card"><div class="r-num">7</div><div class="r-lbl">писем в серии</div></div>
 </div>
-
-<div class="content">
-  <div class="badge">Маркетинг · Email-воронка</div>
-  <h1>Email-воронка для SaaS-сервиса аналитики: 7 писем, 30 дней</h1>
-  <div class="meta">
-    <span>База: 3 200 подписчиков</span>
-    <span>Период отправки: 30 дней</span>
-    <span>Инструмент: Unisender</span>
+<p style="margin-top:24px;">Open Rate 38% при среднем по нише 18–22%. Конверсия 12% — втрое выше предыдущей серии клиента. Школа масштабировала запуск и повторила серию на следующий поток.</p>
   </div>
-
-  <div class="stats-row">
-    <div class="stat-box"><div class="stat-num">42%</div><div class="stat-label">Средний open rate</div></div>
-    <div class="stat-box"><div class="stat-num">11%</div><div class="stat-label">CTR (клики)</div></div>
-    <div class="stat-box"><div class="stat-num">8.4%</div><div class="stat-label">Конверсия в подписку</div></div>
-    <div class="stat-box"><div class="stat-num">268</div><div class="stat-label">Новых платных польз.</div></div>
+</section>
+<div class="divider"></div>
+<section class="cta-section" id="contact">
+  <div style="position:relative; z-index:1;">
+    <div class="section-label" style="margin-bottom:14px;">Начать сотрудничество</div>
+    <h2>Готовы обсудить задачу?</h2>
+    <p class="cta-sub">Напишите — ответим за 1 час и предложим решение</p>
+    <div class="cta-form">
+      <input type="text" class="cta-input" placeholder="Ваше имя">
+      <input type="text" class="cta-input" placeholder="Telegram или email">
+    </div>
+    <div style="display:flex; justify-content:center; margin-top:12px; position:relative;">
+      <textarea class="cta-textarea" placeholder="Опишите вашу задачу — что нужно сделать?"></textarea>
+    </div>
+    <div style="display:flex; justify-content:center; margin-top:12px; position:relative;">
+      <a href="https://t.me/omdigital_orders_bot" class="btn-primary">Отправить заявку →</a>
+    </div>
+    <p style="margin-top: 20px; font-size: 15px; color: #999; font-weight: 500;">
+      Или напрямую: <a href="https://kwork.ru/user/mg-19720" style="color:#00d4ff; font-weight:700;">Kwork</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:newlife2506@yandex.ru" style="color:#00d4ff; font-weight:700;">Email</a>
+    </p>
   </div>
+</section>
 
-  <h2>Структура воронки — 7 писем</h2>
-  <table>
-    <tr><th>#</th><th>День</th><th>Письмо</th><th>Open Rate</th><th>CTR</th></tr>
-    <tr><td>1</td><td>День 0</td><td>Добро пожаловать + первый шаг</td><td>58%</td><td>22%</td></tr>
-    <tr><td>2</td><td>День 2</td><td>Главная функция — как она работает</td><td>47%</td><td>15%</td></tr>
-    <tr><td>3</td><td>День 5</td><td>Кейс: как компания Х сэкономила 40 часов</td><td>44%</td><td>13%</td></tr>
-    <tr><td>4</td><td>День 9</td><td>Часто задаваемые вопросы + скрытые функции</td><td>38%</td><td>9%</td></tr>
-    <tr><td>5</td><td>День 14</td><td>Сравнение тарифов + персональное предложение</td><td>41%</td><td>14%</td></tr>
-    <tr><td>6</td><td>День 22</td><td>Дедлайн: скидка заканчивается через 3 дня</td><td>45%</td><td>16%</td></tr>
-    <tr><td>7</td><td>День 30</td><td>Последний шанс + альтернативный оффер</td><td>36%</td><td>8%</td></tr>
-  </table>
-
-  <h2>Письмо 1 — Добро пожаловать</h2>
-  <div class="email-preview">
-    <div class="email-header">
-      <div class="email-from">От: Максим, команда DataLens &lt;hello@datalens.ru&gt;</div>
-      <div class="email-subject">Ваш доступ к DataLens готов — с чего начать? 🚀</div>
-      <div class="email-meta">День 0 — отправляется сразу после регистрации</div>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="l1">OM-DIGITAL</div>
+      <div class="l2">COMPANY</div>
+      <p>AI-агентство. Москва, 2026<br>Работаем 9:00–21:00 МСК, Пн–Вс</p>
     </div>
-    <div class="email-body">
-      <p>Привет!</p>
-      <br>
-      <p>Рад видеть вас в DataLens — сервисе, который превращает данные в решения.</p>
-      <br>
-      <p>За последние 3 года мы помогли 1 400 компаниям сократить время на отчётность в среднем на 4 часа в неделю. Хочу, чтобы это же случилось и у вас.</p>
-      <br>
-      <p><strong>Ваш первый шаг — займёт 7 минут:</strong></p>
-      <br>
-      <p>1. Подключите источник данных (Excel, Google Sheets, 1С — любой)</p>
-      <p>2. Выберите один из 12 готовых шаблонов дашборда</p>
-      <p>3. Посмотрите на свои данные по-новому</p>
-      <br>
-      <p>Если застрянете — напишите в чат прямо из личного кабинета. Отвечаем за 15 минут в рабочее время.</p>
-      <br>
-      <p>До встречи внутри 👋<br>Максим, основатель DataLens</p>
-      <a href="#" class="email-cta">Открыть DataLens →</a>
+    <div class="footer-links">
+      <h5>Услуги</h5>
+      <a href="../marketing.html">Интернет-маркетинг</a>
+      <a href="../ai-studio.html">AI Studio</a>
+      <a href="../business-analytics.html">Бизнес-аналитика</a>
+      <a href="../automation.html">Автоматизация и код</a>
     </div>
-    <div class="email-stats-row">
-      <div class="email-stat">Open Rate: <strong>58%</strong></div>
-      <div class="email-stat">CTR: <strong>22%</strong></div>
-      <div class="email-stat">Отписок: <strong>0.3%</strong></div>
+    <div class="footer-links">
+      <h5>Платформы</h5>
+      <a href="https://kwork.ru/user/mg-19720">Kwork</a>
+      <a href="https://fl.ru/users/mg-1972">FL.ru</a>
+      <a href="https://etxt.ru">eTXT</a>
+      <a href="https://advego.com">Advego</a>
+    </div>
+    <div class="footer-links">
+      <h5>Контакты</h5>
+      <a href="https://t.me/omdigital_orders_bot">Telegram-бот</a>
+      <a href="mailto:newlife2506@yandex.ru">newlife2506@yandex.ru</a>
     </div>
   </div>
-
-  <h2>Письмо 2 — Главная функция</h2>
-  <div class="email-preview">
-    <div class="email-header">
-      <div class="email-from">От: Максим, команда DataLens &lt;hello@datalens.ru&gt;</div>
-      <div class="email-subject">Одна функция, которую используют все наши топ-клиенты</div>
-      <div class="email-meta">День 2 — отправляется через 48 часов после регистрации</div>
-    </div>
-    <div class="email-body">
-      <p>Привет!</p>
-      <br>
-      <p>Два дня назад вы зарегистрировались в DataLens. Хочу рассказать об одной функции, о которой большинство пользователей узнают слишком поздно.</p>
-      <br>
-      <p><strong>Автоотчёт по расписанию.</strong></p>
-      <br>
-      <p>Настроив один раз, каждый понедельник в 9:00 ваш отчёт сам приходит на почту — вам, руководителю, инвестору, кому угодно. Без ручного экспорта. Без «подождите, формирую».</p>
-      <br>
-      <p>Наши клиенты, которые включили эту функцию, открывают DataLens в 3 раза чаще. Не потому что им нравится интерфейс — а потому что видят ценность каждую неделю.</p>
-      <br>
-      <p><strong>Как настроить — 2 клика:</strong><br>
-      Дашборд → три точки → «Расписание отправки» → выбрать день и почту.</p>
-      <br>
-      <p>Попробуйте прямо сейчас.<br>Максим</p>
-      <a href="#" class="email-cta">Настроить автоотчёт →</a>
-    </div>
-    <div class="email-stats-row">
-      <div class="email-stat">Open Rate: <strong>47%</strong></div>
-      <div class="email-stat">CTR: <strong>15%</strong></div>
-      <div class="email-stat">Отписок: <strong>0.5%</strong></div>
-    </div>
+  <div class="footer-bottom">
+    <span>© 2026 OM-Digital Company</span>
+    <span>
+      <span class="footer-dot">●</span>
+      Москва
+      <span class="footer-dot">●</span>
+      Работаем 9:00–21:00 МСК
+    </span>
   </div>
-
-  <h2>Письмо 3 — Кейс клиента</h2>
-  <div class="email-preview">
-    <div class="email-header">
-      <div class="email-from">От: Максим, команда DataLens &lt;hello@datalens.ru&gt;</div>
-      <div class="email-subject">«Мы вернули 40 часов в месяц» — история Ирины из "АгроМаркет"</div>
-      <div class="email-meta">День 5 — доверие через историю реального клиента</div>
-    </div>
-    <div class="email-body">
-      <p>Привет!</p>
-      <br>
-      <p>Ирина Соколова — финансовый директор «АгроМаркет», сети из 14 магазинов в Подмосковье.</p>
-      <br>
-      <p>До DataLens её команда тратила 10 часов в неделю на сведение отчётов из трёх систем: 1С, Excel-таблиц и выгрузок из CRM. Каждый понедельник — стресс, ошибки, переработки.</p>
-      <br>
-      <p>Через 2 недели после подключения DataLens Ирина написала нам:</p>
-      <br>
-      <p><em>«Я не верила, что это реально. Теперь еженедельный отчёт готов в пятницу вечером автоматически. Мы вернули 40 часов в месяц — это целая рабочая неделя.»</em></p>
-      <br>
-      <p>У Ирины стандартный тариф «Бизнес» — 2 490 ₽/мес. Один нормо-час её сотрудника стоит дороже.</p>
-      <br>
-      <p>Хотите так же? Напишите в чат — подберём настройки под вашу компанию.</p>
-      <a href="#" class="email-cta">Попробовать бесплатно →</a>
-    </div>
-    <div class="email-stats-row">
-      <div class="email-stat">Open Rate: <strong>44%</strong></div>
-      <div class="email-stat">CTR: <strong>13%</strong></div>
-      <div class="email-stat">Отписок: <strong>0.4%</strong></div>
-    </div>
-  </div>
-
-  <div class="cta-block">
-    <h3>Нужна email-воронка для вашего продукта?</h3>
-    <p>Пишем серии писем с историями, кейсами и триггерными офферами. 7 писем — от 2 500 ₽.</p>
-    <a href="/#contacts" class="cta-btn">Заказать email-воронку →</a>
-  </div>
-</div>
-
+</footer>
 </body>
 </html>

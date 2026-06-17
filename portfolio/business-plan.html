@@ -3,168 +3,467 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Бизнес-план — Кафе «Берёзка», Москва | OM-Digital</title>
+<title>Бизнес-план кофейни · Кейс — OM-Digital Company</title>
 <style>
 * { box-sizing: border-box; margin: 0; padding: 0; }
-body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; background: #fff; }
-.page-header { background: #1F3A6E; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; }
-.back-btn { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14px; border: 1px solid rgba(255,255,255,0.3); padding: 7px 16px; border-radius: 6px; }
-.back-btn:hover { background: rgba(255,255,255,0.1); }
-.logo { color: white; font-size: 18px; font-weight: 700; letter-spacing: 2px; }
-.logo span { color: #4A7BC4; }
-.content { max-width: 900px; margin: 0 auto; padding: 48px 20px 60px; }
-.badge { display: inline-block; background: #f0e8e8; color: #1F3A6E; font-size: 11px; letter-spacing: 2px; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; text-transform: uppercase; }
-h1 { font-size: 30px; font-weight: 700; color: #1F3A6E; line-height: 1.3; margin-bottom: 12px; }
-.meta { font-size: 13px; color: #999; margin-bottom: 28px; }
-.meta span { margin-right: 20px; }
-h2 { font-size: 20px; font-weight: 700; color: #1F3A6E; margin: 36px 0 14px; padding-bottom: 8px; border-bottom: 2px solid #e0e4ea; }
-h3 { font-size: 16px; font-weight: 700; color: #1F3A6E; margin: 20px 0 10px; }
-p { font-size: 15px; color: #444; line-height: 1.8; margin-bottom: 14px; }
-ul { margin: 0 0 18px 20px; }
-ul li { font-size: 14px; color: #444; line-height: 1.7; margin-bottom: 6px; }
-
-/* KPI-блоки */
-.kpi-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
-.kpi-box { background: #f8f9fb; border: 1px solid #e0e4ea; border-radius: 10px; padding: 18px; text-align: center; }
-.kpi-num { font-size: 26px; font-weight: 700; color: #1F3A6E; }
-.kpi-label { font-size: 12px; color: #999; margin-top: 4px; }
-
-/* Таблицы */
-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
-th { background: #1F3A6E; color: white; padding: 11px 14px; text-align: left; }
-td { padding: 10px 14px; border-bottom: 1px solid #e8edf5; color: #444; }
-tr:nth-child(even) td { background: #f8f9fb; }
-.positive { color: #2d7a4f; font-weight: 700; }
-.negative { color: #c0392b; font-weight: 700; }
-
-/* Секции */
-.section-box { background: #f8f9fb; border: 1px solid #e0e4ea; border-radius: 10px; padding: 22px 24px; margin: 20px 0; }
-.section-box h3 { margin-top: 0; }
-
-/* Точка безубыточности */
-.bep-box { background: linear-gradient(135deg, #e8edf5, #f0f4fb); border: 2px solid #4A7BC4; border-radius: 12px; padding: 24px; text-align: center; margin: 28px 0; }
-.bep-box .bep-num { font-size: 42px; font-weight: 700; color: #1F3A6E; }
-.bep-box .bep-label { font-size: 16px; color: #666; margin-top: 6px; }
-.bep-box .bep-sub { font-size: 13px; color: #999; margin-top: 8px; }
-
-.cta-block { background: linear-gradient(135deg, #1F3A6E, #2c5282); border-radius: 12px; padding: 36px; text-align: center; margin-top: 60px; color: white; }
-.cta-block h3 { font-size: 22px; margin-bottom: 10px; }
-.cta-block p { color: rgba(255,255,255,0.8); margin-bottom: 24px; font-size: 15px; }
-.cta-btn { display: inline-block; background: white; color: #1F3A6E; padding: 13px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; }
-
-@media (max-width: 600px) {
-  .page-header { padding: 14px 16px; }
-  .content { padding: 28px 14px 48px; }
-  h1 { font-size: 22px; }
-  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Segoe UI', Arial, sans-serif;
+  background: #0a0a0a;
+  color: #ffffff;
+  overflow-x: hidden;
 }
+
+/* HEADER */
+header {
+  position: sticky; top: 0; z-index: 100;
+  background: rgba(10,10,10,0.95);
+  border-bottom: 1px solid rgba(0,212,255,0.15);
+  backdrop-filter: blur(12px);
+  padding: 0 48px;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 76px;
+}
+.logo-wrap { display: flex; align-items: center; gap: 14px; text-decoration: none; }
+.logo-sq {
+  width: 50px; height: 50px;
+  background: linear-gradient(135deg, #00d4ff, #0088cc);
+  border-radius: 10px;
+  display: flex; align-items: center; justify-content: center;
+  color: #0a0a0a; font-size: 17px; font-weight: 900;
+  box-shadow: 0 0 20px rgba(0,212,255,0.4);
+}
+.logo-txt .l1 {
+  font-size: 20px; font-weight: 900; letter-spacing: 3px;
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.logo-txt .l2 { font-size: 9px; letter-spacing: 5px; color: #aaaaaa; }
+nav { display: flex; align-items: center; gap: 28px; }
+nav a {
+  color: #ffffff; text-decoration: none; font-size: 17px; font-weight: 700;
+  letter-spacing: 0.5px;
+  transition: color .2s;
+}
+nav a:hover { color: #00d4ff; }
+.btn-cta {
+  background: transparent; color: #00d4ff;
+  border: 1.5px solid #00d4ff;
+  padding: 9px 22px; border-radius: 6px; font-size: 13px; font-weight: 700;
+  cursor: pointer; text-decoration: none;
+  transition: background .2s, box-shadow .2s;
+  letter-spacing: 0.5px;
+}
+.btn-cta:hover {
+  background: rgba(0,212,255,0.1);
+  box-shadow: 0 0 16px rgba(0,212,255,0.3);
+}
+
+/* HERO (department pages) */
+.dept-hero {
+  padding: 80px 48px 70px;
+  position: relative; overflow: hidden;
+  background: radial-gradient(ellipse 800px 400px at 20% 50%, rgba(0,212,255,0.05) 0%, transparent 70%);
+}
+.dept-hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(0,212,255,0.025) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,212,255,0.025) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.back-link {
+  display: inline-flex; align-items: center; gap: 6px;
+  color: #aaaaaa; text-decoration: none; font-size: 13px; margin-bottom: 28px;
+  transition: color .2s; position: relative;
+}
+.back-link:hover { color: #00d4ff; }
+.hero-badge {
+  display: inline-block;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.3);
+  color: #00d4ff;
+  font-size: 14px; letter-spacing: 3px; text-transform: uppercase;
+  padding: 8px 22px; border-radius: 20px; margin-bottom: 20px; font-weight: 600;
+  position: relative;
+}
+.dept-hero h1 {
+  font-size: 56px; font-weight: 900; line-height: 1.1; margin-bottom: 20px; position: relative;
+}
+.dept-hero h1 .grad {
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.dept-hero p { font-size: 20px; color: #cccccc; max-width: 600px; line-height: 1.8; margin-bottom: 36px; position: relative; }
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: linear-gradient(135deg, #00d4ff, #0088cc);
+  color: #0a0a0a; font-weight: 800; padding: 14px 32px; border-radius: 8px; font-size: 15px;
+  text-decoration: none; box-shadow: 0 0 24px rgba(0,212,255,0.4);
+  transition: box-shadow .2s, transform .2s; position: relative;
+}
+.btn-primary:hover { box-shadow: 0 0 40px rgba(0,212,255,0.6); transform: translateY(-2px); }
+
+.hero-stats {
+  display: flex; gap: 56px; margin-top: 56px; padding-top: 36px;
+  border-top: 1px solid rgba(255,255,255,0.06); position: relative;
+}
+.hero-stat .num {
+  font-size: 40px; font-weight: 900;
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.hero-stat .lbl { font-size: 16px; color: #cccccc; margin-top: 6px; letter-spacing: 0.5px; font-weight: 500; }
+
+/* DIVIDER */
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(0,212,255,0.2), transparent);
+}
+
+/* SECTION COMMON */
+section { padding: 70px 40px; }
+.container { max-width: 1100px; margin: 0 auto; }
+.section-label {
+  font-size: 14px; letter-spacing: 4px; text-transform: uppercase;
+  color: #00d4ff; margin-bottom: 14px;
+}
+.section-title {
+  font-size: 38px; font-weight: 800; line-height: 1.2;
+  margin-bottom: 18px;
+}
+.section-title .accent {
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.section-sub { font-size: 18px; color: #bbbbbb; line-height: 1.8; max-width: 540px; margin-bottom: 56px; }
+
+/* SERVICES GRID */
+.services { background: #0d0d0d; }
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.service-card {
+  background: #1c1c1c;
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 14px; padding: 32px 24px;
+  transition: border-color .2s, transform .2s, box-shadow .2s;
+}
+.service-card:hover {
+  border-color: rgba(0,212,255,0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 40px rgba(0,212,255,0.08);
+}
+.service-icon {
+  width: 52px; height: 52px; border-radius: 10px;
+  background: rgba(0,212,255,0.08);
+  border: 1px solid rgba(0,212,255,0.15);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 22px; font-size: 24px;
+}
+.service-card h3 { font-size: 18px; font-weight: 700; margin-bottom: 12px; }
+.service-card p { font-size: 16px; color: #cccccc; line-height: 1.7; margin-bottom: 20px; }
+.price-val { color: #f0c040; font-weight: 800; font-size: 16px; }
+
+/* HOW */
+.how { background: #0a0a0a; }
+.steps { display: flex; gap: 0; max-width: 1000px; margin: 0 auto; position: relative; }
+.steps::before {
+  content: '';
+  position: absolute; top: 35px; left: 10%; right: 10%;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(0,212,255,0.3), rgba(0,212,255,0.5), rgba(0,212,255,0.3));
+  box-shadow: 0 0 8px rgba(0,212,255,0.2);
+}
+.step { flex: 1; text-align: center; padding: 0 16px; }
+.step-num {
+  width: 70px; height: 70px; border-radius: 50%;
+  background: #111;
+  border: 2px solid rgba(0,212,255,0.4);
+  color: #00d4ff; font-size: 22px; font-weight: 800;
+  display: flex; align-items: center; justify-content: center;
+  margin: 0 auto 22px;
+  position: relative; z-index: 1;
+  box-shadow: 0 0 16px rgba(0,212,255,0.15);
+}
+.step h4 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+.step p { font-size: 17px; color: #cccccc; line-height: 1.6; }
+
+/* PORTFOLIO */
+.portfolio { background: #0d0d0d; }
+.portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
+.portfolio-card {
+  background: #181818;
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 12px; overflow: hidden;
+  transition: border-color .2s, transform .2s;
+}
+.portfolio-card:hover { border-color: rgba(0,212,255,0.2); transform: translateY(-4px); }
+.portfolio-img { height: 140px; display: flex; align-items: center; justify-content: center; font-size: 42px; }
+.portfolio-img.c1 { background: linear-gradient(135deg, rgba(0,212,255,0.12), rgba(0,136,204,0.06)); }
+.portfolio-img.c2 { background: linear-gradient(135deg, rgba(240,192,64,0.1), rgba(200,140,0,0.05)); }
+.portfolio-img.c3 { background: linear-gradient(135deg, rgba(0,212,255,0.08), rgba(80,0,200,0.06)); }
+.portfolio-img.c4 { background: linear-gradient(135deg, rgba(0,200,100,0.08), rgba(0,150,80,0.04)); }
+.portfolio-img.c5 { background: linear-gradient(135deg, rgba(200,60,60,0.08), rgba(150,30,30,0.04)); }
+.portfolio-img.c6 { background: linear-gradient(135deg, rgba(100,60,200,0.1), rgba(60,20,150,0.06)); }
+.portfolio-body { padding: 20px; }
+.portfolio-cat { font-size: 13px; letter-spacing: 2px; color: #00d4ff; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
+.portfolio-card h4 { font-size: 22px; font-weight: 800; margin-bottom: 8px; line-height: 1.3; }
+.portfolio-card p { font-size: 15px; color: #cccccc; line-height: 1.6; }
+.portfolio-result { margin-top: 12px; font-size: 14px; color: #00d4ff; font-weight: 700; }
+
+/* CTA */
+.cta-section {
+  background: #0d0d0d; text-align: center; padding: 80px 40px;
+  position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: '';
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  width: 600px; height: 300px;
+  background: radial-gradient(ellipse, rgba(0,212,255,0.05), transparent 70%);
+}
+.cta-section h2 { font-size: 54px; font-weight: 900; margin-bottom: 20px; position: relative; }
+.cta-section p.cta-sub { font-size: 18px; color: #cccccc; margin-bottom: 40px; position: relative; }
+.cta-form { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; position: relative; }
+.cta-input {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white; padding: 14px 20px; border-radius: 8px; font-size: 15px;
+  width: 280px; outline: none; transition: border-color .2s;
+}
+.cta-input:focus { border-color: rgba(0,212,255,0.5); }
+.cta-input::placeholder { color: #bbbbbb; font-weight: 600; }
+.cta-textarea {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.2);
+  color: white; padding: 14px 20px; border-radius: 8px; font-size: 15px;
+  width: 592px; max-width: 100%; outline: none; resize: vertical; min-height: 100px;
+  font-family: inherit; line-height: 1.6; transition: border-color .2s;
+}
+.cta-textarea:focus { border-color: rgba(0,212,255,0.5); }
+.cta-textarea::placeholder { color: #bbbbbb; font-weight: 600; }
+
+/* PORTFOLIO DETAIL PAGE */
+.port-hero {
+  padding: 70px 48px 60px;
+  position: relative; overflow: hidden;
+  background: radial-gradient(ellipse 700px 350px at 15% 50%, rgba(0,212,255,0.04) 0%, transparent 70%);
+}
+.port-hero-grid {
+  position: absolute; inset: 0; pointer-events: none;
+  background-image: linear-gradient(rgba(0,212,255,0.02) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(0,212,255,0.02) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+.port-hero h1 { font-size: 46px; font-weight: 900; line-height: 1.15; margin-bottom: 18px; position: relative; }
+.port-hero p { font-size: 18px; color: #cccccc; max-width: 680px; line-height: 1.8; position: relative; }
+.port-meta { display: flex; gap: 32px; margin-top: 32px; position: relative; }
+.port-meta-item .pm-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: #555; margin-bottom: 4px; }
+.port-meta-item .pm-val { font-size: 16px; font-weight: 700; color: #cccccc; }
+
+.port-section { padding: 56px 48px; }
+.port-section.dark { background: #0d0d0d; }
+.port-section h2 { font-size: 28px; font-weight: 800; margin-bottom: 20px; }
+.port-section h2 .accent {
+  background: linear-gradient(90deg, #00d4ff, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.port-section p { font-size: 16px; color: #cccccc; line-height: 1.8; margin-bottom: 14px; }
+.port-block {
+  background: #141414; border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px; padding: 28px 32px; margin-bottom: 20px;
+}
+.port-block h3 { font-size: 18px; font-weight: 700; margin-bottom: 14px; }
+.port-block p { font-size: 15px; color: #cccccc; line-height: 1.8; margin-bottom: 0; }
+.port-result-box {
+  background: rgba(0,212,255,0.05); border: 1px solid rgba(0,212,255,0.2);
+  border-radius: 14px; padding: 32px 40px; text-align: center; margin: 40px 0;
+}
+.port-result-box .result-num {
+  font-size: 56px; font-weight: 900;
+  background: linear-gradient(90deg, #00d4ff, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.port-result-box .result-label { font-size: 18px; color: #cccccc; margin-top: 8px; }
+.port-results-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 24px; }
+.port-result-card {
+  background: #141414; border: 1px solid rgba(0,212,255,0.15);
+  border-radius: 10px; padding: 24px 20px; text-align: center;
+}
+.port-result-card .r-num {
+  font-size: 36px; font-weight: 900;
+  background: linear-gradient(90deg, #00d4ff, #fff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.port-result-card .r-lbl { font-size: 14px; color: #888; margin-top: 6px; }
+
+.bullets { list-style: none; }
+.bullets li {
+  font-size: 16px; color: #cccccc; line-height: 1.7;
+  padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04);
+  display: flex; align-items: flex-start; gap: 10px;
+}
+.bullets li::before { content: "✓"; color: #00d4ff; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+.bullets li:last-child { border-bottom: none; }
+
+/* FOOTER */
+footer {
+  background: #060606;
+  border-top: 1px solid rgba(255,255,255,0.05);
+  padding: 48px 40px 32px;
+}
+.footer-inner {
+  max-width: 1100px; margin: 0 auto;
+  display: flex; justify-content: space-between; align-items: flex-start;
+  gap: 40px; flex-wrap: wrap;
+}
+.footer-brand .l1 {
+  font-size: 20px; font-weight: 900; letter-spacing: 3px;
+  background: linear-gradient(90deg, #00d4ff, #ffffff);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  background-clip: text; margin-bottom: 4px;
+}
+.footer-brand .l2 { font-size: 9px; letter-spacing: 5px; color: #444; }
+.footer-brand p { font-size: 14px; color: #888; margin-top: 12px; line-height: 1.6; }
+.footer-links h5 { font-size: 12px; letter-spacing: 2px; color: #999; text-transform: uppercase; margin-bottom: 14px; }
+.footer-links a {
+  display: block; color: #aaaaaa; font-size: 15px; text-decoration: none;
+  margin-bottom: 8px; transition: color .2s;
+}
+.footer-links a:hover { color: #00d4ff; }
+.footer-bottom {
+  max-width: 1100px; margin: 32px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid rgba(255,255,255,0.04);
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 12px; color: #444;
+}
+.footer-dot { color: #00d4ff; margin: 0 6px; }
 </style>
 </head>
 <body>
+<header>
+  <a href="../index.html" class="logo-wrap">
+    <div class="logo-sq">OM</div>
+    <div class="logo-txt">
+      <div class="l1">OM-DIGITAL</div>
+      <div class="l2">COMPANY</div>
+    </div>
+  </a>
+  <nav>
+    <a href="../index.html#services">Услуги</a>
+    <a href="../index.html#how">Процесс</a>
+    <a href="../index.html#portfolio">Портфолио</a>
+    <a href="../index.html#prices">Цены</a>
+    <a href="../index.html#contact">Контакты</a>
+    <a href="../index.html#contact" class="btn-cta">Заказать →</a>
+  </nav>
+</header>
 
-<div class="page-header">
-  <a href="/" class="back-btn">← Вернуться на сайт</a>
-  <div class="logo">OM-<span>DIGITAL</span></div>
+<section class="port-hero">
+  <div class="port-hero-grid"></div>
+  <a href="../index.html" class="back-link">← Назад на главную</a><br>
+  <div class="hero-badge">Кейс · Бизнес-аналитика · Бизнес-план</div>
+  <h1>📊 <span class="grad">Бизнес-план для кофейни — финансирование 2,5 млн ₽</span></h1>
+  <div class="port-meta">
+    <div class="port-meta-item"><div class="pm-label">Клиент</div><div class="pm-val">Частный предприниматель (Москва)</div></div>
+    <div class="port-meta-item"><div class="pm-label">Срок</div><div class="pm-val">6 рабочих дней</div></div>
+    <div class="port-meta-item"><div class="pm-label">Бюджет</div><div class="pm-val">8 000 ₽</div></div>
+  </div>
+</section>
+<div class="divider"></div>
+<section class="port-section dark">
+  <div class="container">
+    <h2><span class="accent">Задача</span></h2>
+    <p>Предприниматель нашёл помещение рядом со станцией метро и хотел открыть кофейню. Для получения займа от инвестора нужен был профессиональный бизнес-план с финансовой моделью.</p>
+  </div>
+</section>
+<div class="divider"></div>
+<section class="port-section">
+  <div class="container">
+    <h2><span class="accent">Что мы сделали</span></h2>
+    <div class="port-block"><h3>Анализ рынка</h3><p>Исследовали 12 конкурентов в районе: трафик, меню, средний чек, часы работы. Оценили пешеходный поток — 2 400 чел./день через основной выход метро.</p></div>
+<div class="port-block"><h3>Финансовая модель</h3><p>P&L на 3 года: сезонность, инфляция, рост выручки. Точка безубыточности — 4,5 месяца. Три сценария: пессимистичный / базовый / оптимистичный.</p></div>
+<div class="port-block"><h3>SWOT и стратегия</h3><p>4 сильные стороны (локация, концепция, сезонное меню, доставка). 3 угрозы (конкуренты, аренда, сезонность). Стратегия масштабирования на 3-й год.</p></div>
+  </div>
+</section>
+<div class="divider"></div>
+<section class="port-section dark">
+  <div class="container">
+    <h2><span class="accent">Результаты</span></h2>
+    <div class="port-results-grid">
+  <div class="port-result-card"><div class="r-num">2.5 млн</div><div class="r-lbl">Получено финансирование</div></div>
+  <div class="port-result-card"><div class="r-num">4.5 мес</div><div class="r-lbl">Точка безубыточности</div></div>
+  <div class="port-result-card"><div class="r-num">3 сценария</div><div class="r-lbl">Финансовой модели</div></div>
 </div>
-
-<div class="content">
-  <div class="badge">Бизнес-аналитика · Бизнес-план</div>
-  <h1>Бизнес-план кафе «Берёзка»<br>Москва, кофе + выпечка, 40 посадочных мест</h1>
-  <div class="meta">
-    <span>Инвестиции: 2,8 млн ₽</span>
-    <span>Окупаемость: 18 месяцев</span>
-    <span>Горизонт: 3 года</span>
+<p style="margin-top:24px;">Инвестор одобрил финансирование после первой встречи. Бизнес-план принят без вопросов — клиент отметил чёткость финансовой модели и реалистичность прогнозов.</p>
   </div>
-
-  <div class="kpi-row">
-    <div class="kpi-box"><div class="kpi-num">2,8 млн</div><div class="kpi-label">Инвестиции (₽)</div></div>
-    <div class="kpi-box"><div class="kpi-num">18 мес</div><div class="kpi-label">Окупаемость</div></div>
-    <div class="kpi-box"><div class="kpi-num">40</div><div class="kpi-label">Посадочных мест</div></div>
-    <div class="kpi-box"><div class="kpi-num">520 тыс.</div><div class="kpi-label">Выручка / мес (план)</div></div>
+</section>
+<div class="divider"></div>
+<section class="cta-section" id="contact">
+  <div style="position:relative; z-index:1;">
+    <div class="section-label" style="margin-bottom:14px;">Начать сотрудничество</div>
+    <h2>Готовы обсудить задачу?</h2>
+    <p class="cta-sub">Напишите — ответим за 1 час и предложим решение</p>
+    <div class="cta-form">
+      <input type="text" class="cta-input" placeholder="Ваше имя">
+      <input type="text" class="cta-input" placeholder="Telegram или email">
+    </div>
+    <div style="display:flex; justify-content:center; margin-top:12px; position:relative;">
+      <textarea class="cta-textarea" placeholder="Опишите вашу задачу — что нужно сделать?"></textarea>
+    </div>
+    <div style="display:flex; justify-content:center; margin-top:12px; position:relative;">
+      <a href="https://t.me/omdigital_orders_bot" class="btn-primary">Отправить заявку →</a>
+    </div>
+    <p style="margin-top: 20px; font-size: 15px; color: #999; font-weight: 500;">
+      Или напрямую: <a href="https://kwork.ru/user/mg-19720" style="color:#00d4ff; font-weight:700;">Kwork</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:newlife2506@yandex.ru" style="color:#00d4ff; font-weight:700;">Email</a>
+    </p>
   </div>
+</section>
 
-  <h2>1. Концепция</h2>
-  <div class="section-box">
-    <p><b>Кафе «Берёзка»</b> — демократичное кафе формата «третье место» в спальном районе Москвы (СВАО). Акцент на авторском кофе, домашней выпечке и комфортной атмосфере. Целевая аудитория: жители района 25–45 лет, офисные сотрудники, мамы с детьми.</p>
-    <ul>
-      <li>Средний чек: 450 ₽ на человека</li>
-      <li>Режим работы: 08:00–22:00, 7 дней в неделю</li>
-      <li>Площадь: 85 м² (зал 55 м², кухня 20 м², подсобные 10 м²)</li>
-      <li>Персонал: 8 человек (2 бариста, 2 официанта, 2 повара, управляющий, уборщик)</li>
-    </ul>
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="l1">OM-DIGITAL</div>
+      <div class="l2">COMPANY</div>
+      <p>AI-агентство. Москва, 2026<br>Работаем 9:00–21:00 МСК, Пн–Вс</p>
+    </div>
+    <div class="footer-links">
+      <h5>Услуги</h5>
+      <a href="../marketing.html">Интернет-маркетинг</a>
+      <a href="../ai-studio.html">AI Studio</a>
+      <a href="../business-analytics.html">Бизнес-аналитика</a>
+      <a href="../automation.html">Автоматизация и код</a>
+    </div>
+    <div class="footer-links">
+      <h5>Платформы</h5>
+      <a href="https://kwork.ru/user/mg-19720">Kwork</a>
+      <a href="https://fl.ru/users/mg-1972">FL.ru</a>
+      <a href="https://etxt.ru">eTXT</a>
+      <a href="https://advego.com">Advego</a>
+    </div>
+    <div class="footer-links">
+      <h5>Контакты</h5>
+      <a href="https://t.me/omdigital_orders_bot">Telegram-бот</a>
+      <a href="mailto:newlife2506@yandex.ru">newlife2506@yandex.ru</a>
+    </div>
   </div>
-
-  <h2>2. Анализ рынка</h2>
-  <p>Рынок кофеен в Москве продолжает расти: по данным 2025 г., открылось более 400 новых точек. Конкуренция высокая, но в СВАО дефицит качественных кофеен формата «neighbourhood cafe» — сетевые заведения занимают ТЦ, а не жилые кварталы.</p>
-  <table>
-    <tr><th>Конкурент</th><th>Средний чек</th><th>Слабые стороны</th></tr>
-    <tr><td>Шоколадница</td><td>600 ₽</td><td>Высокая цена, нет атмосферы</td></tr>
-    <tr><td>Кофемания</td><td>900 ₽</td><td>Премиум-сегмент, не для каждого дня</td></tr>
-    <tr><td>Местные заведения</td><td>350 ₽</td><td>Нестабильное качество, нет концепции</td></tr>
-    <tr><td><b>«Берёзка»</b></td><td><b>450 ₽</b></td><td><b>Оптимальный сегмент</b></td></tr>
-  </table>
-
-  <h2>3. Инвестиции и статьи расходов</h2>
-  <table>
-    <tr><th>Статья</th><th>Сумма (₽)</th><th>% от бюджета</th></tr>
-    <tr><td>Ремонт и дизайн</td><td>900 000</td><td>32%</td></tr>
-    <tr><td>Оборудование (кофемашины, кухня)</td><td>780 000</td><td>28%</td></tr>
-    <tr><td>Мебель и декор</td><td>320 000</td><td>11%</td></tr>
-    <tr><td>Депозит по аренде (3 мес.)</td><td>360 000</td><td>13%</td></tr>
-    <tr><td>Разрешения, регистрация</td><td>120 000</td><td>4%</td></tr>
-    <tr><td>Оборотный капитал (2 мес.)</td><td>320 000</td><td>11%</td></tr>
-    <tr><td><b>ИТОГО</b></td><td><b>2 800 000</b></td><td><b>100%</b></td></tr>
-  </table>
-
-  <h2>4. Финансовая модель — план продаж на 12 месяцев</h2>
-  <table>
-    <tr><th>Месяц</th><th>Посетителей/день</th><th>Выручка (₽)</th><th>Расходы (₽)</th><th>Прибыль (₽)</th></tr>
-    <tr><td>1</td><td>55</td><td>742 500</td><td>880 000</td><td class="negative">−137 500</td></tr>
-    <tr><td>2</td><td>70</td><td>945 000</td><td>820 000</td><td class="positive">+125 000</td></tr>
-    <tr><td>3</td><td>82</td><td>1 107 000</td><td>810 000</td><td class="positive">+297 000</td></tr>
-    <tr><td>4</td><td>90</td><td>1 215 000</td><td>815 000</td><td class="positive">+400 000</td></tr>
-    <tr><td>5</td><td>95</td><td>1 282 500</td><td>820 000</td><td class="positive">+462 500</td></tr>
-    <tr><td>6</td><td>100</td><td>1 350 000</td><td>825 000</td><td class="positive">+525 000</td></tr>
-    <tr><td>7–12</td><td>105–115</td><td>от 1 417 500</td><td>от 835 000</td><td class="positive">от +582 500</td></tr>
-  </table>
-
-  <h2>5. Ежемесячные операционные расходы</h2>
-  <table>
-    <tr><th>Статья</th><th>Сумма (₽/мес)</th></tr>
-    <tr><td>Аренда (85 м² × СВАО)</td><td>120 000</td></tr>
-    <tr><td>ФОТ (8 чел.)</td><td>320 000</td></tr>
-    <tr><td>Закупка продуктов (себестоимость ~32%)</td><td>230 000</td></tr>
-    <tr><td>Коммунальные услуги</td><td>45 000</td></tr>
-    <tr><td>Маркетинг и реклама</td><td>40 000</td></tr>
-    <tr><td>Прочие расходы</td><td>65 000</td></tr>
-    <tr><td><b>ИТОГО</b></td><td><b>820 000</b></td></tr>
-  </table>
-
-  <h2>6. Точка безубыточности</h2>
-  <div class="bep-box">
-    <div class="bep-num">64 чел./день</div>
-    <div class="bep-label">Точка безубыточности</div>
-    <div class="bep-sub">При среднем чеке 450 ₽ и операционных расходах 820 000 ₽/мес</div>
+  <div class="footer-bottom">
+    <span>© 2026 OM-Digital Company</span>
+    <span>
+      <span class="footer-dot">●</span>
+      Москва
+      <span class="footer-dot">●</span>
+      Работаем 9:00–21:00 МСК
+    </span>
   </div>
-  <p>Выход на безубыточность — <b>2-й месяц работы</b> (прогноз: 70 посетителей/день). Полный возврат инвестиций — <b>18-й месяц</b> при сохранении плановых показателей.</p>
-
-  <h2>7. Риски и меры снижения</h2>
-  <div class="section-box">
-    <h3>Ключевые риски проекта</h3>
-    <ul>
-      <li><b>Низкий трафик в первые месяцы</b> → активный запуск: геотаргет ВКонтакте + листовки в радиусе 500 м</li>
-      <li><b>Рост аренды после 1-го года</b> → фиксация ставки на 2 года в договоре</li>
-      <li><b>Кадровая текучка</b> → KPI-мотивация бариста, обучение за счёт компании</li>
-      <li><b>Сезонность (–20% летом)</b> → летняя терраса, холодный кофе, сезонное меню</li>
-    </ul>
-  </div>
-
-  <div class="cta-block">
-    <h3>Нужен бизнес-план для вашего проекта?</h3>
-    <p>Разрабатываем полноценные бизнес-планы с финансовой моделью. От 3 500 ₽, срок — 3 рабочих дня.</p>
-    <a href="/#contacts" class="cta-btn">Заказать бизнес-план →</a>
-  </div>
-</div>
-
+</footer>
 </body>
 </html>
