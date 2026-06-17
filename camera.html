@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Фото документа</title>
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: #0a0a0a; color: #fff; font-family: sans-serif;
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; min-height: 100vh; gap: 18px; padding: 24px;
+    }
+    h2 { font-size: 22px; font-weight: 700; text-align: center; }
+    p.hint { font-size: 14px; color: #aaa; text-align: center; line-height: 1.6; }
+    .btn {
+      background: #00d4ff; color: #000; border: none;
+      padding: 16px 0; border-radius: 12px; font-size: 18px;
+      font-weight: 700; cursor: pointer; width: 100%; max-width: 300px;
+    }
+    .btn:active { opacity: 0.8; }
+    .btn-ghost {
+      background: transparent; color: #aaa; border: 1px solid #333;
+      padding: 12px 0; border-radius: 10px; font-size: 15px;
+      cursor: pointer; width: 100%; max-width: 300px;
+    }
+    #preview {
+      max-width: 280px; max-height: 220px; border-radius: 10px;
+      object-fit: contain; display: none; border: 1px solid #222;
+    }
+    #status { font-size: 14px; color: #00d4ff; text-align: center; line-height: 1.5; }
+    .ok { color: #4cff91; }
+    .warn { color: #f0c040; }
+  </style>
+</head>
+<body>
+  <h2>📄 Сфотографируйте документ</h2>
+  <p class="hint">Направьте камеру на документ.<br>Убедитесь что текст хорошо виден.</p>
+
+  <input type="file" accept="image/*" capture="environment" id="cam" style="display:none">
+  <img id="preview" alt="preview">
+
+  <button class="btn" id="btnCamera" onclick="document.getElementById('cam').click()">
+    📷 Открыть камеру
+  </button>
+
+  <p id="status"></p>
+
+  <button class="btn-ghost" id="btnClose" style="display:none" onclick="sendManual()">
+    Закрыть и отправить фото через 📎
+  </button>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.ready();
+    tg.expand();
+
+    document.getElementById('cam').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const st = document.getElementById('status');
+      const btnCam = document.getElementById('btnCamera');
+      const btnClose = document.getElementById('btnClose');
+      const prev = document.getElementById('preview');
+
+      st.textContent = 'Обрабатываю фото...';
+      btnCam.style.display = 'none';
+
+      const reader = new FileReader();
+      reader.onload = function(ev) {
+        const img = new Image();
+        img.onload = function() {
+          // Show preview
+          prev.src = ev.target.result;
+          prev.style.display = 'block';
+
+          // Compress in steps to fit Telegram sendData limit (~4000 chars)
+          const canvas = document.createElement('canvas');
+          let w = img.width, h = img.height;
+          const MAX_W = 320;
+          if (w > MAX_W) { h = Math.round(h * MAX_W / w); w = MAX_W; }
+          canvas.width = w; canvas.height = h;
+
+          let b64 = '';
+          let q = 0.6;
+          let attempts = 0;
+
+          while (attempts < 8) {
+            canvas.getContext('2d').drawImage(img, 0, 0, canvas.width, canvas.height);
+            b64 = canvas.toDataURL('image/jpeg', q);
+            if (b64.length <= 3900) break;
+            // Reduce size and quality
+            q = Math.max(0.1, q - 0.12);
+            canvas.width = Math.max(80, Math.round(canvas.width * 0.75));
+            canvas.height = Math.max(80, Math.round(canvas.height * 0.75));
+            attempts++;
+          }
+
+          if (b64.length <= 3900) {
+            st.innerHTML = '<span class="ok">✅ Отправляю на анализ...</span>';
+            try {
+              tg.sendData(JSON.stringify({ type: 'photo', data: b64 }));
+              st.innerHTML = '<span class="ok">✅ Фото отправлено! Ждите анализ в чате.</span>';
+            } catch(err) {
+              st.innerHTML = '<span class="warn">⚠️ Отправьте фото через 📎 в чате</span>';
+              btnClose.style.display = 'block';
+            }
+          } else {
+            // Too large even after compression — guide to manual
+            st.innerHTML = '<span class="warn">📸 Фото сделано!<br>Нажмите кнопку ниже, вернитесь в чат<br>и отправьте фото через 📎</span>';
+            btnClose.style.display = 'block';
+          }
+        };
+        img.src = ev.target.result;
+      };
+      reader.readAsDataURL(file);
+    });
+
+    function sendManual() {
+      tg.sendData(JSON.stringify({ type: 'manual' }));
+    }
+  </script>
+</body>
+</html>
