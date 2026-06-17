@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Сценарий чатбота — Салон красоты Lilac | OM-Digital</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; background: #fff; }
+.page-header {
+  background: #1F3A6E; padding: 16px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.back-btn { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14px; border: 1px solid rgba(255,255,255,0.3); padding: 7px 16px; border-radius: 6px; }
+.back-btn:hover { background: rgba(255,255,255,0.1); }
+.logo { color: white; font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+.logo span { color: #4A7BC4; }
+.content { max-width: 900px; margin: 0 auto; padding: 48px 20px 60px; }
+.badge { display: inline-block; background: #e8f0e8; color: #1F3A6E; font-size: 11px; letter-spacing: 2px; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; text-transform: uppercase; }
+h1 { font-size: 32px; font-weight: 700; color: #1F3A6E; line-height: 1.3; margin-bottom: 12px; }
+.meta { font-size: 13px; color: #999; margin-bottom: 32px; }
+.meta span { margin-right: 20px; }
+h2 { font-size: 20px; font-weight: 700; color: #1F3A6E; margin: 36px 0 16px; }
+p { font-size: 15px; color: #444; line-height: 1.8; margin-bottom: 16px; }
+
+/* Схема диалога */
+.flow-chart { background: #f8f9fb; border-radius: 12px; padding: 28px; margin: 24px 0; }
+.flow-chart h3 { font-size: 16px; font-weight: 700; color: #1F3A6E; margin-bottom: 20px; text-align: center; }
+.flow-row { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 8px; }
+.flow-node {
+  background: #1F3A6E; color: white; font-size: 12px; padding: 8px 14px; border-radius: 20px; text-align: center;
+}
+.flow-node.branch { background: #4A7BC4; }
+.flow-node.end { background: #2d7a4f; }
+.flow-arrow { text-align: center; color: #4A7BC4; font-size: 20px; margin: 4px 0; }
+
+/* Диалог-пузыри */
+.dialog-block { margin: 24px 0; }
+.dialog-block h3 { font-size: 16px; font-weight: 700; color: #1F3A6E; margin-bottom: 14px; padding-left: 12px; border-left: 3px solid #4A7BC4; }
+.bubble { display: flex; margin-bottom: 12px; }
+.bubble.bot { flex-direction: row; }
+.bubble.user { flex-direction: row-reverse; }
+.avatar { width: 36px; height: 36px; border-radius: 50%; flex-shrink: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; font-weight: 700; }
+.avatar.bot-av { background: #1F3A6E; color: white; margin-right: 10px; }
+.avatar.user-av { background: #e0e4ea; color: #1F3A6E; margin-left: 10px; }
+.msg { max-width: 75%; padding: 11px 15px; border-radius: 12px; font-size: 14px; line-height: 1.6; }
+.msg.bot-msg { background: #f0f3fa; border-top-left-radius: 3px; color: #333; }
+.msg.user-msg { background: #1F3A6E; color: white; border-top-right-radius: 3px; }
+.btns-row { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0 6px 46px; }
+.btn-chip { background: white; border: 1.5px solid #1F3A6E; color: #1F3A6E; font-size: 12px; padding: 5px 12px; border-radius: 16px; cursor: pointer; }
+
+/* Таблица веток */
+table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+th { background: #1F3A6E; color: white; padding: 11px 16px; text-align: left; }
+td { padding: 10px 16px; border-bottom: 1px solid #e8edf5; color: #444; }
+tr:nth-child(even) td { background: #f8f9fb; }
+
+.cta-block { background: linear-gradient(135deg, #1F3A6E, #2c5282); border-radius: 12px; padding: 36px; text-align: center; margin-top: 60px; color: white; }
+.cta-block h3 { font-size: 22px; margin-bottom: 10px; }
+.cta-block p { color: rgba(255,255,255,0.8); margin-bottom: 24px; font-size: 15px; }
+.cta-btn { display: inline-block; background: white; color: #1F3A6E; padding: 13px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; }
+
+@media (max-width: 600px) {
+  .page-header { padding: 14px 16px; }
+  .content { padding: 28px 14px 48px; }
+  h1 { font-size: 22px; }
+  .msg { max-width: 88%; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <a href="/" class="back-btn">← Вернуться на сайт</a>
+  <div class="logo">OM-<span>DIGITAL</span></div>
+</div>
+
+<div class="content">
+  <div class="badge">AI Studio · Сценарий чатбота</div>
+  <h1>Telegram-бот для салона красоты Lilac: 12 веток диалога</h1>
+  <div class="meta">
+    <span>Платформа: Telegram</span>
+    <span>Веток: 12</span>
+    <span>Услуги: стрижка, маникюр, брови, ресницы</span>
+  </div>
+
+  <p>Ниже представлен реальный сценарий чатбота для салона красоты. Бот берёт на себя запись клиентов в Telegram 24/7 — без участия администратора. Среднее время записи: 3–4 минуты.</p>
+
+  <h2>Схема диалога (карта веток)</h2>
+  <div class="flow-chart">
+    <h3>Структура сценария — 12 веток</h3>
+    <div class="flow-row"><div class="flow-node">🤖 СТАРТ / /start</div></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row"><div class="flow-node">Выбор услуги</div></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row">
+      <div class="flow-node branch">💇 Стрижка</div>
+      <div class="flow-node branch">💅 Маникюр</div>
+      <div class="flow-node branch">🪮 Брови</div>
+      <div class="flow-node branch">👁️ Ресницы</div>
+    </div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row"><div class="flow-node">Выбор мастера</div></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row"><div class="flow-node">Выбор даты</div></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row"><div class="flow-node">Выбор времени</div></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row"><div class="flow-node">Контактные данные</div></div>
+    <div class="flow-arrow">↓</div>
+    <div class="flow-row">
+      <div class="flow-node end">✅ Подтверждение</div>
+      <div class="flow-node branch">🔄 Изменить запись</div>
+      <div class="flow-node branch">❌ Отменить</div>
+    </div>
+  </div>
+
+  <h2>Таблица веток и переходов</h2>
+  <table>
+    <tr>
+      <th>#</th><th>Ветка</th><th>Сообщение бота</th><th>Кнопки / переход</th>
+    </tr>
+    <tr><td>1</td><td>Старт</td><td>Приветствие + меню</td><td>→ Выбор услуги</td></tr>
+    <tr><td>2</td><td>Стрижка</td><td>Женская / мужская / детская</td><td>→ Выбор мастера</td></tr>
+    <tr><td>3</td><td>Маникюр</td><td>Классический / гель-лак / наращивание</td><td>→ Выбор мастера</td></tr>
+    <tr><td>4</td><td>Брови</td><td>Коррекция / архитектура / окрашивание</td><td>→ Выбор мастера</td></tr>
+    <tr><td>5</td><td>Ресницы</td><td>Классика / 2D / объём / голливуд</td><td>→ Выбор мастера</td></tr>
+    <tr><td>6</td><td>Мастер</td><td>Список свободных мастеров с фото</td><td>→ Выбор даты</td></tr>
+    <tr><td>7</td><td>Дата</td><td>Календарь на 14 дней</td><td>→ Выбор времени</td></tr>
+    <tr><td>8</td><td>Время</td><td>Свободные слоты на выбранный день</td><td>→ Контакты</td></tr>
+    <tr><td>9</td><td>Контакт</td><td>Запрос имени и телефона</td><td>→ Подтверждение</td></tr>
+    <tr><td>10</td><td>Подтверждение</td><td>Итог записи + «Всё верно?»</td><td>Да → ✅ / Нет → 1</td></tr>
+    <tr><td>11</td><td>Изменить</td><td>Что изменить: дату / мастера / услугу?</td><td>→ соответств. ветку</td></tr>
+    <tr><td>12</td><td>Отмена</td><td>Подтверждение отмены + предложение перенести</td><td>Отменить / Перенести</td></tr>
+  </table>
+
+  <h2>Реальные тексты сообщений бота</h2>
+
+  <div class="dialog-block">
+    <h3>Ветка 1 — Приветствие</h3>
+    <div class="bubble bot">
+      <div class="avatar bot-av">💜</div>
+      <div class="msg bot-msg">Привет! Я бот салона красоты <b>Lilac</b> 💜<br><br>Помогу записаться к мастеру прямо здесь — это займёт 3 минуты. Какая услуга вас интересует?</div>
+    </div>
+    <div class="btns-row">
+      <div class="btn-chip">💇 Стрижка</div>
+      <div class="btn-chip">💅 Маникюр</div>
+      <div class="btn-chip">🪮 Брови</div>
+      <div class="btn-chip">👁️ Ресницы</div>
+    </div>
+  </div>
+
+  <div class="dialog-block">
+    <h3>Ветка 2 — Выбор вида стрижки</h3>
+    <div class="bubble user">
+      <div class="avatar user-av">👤</div>
+      <div class="msg user-msg">💇 Стрижка</div>
+    </div>
+    <div class="bubble bot">
+      <div class="avatar bot-av">💜</div>
+      <div class="msg bot-msg">Отлично! Какой вид стрижки вас интересует?</div>
+    </div>
+    <div class="btns-row">
+      <div class="btn-chip">Женская</div>
+      <div class="btn-chip">Мужская</div>
+      <div class="btn-chip">Детская</div>
+    </div>
+  </div>
+
+  <div class="dialog-block">
+    <h3>Ветка 6 — Выбор мастера</h3>
+    <div class="bubble bot">
+      <div class="avatar bot-av">💜</div>
+      <div class="msg bot-msg">Выберите мастера 👇<br><br><b>Анна С.</b> — стаж 8 лет, специалист по окрашиванию ⭐ 4.9<br><b>Марина К.</b> — стаж 5 лет, стрижки и укладки ⭐ 4.8<br><b>Без предпочтений</b> — запишу к свободному мастеру</div>
+    </div>
+    <div class="btns-row">
+      <div class="btn-chip">Анна С.</div>
+      <div class="btn-chip">Марина К.</div>
+      <div class="btn-chip">Без предпочтений</div>
+    </div>
+  </div>
+
+  <div class="dialog-block">
+    <h3>Ветка 10 — Подтверждение записи</h3>
+    <div class="bubble bot">
+      <div class="avatar bot-av">💜</div>
+      <div class="msg bot-msg">✅ <b>Проверьте вашу запись:</b><br><br>📋 Услуга: Стрижка женская<br>👩 Мастер: Анна С.<br>📅 Дата: пятница, 20 июня<br>⏰ Время: 14:00<br>👤 Имя: Мария<br>📞 Телефон: +7 905 123-45-67<br><br>Всё верно?</div>
+    </div>
+    <div class="btns-row">
+      <div class="btn-chip">✅ Да, записаться!</div>
+      <div class="btn-chip">✏️ Изменить</div>
+      <div class="btn-chip">❌ Отменить</div>
+    </div>
+  </div>
+
+  <div class="dialog-block">
+    <h3>После подтверждения — финальное сообщение</h3>
+    <div class="bubble bot">
+      <div class="avatar bot-av">💜</div>
+      <div class="msg bot-msg">🎉 <b>Вы записаны!</b><br><br>Ждём вас <b>20 июня в 14:00</b><br>Мастер: Анна С.<br>📍 ул. Ленина, 42, 2 этаж<br><br>За час до визита пришлём напоминание. До встречи! 💜</div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Нужен такой сценарий для вашего бизнеса?</h3>
+    <p>Разработаем сценарий чатбота под ваши услуги и аудиторию. От 2 000 ₽ за 10 веток.</p>
+    <a href="/#contacts" class="cta-btn">Заказать сценарий →</a>
+  </div>
+</div>
+
+</body>
+</html>

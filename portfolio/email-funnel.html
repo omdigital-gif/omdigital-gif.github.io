@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email-воронка для SaaS — 7 писем | OM-Digital</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; background: #fff; }
+.page-header { background: #1F3A6E; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; }
+.back-btn { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14px; border: 1px solid rgba(255,255,255,0.3); padding: 7px 16px; border-radius: 6px; }
+.back-btn:hover { background: rgba(255,255,255,0.1); }
+.logo { color: white; font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+.logo span { color: #4A7BC4; }
+.content { max-width: 900px; margin: 0 auto; padding: 48px 20px 60px; }
+.badge { display: inline-block; background: #e8f5f0; color: #1F3A6E; font-size: 11px; letter-spacing: 2px; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; text-transform: uppercase; }
+h1 { font-size: 30px; font-weight: 700; color: #1F3A6E; line-height: 1.3; margin-bottom: 12px; }
+.meta { font-size: 13px; color: #999; margin-bottom: 32px; }
+.meta span { margin-right: 20px; }
+h2 { font-size: 20px; font-weight: 700; color: #1F3A6E; margin: 36px 0 14px; }
+p { font-size: 15px; color: #444; line-height: 1.8; margin-bottom: 14px; }
+
+/* Статистика */
+.stats-row { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin: 24px 0; }
+.stat-box { background: #f8f9fb; border: 1px solid #e0e4ea; border-radius: 10px; padding: 18px; text-align: center; }
+.stat-num { font-size: 28px; font-weight: 700; color: #1F3A6E; }
+.stat-label { font-size: 12px; color: #999; margin-top: 4px; }
+
+/* Таблица писем */
+table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+th { background: #1F3A6E; color: white; padding: 11px 14px; text-align: left; }
+td { padding: 10px 14px; border-bottom: 1px solid #e8edf5; color: #444; vertical-align: top; }
+tr:nth-child(even) td { background: #f8f9fb; }
+
+/* Email-превью */
+.email-preview { background: #fff; border: 1px solid #e0e4ea; border-radius: 10px; margin-bottom: 24px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.email-header { background: #f8f9fb; padding: 14px 20px; border-bottom: 1px solid #e0e4ea; }
+.email-from { font-size: 12px; color: #999; margin-bottom: 4px; }
+.email-subject { font-size: 15px; font-weight: 700; color: #1F3A6E; }
+.email-meta { font-size: 11px; color: #bbb; margin-top: 4px; }
+.email-body { padding: 24px; }
+.email-body p { font-size: 14px; color: #333; }
+.email-stats-row { display: flex; gap: 24px; padding: 12px 20px; background: #f8f9fb; border-top: 1px solid #e0e4ea; }
+.email-stat { font-size: 12px; color: #666; }
+.email-stat strong { color: #1F3A6E; }
+.email-cta { display: inline-block; background: #1F3A6E; color: white; padding: 10px 22px; border-radius: 6px; font-size: 14px; font-weight: 700; text-decoration: none; margin-top: 16px; }
+
+.cta-block { background: linear-gradient(135deg, #1F3A6E, #2c5282); border-radius: 12px; padding: 36px; text-align: center; margin-top: 60px; color: white; }
+.cta-block h3 { font-size: 22px; margin-bottom: 10px; }
+.cta-block p { color: rgba(255,255,255,0.8); margin-bottom: 24px; font-size: 15px; }
+.cta-btn { display: inline-block; background: white; color: #1F3A6E; padding: 13px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; }
+
+@media (max-width: 600px) {
+  .page-header { padding: 14px 16px; }
+  .content { padding: 28px 14px 48px; }
+  h1 { font-size: 22px; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <a href="/" class="back-btn">← Вернуться на сайт</a>
+  <div class="logo">OM-<span>DIGITAL</span></div>
+</div>
+
+<div class="content">
+  <div class="badge">Маркетинг · Email-воронка</div>
+  <h1>Email-воронка для SaaS-сервиса аналитики: 7 писем, 30 дней</h1>
+  <div class="meta">
+    <span>База: 3 200 подписчиков</span>
+    <span>Период отправки: 30 дней</span>
+    <span>Инструмент: Unisender</span>
+  </div>
+
+  <div class="stats-row">
+    <div class="stat-box"><div class="stat-num">42%</div><div class="stat-label">Средний open rate</div></div>
+    <div class="stat-box"><div class="stat-num">11%</div><div class="stat-label">CTR (клики)</div></div>
+    <div class="stat-box"><div class="stat-num">8.4%</div><div class="stat-label">Конверсия в подписку</div></div>
+    <div class="stat-box"><div class="stat-num">268</div><div class="stat-label">Новых платных польз.</div></div>
+  </div>
+
+  <h2>Структура воронки — 7 писем</h2>
+  <table>
+    <tr><th>#</th><th>День</th><th>Письмо</th><th>Open Rate</th><th>CTR</th></tr>
+    <tr><td>1</td><td>День 0</td><td>Добро пожаловать + первый шаг</td><td>58%</td><td>22%</td></tr>
+    <tr><td>2</td><td>День 2</td><td>Главная функция — как она работает</td><td>47%</td><td>15%</td></tr>
+    <tr><td>3</td><td>День 5</td><td>Кейс: как компания Х сэкономила 40 часов</td><td>44%</td><td>13%</td></tr>
+    <tr><td>4</td><td>День 9</td><td>Часто задаваемые вопросы + скрытые функции</td><td>38%</td><td>9%</td></tr>
+    <tr><td>5</td><td>День 14</td><td>Сравнение тарифов + персональное предложение</td><td>41%</td><td>14%</td></tr>
+    <tr><td>6</td><td>День 22</td><td>Дедлайн: скидка заканчивается через 3 дня</td><td>45%</td><td>16%</td></tr>
+    <tr><td>7</td><td>День 30</td><td>Последний шанс + альтернативный оффер</td><td>36%</td><td>8%</td></tr>
+  </table>
+
+  <h2>Письмо 1 — Добро пожаловать</h2>
+  <div class="email-preview">
+    <div class="email-header">
+      <div class="email-from">От: Максим, команда DataLens &lt;hello@datalens.ru&gt;</div>
+      <div class="email-subject">Ваш доступ к DataLens готов — с чего начать? 🚀</div>
+      <div class="email-meta">День 0 — отправляется сразу после регистрации</div>
+    </div>
+    <div class="email-body">
+      <p>Привет!</p>
+      <br>
+      <p>Рад видеть вас в DataLens — сервисе, который превращает данные в решения.</p>
+      <br>
+      <p>За последние 3 года мы помогли 1 400 компаниям сократить время на отчётность в среднем на 4 часа в неделю. Хочу, чтобы это же случилось и у вас.</p>
+      <br>
+      <p><strong>Ваш первый шаг — займёт 7 минут:</strong></p>
+      <br>
+      <p>1. Подключите источник данных (Excel, Google Sheets, 1С — любой)</p>
+      <p>2. Выберите один из 12 готовых шаблонов дашборда</p>
+      <p>3. Посмотрите на свои данные по-новому</p>
+      <br>
+      <p>Если застрянете — напишите в чат прямо из личного кабинета. Отвечаем за 15 минут в рабочее время.</p>
+      <br>
+      <p>До встречи внутри 👋<br>Максим, основатель DataLens</p>
+      <a href="#" class="email-cta">Открыть DataLens →</a>
+    </div>
+    <div class="email-stats-row">
+      <div class="email-stat">Open Rate: <strong>58%</strong></div>
+      <div class="email-stat">CTR: <strong>22%</strong></div>
+      <div class="email-stat">Отписок: <strong>0.3%</strong></div>
+    </div>
+  </div>
+
+  <h2>Письмо 2 — Главная функция</h2>
+  <div class="email-preview">
+    <div class="email-header">
+      <div class="email-from">От: Максим, команда DataLens &lt;hello@datalens.ru&gt;</div>
+      <div class="email-subject">Одна функция, которую используют все наши топ-клиенты</div>
+      <div class="email-meta">День 2 — отправляется через 48 часов после регистрации</div>
+    </div>
+    <div class="email-body">
+      <p>Привет!</p>
+      <br>
+      <p>Два дня назад вы зарегистрировались в DataLens. Хочу рассказать об одной функции, о которой большинство пользователей узнают слишком поздно.</p>
+      <br>
+      <p><strong>Автоотчёт по расписанию.</strong></p>
+      <br>
+      <p>Настроив один раз, каждый понедельник в 9:00 ваш отчёт сам приходит на почту — вам, руководителю, инвестору, кому угодно. Без ручного экспорта. Без «подождите, формирую».</p>
+      <br>
+      <p>Наши клиенты, которые включили эту функцию, открывают DataLens в 3 раза чаще. Не потому что им нравится интерфейс — а потому что видят ценность каждую неделю.</p>
+      <br>
+      <p><strong>Как настроить — 2 клика:</strong><br>
+      Дашборд → три точки → «Расписание отправки» → выбрать день и почту.</p>
+      <br>
+      <p>Попробуйте прямо сейчас.<br>Максим</p>
+      <a href="#" class="email-cta">Настроить автоотчёт →</a>
+    </div>
+    <div class="email-stats-row">
+      <div class="email-stat">Open Rate: <strong>47%</strong></div>
+      <div class="email-stat">CTR: <strong>15%</strong></div>
+      <div class="email-stat">Отписок: <strong>0.5%</strong></div>
+    </div>
+  </div>
+
+  <h2>Письмо 3 — Кейс клиента</h2>
+  <div class="email-preview">
+    <div class="email-header">
+      <div class="email-from">От: Максим, команда DataLens &lt;hello@datalens.ru&gt;</div>
+      <div class="email-subject">«Мы вернули 40 часов в месяц» — история Ирины из "АгроМаркет"</div>
+      <div class="email-meta">День 5 — доверие через историю реального клиента</div>
+    </div>
+    <div class="email-body">
+      <p>Привет!</p>
+      <br>
+      <p>Ирина Соколова — финансовый директор «АгроМаркет», сети из 14 магазинов в Подмосковье.</p>
+      <br>
+      <p>До DataLens её команда тратила 10 часов в неделю на сведение отчётов из трёх систем: 1С, Excel-таблиц и выгрузок из CRM. Каждый понедельник — стресс, ошибки, переработки.</p>
+      <br>
+      <p>Через 2 недели после подключения DataLens Ирина написала нам:</p>
+      <br>
+      <p><em>«Я не верила, что это реально. Теперь еженедельный отчёт готов в пятницу вечером автоматически. Мы вернули 40 часов в месяц — это целая рабочая неделя.»</em></p>
+      <br>
+      <p>У Ирины стандартный тариф «Бизнес» — 2 490 ₽/мес. Один нормо-час её сотрудника стоит дороже.</p>
+      <br>
+      <p>Хотите так же? Напишите в чат — подберём настройки под вашу компанию.</p>
+      <a href="#" class="email-cta">Попробовать бесплатно →</a>
+    </div>
+    <div class="email-stats-row">
+      <div class="email-stat">Open Rate: <strong>44%</strong></div>
+      <div class="email-stat">CTR: <strong>13%</strong></div>
+      <div class="email-stat">Отписок: <strong>0.4%</strong></div>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Нужна email-воронка для вашего продукта?</h3>
+    <p>Пишем серии писем с историями, кейсами и триггерными офферами. 7 писем — от 2 500 ₽.</p>
+    <a href="/#contacts" class="cta-btn">Заказать email-воронку →</a>
+  </div>
+</div>
+
+</body>
+</html>

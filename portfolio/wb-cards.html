@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Карточки товаров Wildberries — Примеры | OM-Digital</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; background: #fff; }
+.page-header { background: #1F3A6E; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; }
+.back-btn { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14px; border: 1px solid rgba(255,255,255,0.3); padding: 7px 16px; border-radius: 6px; }
+.back-btn:hover { background: rgba(255,255,255,0.1); }
+.logo { color: white; font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+.logo span { color: #4A7BC4; }
+.content { max-width: 900px; margin: 0 auto; padding: 48px 20px 60px; }
+.badge { display: inline-block; background: #e8ecf5; color: #1F3A6E; font-size: 11px; letter-spacing: 2px; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; text-transform: uppercase; }
+h1 { font-size: 30px; font-weight: 700; color: #1F3A6E; line-height: 1.3; margin-bottom: 12px; }
+.meta { font-size: 13px; color: #999; margin-bottom: 32px; }
+.meta span { margin-right: 20px; }
+
+.card-block { background: #f8f9fb; border: 1px solid #e0e4ea; border-radius: 12px; margin-bottom: 40px; overflow: hidden; }
+.card-header { background: #1F3A6E; padding: 16px 24px; display: flex; align-items: center; gap: 14px; }
+.card-icon { font-size: 28px; }
+.card-header-text { color: white; }
+.card-header-text .card-num { font-size: 11px; letter-spacing: 2px; color: rgba(255,255,255,0.6); margin-bottom: 2px; }
+.card-header-text .card-name { font-size: 16px; font-weight: 700; }
+.card-body { padding: 24px; }
+
+.keys-row { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 20px; }
+.key-tag { background: #e8edf5; color: #1F3A6E; font-size: 12px; padding: 4px 12px; border-radius: 16px; }
+
+.label { font-size: 11px; letter-spacing: 1px; color: #4A7BC4; text-transform: uppercase; font-weight: 700; margin-bottom: 8px; }
+.card-title { font-size: 17px; font-weight: 700; color: #222; margin-bottom: 16px; line-height: 1.4; }
+.card-desc { font-size: 14px; color: #444; line-height: 1.8; margin-bottom: 20px; }
+.bullets { list-style: none; margin: 0 0 0 0; }
+.bullets li { font-size: 14px; color: #444; line-height: 1.7; padding: 6px 0; border-bottom: 1px solid #f0f2f5; display: flex; align-items: flex-start; gap: 8px; }
+.bullets li::before { content: "✓"; color: #4A7BC4; font-weight: 700; flex-shrink: 0; }
+.bullets li:last-child { border-bottom: none; }
+
+.cta-block { background: linear-gradient(135deg, #1F3A6E, #2c5282); border-radius: 12px; padding: 36px; text-align: center; margin-top: 20px; color: white; }
+.cta-block h3 { font-size: 22px; margin-bottom: 10px; }
+.cta-block p { color: rgba(255,255,255,0.8); margin-bottom: 24px; font-size: 15px; }
+.cta-btn { display: inline-block; background: white; color: #1F3A6E; padding: 13px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; }
+
+@media (max-width: 600px) {
+  .page-header { padding: 14px 16px; }
+  .content { padding: 28px 14px 48px; }
+  h1 { font-size: 22px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <a href="/" class="back-btn">← Вернуться на сайт</a>
+  <div class="logo">OM-<span>DIGITAL</span></div>
+</div>
+
+<div class="content">
+  <div class="badge">Маркетинг · Карточки Wildberries</div>
+  <h1>Карточки товаров для Wildberries: 3 примера</h1>
+  <div class="meta">
+    <span>Объём: 1 200–1 500 знаков каждая</span>
+    <span>SEO: ключи в тексте органично</span>
+    <span>Буллиты: 5–6 под каждый товар</span>
+  </div>
+
+  <!-- Карточка 1 -->
+  <div class="card-block">
+    <div class="card-header">
+      <div class="card-icon">🌡️</div>
+      <div class="card-header-text">
+        <div class="card-num">КАРТОЧКА 01</div>
+        <div class="card-name">Термос ThermoMax Pro 1L</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="label">Ключевые слова</div>
+      <div class="keys-row">
+        <div class="key-tag">термос 1 литр</div>
+        <div class="key-tag">термос для туризма</div>
+        <div class="key-tag">термос с крышкой-кружкой</div>
+        <div class="key-tag">термос ThermoMax</div>
+        <div class="key-tag">термос нержавейка</div>
+        <div class="key-tag">термос для чая</div>
+      </div>
+
+      <div class="label">Название товара</div>
+      <div class="card-title">Термос ThermoMax Pro 1L — нержавеющая сталь, крышка-кружка, 24 часа тепла</div>
+
+      <div class="label">Описание</div>
+      <div class="card-desc">
+        Термос ThermoMax Pro объёмом 1 литр создан для тех, кто не хочет жертвовать горячим чаем на природе, в офисе или в дороге. Двойные стенки из нержавеющей стали 304-й серии создают вакуумную прослойку — напиток остаётся горячим до 24 часов, холодным — до 36 часов.
+        <br><br>
+        Широкое горло Ø 5,5 см позволяет добавлять лёд целыми кусками и легко промывать термос. Крышка-кружка объёмом 200 мл открывается одной рукой — достаточно нажать на кнопку. Корпус с матовым покрытием не скользит в руках и не нагревается снаружи, даже когда внутри кипяток.
+        <br><br>
+        Термос ThermoMax Pro выдержит любые условия: подходит для туризма, рыбалки, пикников и ежедневных поездок на работу. Объём 1 литр — оптимальный для семьи или рабочей группы из 3–4 человек. Гарантия производителя — 2 года.
+      </div>
+
+      <div class="label">Ключевые преимущества</div>
+      <ul class="bullets">
+        <li>Сохраняет тепло 24 часа — проверено при −20°C</li>
+        <li>Крышка-кружка 200 мл — не нужна отдельная посуда</li>
+        <li>Широкое горло Ø 5,5 см — легко мыть и добавлять лёд</li>
+        <li>Нержавейка 304 — без запаха, без примесей, безопасно для пищи</li>
+        <li>Матовый корпус не скользит и не царапается</li>
+        <li>Объём 1 л — хватит на всю семью в походе</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Карточка 2 -->
+  <div class="card-block">
+    <div class="card-header">
+      <div class="card-icon">🔪</div>
+      <div class="card-header-text">
+        <div class="card-num">КАРТОЧКА 02</div>
+        <div class="card-name">Набор кухонных ножей — 6 предметов</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="label">Ключевые слова</div>
+      <div class="keys-row">
+        <div class="key-tag">набор ножей кухонных</div>
+        <div class="key-tag">ножи кухонные набор 6 предметов</div>
+        <div class="key-tag">нож шеф-повара</div>
+        <div class="key-tag">ножи на подставке</div>
+        <div class="key-tag">ножи нержавеющая сталь</div>
+      </div>
+
+      <div class="label">Название товара</div>
+      <div class="card-title">Набор кухонных ножей 6 предметов — нержавеющая сталь, эргономичные рукоятки, подставка в комплекте</div>
+
+      <div class="label">Описание</div>
+      <div class="card-desc">
+        Профессиональный набор кухонных ножей из 6 предметов — всё необходимое для домашней кулинарии в одном комплекте. Лезвия изготовлены из высокоуглеродистой нержавеющей стали X30Cr13: твёрдость HRC 55–57, долго держат заточку и не темнеют от кислых продуктов.
+        <br><br>
+        В наборе: шеф-нож 20 см, хлебный нож 20 см, нож для нарезки 18 см, нож для овощей 13 см, нож для очистки 9 см и универсальный нож 15 см. Рукоятки из АБС-пластика с ребром жёсткости — удобно держать в руке, не скользят даже при мокрых руках.
+        <br><br>
+        Деревянная подставка входит в комплект: ножи всегда под рукой и в безопасности. Уход простой — промыть водой и вытереть насухо. Набор подойдёт как для ежедневной готовки, так и в качестве подарка на новоселье или свадьбу.
+      </div>
+
+      <div class="label">Ключевые преимущества</div>
+      <ul class="bullets">
+        <li>6 ножей под любую задачу — от хлеба до рыбного филе</li>
+        <li>Сталь X30Cr13, HRC 57 — долго держит заточку</li>
+        <li>Деревянная подставка в комплекте — удобное хранение</li>
+        <li>Эргономичные рукоятки — не устаёт рука при длительной готовке</li>
+        <li>Универсальный подарок — стильная упаковка в комплекте</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Карточка 3 -->
+  <div class="card-block">
+    <div class="card-header">
+      <div class="card-icon">🧘</div>
+      <div class="card-header-text">
+        <div class="card-num">КАРТОЧКА 03</div>
+        <div class="card-name">Коврик для йоги FlexZone</div>
+      </div>
+    </div>
+    <div class="card-body">
+      <div class="label">Ключевые слова</div>
+      <div class="keys-row">
+        <div class="key-tag">коврик для йоги</div>
+        <div class="key-tag">коврик для фитнеса нескользящий</div>
+        <div class="key-tag">yoga mat</div>
+        <div class="key-tag">коврик для пилатеса</div>
+        <div class="key-tag">коврик спортивный 6мм</div>
+        <div class="key-tag">FlexZone коврик</div>
+      </div>
+
+      <div class="label">Название товара</div>
+      <div class="card-title">Коврик для йоги FlexZone 183×61 см, 6 мм — нескользящий TPE, с разметкой выравнивания, сумка в комплекте</div>
+
+      <div class="label">Описание</div>
+      <div class="card-desc">
+        Коврик FlexZone создан для тех, кто занимается йогой, пилатесом или фитнесом дома и в зале. Размер 183×61 см подходит для роста до 190 см — места достаточно для любой асаны. Толщина 6 мм обеспечивает амортизацию для коленей и позвоночника, при этом коврик достаточно плотный, чтобы чувствовать пол под ногами.
+        <br><br>
+        Материал TPE (термопластичный эластомер) — экологически чистый, без латекса и ПВХ, не вызывает аллергии. Двустороннее покрытие с микрорельефом надёжно держит руки и ноги в любом положении — коврик не скользит даже на паркете и гладкой плитке.
+        <br><br>
+        Разметка для выравнивания поз напечатана нетоксичной краской — помогает правильно выставить ладони и стопы без инструктора. Весит всего 900 г, скручивается в рулон за 10 секунд. Нейлоновая сумка с ремнём для переноски входит в комплект.
+      </div>
+
+      <div class="label">Ключевые преимущества</div>
+      <ul class="bullets">
+        <li>Толщина 6 мм — защищает суставы при прыжках и планках</li>
+        <li>TPE без ПВХ и латекса — безопасно, нет запаха</li>
+        <li>Разметка выравнивания — идеально для начинающих</li>
+        <li>Не скользит на любом полу — двустороннее покрытие</li>
+        <li>Сумка для переноски в комплекте — удобно в зал и на улицу</li>
+        <li>Вес 900 г — легче большинства аналогов</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="cta-block">
+    <h3>Нужны карточки для ваших товаров?</h3>
+    <p>Пишем с SEO-оптимизацией под алгоритмы WB и Ozon. От 150 ₽ за карточку, скидка от 20 штук.</p>
+    <a href="/#contacts" class="cta-btn">Заказать карточки →</a>
+  </div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Python-парсер цен WB и Ozon — Пример | OM-Digital</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Segoe UI', Arial, sans-serif; color: #222; background: #fff; }
+.page-header { background: #1F3A6E; padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; }
+.back-btn { color: rgba(255,255,255,0.85); text-decoration: none; font-size: 14px; border: 1px solid rgba(255,255,255,0.3); padding: 7px 16px; border-radius: 6px; }
+.back-btn:hover { background: rgba(255,255,255,0.1); }
+.logo { color: white; font-size: 18px; font-weight: 700; letter-spacing: 2px; }
+.logo span { color: #4A7BC4; }
+.content { max-width: 900px; margin: 0 auto; padding: 48px 20px 60px; }
+.badge { display: inline-block; background: #f5f0e8; color: #1F3A6E; font-size: 11px; letter-spacing: 2px; padding: 4px 12px; border-radius: 20px; margin-bottom: 16px; text-transform: uppercase; }
+h1 { font-size: 30px; font-weight: 700; color: #1F3A6E; line-height: 1.3; margin-bottom: 12px; }
+.meta { font-size: 13px; color: #999; margin-bottom: 32px; }
+.meta span { margin-right: 20px; }
+h2 { font-size: 20px; font-weight: 700; color: #1F3A6E; margin: 36px 0 14px; }
+p { font-size: 15px; color: #444; line-height: 1.8; margin-bottom: 14px; }
+
+/* KPI */
+.kpi-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 24px 0; }
+.kpi-box { background: #f8f9fb; border: 1px solid #e0e4ea; border-radius: 10px; padding: 18px; text-align: center; }
+.kpi-num { font-size: 28px; font-weight: 700; color: #1F3A6E; }
+.kpi-label { font-size: 12px; color: #999; margin-top: 4px; }
+
+/* Архитектура */
+.arch-block { background: #f8f9fb; border-radius: 10px; padding: 24px; margin: 24px 0; }
+.arch-block h3 { font-size: 16px; font-weight: 700; color: #1F3A6E; margin-bottom: 16px; }
+.arch-row { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; flex-wrap: wrap; }
+.arch-node { background: #1F3A6E; color: white; font-size: 12px; padding: 8px 14px; border-radius: 6px; text-align: center; min-width: 120px; }
+.arch-node.yellow { background: #d4890a; }
+.arch-node.green { background: #2d7a4f; }
+.arch-arrow { color: #4A7BC4; font-size: 18px; }
+
+/* Код */
+pre { background: #1a1f2e; border-radius: 10px; padding: 24px; overflow-x: auto; margin: 20px 0; }
+code { font-family: 'Consolas', 'Courier New', monospace; font-size: 13px; line-height: 1.7; color: #e8edf5; }
+.c-comment { color: #6b8cb0; }
+.c-keyword { color: #c97bff; }
+.c-string { color: #7ec98a; }
+.c-func { color: #5db8e8; }
+.c-num { color: #f0a050; }
+
+/* Таблица Excel */
+table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 14px; }
+th { background: #1F3A6E; color: white; padding: 10px 14px; text-align: left; }
+td { padding: 9px 14px; border-bottom: 1px solid #e8edf5; color: #444; }
+tr:nth-child(even) td { background: #f8f9fb; }
+.price-up { color: #c0392b; font-weight: 700; }
+.price-down { color: #2d7a4f; font-weight: 700; }
+.price-eq { color: #999; }
+
+.cta-block { background: linear-gradient(135deg, #1F3A6E, #2c5282); border-radius: 12px; padding: 36px; text-align: center; margin-top: 60px; color: white; }
+.cta-block h3 { font-size: 22px; margin-bottom: 10px; }
+.cta-block p { color: rgba(255,255,255,0.8); margin-bottom: 24px; font-size: 15px; }
+.cta-btn { display: inline-block; background: white; color: #1F3A6E; padding: 13px 32px; border-radius: 8px; font-weight: 700; font-size: 15px; text-decoration: none; }
+
+@media (max-width: 600px) {
+  .page-header { padding: 14px 16px; }
+  .content { padding: 28px 14px 48px; }
+  h1 { font-size: 22px; }
+  .kpi-row { grid-template-columns: repeat(2, 1fr); }
+  pre { padding: 14px; }
+  code { font-size: 11px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <a href="/" class="back-btn">← Вернуться на сайт</a>
+  <div class="logo">OM-<span>DIGITAL</span></div>
+</div>
+
+<div class="content">
+  <div class="badge">Автоматизация · Python</div>
+  <h1>Парсер цен Wildberries и Ozon для магазина бытовой техники</h1>
+  <div class="meta">
+    <span>Стек: Python, requests, BeautifulSoup, openpyxl</span>
+    <span>Позиций: 500+</span>
+    <span>Обновление: раз в час</span>
+  </div>
+
+  <div class="kpi-row">
+    <div class="kpi-box"><div class="kpi-num">500</div><div class="kpi-label">Позиций в базе</div></div>
+    <div class="kpi-box"><div class="kpi-num">1 час</div><div class="kpi-label">Интервал обновления</div></div>
+    <div class="kpi-box"><div class="kpi-num">−3 часа/день</div><div class="kpi-label">Экономия времени</div></div>
+  </div>
+
+  <h2>Задача клиента</h2>
+  <p>Интернет-магазин бытовой техники вручную отслеживал цены конкурентов на WB и Ozon — менеджеры тратили 3 часа в день на ручной мониторинг 500 позиций. Задача: автоматизировать сбор данных, выгружать в Excel с подсветкой изменений и запускать по расписанию.</p>
+
+  <h2>Архитектура решения</h2>
+  <div class="arch-block">
+    <h3>Схема работы парсера</h3>
+    <div class="arch-row">
+      <div class="arch-node">📋 products.xlsx<br><small>список артикулов</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node">🐍 parser.py<br><small>основной модуль</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node yellow">🌐 WB API + Ozon<br><small>запросы цен</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node green">📊 prices_ДАТА.xlsx<br><small>выгрузка + diff</small></div>
+    </div>
+    <div class="arch-row">
+      <div class="arch-node">⏰ cron / Task Scheduler<br><small>каждый час в :00</small></div>
+      <div class="arch-arrow">→</div>
+      <div class="arch-node">📧 alert.py<br><small>уведомление при падении цены >5%</small></div>
+    </div>
+  </div>
+
+  <h2>Код — основной модуль парсера</h2>
+<pre><code><span class="c-comment"># parser.py — парсер цен WB + Ozon</span>
+<span class="c-keyword">import</span> requests
+<span class="c-keyword">import</span> openpyxl
+<span class="c-keyword">from</span> openpyxl.styles <span class="c-keyword">import</span> PatternFill, Font
+<span class="c-keyword">import</span> time, json
+<span class="c-keyword">from</span> datetime <span class="c-keyword">import</span> datetime
+<span class="c-keyword">from</span> pathlib <span class="c-keyword">import</span> Path
+
+HEADERS = {<span class="c-string">"User-Agent"</span>: <span class="c-string">"Mozilla/5.0 (Windows NT 10.0; Win64; x64)"</span>}
+WB_PRICE_URL = <span class="c-string">"https://card.wb.ru/cards/v1/detail?appType=1&curr=rub&nm={}"</span>
+OZON_PRICE_URL = <span class="c-string">"https://api.ozon.ru/v2/product/info?product_id={}"</span>
+
+<span class="c-keyword">def</span> <span class="c-func">get_wb_price</span>(article: str) -> dict:
+    <span class="c-string">"""Получить цену товара с Wildberries по артикулу"""</span>
+    <span class="c-keyword">try</span>:
+        r = requests.<span class="c-func">get</span>(WB_PRICE_URL.<span class="c-func">format</span>(article),
+                         headers=HEADERS, timeout=<span class="c-num">10</span>)
+        data = r.<span class="c-func">json</span>()
+        product = data[<span class="c-string">"data"</span>][<span class="c-string">"products"</span>][<span class="c-num">0</span>]
+        price = product[<span class="c-string">"salePriceU"</span>] / <span class="c-num">100</span>
+        <span class="c-keyword">return</span> {<span class="c-string">"price"</span>: price, <span class="c-string">"name"</span>: product[<span class="c-string">"name"</span>], <span class="c-string">"source"</span>: <span class="c-string">"WB"</span>}
+    <span class="c-keyword">except</span> Exception <span class="c-keyword">as</span> e:
+        <span class="c-keyword">return</span> {<span class="c-string">"price"</span>: <span class="c-keyword">None</span>, <span class="c-string">"error"</span>: <span class="c-func">str</span>(e)}
+
+<span class="c-keyword">def</span> <span class="c-func">load_products</span>(path: str) -> list:
+    <span class="c-string">"""Загрузить список артикулов из Excel"""</span>
+    wb = openpyxl.<span class="c-func">load_workbook</span>(path)
+    ws = wb.active
+    products = []
+    <span class="c-keyword">for</span> row <span class="c-keyword">in</span> ws.<span class="c-func">iter_rows</span>(min_row=<span class="c-num">2</span>, values_only=<span class="c-keyword">True</span>):
+        <span class="c-keyword">if</span> row[<span class="c-num">0</span>]:
+            products.<span class="c-func">append</span>({
+                <span class="c-string">"article"</span>: row[<span class="c-num">0</span>],
+                <span class="c-string">"name"</span>: row[<span class="c-num">1</span>],
+                <span class="c-string">"source"</span>: row[<span class="c-num">2</span>],
+                <span class="c-string">"prev_price"</span>: row[<span class="c-num">3</span>] <span class="c-keyword">or</span> <span class="c-num">0</span>
+            })
+    <span class="c-keyword">return</span> products
+
+<span class="c-keyword">def</span> <span class="c-func">save_report</span>(results: list):
+    <span class="c-string">"""Сохранить отчёт в Excel с подсветкой изменений"""</span>
+    today = datetime.<span class="c-func">now</span>().<span class="c-func">strftime</span>(<span class="c-string">"%Y-%m-%d_%H-%M"</span>)
+    wb = openpyxl.Workbook()
+    ws = wb.active
+    ws.title = <span class="c-string">"Цены"</span>
+
+    headers = [<span class="c-string">"Артикул"</span>, <span class="c-string">"Название"</span>, <span class="c-string">"Источник"</span>,
+               <span class="c-string">"Цена сейчас"</span>, <span class="c-string">"Цена прошлая"</span>, <span class="c-string">"Изменение"</span>]
+    <span class="c-keyword">for</span> col, header <span class="c-keyword">in</span> <span class="c-func">enumerate</span>(headers, <span class="c-num">1</span>):
+        cell = ws.<span class="c-func">cell</span>(row=<span class="c-num">1</span>, column=col, value=header)
+        cell.font = Font(bold=<span class="c-keyword">True</span>, color=<span class="c-string">"FFFFFF"</span>)
+        cell.fill = PatternFill(<span class="c-string">"solid"</span>, fgColor=<span class="c-string">"1F3A6E"</span>)
+
+    red = PatternFill(<span class="c-string">"solid"</span>, fgColor=<span class="c-string">"FFD7D7"</span>)
+    green = PatternFill(<span class="c-string">"solid"</span>, fgColor=<span class="c-string">"D7FFDF"</span>)
+
+    <span class="c-keyword">for</span> i, item <span class="c-keyword">in</span> <span class="c-func">enumerate</span>(results, <span class="c-num">2</span>):
+        diff = item[<span class="c-string">"price"</span>] - item[<span class="c-string">"prev_price"</span>] <span class="c-keyword">if</span> item[<span class="c-string">"prev_price"</span>] <span class="c-keyword">else</span> <span class="c-num">0</span>
+        pct = <span class="c-func">round</span>(diff / item[<span class="c-string">"prev_price"</span>] * <span class="c-num">100</span>, <span class="c-num">1</span>) <span class="c-keyword">if</span> item[<span class="c-string">"prev_price"</span>] <span class="c-keyword">else</span> <span class="c-num">0</span>
+        row_data = [item[<span class="c-string">"article"</span>], item[<span class="c-string">"name"</span>], item[<span class="c-string">"source"</span>],
+                    item[<span class="c-string">"price"</span>], item[<span class="c-string">"prev_price"</span>], f<span class="c-string">"{pct:+.1f}%"</span>]
+        fill = red <span class="c-keyword">if</span> pct > <span class="c-num">5</span> <span class="c-keyword">else</span> (green <span class="c-keyword">if</span> pct &lt; <span class="c-num">-5</span> <span class="c-keyword">else</span> <span class="c-keyword">None</span>)
+        <span class="c-keyword">for</span> col, val <span class="c-keyword">in</span> <span class="c-func">enumerate</span>(row_data, <span class="c-num">1</span>):
+            cell = ws.<span class="c-func">cell</span>(row=i, column=col, value=val)
+            <span class="c-keyword">if</span> fill: cell.fill = fill
+
+    wb.<span class="c-func">save</span>(f<span class="c-string">"prices_{today}.xlsx"</span>)
+    <span class="c-keyword">print</span>(f<span class="c-string">"Сохранено: prices_{today}.xlsx — {len(results)} позиций"</span>)
+
+<span class="c-keyword">if</span> __name__ == <span class="c-string">"__main__"</span>:
+    products = <span class="c-func">load_products</span>(<span class="c-string">"products.xlsx"</span>)
+    results = []
+    <span class="c-keyword">for</span> p <span class="c-keyword">in</span> products:
+        data = <span class="c-func">get_wb_price</span>(p[<span class="c-string">"article"</span>])
+        results.<span class="c-func">append</span>({**p, **data})
+        time.<span class="c-func">sleep</span>(<span class="c-num">0.3</span>)  <span class="c-comment"># антибан-пауза</span>
+    <span class="c-func">save_report</span>(results)
+</code></pre>
+
+  <h2>Пример выгрузки в Excel</h2>
+  <table>
+    <tr><th>Артикул</th><th>Название товара</th><th>Источник</th><th>Цена сейчас</th><th>Цена ранее</th><th>Изменение</th></tr>
+    <tr><td>192847563</td><td>Пылесос Samsung SC-A2</td><td>WB</td><td>4 290 ₽</td><td>4 590 ₽</td><td class="price-down">−6.5%</td></tr>
+    <tr><td>204719832</td><td>Утюг Philips GC1424</td><td>Ozon</td><td>2 199 ₽</td><td>2 199 ₽</td><td class="price-eq">0%</td></tr>
+    <tr><td>178354219</td><td>Чайник Tefal KI720D</td><td>WB</td><td>3 890 ₽</td><td>3 490 ₽</td><td class="price-up">+11.5%</td></tr>
+    <tr><td>219043718</td><td>Миксер Bosch MFQ3010</td><td>Ozon</td><td>2 890 ₽</td><td>3 150 ₽</td><td class="price-down">−8.3%</td></tr>
+    <tr><td>187234901</td><td>Блендер Braun MQ5000</td><td>WB</td><td>5 490 ₽</td><td>5 490 ₽</td><td class="price-eq">0%</td></tr>
+  </table>
+  <p style="font-size:13px;color:#999;">Зелёный = цена снизилась более чем на 5% · Красный = выросла более чем на 5% · Белый = в пределах нормы</p>
+
+  <div class="cta-block">
+    <h3>Нужен парсер для вашего бизнеса?</h3>
+    <p>Разрабатываем скрипты для сбора данных с любых площадок. Сдача — 2–3 рабочих дня. От 2 000 ₽.</p>
+    <a href="/#contacts" class="cta-btn">Заказать парсер →</a>
+  </div>
+</div>
+
+</body>
+</html>
