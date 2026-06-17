@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Бизнес-аналитика — OM-Digital Company</title>
+<meta name="description" content="ТЗ на разработку, бизнес-планы, анализ рынка, регламенты, договоры. Профессиональные документы для бизнеса. Цены от 800 ₽.">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { scroll-behavior: smooth; overflow-x: hidden; }
+body { font-family: Arial, sans-serif; color: #222; background: #fff; }
+
+header { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #e0e4ea; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 80px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-sq { width: 54px; height: 54px; background: #1F3A6E; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700; }
+.logo-txt .l1 { font-size: 22px; font-weight: 700; color: #1F3A6E; letter-spacing: 2px; }
+.logo-txt .l2 { font-size: 10px; letter-spacing: 6px; color: #4A7BC4; }
+.btn-back { background: #1F3A6E; color: white; border: none; padding: 10px 22px; border-radius: 7px; font-size: 14px; text-decoration: none; }
+
+.hero { background: linear-gradient(135deg, #1a3a5c 0%, #1F3A6E 50%, #163055 100%); color: white; text-align: center; padding: 80px 40px 100px; }
+.hero-badge { display: inline-block; background: rgba(74,123,196,0.3); border: 1px solid rgba(74,123,196,0.5); color: #a8c8f0; font-size: 12px; letter-spacing: 2px; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; }
+.hero h1 { font-size: 44px; font-weight: 700; line-height: 1.2; margin-bottom: 18px; }
+.hero h1 span { color: #4A7BC4; }
+.hero p { font-size: 17px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 36px; line-height: 1.7; }
+.btn-cta-hero { display: inline-block; background: white; color: #1F3A6E; padding: 14px 36px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: transform .2s; }
+.btn-cta-hero:hover { transform: translateY(-2px); }
+
+section { padding: 70px 40px; }
+.section-label { font-size: 12px; letter-spacing: 3px; color: #4A7BC4; text-transform: uppercase; margin-bottom: 12px; }
+.section-title { font-size: 34px; font-weight: 700; color: #1F3A6E; margin-bottom: 14px; }
+.section-sub { font-size: 16px; color: #666; max-width: 620px; line-height: 1.7; margin-bottom: 46px; }
+.center { text-align: center; }
+.center .section-sub { margin-left: auto; margin-right: auto; }
+
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+.srv { background: #f8f9fb; border-radius: 12px; border: 1px solid #e0e4ea; padding: 28px 24px; }
+.srv-icon { font-size: 36px; margin-bottom: 16px; }
+.srv h3 { font-size: 17px; font-weight: 700; color: #1F3A6E; margin-bottom: 10px; }
+.srv p { font-size: 14px; color: #666; line-height: 1.7; margin-bottom: 14px; }
+.srv .price { font-size: 15px; font-weight: 700; color: #1F3A6E; }
+
+.docs-list { display: grid; grid-template-columns: repeat(2,1fr); gap: 16px; max-width: 900px; margin: 0 auto; }
+.doc-item { background: white; border: 1px solid #e0e4ea; border-radius: 8px; padding: 20px 24px; display: flex; gap: 16px; align-items: flex-start; }
+.doc-icon { font-size: 28px; flex-shrink: 0; }
+.doc-item h4 { font-size: 15px; font-weight: 700; color: #1F3A6E; margin-bottom: 6px; }
+.doc-item p { font-size: 13px; color: #777; line-height: 1.55; }
+
+.price-table { width: 100%; border-collapse: collapse; max-width: 800px; margin: 0 auto; }
+.price-table tr { border-bottom: 1px solid #f0f2f5; }
+.price-table tr:nth-child(even) { background: #fafbfc; }
+.price-table td { padding: 13px 24px; font-size: 14px; color: #444; }
+.price-table td:last-child { text-align: right; font-weight: 700; color: #1F3A6E; }
+
+.contacts-wrap { background: linear-gradient(135deg, #1F3A6E, #2c5282); color: white; text-align: center; padding: 70px 40px; }
+.contacts-wrap .section-title { color: white; }
+.contacts-wrap .section-sub { color: rgba(255,255,255,0.75); margin: 0 auto 36px; }
+.contact-form { max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+.contact-form input, .contact-form textarea { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 8px; padding: 13px 16px; color: white; font-size: 14px; font-family: Arial, sans-serif; outline: none; }
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.45); }
+.contact-form textarea { resize: none; height: 100px; }
+.contact-form button { background: white; color: #1F3A6E; border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; }
+
+footer { background: #111c30; color: rgba(255,255,255,0.5); padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+.footer-sq { width: 32px; height: 32px; background: #1F3A6E; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 11px; font-weight: 700; }
+
+@media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2,1fr); } .docs-list { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { header { padding: 0 16px; height: 64px; } section { padding: 50px 20px; } .hero { padding: 60px 20px 80px; } .hero h1 { font-size: 26px; } .services-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo-wrap">
+    <div class="logo-sq">OM</div>
+    <div class="logo-txt"><div class="l1">DIGITAL</div><div class="l2">COMPANY</div></div>
+  </a>
+  <a href="index.html" class="btn-back">← Назад на главную</a>
+</header>
+
+<section class="hero">
+  <div class="hero-badge">ОТДЕЛ 3 · БИЗНЕС-АНАЛИТИКА</div>
+  <h1>Документы и аналитика,<br>которые <span>двигают бизнес</span> вперёд</h1>
+  <p>Бизнес-планы для инвесторов, ТЗ для разработчиков, регламенты для команды — профессиональные документы за 24–72 часа.</p>
+  <a href="#contact" class="btn-cta-hero">Заказать документ →</a>
+</section>
+
+<section style="background:#fff;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label center">Услуги</div>
+    <h2 class="section-title center">Что мы делаем</h2>
+    <div class="section-sub center">Закрываем все задачи бизнес-аналитики: от разовых документов до комплексных аналитических проектов.</div>
+    <div class="services-grid">
+
+      <div class="srv">
+        <div class="srv-icon">📋</div>
+        <h3>Технические задания</h3>
+        <p>ТЗ на разработку сайта, приложения, бота, CRM. Функциональные требования, user stories, wireframe-описания. Разработчик поймёт с первого раза.</p>
+        <div class="price">от 2 000 ₽</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">📊</div>
+        <h3>Бизнес-планы</h3>
+        <p>Для банка, инвестора, партнёра или собственного понимания. Финансовая модель, анализ рынка, стратегия, риски — всё в одном документе.</p>
+        <div class="price">от 3 500 ₽</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">🔍</div>
+        <h3>Анализ рынка и конкурентов</h3>
+        <p>Размер рынка, тренды, портрет ЦА, разбор 5–10 конкурентов по ключевым параметрам. С таблицами, выводами и рекомендациями.</p>
+        <div class="price">от 3 000 ₽</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">⚙️</div>
+        <h3>Регламенты бизнес-процессов</h3>
+        <p>Пошаговые инструкции для команды: продажи, поддержка, онбординг, производство. Убирают хаос и зависимость от «знаний в головах».</p>
+        <div class="price">от 1 500 ₽</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">👤</div>
+        <h3>Должностные инструкции</h3>
+        <p>Чёткое описание обязанностей, KPI, прав и ответственности сотрудника. Юридически грамотно, понятно человеку.</p>
+        <div class="price">от 800 ₽</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">📝</div>
+        <h3>Договоры и оферты</h3>
+        <p>Договор на услуги, публичная оферта, NDA, пользовательское соглашение. Защищает бизнес и понятна клиенту без юриста.</p>
+        <div class="price">от 1 500 ₽</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">📐</div>
+        <h3>SWOT-анализ</h3>
+        <p>Систематизированный анализ сильных и слабых сторон, возможностей и угроз. С матрицей стратегий и приоритетами.</p>
+        <div class="price">от 1 000 ₽</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">🎯</div>
+        <h3>Презентации для инвесторов</h3>
+        <p>Pitch deck до 15 слайдов: проблема, решение, рынок, бизнес-модель, команда, финансы, запрос. Структура по стандарту Y Combinator.</p>
+        <div class="price">от 3 000 ₽</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">🗂</div>
+        <h3>Операционные документы</h3>
+        <p>Политики компании, корпоративные стандарты, onboarding-материалы, структура отделов. Всё, чтобы бизнес работал как система.</p>
+        <div class="price">от 1 200 ₽</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="background:#f8f9fb;">
+  <div style="max-width:900px;margin:0 auto;">
+    <div class="section-label center">Что входит в каждый документ</div>
+    <h2 class="section-title center">Стандарт качества</h2>
+    <div class="section-sub center">Каждый документ проходит несколько этапов контроля перед сдачей.</div>
+    <div class="docs-list">
+      <div class="doc-item"><div class="doc-icon">✅</div><div><h4>Структура под задачу</h4><p>Не шаблонный документ — а структура под вашу конкретную ситуацию, отрасль и аудиторию.</p></div></div>
+      <div class="doc-item"><div class="doc-icon">📈</div><div><h4>Реальные данные и цифры</h4><p>Используем открытые источники: Росстат, РБК, отраслевые отчёты, данные конкурентов.</p></div></div>
+      <div class="doc-item"><div class="doc-icon">🔤</div><div><h4>Грамотный русский язык</h4><p>Вычитка корректором — каждый документ без опечаток, с правильной пунктуацией и стилем.</p></div></div>
+      <div class="doc-item"><div class="doc-icon">📄</div><div><h4>Удобный формат</h4><p>Word, PDF или Google Docs — в удобном для вас формате. Таблицы, схемы, нумерация включены.</p></div></div>
+      <div class="doc-item"><div class="doc-icon">🔄</div><div><h4>Правки включены</h4><p>1–2 раунда правок входят в стоимость. Корректируем до полного соответствия вашим ожиданиям.</p></div></div>
+      <div class="doc-item"><div class="doc-icon">⏱</div><div><h4>Соблюдение дедлайна</h4><p>Фиксируем срок в переписке и соблюдаем его. Простой документ — 24 часа, сложный — до 72 часов.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff;">
+  <div style="max-width:800px;margin:0 auto;">
+    <div class="section-label center">Стоимость</div>
+    <h2 class="section-title center">Прайс-лист — Бизнес-аналитика</h2>
+    <div class="section-sub center">Итоговая цена зависит от объёма и сложности. Первичная оценка — бесплатно.</div>
+    <table class="price-table">
+      <tr><td>Техническое задание на разработку</td><td>от 2 000 ₽</td></tr>
+      <tr><td>Бизнес-план (базовый, до 15 стр.)</td><td>от 3 500 ₽</td></tr>
+      <tr><td>Бизнес-план с финансовой моделью</td><td>от 6 000 ₽</td></tr>
+      <tr><td>Анализ рынка и конкурентов</td><td>от 3 000 ₽</td></tr>
+      <tr><td>Регламент бизнес-процесса</td><td>от 1 500 ₽</td></tr>
+      <tr><td>Должностная инструкция</td><td>от 800 ₽</td></tr>
+      <tr><td>Договор / публичная оферта</td><td>от 1 500 ₽</td></tr>
+      <tr><td>SWOT-анализ компании</td><td>от 1 000 ₽</td></tr>
+      <tr><td>Презентация для инвесторов (до 15 слайдов)</td><td>от 3 000 ₽</td></tr>
+      <tr><td>Политика конфиденциальности</td><td>от 1 000 ₽</td></tr>
+      <tr><td>Операционные документы (пакет)</td><td>от 4 000 ₽</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="contacts-wrap" id="contact">
+  <div class="section-label center" style="color:#8BAFD4;">Заказать</div>
+  <h2 class="section-title center">Оставьте заявку на документ</h2>
+  <div class="section-sub center">Опишите что нужно — ответим в течение часа, уточним детали и назовём цену.</div>
+  <form class="contact-form" id="contactForm">
+    <input type="text" id="cName" placeholder="Ваше имя" required>
+    <input type="text" id="cContact" placeholder="Telegram или email" required>
+    <textarea id="cMessage" placeholder="Какой документ нужен? (тип, цель, дедлайн, отрасль)" required></textarea>
+    <button type="submit" id="cBtn">Отправить заявку →</button>
+    <div id="cStatus" style="text-align:center;font-size:14px;margin-top:8px;display:none;"></div>
+  </form>
+</section>
+
+<footer>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="footer-sq">OM</div>
+    <span>OM-DIGITAL COMPANY © 2026</span>
+  </div>
+  <div>Москва · 9:00–19:00 МСК</div>
+</footer>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('cBtn'); const status = document.getElementById('cStatus');
+  const name = document.getElementById('cName').value.trim();
+  const contact = document.getElementById('cContact').value.trim();
+  const message = document.getElementById('cMessage').value.trim();
+  if (!name || !contact || !message) return;
+  btn.disabled = true; btn.textContent = 'Отправляем...';
+  const tgText = `📨 ЗАЯВКА — БИЗНЕС-АНАЛИТИКА\n━━━━━━━━━━━━━━\n👤 ${name}\n📞 ${contact}\n💬 ${message}\n#аналитика #сайт`;
+  try {
+    const r = await fetch('https://api.telegram.org/bot8873337285:AAEYvrOlbsiqmbbm546jfr8oA7e33o7YlVU/sendMessage', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({chat_id:'2088867074', text: tgText}), signal: AbortSignal.timeout(8000)
+    });
+    const d = await r.json();
+    if (d.ok) { status.style.color='#4ade80'; status.textContent='✅ Заявка отправлена! Ответим в течение часа.'; document.getElementById('contactForm').reset(); }
+    else { throw new Error(); }
+  } catch(err) { status.style.color='#fbbf24'; status.textContent='Напишите нам: newlife2506@yandex.ru'; }
+  status.style.display='block'; btn.disabled=false; btn.textContent='Отправить заявку →';
+});
+</script>
+</body>
+</html>

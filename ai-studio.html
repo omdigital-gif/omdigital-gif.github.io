@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Studio — OM-Digital Company</title>
+<meta name="description" content="Системные промпты для ChatGPT и Claude, сценарии чатботов для Telegram, FAQ-базы знаний, AI-инструкции для бизнеса. Цены от 1 000 ₽.">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { scroll-behavior: smooth; overflow-x: hidden; }
+body { font-family: Arial, sans-serif; color: #222; background: #fff; }
+
+header { position: sticky; top: 0; z-index: 100; background: #fff; border-bottom: 1px solid #e0e4ea; padding: 0 40px; display: flex; align-items: center; justify-content: space-between; height: 80px; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+.logo-wrap { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.logo-sq { width: 54px; height: 54px; background: #1F3A6E; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: 700; }
+.logo-txt .l1 { font-size: 22px; font-weight: 700; color: #1F3A6E; letter-spacing: 2px; }
+.logo-txt .l2 { font-size: 10px; letter-spacing: 6px; color: #4A7BC4; }
+.btn-back { background: #1F3A6E; color: white; border: none; padding: 10px 22px; border-radius: 7px; font-size: 14px; text-decoration: none; }
+
+.hero { background: linear-gradient(135deg, #1a3a5c 0%, #2c5282 60%, #1F3A6E 100%); color: white; text-align: center; padding: 80px 40px 100px; }
+.hero-badge { display: inline-block; background: rgba(74,123,196,0.3); border: 1px solid rgba(74,123,196,0.5); color: #a8c8f0; font-size: 12px; letter-spacing: 2px; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; }
+.hero h1 { font-size: 44px; font-weight: 700; line-height: 1.2; margin-bottom: 18px; }
+.hero h1 span { color: #4A7BC4; }
+.hero p { font-size: 17px; color: rgba(255,255,255,0.8); max-width: 600px; margin: 0 auto 36px; line-height: 1.7; }
+.btn-cta-hero { display: inline-block; background: white; color: #1F3A6E; padding: 14px 36px; border-radius: 8px; font-size: 15px; font-weight: 700; text-decoration: none; transition: transform .2s; }
+.btn-cta-hero:hover { transform: translateY(-2px); }
+
+section { padding: 70px 40px; }
+.section-label { font-size: 12px; letter-spacing: 3px; color: #4A7BC4; text-transform: uppercase; margin-bottom: 12px; }
+.section-title { font-size: 34px; font-weight: 700; color: #1F3A6E; margin-bottom: 14px; }
+.section-sub { font-size: 16px; color: #666; max-width: 620px; line-height: 1.7; margin-bottom: 46px; }
+.center { text-align: center; }
+.center .section-sub { margin-left: auto; margin-right: auto; }
+
+.services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 1100px; margin: 0 auto; }
+.srv { background: #f8f9fb; border-radius: 12px; border: 1px solid #e0e4ea; padding: 28px 24px; }
+.srv-icon { font-size: 36px; margin-bottom: 16px; }
+.srv h3 { font-size: 17px; font-weight: 700; color: #1F3A6E; margin-bottom: 10px; }
+.srv p { font-size: 14px; color: #666; line-height: 1.7; margin-bottom: 14px; }
+.srv .price { font-size: 15px; font-weight: 700; color: #1F3A6E; }
+
+.how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; max-width: 1000px; margin: 0 auto; }
+.how-step { text-align: center; padding: 24px 16px; }
+.how-num { width: 60px; height: 60px; border-radius: 50%; background: #1F3A6E; color: white; font-size: 22px; font-weight: 700; display: flex; align-items: center; justify-content: center; margin: 0 auto 16px; }
+.how-step h4 { font-size: 15px; font-weight: 700; color: #1F3A6E; margin-bottom: 8px; }
+.how-step p { font-size: 13px; color: #777; line-height: 1.6; }
+
+.cases-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 1000px; margin: 0 auto; }
+.case { background: white; border-radius: 10px; border: 1px solid #e0e4ea; padding: 28px; }
+.case-tag { font-size: 10px; letter-spacing: 2px; color: #4A7BC4; text-transform: uppercase; margin-bottom: 10px; }
+.case h4 { font-size: 16px; font-weight: 700; color: #1F3A6E; margin-bottom: 10px; }
+.case p { font-size: 14px; color: #666; line-height: 1.65; }
+.case .result { margin-top: 14px; padding: 10px 14px; background: #e8f0f8; border-radius: 6px; font-size: 13px; font-weight: 700; color: #1F3A6E; }
+
+.price-table { width: 100%; border-collapse: collapse; max-width: 800px; margin: 0 auto; }
+.price-table tr { border-bottom: 1px solid #f0f2f5; }
+.price-table tr:nth-child(even) { background: #fafbfc; }
+.price-table td { padding: 13px 24px; font-size: 14px; color: #444; }
+.price-table td:last-child { text-align: right; font-weight: 700; color: #1F3A6E; }
+
+.contacts-wrap { background: linear-gradient(135deg, #1F3A6E, #2c5282); color: white; text-align: center; padding: 70px 40px; }
+.contacts-wrap .section-title { color: white; }
+.contacts-wrap .section-sub { color: rgba(255,255,255,0.75); margin: 0 auto 36px; }
+.contact-form { max-width: 480px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+.contact-form input, .contact-form textarea { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 8px; padding: 13px 16px; color: white; font-size: 14px; font-family: Arial, sans-serif; outline: none; }
+.contact-form input::placeholder, .contact-form textarea::placeholder { color: rgba(255,255,255,0.45); }
+.contact-form textarea { resize: none; height: 100px; }
+.contact-form button { background: white; color: #1F3A6E; border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 700; cursor: pointer; }
+
+footer { background: #111c30; color: rgba(255,255,255,0.5); padding: 28px 40px; display: flex; justify-content: space-between; align-items: center; font-size: 13px; }
+.footer-sq { width: 32px; height: 32px; background: #1F3A6E; border-radius: 4px; display: flex; align-items: center; justify-content: center; color: white; font-size: 11px; font-weight: 700; }
+
+@media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2,1fr); } .how-grid { grid-template-columns: repeat(2,1fr); } .cases-grid { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { header { padding: 0 16px; height: 64px; } section { padding: 50px 20px; } .hero { padding: 60px 20px 80px; } .hero h1 { font-size: 26px; } .services-grid { grid-template-columns: 1fr; } .how-grid { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="index.html" class="logo-wrap">
+    <div class="logo-sq">OM</div>
+    <div class="logo-txt"><div class="l1">DIGITAL</div><div class="l2">COMPANY</div></div>
+  </a>
+  <a href="index.html" class="btn-back">← Назад на главную</a>
+</header>
+
+<section class="hero">
+  <div class="hero-badge">ОТДЕЛ 2 · AI STUDIO</div>
+  <h1>Умные инструменты на базе <span>искусственного интеллекта</span><br>для вашего бизнеса</h1>
+  <p>Проектируем промпты, чатботов и базы знаний, которые работают как опытный сотрудник — без выходных и ошибок из-за усталости.</p>
+  <a href="#contact" class="btn-cta-hero">Заказать AI-решение →</a>
+</section>
+
+<section style="background:#fff;">
+  <div style="max-width:1100px;margin:0 auto;">
+    <div class="section-label center">Что делаем</div>
+    <h2 class="section-title center">Услуги AI Studio</h2>
+    <div class="section-sub center">Помогаем бизнесу внедрить AI без лишних технических сложностей: от одного промпта до полноценного AI-сотрудника.</div>
+    <div class="services-grid">
+
+      <div class="srv">
+        <div class="srv-icon">🧠</div>
+        <h3>Системные промпты</h3>
+        <p>Пишем детальные инструкции для ChatGPT, Claude и других моделей. Бот будет отвечать строго в рамках вашего бизнеса, стиля и регламентов.</p>
+        <div class="price">от 1 000 ₽</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">📦</div>
+        <h3>Промпт-пакеты</h3>
+        <p>5–10 промптов под конкретные задачи: генерация контента, обработка заявок, составление документов, анализ данных.</p>
+        <div class="price">от 3 000 ₽ за пакет</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">🤖</div>
+        <h3>Сценарии чатботов</h3>
+        <p>Полный сценарий диалога для Telegram-бота: ветки, условия, кнопки, обработка исключений. Готово для передачи разработчику или в Botmother/SendPulse.</p>
+        <div class="price">от 2 000 ₽</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">📚</div>
+        <h3>FAQ-базы знаний</h3>
+        <p>Структурированные базы из 50–100+ вопросов и ответов для поддержки, продаж, обучения сотрудников. Готово к загрузке в любую LLM.</p>
+        <div class="price">от 2 000 ₽</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">📋</div>
+        <h3>AI-инструкции для сотрудников</h3>
+        <p>Пошаговые руководства как использовать ChatGPT/Claude в конкретных рабочих процессах. Адаптировано под отдел и задачи.</p>
+        <div class="price">от 1 500 ₽</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">🔍</div>
+        <h3>Аудит существующих промптов</h3>
+        <p>Проверяем текущие промпты, находим слабые места: галлюцинации, выход за рамки роли, нестабильный формат. Даём рекомендации.</p>
+        <div class="price">от 1 500 ₽</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">🗺</div>
+        <h3>AI-стратегия для бизнеса</h3>
+        <p>Аудит бизнес-процессов, карта точек внедрения AI, приоритизация задач, план автоматизации. Документ на 15–25 страниц.</p>
+        <div class="price">от 5 000 ₽</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">🎯</div>
+        <h3>Промпты для генерации контента</h3>
+        <p>Промпты для стабильной генерации карточек товаров, постов, описаний, статей в нужном формате и стиле бренда.</p>
+        <div class="price">от 800 ₽</div>
+      </div>
+
+      <div class="srv">
+        <div class="srv-icon">⚙️</div>
+        <h3>Интеграционные сценарии</h3>
+        <p>Проектируем логику AI-агентов: как подключить LLM к вашей CRM, базе знаний, каналу поддержки. ТЗ для разработчика в комплекте.</p>
+        <div class="price">от 3 000 ₽</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="background:#f8f9fb;">
+  <div style="max-width:1000px;margin:0 auto;">
+    <div class="section-label center">Как работаем</div>
+    <h2 class="section-title center">От задачи до готового AI-инструмента</h2>
+    <div class="section-sub center">Чёткий процесс без лишних согласований.</div>
+    <div class="how-grid">
+      <div class="how-step">
+        <div class="how-num">1</div>
+        <h4>Бриф</h4>
+        <p>Уточняем задачу: что должен делать AI, кто аудитория, какой формат нужен</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">2</div>
+        <h4>Проектирование</h4>
+        <p>Создаём архитектуру: структура промпта, ветки диалога, правила поведения модели</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">3</div>
+        <h4>Тестирование</h4>
+        <p>Прогоняем через реальные кейсы, исправляем баги поведения, добиваемся стабильности</p>
+      </div>
+      <div class="how-step">
+        <div class="how-num">4</div>
+        <h4>Сдача</h4>
+        <p>Передаём готовый промпт/сценарий с инструкцией по применению и правками в течение 7 дней</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="background:#fff;">
+  <div style="max-width:1000px;margin:0 auto;">
+    <div class="section-label center">Кейсы</div>
+    <h2 class="section-title center">Примеры внедрений</h2>
+    <div class="section-sub center">Реальные задачи — реальный результат.</div>
+    <div class="cases-grid">
+
+      <div class="case">
+        <div class="case-tag">Корпоративный AI</div>
+        <h4>Системный промпт для HR-бота производственной компании</h4>
+        <p>Промпт на 800 слов: роль, ограничения, база знаний по политикам компании, инструкции по эскалации. Интегрирован в корпоративный Telegram.</p>
+        <div class="result">🤖 Бот закрывает 70% вопросов сотрудников без участия HR</div>
+      </div>
+
+      <div class="case">
+        <div class="case-tag">Онлайн-образование</div>
+        <h4>Чатбот-ассистент для онлайн-школы английского</h4>
+        <p>12 веток диалога: запись на курс, подбор уровня, ответы на FAQ, переключение на менеджера. Интегрирован с Google Sheets через Zapier.</p>
+        <div class="result">📚 Конверсия в запись +28%, нагрузка на менеджеров –40%</div>
+      </div>
+
+      <div class="case">
+        <div class="case-tag">E-commerce</div>
+        <h4>Промпты для генерации карточек товаров (маркетплейс)</h4>
+        <p>Пакет из 8 промптов для разных категорий: одежда, электроника, товары для дома. Стабильный формат, ключи из Wordstat включены в шаблон.</p>
+        <div class="result">⚡ 100 карточек за 3 часа вместо 3 дней</div>
+      </div>
+
+      <div class="case">
+        <div class="case-tag">SaaS / поддержка</div>
+        <h4>FAQ-база знаний для службы поддержки IT-продукта</h4>
+        <p>120 вопросов с ответами, структурированных по категориям. Интегрирована в Notion + подключена к GPT-4 через API для автоответов.</p>
+        <div class="result">⏱ Среднее время ответа: с 18 мин до 3 мин</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section style="background:#f8f9fb;">
+  <div style="max-width:800px;margin:0 auto;">
+    <div class="section-label center">Стоимость</div>
+    <h2 class="section-title center">Прайс-лист — AI Studio</h2>
+    <div class="section-sub center">Итоговая цена зависит от сложности и объёма. Уточняем после брифа.</div>
+    <table class="price-table">
+      <tr><td>Системный промпт для ChatGPT / Claude</td><td>от 1 000 ₽</td></tr>
+      <tr><td>Промпт-пакет (5 промптов под задачи)</td><td>от 3 000 ₽</td></tr>
+      <tr><td>Промпт-пакет (10 промптов)</td><td>от 5 500 ₽</td></tr>
+      <tr><td>Сценарий чатбота (до 10 веток)</td><td>от 2 000 ₽</td></tr>
+      <tr><td>Сценарий чатбота (до 25 веток)</td><td>от 4 000 ₽</td></tr>
+      <tr><td>Сценарий чатбота (до 50 веток + интеграции)</td><td>от 7 000 ₽</td></tr>
+      <tr><td>FAQ-база знаний (до 50 вопросов)</td><td>от 2 000 ₽</td></tr>
+      <tr><td>FAQ-база знаний (до 100 вопросов)</td><td>от 3 500 ₽</td></tr>
+      <tr><td>AI-инструкция для сотрудников</td><td>от 1 500 ₽</td></tr>
+      <tr><td>Аудит текущих промптов + рекомендации</td><td>от 1 500 ₽</td></tr>
+      <tr><td>AI-стратегия для бизнеса (документ)</td><td>от 5 000 ₽</td></tr>
+    </table>
+  </div>
+</section>
+
+<section class="contacts-wrap" id="contact">
+  <div class="section-label center" style="color:#8BAFD4;">Заказать</div>
+  <h2 class="section-title center">Оставьте заявку на AI-решение</h2>
+  <div class="section-sub center">Опишите задачу — предложим оптимальный инструмент и стоимость за 1 час.</div>
+  <form class="contact-form" id="contactForm">
+    <input type="text" id="cName" placeholder="Ваше имя" required>
+    <input type="text" id="cContact" placeholder="Telegram или email" required>
+    <textarea id="cMessage" placeholder="Что хотите автоматизировать? (промпт, чатбот, FAQ...)" required></textarea>
+    <button type="submit" id="cBtn">Отправить заявку →</button>
+    <div id="cStatus" style="text-align:center;font-size:14px;margin-top:8px;display:none;"></div>
+  </form>
+</section>
+
+<footer>
+  <div style="display:flex;align-items:center;gap:10px;">
+    <div class="footer-sq">OM</div>
+    <span>OM-DIGITAL COMPANY © 2026</span>
+  </div>
+  <div>Москва · 9:00–19:00 МСК</div>
+</footer>
+
+<script>
+document.getElementById('contactForm').addEventListener('submit', async function(e) {
+  e.preventDefault();
+  const btn = document.getElementById('cBtn'); const status = document.getElementById('cStatus');
+  const name = document.getElementById('cName').value.trim();
+  const contact = document.getElementById('cContact').value.trim();
+  const message = document.getElementById('cMessage').value.trim();
+  if (!name || !contact || !message) return;
+  btn.disabled = true; btn.textContent = 'Отправляем...';
+  const tgText = `📨 ЗАЯВКА — AI STUDIO\n━━━━━━━━━━━━━━\n👤 ${name}\n📞 ${contact}\n💬 ${message}\n#ai_studio #сайт`;
+  try {
+    const r = await fetch('https://api.telegram.org/bot8873337285:AAEYvrOlbsiqmbbm546jfr8oA7e33o7YlVU/sendMessage', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({chat_id:'2088867074', text: tgText}), signal: AbortSignal.timeout(8000)
+    });
+    const d = await r.json();
+    if (d.ok) { status.style.color='#4ade80'; status.textContent='✅ Заявка отправлена! Ответим в течение часа.'; document.getElementById('contactForm').reset(); }
+    else { throw new Error(); }
+  } catch(err) { status.style.color='#fbbf24'; status.textContent='Напишите нам: newlife2506@yandex.ru'; }
+  status.style.display='block'; btn.disabled=false; btn.textContent='Отправить заявку →';
+});
+</script>
+</body>
+</html>
