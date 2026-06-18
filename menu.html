@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+  <title>OM-Digital — Карманные боты</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background: #0d0d0d;
+      color: #fff;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 16px 40px;
+    }
+
+    .logo {
+      font-size: 13px;
+      letter-spacing: 3px;
+      color: #00d4ff;
+      text-transform: uppercase;
+      margin-bottom: 30px;
+      opacity: 0.8;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 28px;
+      background: #1a1a1a;
+      border-radius: 14px;
+      padding: 5px;
+    }
+
+    .tab {
+      padding: 10px 22px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 600;
+      transition: all 0.25s;
+      border: none;
+      background: transparent;
+      color: #888;
+    }
+
+    .tab.active {
+      background: linear-gradient(135deg, #00d4ff, #007aff);
+      color: #fff;
+      box-shadow: 0 4px 15px rgba(0, 212, 255, 0.35);
+    }
+
+    .panel { display: none; width: 100%; max-width: 400px; }
+    .panel.active { display: block; }
+
+    .bot-title {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .bot-title .icon {
+      font-size: 44px;
+      display: block;
+      margin-bottom: 6px;
+      filter: drop-shadow(0 0 12px rgba(0,212,255,0.5));
+      animation: pulse 3s ease-in-out infinite;
+    }
+
+    .bot-title h2 {
+      font-size: 20px;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .bot-title p {
+      font-size: 13px;
+      color: #888;
+      margin-top: 4px;
+    }
+
+    @keyframes pulse {
+      0%, 100% { transform: scale(1); filter: drop-shadow(0 0 8px rgba(0,212,255,0.4)); }
+      50% { transform: scale(1.06); filter: drop-shadow(0 0 20px rgba(0,212,255,0.8)); }
+    }
+
+    .btn-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 20px;
+      border-radius: 16px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      background: #1a1a1a;
+      text-align: left;
+      text-decoration: none;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s;
+      animation: slideIn 0.4s both;
+    }
+
+    .btn:nth-child(1) { animation-delay: 0.05s; }
+    .btn:nth-child(2) { animation-delay: 0.10s; }
+    .btn:nth-child(3) { animation-delay: 0.15s; }
+    .btn:nth-child(4) { animation-delay: 0.20s; }
+    .btn:nth-child(5) { animation-delay: 0.25s; }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(0,212,255,0.08), transparent);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    .btn:hover::before, .btn:active::before { opacity: 1; }
+
+    .btn:hover {
+      transform: translateY(-2px) scale(1.01);
+      box-shadow: 0 6px 24px rgba(0, 212, 255, 0.18);
+      border-color: rgba(0, 212, 255, 0.3);
+    }
+
+    .btn:active {
+      transform: scale(0.97);
+      box-shadow: none;
+    }
+
+    .btn.primary {
+      background: linear-gradient(135deg, #0e2a3a, #0d1f2e);
+      border-color: rgba(0, 212, 255, 0.25);
+      box-shadow: 0 4px 16px rgba(0, 212, 255, 0.12);
+    }
+
+    .btn.primary:hover {
+      box-shadow: 0 8px 28px rgba(0, 212, 255, 0.3);
+      border-color: rgba(0, 212, 255, 0.5);
+    }
+
+    .btn-icon {
+      font-size: 26px;
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,212,255,0.08);
+      border-radius: 12px;
+      flex-shrink: 0;
+    }
+
+    .btn-text { flex: 1; }
+
+    .btn-text .title {
+      font-size: 15px;
+      font-weight: 600;
+      color: #fff;
+      line-height: 1.2;
+    }
+
+    .btn-text .hint {
+      font-size: 12px;
+      color: #666;
+      margin-top: 2px;
+    }
+
+    .btn.primary .btn-text .title { color: #00d4ff; }
+
+    .arrow {
+      color: #444;
+      font-size: 18px;
+      flex-shrink: 0;
+    }
+
+    .disclaimer {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 11px;
+      color: #444;
+      line-height: 1.5;
+    }
+
+    .powered {
+      margin-top: 32px;
+      text-align: center;
+      font-size: 11px;
+      color: #333;
+      letter-spacing: 1px;
+    }
+
+    .powered span { color: #00d4ff; }
+  </style>
+</head>
+<body>
+
+  <div class="logo">OM-DIGITAL COMPANY</div>
+
+  <div class="tabs">
+    <button class="tab active" onclick="switchTab('doctor')">🏥 Доктор</button>
+    <button class="tab" onclick="switchTab('lawyer')">⚖️ Юрист</button>
+  </div>
+
+  <!-- DOCTOR -->
+  <div class="panel active" id="panel-doctor">
+    <div class="bot-title">
+      <span class="icon">🏥</span>
+      <h2>Карманный Доктор</h2>
+      <p>AI-ассистент медицинских консультаций</p>
+    </div>
+
+    <div class="btn-grid">
+      <a class="btn primary" href="#">
+        <div class="btn-icon">🤒</div>
+        <div class="btn-text">
+          <div class="title">Описать симптомы</div>
+          <div class="hint">Что болит? Опишите — получите анализ</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+
+      <a class="btn" href="#">
+        <div class="btn-icon">📄</div>
+        <div class="btn-text">
+          <div class="title">Загрузить анализы</div>
+          <div class="hint">PDF, Word, Excel — расшифрую показатели</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+
+      <a class="btn" href="#">
+        <div class="btn-icon">📷</div>
+        <div class="btn-text">
+          <div class="title">Сфотографировать анализы</div>
+          <div class="hint">Сниму и распознаю бланк анализов</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+
+      <a class="btn" href="#">
+        <div class="btn-icon">📋</div>
+        <div class="btn-text">
+          <div class="title">История консультаций</div>
+          <div class="hint">Мои предыдущие обращения</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+
+      <a class="btn" href="#">
+        <div class="btn-icon">ℹ️</div>
+        <div class="btn-text">
+          <div class="title">О боте</div>
+          <div class="hint">Как работает, возможности</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+    </div>
+
+    <div class="disclaimer">
+      Информационная консультация.<br>Не заменяет визит к врачу.
+    </div>
+  </div>
+
+  <!-- LAWYER -->
+  <div class="panel" id="panel-lawyer">
+    <div class="bot-title">
+      <span class="icon">⚖️</span>
+      <h2>Карманный Юрист</h2>
+      <p>AI-ассистент юридических консультаций</p>
+    </div>
+
+    <div class="btn-grid">
+      <a class="btn primary" href="#">
+        <div class="btn-icon">⚖️</div>
+        <div class="btn-text">
+          <div class="title">Описать ситуацию</div>
+          <div class="hint">Опишите правовой вопрос — дам анализ</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+
+      <a class="btn" href="#">
+        <div class="btn-icon">📄</div>
+        <div class="btn-text">
+          <div class="title">Загрузить документ</div>
+          <div class="hint">Договор, иск, справку — проверю и разберу</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+
+      <a class="btn" href="#">
+        <div class="btn-icon">📷</div>
+        <div class="btn-text">
+          <div class="title">Сфотографировать документ</div>
+          <div class="hint">Распознаю и проанализирую текст</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+
+      <a class="btn" href="#">
+        <div class="btn-icon">📋</div>
+        <div class="btn-text">
+          <div class="title">История запросов</div>
+          <div class="hint">Мои предыдущие консультации</div>
+        </div>
+        <div class="arrow">›</div>
+      </a>
+    </div>
+
+    <div class="disclaimer">
+      Информационная консультация.<br>Не заменяет помощь квалифицированного юриста.
+    </div>
+  </div>
+
+  <div class="powered">Powered by <span>OM-DIGITAL</span> × Claude AI</div>
+
+  <script>
+    function switchTab(bot) {
+      document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+      event.target.classList.add('active');
+      document.getElementById('panel-' + bot).classList.add('active');
+
+      // re-trigger animations
+      const btns = document.querySelectorAll('#panel-' + bot + ' .btn');
+      btns.forEach((b, i) => {
+        b.style.animation = 'none';
+        b.offsetHeight;
+        b.style.animation = '';
+        b.style.animationDelay = (i * 0.05 + 0.05) + 's';
+      });
+    }
+  </script>
+</body>
+</html>
