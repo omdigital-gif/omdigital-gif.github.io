@@ -94,7 +94,11 @@ footer a{color:#00d4ff;text-decoration:none}
   <div class="cta-box">
     <h2>Готовы к заказу?</h2>
     <p>Опишите задачу в Telegram — уточним ТЗ и назовём точную стоимость. Первый черновик — в день заказа.</p>
-        <form class="contact-form" onsubmit="return false;">
+        <form class="contact-form" action="https://formsubmit.co/newlife2506@yandex.ru" method="POST">
+  <input type="hidden" name="_subject" value="Новая заявка с сайта OM-Digital">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_next" value="https://omdigital-gif.github.io/?sent=1">
       <div class="form-row">
         <input type="text" name="name" placeholder="Ваше имя" required>
         <input type="text" name="contact" placeholder="Telegram или email" required>
@@ -106,5 +110,24 @@ footer a{color:#00d4ff;text-decoration:none}
   </div>
 </div>
 <footer><a href="index.html">← OM-Digital Company</a> &nbsp;·&nbsp; AI-агентство &nbsp;·&nbsp; Москва &nbsp;·&nbsp; 9:00–21:00 МСК</footer>
+<script>
+document.querySelectorAll(".contact-form").forEach(function(form) {
+  form.addEventListener("submit", function() {
+    var name = (form.querySelector("[name=name]") || {}).value || "";
+    var contact = (form.querySelector("[name=contact]") || {}).value || "";
+    var task = (form.querySelector("[name=task]") || {}).value || "";
+    var msg = "📩 Новая заявка с сайта OM-Digital
+
+Страница: " + window.location.pathname + "
+Имя: " + name + "
+Контакт: " + contact + "
+Задача: " + task;
+    fetch("https://api.telegram.org/bot8873337285:AAEYvrOlbsiqmbbm546jfr8oA7e33o7YlVU/sendMessage", {
+      method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({chat_id: "2088867074", text: msg})
+    });
+  });
+});
+</script>
 </body>
 </html>

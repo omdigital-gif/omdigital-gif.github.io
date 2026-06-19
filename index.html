@@ -966,16 +966,22 @@ footer {
     <div class="section-label" style="margin-bottom:14px;" data-aos="fade-up">Начать сотрудничество</div>
     <h2 data-aos="fade-up" data-aos-delay="50">Готовы обсудить задачу?</h2>
     <p data-aos="fade-up" data-aos-delay="100">Напишите — ответим за 1 час и предложим решение</p>
-    <div class="cta-form" data-aos="fade-up" data-aos-delay="150">
-      <input type="text" class="cta-input" placeholder="Ваше имя">
-      <input type="text" class="cta-input" placeholder="Telegram или email">
-    </div>
-    <div style="display:flex; justify-content:center; margin-top:12px; position:relative;">
-      <textarea class="cta-textarea" placeholder="Опишите вашу задачу — что нужно сделать?"></textarea>
-    </div>
-    <div style="display:flex; justify-content:center; margin-top:16px; position:relative;">
-      <a href="https://t.me/omdigital_orders_bot" class="btn-primary" data-aos="fade-up" data-aos-delay="200">Отправить заявку →</a>
-    </div>
+    <form class="contact-form" action="https://formsubmit.co/newlife2506@yandex.ru" method="POST" data-aos="fade-up" data-aos-delay="150">
+  <input type="hidden" name="_subject" value="Новая заявка с сайта OM-Digital">
+  <input type="hidden" name="_captcha" value="false">
+  <input type="hidden" name="_template" value="table">
+  <input type="hidden" name="_next" value="https://omdigital-gif.github.io/?sent=1">
+      <div class="cta-form">
+        <input type="text" name="name" class="cta-input" placeholder="Ваше имя" required>
+        <input type="text" name="contact" class="cta-input" placeholder="Telegram или email" required>
+      </div>
+      <div style="display:flex; justify-content:center; margin-top:12px; position:relative;">
+        <textarea name="task" class="cta-textarea" placeholder="Опишите вашу задачу — что нужно сделать?" required></textarea>
+      </div>
+      <div style="display:flex; justify-content:center; margin-top:16px; position:relative;">
+        <button type="submit" class="btn-primary">Отправить заявку →</button>
+      </div>
+    </form>
     <p style="margin-top:20px; font-size:15px; color:#999;">
       Или напрямую:
       <a href="https://kwork.ru/user/mg-19720" style="color:#00d4ff; font-weight:700;">Kwork</a>
@@ -1055,6 +1061,25 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
       const top = target.getBoundingClientRect().top + window.scrollY - offset;
       window.scrollTo({ top: top, behavior: 'smooth' });
     }
+  });
+});
+</script>
+<script>
+document.querySelectorAll(".contact-form").forEach(function(form) {
+  form.addEventListener("submit", function() {
+    var name = (form.querySelector("[name=name]") || {}).value || "";
+    var contact = (form.querySelector("[name=contact]") || {}).value || "";
+    var task = (form.querySelector("[name=task]") || {}).value || "";
+    var msg = "📩 Новая заявка с сайта OM-Digital
+
+Страница: " + window.location.pathname + "
+Имя: " + name + "
+Контакт: " + contact + "
+Задача: " + task;
+    fetch("https://api.telegram.org/bot8873337285:AAEYvrOlbsiqmbbm546jfr8oA7e33o7YlVU/sendMessage", {
+      method: "POST", headers: {"Content-Type": "application/json"},
+      body: JSON.stringify({chat_id: "2088867074", text: msg})
+    });
   });
 });
 </script>
