@@ -46,6 +46,28 @@ h1{font-size:44px;font-weight:900;line-height:1.2;margin-bottom:14px}
 footer{background:#060606;border-top:1px solid rgba(255,255,255,0.05);padding:28px 40px;text-align:center;font-size:13px;color:#555}
 footer a{color:#00d4ff;text-decoration:none}
 @media(max-width:768px){header{padding:0 20px}h1{font-size:30px}.hero-sp{padding:80px 20px 40px}.main{padding:32px 20px 60px}.features-grid{grid-template-columns:1fr}.pr{padding:12px 20px}.ph{padding:18px 20px}}
+
+/* ===== CONTACT FORM ===== */
+.contact-form { max-width: 560px; margin: 0 auto; }
+.form-row { display: flex; gap: 12px; margin-bottom: 12px; }
+.form-row input, .contact-form textarea {
+  background: #1a1a1a; border: 1px solid rgba(255,255,255,0.15);
+  color: white; padding: 14px 18px; border-radius: 8px; font-size: 15px;
+  outline: none; transition: border-color .2s; font-family: inherit; width: 100%;
+}
+.form-row input { flex: 1; width: auto; }
+.contact-form textarea { resize: vertical; min-height: 120px; line-height: 1.6; margin-bottom: 12px; display: block; }
+.form-row input::placeholder, .contact-form textarea::placeholder { color: #888; }
+.form-row input:focus, .contact-form textarea:focus { border-color: rgba(0,212,255,0.5); }
+.contact-form .btn-submit {
+  background: #00c8ff; color: #000; font-weight: 800;
+  padding: 14px 32px; border-radius: 8px; font-size: 15px;
+  border: none; cursor: pointer; display: block; width: 100%;
+  margin-bottom: 16px; transition: opacity .2s;
+}
+.contact-form .btn-submit:hover { opacity: 0.85; }
+.form-links { font-size: 14px; color: #999; text-align: center; margin-top: 4px; }
+.form-links a { color: #00d4ff; font-weight: 700; text-decoration: none; }
 </style>
 </head>
 <body>
@@ -72,8 +94,15 @@ footer a{color:#00d4ff;text-decoration:none}
   <div class="cta-box">
     <h2>Готовы к заказу?</h2>
     <p>Пришлите описание задачи — разберёмся со структурой вместе. Работаем с нуля или по вашим материалам.</p>
-    <a href="https://t.me/omdigital_orders_bot" class="btn-primary">Написать в Telegram →</a>
-    <a href="index.html#prices" class="btn-ghost">Все цены</a>
+        <form class="contact-form" onsubmit="return false;">
+      <div class="form-row">
+        <input type="text" name="name" placeholder="Ваше имя" required>
+        <input type="text" name="contact" placeholder="Telegram или email" required>
+      </div>
+      <textarea name="task" placeholder="Опишите вашу задачу — что нужно сделать?" rows="5" required></textarea>
+      <button type="submit" class="btn-submit">Отправить заявку →</button>
+      <p class="form-links">Или напрямую: <a href="https://kwork.ru/user/mg-19720" target="_blank">Kwork</a> &nbsp;&middot;&nbsp; <a href="https://fl.ru/users/mg-1972" target="_blank">FL.ru</a> &nbsp;&middot;&nbsp; <a href="mailto:newlife2506@yandex.ru">Email</a></p>
+    </form>
   </div>
 </div>
 <footer><a href="index.html">← OM-Digital Company</a> &nbsp;·&nbsp; AI-агентство &nbsp;·&nbsp; Москва &nbsp;·&nbsp; 9:00–21:00 МСК</footer>
