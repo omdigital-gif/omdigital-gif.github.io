@@ -1198,28 +1198,34 @@ document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
 })();
 
 // Contact form: Telegram first, then FormSubmit
-var contactForm = document.getElementById('contactForm');
-if (contactForm) {
+document.addEventListener('DOMContentLoaded', function() {
+  var contactForm = document.getElementById('contactForm');
+  if (!contactForm) return;
   contactForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    var name = (contactForm.querySelector('[name=name]') || {}).value || '';
-    var contact = (contactForm.querySelector('[name=contact]') || {}).value || '';
-    var task = (contactForm.querySelector('[name=task]') || {}).value || '';
-    var page = window.location.pathname;
-    var msg = '\u{1F4E9} Новая заявка с сайта OM-Digital\n\n'
-      + 'Страница: ' + page + '\n'
-      + 'Имя: ' + name + '\n'
-      + 'Контакт: ' + contact + '\n'
-      + 'Задача: ' + task;
+    e.stopPropagation();
+    var nameEl = contactForm.querySelector('[name=name]');
+    var contactEl = contactForm.querySelector('[name=contact]');
+    var taskEl = contactForm.querySelector('[name=task]');
+    var name = nameEl ? nameEl.value : '';
+    var contact = contactEl ? contactEl.value : '';
+    var task = taskEl ? taskEl.value : '';
+    var msg = '📩 Новая заявка с сайта OM-Digital\n\nИмя: ' + name + '\nКонтакт: ' + contact + '\nЗадача: ' + task;
     fetch('https://api.telegram.org/bot8873337285:AAEYvrOlbsiqmbbm546jfr8oA7e33o7YlVU/sendMessage', {
       method: 'POST',
       headers: {'Content-Type': 'application/json'},
       body: JSON.stringify({chat_id: 2088867074, text: msg})
+    }).then(function(r) {
+      return r.json();
+    }).then(function(d) {
+      console.log('[TG] OK:', d.ok);
+    }).catch(function(err) {
+      console.error('[TG] Error:', err);
     }).finally(function() {
       contactForm.submit();
     });
   });
-}
+});
 </script>
 </body>
 </html>
