@@ -344,6 +344,7 @@ section { padding: 64px 40px; }
 .portfolio-img.c9 { background: linear-gradient(135deg, rgba(180,120,60,0.12), rgba(110,70,30,0.06)); }
 .portfolio-img.c10 { background: linear-gradient(135deg, rgba(230,170,30,0.12), rgba(170,120,10,0.06)); }
 .portfolio-img.c11 { background: linear-gradient(135deg, rgba(0,212,255,0.1), rgba(20,20,20,0.08)); }
+.portfolio-video { width: 100%; height: 100%; object-fit: cover; display: block; }
 .portfolio-body { padding: 20px; }
 .portfolio-cat { font-size: 12px; letter-spacing: 2px; color: #00d4ff; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
 .portfolio-card h4 { font-size: 20px; font-weight: 800; margin-bottom: 8px; line-height: 1.3; }
@@ -951,6 +952,20 @@ footer {
           <div class="portfolio-result">Живой демо-сайт — откройте и посмотрите сами</div>
         </div>
       </a>
+
+      <div class="portfolio-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="portfolio-img" style="padding:0;height:180px;">
+          <video class="portfolio-video" controls muted loop playsinline preload="metadata">
+            <source src="demo/video/neirobot_voronka.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="portfolio-body">
+          <div class="portfolio-cat">AI Studio</div>
+          <h4>AI-воронка в мессенджере</h4>
+          <p>Кодовое слово → бот отвечает и выдаёт материал → допродажа консультации — пример логики чат-бота в действии</p>
+          <div class="portfolio-result">15 секунд — вся логика видна сразу</div>
+        </div>
+      </div>
 
     </div>
   </div>
