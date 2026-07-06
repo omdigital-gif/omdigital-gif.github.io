@@ -56,6 +56,17 @@ footer a{color:#00d4ff;text-decoration:none}
 .results-list ul{list-style:none;display:flex;flex-direction:column;gap:10px}
 .results-list li{font-size:15px;color:#ccc;padding-left:22px;position:relative;line-height:1.6}
 .results-list li::before{content:'✓';position:absolute;left:0;color:#00d4ff;font-weight:700}
+.example-card{background:#141414;border:1.5px solid rgba(0,212,255,0.25);border-radius:14px;padding:0;margin-bottom:32px;overflow:hidden}
+.example-head{background:rgba(0,212,255,0.07);padding:16px 24px;border-bottom:1px solid rgba(0,212,255,0.15);display:flex;align-items:center;gap:10px}
+.example-head .ico{font-size:18px}
+.example-head span{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#00d4ff;font-weight:700}
+.example-body{padding:24px 28px;font-family:'Segoe UI',Arial,sans-serif}
+.ex-title{font-size:18px;font-weight:800;color:#fff;line-height:1.4;margin-bottom:16px;padding-bottom:16px;border-bottom:1px dashed rgba(255,255,255,0.12)}
+.ex-desc{font-size:14px;color:#ccc;line-height:1.7;margin-bottom:18px}
+.ex-bullets{list-style:none;display:flex;flex-direction:column;gap:8px;margin-bottom:4px}
+.ex-bullets li{font-size:14px;color:#ccc;padding-left:20px;position:relative;line-height:1.6}
+.ex-bullets li::before{content:'•';position:absolute;left:0;color:#f0c040;font-weight:900}
+.ex-bullets b{color:#fff}
 
 /* ===== CONTACT FORM ===== */
 .contact-form { max-width: 560px; margin: 0 auto; }
@@ -94,6 +105,22 @@ footer a{color:#00d4ff;text-decoration:none}
   <div class="p-hero">📦</div>
   <p class="p-desc">Разработали 40 карточек товаров для косметического бренда на Wildberries. Каждая карточка включала SEO-заголовок с ключевыми запросами, структурированное описание с выгодами, rich-контент и буллеты характеристик. Отдельно проработали семантику под поиск WB.</p>
   <div class="p-tags"><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">WB / Ozon</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">SEO-заголовки</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Rich-контент</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Косметика</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Маркетинг</span></div>
+  <div class="section-lbl">Пример карточки в этом формате</div>
+  <div class="example-card">
+    <div class="example-head"><span class="ico">📦</span><span>Демонстрационный пример — структура как в проекте</span></div>
+    <div class="example-body">
+      <div class="ex-title">Сыворотка для лица с гиалуроновой кислотой 3% и витамином C, увлажняющая, против морщин, 30 мл</div>
+      <p class="ex-desc">Сыворотка мгновенно увлажняет и разглаживает кожу благодаря гиалуроновой кислоте трёх молекулярных весов — она проникает на разную глубину и удерживает влагу до 24 часов. Витамин C выравнивает тон, убирает тусклость и мелкие морщины, а лёгкая текстура быстро впитывается и не оставляет плёнки — подходит под макияж утром и как самостоятельный уход вечером.</p>
+      <ul class="ex-bullets">
+        <li><b>Объём:</b> 30 мл</li>
+        <li><b>Гиалуроновая кислота:</b> 3% (три молекулярных веса)</li>
+        <li><b>Витамин C:</b> 5%</li>
+        <li><b>Тип кожи:</b> всех типов, включая чувствительную</li>
+        <li><b>Применение:</b> 2-3 капли утром и вечером на очищенную кожу</li>
+        <li><b>Не содержит:</b> парабенов, отдушек, спирта</li>
+      </ul>
+    </div>
+  </div>
   <div class="results-list">
     <h3>Результаты</h3>
     <ul><li>Показы в поиске Wildberries выросли на 34% за 2 недели</li><li>CTR карточек вырос на 18% (A/B тест заголовков)</li><li>Конверсия в корзину улучшилась на 12%</li><li>Срок выполнения: 3 рабочих дня, 40 карточек</li></ul>
