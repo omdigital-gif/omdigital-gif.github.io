@@ -118,12 +118,7 @@ document.querySelectorAll("form.contact-form").forEach(function(form) {
     var name = (form.querySelector("[name=name]") || {}).value || "";
     var contact = (form.querySelector("[name=contact]") || {}).value || "";
     var task = (form.querySelector("[name=task]") || {}).value || "";
-    var msg = "📩 Новая заявка с сайта OM-Digital
-
-Страница: " + window.location.pathname + "
-Имя: " + name + "
-Контакт: " + contact + "
-Задача: " + task;
+    var msg = "📩 Новая заявка с сайта OM-Digital\n\nСтраница: " + window.location.pathname + "\nИмя: " + name + "\nКонтакт: " + contact + "\nЗадача: " + task;
     fetch("https://api.telegram.org/bot8873337285:AAEYvrOlbsiqmbbm546jfr8oA7e33o7YlVU/sendMessage", {
       method: "POST", headers: {"Content-Type": "application/json"},
       body: JSON.stringify({chat_id: "2088867074", text: msg})
