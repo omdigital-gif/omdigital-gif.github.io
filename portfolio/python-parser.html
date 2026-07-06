@@ -56,6 +56,19 @@ footer a{color:#00d4ff;text-decoration:none}
 .results-list ul{list-style:none;display:flex;flex-direction:column;gap:10px}
 .results-list li{font-size:15px;color:#ccc;padding-left:22px;position:relative;line-height:1.6}
 .results-list li::before{content:'✓';position:absolute;left:0;color:#00d4ff;font-weight:700}
+.example-card{background:#141414;border:1.5px solid rgba(0,212,255,0.25);border-radius:14px;padding:0;margin-bottom:20px;overflow:hidden}
+.example-head{background:rgba(0,212,255,0.07);padding:14px 24px;border-bottom:1px solid rgba(0,212,255,0.15);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.example-head .ico{font-size:16px}
+.example-head span{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#00d4ff;font-weight:700}
+.example-body{padding:22px 26px}
+.code-block{background:#0a0a0a;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:16px 18px;font-family:Consolas,Monaco,monospace;font-size:12.5px;line-height:1.7;color:#9fe6a0;overflow-x:auto;white-space:pre}
+.code-block .cm{color:#666}
+.code-block .kw{color:#569cd6}
+.out-table{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:14px}
+.out-table th{text-align:left;padding:7px 10px;background:rgba(0,212,255,0.08);color:#00d4ff;font-weight:700}
+.out-table td{padding:7px 10px;border-bottom:1px solid rgba(255,255,255,0.06);color:#ccc}
+.out-table .down{color:#5ee08a}
+.out-table .up{color:#f05050}
 
 /* ===== CONTACT FORM ===== */
 .contact-form { max-width: 560px; margin: 0 auto; }
@@ -94,6 +107,38 @@ footer a{color:#00d4ff;text-decoration:none}
   <div class="p-hero">⚡</div>
   <p class="p-desc">Разработали Python-скрипт мониторинга цен конкурентов на 5 маркетплейсах (WB, Ozon, СберМегаМаркет, Яндекс.Маркет, AliExpress). Скрипт запускается по расписанию, собирает данные по 120 SKU и формирует отчёт в Excel с динамикой цен и алертами.</p>
   <div class="p-tags"><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Python</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Парсинг</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Selenium</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Excel</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Автоматизация</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Маркетплейсы</span></div>
+  <div class="section-lbl">Пример кода и отчёта</div>
+
+  <div class="example-card">
+    <div class="example-head"><span class="ico">🐍</span><span>Демонстрационный фрагмент кода</span></div>
+    <div class="example-body">
+      <div class="code-block"><span class="kw">def</span> check_price(sku, marketplace):
+    <span class="cm"># Открывает карточку товара и снимает текущую цену</span>
+    price = fetch_current_price(sku, marketplace)
+    previous = load_last_price(sku, marketplace)
+
+    <span class="kw">if</span> previous <span class="kw">and</span> price &lt; previous * 0.95:
+        send_telegram_alert(
+            f<span class="cm">"⚠️ {marketplace}: цена на {sku} упала на {(1 - price/previous):.0%}"</span>
+        )
+
+    save_price_history(sku, marketplace, price)
+    <span class="kw">return</span> price</div>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <div class="example-head"><span class="ico">📊</span><span>Пример строк отчёта в Excel</span></div>
+    <div class="example-body">
+      <table class="out-table">
+        <tr><th>SKU</th><th>Площадка</th><th>Цена сегодня</th><th>Вчера</th><th>Изменение</th></tr>
+        <tr><td>SKU-10432</td><td>Wildberries</td><td>1 290 ₽</td><td>1 490 ₽</td><td class="down">−13.4% ⚠️</td></tr>
+        <tr><td>SKU-10432</td><td>Ozon</td><td>1 350 ₽</td><td>1 350 ₽</td><td>—</td></tr>
+        <tr><td>SKU-20187</td><td>Яндекс.Маркет</td><td>2 490 ₽</td><td>2 190 ₽</td><td class="up">+13.7%</td></tr>
+      </table>
+    </div>
+  </div>
+
   <div class="results-list">
     <h3>Результаты</h3>
     <ul><li>6 часов ручного мониторинга сократились до 5 минут автоматически</li><li>120 SKU мониторируются на 5 площадках ежедневно</li><li>Алерты по снижению цены конкурентов на >5% в Telegram</li><li>Срок разработки: 4 рабочих дня, +1 день настройки</li></ul>

@@ -45,7 +45,7 @@ h1{font-size:44px;font-weight:900;line-height:1.2;margin-bottom:14px}
 .btn-ghost:hover{border-color:rgba(255,255,255,0.5)}
 footer{background:#060606;border-top:1px solid rgba(255,255,255,0.05);padding:28px 40px;text-align:center;font-size:13px;color:#555}
 footer a{color:#00d4ff;text-decoration:none}
-@media(max-width:768px){header{padding:0 20px}h1{font-size:30px}.hero-sp{padding:80px 20px 40px}.main{padding:32px 20px 60px}.features-grid{grid-template-columns:1fr}.pr{padding:12px 20px}.ph{padding:18px 20px}.form-row{flex-direction:column;gap:12px}.form-row input{width:100%}}
+@media(max-width:768px){header{padding:0 20px}h1{font-size:30px}.hero-sp{padding:80px 20px 40px}.main{padding:32px 20px 60px}.features-grid{grid-template-columns:1fr}.pr{padding:12px 20px}.ph{padding:18px 20px}.form-row{flex-direction:column;gap:12px}.form-row input{width:100%}.swot-grid{grid-template-columns:1fr}.bp-fin td{font-size:13px}}
 
 .p-hero{height:200px;display:flex;align-items:center;justify-content:center;font-size:72px;background:linear-gradient(135deg,rgba(0,212,255,0.1),rgba(80,0,200,0.07));border-radius:16px;margin-bottom:32px}
 .p-cat{font-size:12px;letter-spacing:2px;color:#00d4ff;text-transform:uppercase;font-weight:700;margin-bottom:10px}
@@ -56,6 +56,30 @@ footer a{color:#00d4ff;text-decoration:none}
 .results-list ul{list-style:none;display:flex;flex-direction:column;gap:10px}
 .results-list li{font-size:15px;color:#ccc;padding-left:22px;position:relative;line-height:1.6}
 .results-list li::before{content:'✓';position:absolute;left:0;color:#00d4ff;font-weight:700}
+.example-card{background:#141414;border:1.5px solid rgba(0,212,255,0.25);border-radius:14px;padding:0;margin-bottom:32px;overflow:hidden}
+.example-head{background:rgba(0,212,255,0.07);padding:16px 24px;border-bottom:1px solid rgba(0,212,255,0.15);display:flex;align-items:center;gap:10px}
+.example-head .ico{font-size:18px}
+.example-head span{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:#00d4ff;font-weight:700}
+.example-body{padding:24px 28px}
+.bp-section{margin-bottom:24px}
+.bp-section:last-child{margin-bottom:0}
+.bp-section h4{font-size:15px;font-weight:800;color:#fff;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.bp-section p{font-size:14px;color:#ccc;line-height:1.7}
+.swot-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.swot-cell{border-radius:8px;padding:12px 14px;font-size:13px;line-height:1.6}
+.swot-cell b{display:block;font-size:11px;letter-spacing:1px;text-transform:uppercase;margin-bottom:6px}
+.swot-s{background:rgba(0,212,255,0.08);color:#bde9ff}
+.swot-s b{color:#00d4ff}
+.swot-w{background:rgba(240,192,64,0.08);color:#f5dfa8}
+.swot-w b{color:#f0c040}
+.swot-o{background:rgba(100,220,140,0.08);color:#b8f0cc}
+.swot-o b{color:#5ee08a}
+.swot-t{background:rgba(240,80,80,0.08);color:#f5b8b8}
+.swot-t b{color:#f05050}
+.bp-fin{width:100%;border-collapse:collapse;font-size:14px}
+.bp-fin td{padding:9px 4px;border-bottom:1px solid rgba(255,255,255,0.06);color:#ccc}
+.bp-fin td:last-child{text-align:right;font-weight:800;color:#f0c040;white-space:nowrap}
+.bp-fin tr:last-child td{border-bottom:none}
 
 /* ===== CONTACT FORM ===== */
 .contact-form { max-width: 560px; margin: 0 auto; }
@@ -94,6 +118,50 @@ footer a{color:#00d4ff;text-decoration:none}
   <div class="p-hero">📊</div>
   <p class="p-desc">Подготовили полный бизнес-план для кофейни в спальном районе Москвы. Включал анализ рынка кофеен в радиусе 1 км, финансовую модель на 3 года (P&L, cashflow, break-even), SWOT-анализ, описание концепции и операционного плана. Документ передан инвестору.</p>
   <div class="p-tags"><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Бизнес-план</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Финансовая модель</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">SWOT</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Анализ рынка</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Инвестиции</span></div>
+  <div class="section-lbl">Пример структуры документа</div>
+  <div class="example-card">
+    <div class="example-head"><span class="ico">📊</span><span>Демонстрационная выдержка — структура как в проекте</span></div>
+    <div class="example-body">
+
+      <div class="bp-section">
+        <h4>🧭 Концепция</h4>
+        <p>Кофейня формата «coffee-to-go + 6 посадочных мест» в спальном районе с плотной жилой застройкой и слабой конкуренцией в шаговой доступности. Фокус на скорость обслуживания утром (пик 7:30-9:30) и уютную атмосферу днём для тех, кто работает удалённо. Средний чек ориентирован на 350-450 ₽.</p>
+      </div>
+
+      <div class="bp-section">
+        <h4>📍 Анализ рынка (кратко)</h4>
+        <p>В радиусе 1 км — 2 прямых конкурента (сетевая кофейня и мини-кофе-пойнт), оба без посадочных мест. Проходимость точки — около 4 000 человек/день по данным пешеходного трафика. Свободная ниша: полноценное место для короткой встречи или удалённой работы, а не только кофе навынос.</p>
+      </div>
+
+      <div class="bp-section">
+        <h4>⚖️ SWOT-анализ</h4>
+        <div class="swot-grid">
+          <div class="swot-cell swot-s"><b>Сильные стороны</b>Свободная ниша посадочных мест, высокий пешеходный трафик, низкая аренда района</div>
+          <div class="swot-cell swot-w"><b>Слабые стороны</b>Небольшая площадь (30 м²), ограниченное меню на старте, новый бренд без узнаваемости</div>
+          <div class="swot-cell swot-o"><b>Возможности</b>Утренние абонементы для офисов рядом, доставка через агрегаторы, расширение меню выпечкой</div>
+          <div class="swot-cell swot-t"><b>Угрозы</b>Приход федеральной сети в район, рост цен на аренду, сезонное падение трафика летом</div>
+        </div>
+      </div>
+
+      <div class="bp-section">
+        <h4>💰 Финансовая модель — ключевые цифры</h4>
+        <table class="bp-fin">
+          <tr><td>Стартовые инвестиции (ремонт, оборудование, закупка)</td><td>2 500 000 ₽</td></tr>
+          <tr><td>Средний чек</td><td>400 ₽</td></tr>
+          <tr><td>Прогноз выручки в месяц (стабильный период)</td><td>780 000 ₽</td></tr>
+          <tr><td>Постоянные расходы в месяц (аренда, ФОТ, коммуналка)</td><td>430 000 ₽</td></tr>
+          <tr><td>Точка безубыточности (break-even)</td><td>11-й месяц</td></tr>
+          <tr><td>Рентабельность по чистой прибыли (год 2)</td><td>~18%</td></tr>
+        </table>
+      </div>
+
+      <div class="bp-section">
+        <h4>⚙️ Операционный план</h4>
+        <p>Режим работы 7:00-21:00, 2 смены по 2 бариста. Закупка сырья — 2 раза в неделю у одного поставщика для стабильности качества. Первые 3 месяца — акцент на утренний трафик и локальный маркетинг (листовки, сотрудничество с бизнес-центром напротив); с 4-го месяца — подключение доставки через агрегаторы для расширения на дневные и вечерние часы.</p>
+      </div>
+
+    </div>
+  </div>
   <div class="results-list">
     <h3>Результаты</h3>
     <ul><li>Инвестор принял решение о финансировании в течение 2 недель</li><li>Сумма привлечённых инвестиций — 2,5 млн рублей</li><li>Break-even по финмодели: 11-й месяц работы</li><li>Срок выполнения: 6 рабочих дней, документ 38 страниц</li></ul>

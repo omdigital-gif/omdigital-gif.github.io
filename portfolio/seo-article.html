@@ -56,6 +56,21 @@ footer a{color:#00d4ff;text-decoration:none}
 .results-list ul{list-style:none;display:flex;flex-direction:column;gap:10px}
 .results-list li{font-size:15px;color:#ccc;padding-left:22px;position:relative;line-height:1.6}
 .results-list li::before{content:'✓';position:absolute;left:0;color:#00d4ff;font-weight:700}
+.example-card{background:#141414;border:1.5px solid rgba(0,212,255,0.25);border-radius:14px;padding:0;margin-bottom:20px;overflow:hidden}
+.example-head{background:rgba(0,212,255,0.07);padding:14px 24px;border-bottom:1px solid rgba(0,212,255,0.15);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.example-head .ico{font-size:16px}
+.example-head span{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#00d4ff;font-weight:700}
+.example-body{padding:22px 26px}
+.chat-line{display:flex;gap:10px;margin-bottom:12px;font-size:14px;line-height:1.6}
+.chat-line:last-child{margin-bottom:0}
+.chat-bot{background:rgba(0,212,255,0.08);border-radius:10px;padding:10px 14px;color:#ddd;max-width:80%}
+.chat-user{background:rgba(255,255,255,0.06);border-radius:10px;padding:10px 14px;color:#ccc;max-width:80%;margin-left:auto}
+.chat-tag{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#00d4ff;font-weight:700;flex-shrink:0;width:44px;padding-top:10px}
+.crm-card{background:#0a0a0a;border:1px solid rgba(255,255,255,0.08);border-radius:8px;padding:16px 18px;font-size:13px;margin-top:14px}
+.crm-row{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+.crm-row:last-child{border-bottom:none}
+.crm-row span:first-child{color:#888}
+.crm-row span:last-child{color:#fff;font-weight:600;text-align:right}
 
 /* ===== CONTACT FORM ===== */
 .contact-form { max-width: 560px; margin: 0 auto; }
@@ -94,6 +109,28 @@ footer a{color:#00d4ff;text-decoration:none}
   <div class="p-hero">📱</div>
   <p class="p-desc">Разработали Telegram-бот для строительной компании: приём заявок от клиентов, автоматическое формирование карточки лида, передача в CRM (AmoCRM через API) и мгновенное уведомление менеджера. Бот работает 24/7, клиент получает подтверждение и сроки связи.</p>
   <div class="p-tags"><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Telegram-бот</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Python</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">CRM-интеграция</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">API</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Строительство</span></div>
+  <div class="section-lbl">Пример диалога и карточки в CRM</div>
+
+  <div class="example-card">
+    <div class="example-head"><span class="ico">💬</span><span>Демонстрационный пример диалога</span></div>
+    <div class="example-body">
+      <div class="chat-line"><span class="chat-tag">Бот</span><div class="chat-bot">Здравствуйте! Строительная компания «СтройДом». Что вас интересует: строительство дома под ключ, ремонт или консультация по проекту?</div></div>
+      <div class="chat-line"><span class="chat-tag">Клиент</span><div class="chat-user">Строительство дома, участок 10 соток в Подмосковье</div></div>
+      <div class="chat-line"><span class="chat-tag">Бот</span><div class="chat-bot">Отлично! Уточните, пожалуйста, площадь дома (примерно) и есть ли уже проект, или нужно разработать с нуля?</div></div>
+      <div class="chat-line"><span class="chat-tag">Клиент</span><div class="chat-user">150 м², проекта пока нет</div></div>
+      <div class="chat-line"><span class="chat-tag">Бот</span><div class="chat-bot">Понял, передаю заявку менеджеру по строительству — он свяжется с вами в течение 15 минут и предложит несколько готовых планировок под ваш метраж. Как к вам обращаться и по какому номеру удобно перезвонить?</div></div>
+      <div class="crm-card">
+        <div class="crm-row"><span>Карточка лида в AmoCRM</span><span>#L-04521</span></div>
+        <div class="crm-row"><span>Услуга</span><span>Строительство дома под ключ</span></div>
+        <div class="crm-row"><span>Метраж</span><span>150 м²</span></div>
+        <div class="crm-row"><span>Проект</span><span>нужен с нуля</span></div>
+        <div class="crm-row"><span>Регион</span><span>Подмосковье</span></div>
+        <div class="crm-row"><span>Приоритет</span><span>Высокий (готов к разговору)</span></div>
+        <div class="crm-row"><span>Ответственный</span><span>назначен автоматически</span></div>
+      </div>
+    </div>
+  </div>
+
   <div class="results-list">
     <h3>Результаты</h3>
     <ul><li>Скорость обработки заявки с 45 минут до 15 секунд</li><li>Скорость ответа менеджеру вырос в 3 раза</li><li>100% заявок попадают в CRM без потерь</li><li>Срок разработки: 5 рабочих дней, интеграция с AmoCRM</li></ul>

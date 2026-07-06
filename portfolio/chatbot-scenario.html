@@ -56,6 +56,21 @@ footer a{color:#00d4ff;text-decoration:none}
 .results-list ul{list-style:none;display:flex;flex-direction:column;gap:10px}
 .results-list li{font-size:15px;color:#ccc;padding-left:22px;position:relative;line-height:1.6}
 .results-list li::before{content:'✓';position:absolute;left:0;color:#00d4ff;font-weight:700}
+.example-card{background:#141414;border:1.5px solid rgba(0,212,255,0.25);border-radius:14px;padding:0;margin-bottom:20px;overflow:hidden}
+.example-head{background:rgba(0,212,255,0.07);padding:14px 24px;border-bottom:1px solid rgba(0,212,255,0.15);display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.example-head .ico{font-size:16px}
+.example-head span{font-size:12px;letter-spacing:1px;text-transform:uppercase;color:#00d4ff;font-weight:700}
+.example-head .num{background:rgba(0,212,255,0.15);padding:2px 10px;border-radius:12px;font-size:11px}
+.example-body{padding:22px 26px}
+.chat-line{display:flex;gap:10px;margin-bottom:12px;font-size:14px;line-height:1.6}
+.chat-line:last-child{margin-bottom:0}
+.chat-bot{background:rgba(0,212,255,0.08);border-radius:10px;padding:10px 14px;color:#ddd;max-width:80%}
+.chat-user{background:rgba(255,255,255,0.06);border-radius:10px;padding:10px 14px;color:#ccc;max-width:80%;margin-left:auto}
+.chat-tag{font-size:10px;letter-spacing:1px;text-transform:uppercase;color:#00d4ff;font-weight:700;flex-shrink:0;width:44px;padding-top:10px}
+.faq-item{margin-bottom:14px;font-size:14px}
+.faq-item:last-child{margin-bottom:0}
+.faq-q{color:#fff;font-weight:700;margin-bottom:4px}
+.faq-a{color:#bbb;line-height:1.6}
 
 /* ===== CONTACT FORM ===== */
 .contact-form { max-width: 560px; margin: 0 auto; }
@@ -94,6 +109,28 @@ footer a{color:#00d4ff;text-decoration:none}
   <div class="p-hero">🤖</div>
   <p class="p-desc">Разработали полный пакет для Telegram-бота юридической компании: системный промпт для Claude AI, диалоговый сценарий (22 ветки), FAQ-базу из 65 вопросов. Бот квалифицирует клиента, отвечает на типовые вопросы и передаёт горячие лиды юристу.</p>
   <div class="p-tags"><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">AI Studio</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">ChatGPT / Claude</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Telegram-бот</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Юридические услуги</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">FAQ-база</span></div>
+  <div class="section-lbl">Пример диалога и FAQ</div>
+
+  <div class="example-card">
+    <div class="example-head"><span class="ico">💬</span><span>Демонстрационный пример</span><span class="num">Ветка «Первичная квалификация»</span></div>
+    <div class="example-body">
+      <div class="chat-line"><span class="chat-tag">Бот</span><div class="chat-bot">Здравствуйте! Я помощник юридической компании «Право и дело». Подскажите, коротко — с чем связан ваш вопрос: договор, трудовой спор, взыскание долга или что-то другое?</div></div>
+      <div class="chat-line"><span class="chat-tag">Клиент</span><div class="chat-user">Работодатель не платит зарплату уже 2 месяца</div></div>
+      <div class="chat-line"><span class="chat-tag">Бот</span><div class="chat-bot">Понимаю, это серьёзно — по трудовым спорам у нас отдельный юрист. Уточните, пожалуйста: у вас официальное трудоустройство (есть трудовой договор)?</div></div>
+      <div class="chat-line"><span class="chat-tag">Клиент</span><div class="chat-user">Да, договор есть</div></div>
+      <div class="chat-line"><span class="chat-tag">Бот</span><div class="chat-bot">Отлично, это упрощает дело — с официальным договором шансы на быстрое взыскание высокие. Передаю ваш вопрос юристу по трудовым спорам, он свяжется с вами в течение 30 минут. Как к вам можно обращаться и по какому номеру удобно связаться?</div></div>
+      <p style="margin-top:14px;font-size:12px;color:#888">→ Дальше лид с меткой «трудовой спор, официальный договор, высокий приоритет» уходит юристу — экономит ему время на выяснение вводных.</p>
+    </div>
+  </div>
+
+  <div class="example-card">
+    <div class="example-head"><span class="ico">❓</span><span>Демонстрационный пример</span><span class="num">2 вопроса из FAQ-базы (65 всего)</span></div>
+    <div class="example-body">
+      <div class="faq-item"><div class="faq-q">Сколько стоит первая консультация?</div><div class="faq-a">Первая консультация по телефону или в чате — бесплатная, до 15 минут. Если нужен разбор документов — это уже платная услуга, стоимость зависит от объёма.</div></div>
+      <div class="faq-item"><div class="faq-q">Как быстро вы отвечаете на обращения?</div><div class="faq-a">Бот отвечает мгновенно на типовые вопросы. Если нужен именно юрист — он перезванивает в течение 30 минут в рабочее время (9:00-20:00) или на следующее утро, если обращение пришло ночью.</div></div>
+    </div>
+  </div>
+
   <div class="results-list">
     <h3>Результаты</h3>
     <ul><li>Бот обрабатывает 80% входящих вопросов без участия юриста</li><li>Время ответа на типовой вопрос — менее 3 секунд</li><li>Конверсия квалифицированных лидов выросла на 22%</li><li>Срок выполнения: 5 рабочих дней (промпт + сценарий + FAQ)</li></ul>
