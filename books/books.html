@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Книги OM-Digital — учимся работать с Claude и AI-агентами</title>
+<style>
+:root{--bg:#0f1220;--panel:#171b2e;--text:#eef0f8;--muted:#a5abc4;--accent:#7c9cff;--accent2:#5ce0c6;--free:#5ce0c6;--paid:#ffb454;}
+@media (prefers-color-scheme: light){:root{--bg:#f6f7fb;--panel:#ffffff;--text:#1b1e2b;--muted:#5b6178;--accent:#3b5bdb;--accent2:#0f9d84;--free:#0f9d84;--paid:#c97a08;}}
+:root[data-theme="light"]{--bg:#f6f7fb;--panel:#ffffff;--text:#1b1e2b;--muted:#5b6178;--accent:#3b5bdb;--accent2:#0f9d84;--free:#0f9d84;--paid:#c97a08;}
+:root[data-theme="dark"]{--bg:#0f1220;--panel:#171b2e;--text:#eef0f8;--muted:#a5abc4;--accent:#7c9cff;--accent2:#5ce0c6;--free:#5ce0c6;--paid:#ffb454;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.65}
+.wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}
+.cover{display:block;max-width:280px;width:60%;margin:0 auto 28px;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+h1{font-size:1.9rem;margin:0 0 6px;text-align:center}
+h2{font-size:1.35rem;margin:2.2em 0 .6em;color:var(--accent)}
+h3{font-size:1.1rem;margin:1.6em 0 .5em;color:var(--accent2)}
+h4{font-size:1rem;margin:1.2em 0 .4em}
+p{margin:0 0 1em;color:var(--text)}
+a{color:var(--accent)}
+.subtitle{text-align:center;color:var(--muted);margin:0 0 28px}
+.backlink{display:inline-block;margin-bottom:18px;color:var(--muted);text-decoration:none;font-size:.9rem}
+.backlink:hover{color:var(--accent)}
+.cta{background:var(--panel);border-radius:16px;padding:24px;text-align:center;margin:40px 0}
+.cta a.btn{display:inline-block;margin-top:10px;background:var(--accent);color:#fff;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:600}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:24px}
+.card{background:var(--panel);border-radius:16px;padding:18px;text-align:center;display:flex;flex-direction:column}
+.card img{width:100%;max-width:220px;margin:0 auto 14px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
+.card h3{margin:.2em 0 .4em;font-size:1.05rem}
+.card h3 a{color:var(--text);text-decoration:none}
+.blurb{color:var(--muted);font-size:.92rem;flex:1}
+.price{font-weight:700;margin:.6em 0}
+.price.free{color:var(--free)}
+.price.paid{color:var(--paid)}
+.btn{display:inline-block;margin-top:auto;padding:10px 16px;border-radius:10px;text-decoration:none;font-weight:600}
+.btn.free{background:var(--free);color:#04231d}
+.btn.paid{background:var(--paid);color:#2b1500}
+</style>
+</head><body><div class="wrap">
+<h1>Книги OM-Digital</h1>
+<p class="subtitle">Практические книги о работе с Claude и AI-агентами: от первых шагов до автономной мультиагентной компании</p>
+<div class="grid">
+<div class="card">
+  <a href="kniga1.html"><img src="covers/kniga1_cover_E.png" alt="Нейросети для начинающих"></a>
+  <h3><a href="kniga1.html">Нейросети для начинающих</a></h3>
+  <p class="blurb">Простыми словами о том, как начать пользоваться ИИ-ассистентами уже сегодня — без технического бэкграунда.</p>
+  <div class="price free">Бесплатно</div>
+  <a class="btn free" href="kniga1.html">Читать бесплатно</a>
+</div>
+
+<div class="card">
+  <a href="kniga2.html"><img src="covers/kniga2_cover_E.png" alt="ИИ-ассистент для вашего бизнеса"></a>
+  <h3><a href="kniga2.html">ИИ-ассистент для вашего бизнеса</a></h3>
+  <p class="blurb">Практическое руководство: как ИИ-ассистент берёт на себя рутину и освобождает время для роста бизнеса.</p>
+  <div class="price paid">49 ₽</div>
+  <a class="btn paid" href="https://kwork.ru/user/mg-19720" target="_blank" rel="noopener">Купить за 49 ₽</a>
+</div>
+
+<div class="card">
+  <a href="kniga3.html"><img src="covers/kniga3_cover_E.png" alt="AI-агенты и мультиагентные системы"></a>
+  <h3><a href="kniga3.html">AI-агенты и мультиагентные системы</a></h3>
+  <p class="blurb">Как устроены мультиагентные системы на практике — на примере компании, где агенты сами ведут клиентов, торги и производство.</p>
+  <div class="price paid">99 ₽</div>
+  <a class="btn paid" href="https://kwork.ru/user/mg-19720" target="_blank" rel="noopener">Купить за 99 ₽</a>
+</div></div>
+<div class="cta">
+  <p>Больше практики и живая поддержка — в нашем обучающем боте.</p>
+  <a class="btn" href="https://t.me/om_ai_teacher_bot" target="_blank" rel="noopener">Перейти в @om_ai_teacher_bot</a>
+</div>
+</div></body></html>
