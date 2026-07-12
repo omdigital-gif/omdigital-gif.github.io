@@ -23,8 +23,55 @@ a{color:var(--accent)}
 .cta{background:var(--panel);border-radius:16px;padding:24px;text-align:center;margin:40px 0}
 .cta a.btn{display:inline-block;margin-top:10px;background:var(--accent);color:#fff;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:600}
 .disclaimer{background:var(--panel);border-radius:12px;padding:16px 20px;font-size:.9rem;color:var(--muted);margin:1.4em 0}
+
+header{position:sticky;top:0;z-index:200;background:rgba(10,10,10,0.96);border-bottom:1px solid rgba(0,212,255,0.15);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo-wrap{display:flex;align-items:center;gap:14px;text-decoration:none}
+.logo-sq{width:50px;height:50px;background:linear-gradient(135deg,#00d4ff,#0088cc);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#0a0a0a;font-size:17px;font-weight:900;box-shadow:0 0 20px rgba(0,212,255,0.4);flex-shrink:0}
+.logo-txt .l1{font-size:20px;font-weight:900;letter-spacing:3px;background:linear-gradient(90deg,#00d4ff,#00aaee);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo-txt .l2{font-size:9px;letter-spacing:5px;color:#aaa}
+nav{display:flex;align-items:center;gap:24px}
+nav a{color:#fff;text-decoration:none;font-size:15px;font-weight:600;transition:color .2s}
+nav a:hover{color:#00d4ff}
+.btn-cta{background:transparent;color:#00d4ff;border:1.5px solid #00d4ff;padding:8px 20px;border-radius:6px;font-size:13px;font-weight:700;text-decoration:none;white-space:nowrap;transition:background .2s,box-shadow .2s}
+.btn-cta:hover{background:rgba(0,212,255,0.1);box-shadow:0 0 16px rgba(0,212,255,0.3)}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;background:none;border:none}
+.hamburger span{display:block;width:24px;height:2px;background:#fff;border-radius:2px;transition:all .3s}
+.hamburger.open span:nth-child(1){transform:rotate(45deg) translate(5px,5px)}
+.hamburger.open span:nth-child(2){opacity:0}
+.hamburger.open span:nth-child(3){transform:rotate(-45deg) translate(5px,-5px)}
+.mobile-menu{display:none;position:fixed;top:76px;left:0;right:0;background:rgba(10,10,10,0.98);border-bottom:1px solid rgba(0,212,255,0.15);padding:24px 32px;z-index:199;flex-direction:column;gap:16px}
+.mobile-menu.open{display:flex}
+.mobile-menu a{color:#fff;text-decoration:none;font-size:17px;font-weight:600;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
+.mobile-menu a:last-child{border-bottom:none;color:#00d4ff}
+@media(max-width:768px){header{padding:0 20px}nav{display:none}.hamburger{display:flex}}
 </style>
-</head><body><div class="wrap">
+</head><body>
+<header>
+  <a href="../index.html" class="logo-wrap">
+    <div class="logo-sq">OM</div>
+    <div class="logo-txt"><div class="l1">OM-DIGITAL</div><div class="l2">COMPANY</div></div>
+  </a>
+  <nav>
+    <a href="../index.html#services">Услуги</a>
+    <a href="../index.html#how">Процесс</a>
+    <a href="../index.html#portfolio">Портфолио</a>
+    <a href="../index.html#prices">Цены</a>
+    <a href="books.html">Книги</a>
+    <a href="../index.html#contact">Контакты</a>
+    <a href="../index.html#contact" class="btn-cta">Заказать →</a>
+  </nav>
+  <button class="hamburger" id="menuBtn" aria-label="Меню"><span></span><span></span><span></span></button>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="../index.html#services" onclick="closeMenu()">Услуги</a>
+  <a href="../index.html#how" onclick="closeMenu()">Процесс</a>
+  <a href="../index.html#portfolio" onclick="closeMenu()">Портфолио</a>
+  <a href="../index.html#prices" onclick="closeMenu()">Цены</a>
+  <a href="books.html" onclick="closeMenu()">Книги</a>
+  <a href="../index.html#contact" onclick="closeMenu()">Контакты</a>
+  <a href="../index.html#contact" onclick="closeMenu()">Заказать →</a>
+</div>
+<div class="wrap">
 <a class="backlink" href="books.html">&larr; Все книги OM-Digital</a>
 <img class="cover" src="covers/kniga5_cover_E.png" alt="Мобильное приложение для определения симптомов">
 <p class="subtitle">Как устроены ИИ-приложения для проверки симптомов и когда им можно доверять</p>
@@ -79,4 +126,15 @@ a{color:var(--accent)}
   <p>Больше практики и живая поддержка — в нашем обучающем боте.</p>
   <a class="btn" href="https://t.me/om_ai_teacher_bot" target="_blank" rel="noopener">Перейти в @om_ai_teacher_bot</a>
 </div>
-</div></body></html>
+</div>
+<script>
+document.getElementById('menuBtn').addEventListener('click', function(){
+  this.classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
+});
+function closeMenu(){
+  document.getElementById('menuBtn').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
+}
+</script>
+</body></html>
