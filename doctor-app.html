@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Карманный Доктор — кейс OM-Digital Company</title>
+<meta name="description" content="Карманный Доктор — мобильное ИИ-приложение на Flutter от OM-Digital: разбор симптомов, история консультаций, три темы оформления. Кейс из портфолио, проект в разработке.">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Segoe UI',Arial,sans-serif;background:#0a0a0a;color:#fff;min-height:100vh}
+header{position:sticky;top:0;z-index:200;background:rgba(10,10,10,0.96);border-bottom:1px solid rgba(0,212,255,0.15);backdrop-filter:blur(14px);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:76px}
+.logo{display:flex;align-items:center;gap:14px;text-decoration:none}
+.logo-sq{width:50px;height:50px;background:linear-gradient(135deg,#00d4ff,#0088cc);border-radius:10px;display:flex;align-items:center;justify-content:center;color:#0a0a0a;font-size:17px;font-weight:900;box-shadow:0 0 20px rgba(0,212,255,0.4);flex-shrink:0}
+.logo-txt .l1{font-size:20px;font-weight:900;letter-spacing:3px;background:linear-gradient(90deg,#00d4ff,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo-txt .l2{font-size:9px;letter-spacing:5px;color:#aaa}
+.back-btn{color:#00d4ff;text-decoration:none;font-size:14px;font-weight:700;padding:8px 18px;border:1px solid rgba(0,212,255,0.3);border-radius:6px;transition:background .2s}
+.back-btn:hover{background:rgba(0,212,255,0.1)}
+.hero-sp{padding:72px 40px 52px;text-align:center}
+.badge{display:inline-block;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.3);color:#00d4ff;font-size:12px;letter-spacing:3px;text-transform:uppercase;padding:7px 20px;border-radius:20px;margin-bottom:24px;font-weight:600}
+.badge.status{background:rgba(240,192,64,0.08);border-color:rgba(240,192,64,0.35);color:#f0c040}
+.sp-icon{font-size:60px;margin-bottom:18px}
+h1{font-size:40px;font-weight:900;line-height:1.25;margin-bottom:14px}
+.sub{font-size:18px;color:#ccc;line-height:1.8;max-width:640px;margin:0 auto 0}
+.main{max-width:900px;margin:0 auto;padding:40px 40px 80px}
+.section-lbl{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#00d4ff;margin-bottom:14px}
+.lead{font-size:16.5px;color:#ddd;line-height:1.85;margin-bottom:40px}
+.features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:44px}
+.feat-card{background:#141414;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:20px 22px;font-size:14.5px;color:#ccc;line-height:1.6}
+.shots{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:44px}
+.shots img{width:100%;border-radius:14px;border:1px solid rgba(255,255,255,0.08);box-shadow:0 12px 30px rgba(0,0,0,0.4);display:block}
+.shots figcaption{text-align:center;font-size:12px;color:#888;margin-top:8px}
+.status-box{background:#141414;border:1px solid rgba(240,192,64,0.2);border-radius:16px;padding:28px;margin-bottom:40px}
+.status-box h2{font-size:17px;font-weight:800;margin-bottom:10px;color:#f0c040}
+.status-box p{font-size:14.5px;color:#bbb;line-height:1.75}
+.cta-box{text-align:center;padding:48px 32px;background:rgba(0,212,255,0.04);border:1px solid rgba(0,212,255,0.12);border-radius:16px}
+.cta-box h2{font-size:26px;font-weight:800;margin-bottom:10px}
+.cta-box p{font-size:15px;color:#bbb;margin-bottom:24px;line-height:1.7}
+.btn-primary{display:inline-block;background:linear-gradient(135deg,#00d4ff,#0088cc);color:#0a0a0a;font-weight:800;padding:14px 34px;border-radius:8px;font-size:15px;text-decoration:none;box-shadow:0 0 24px rgba(0,212,255,0.4);transition:box-shadow .2s,transform .2s}
+.btn-primary:hover{box-shadow:0 0 40px rgba(0,212,255,0.6);transform:translateY(-2px)}
+footer{background:#060606;border-top:1px solid rgba(255,255,255,0.05);padding:28px 40px;text-align:center;font-size:13px;color:#555}
+footer a{color:#00d4ff;text-decoration:none}
+@media(max-width:900px){.shots{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:768px){header{padding:0 20px}h1{font-size:28px}.hero-sp{padding:64px 20px 36px}.main{padding:32px 20px 60px}.features-grid{grid-template-columns:1fr}.shots{grid-template-columns:repeat(2,1fr)}}
+</style>
+</head>
+<body>
+<header>
+  <a href="index.html" class="logo">
+    <div class="logo-sq">OM</div>
+    <div class="logo-txt"><div class="l1">OM-DIGITAL</div><div class="l2">COMPANY</div></div>
+  </a>
+  <a href="apps.html" class="back-btn">← Приложения</a>
+</header>
+<div class="hero-sp">
+  <div class="badge">Кейс из портфолио</div>
+  <div class="sp-icon">🩺</div>
+  <h1>Карманный Доктор: мобильное приложение, которое понимает симптомы — и объясняет, что делать дальше</h1>
+  <p class="sub">Собственный проект команды OM-Digital на Flutter. Показываем на реальном кейсе, как мы проектируем и собираем мобильные приложения с ИИ внутри — от первого экрана до готовой сборки.</p>
+</div>
+<div class="main">
+  <div class="section-lbl">Что делает</div>
+  <p class="lead">Человек описывает симптомы словами или прикладывает фото анализа — и получает разбор от нейросети: что происходит, на что обратить внимание, к какому врачу идти и насколько это срочно. Если ситуация похожа на неотложную, приложение прямо говорит: звоните 103 или 112.</p>
+
+  <div class="section-lbl">Что внутри</div>
+  <div class="features-grid">
+    <div class="feat-card">ИИ-разбор симптомов по тексту и файлам (PDF, JPG, PNG)</div>
+    <div class="feat-card">Понятный статус ожидания, пока готовится ответ — видно, что приложение работает</div>
+    <div class="feat-card">Чистый результат без технического мусора: таблицы и списки от нейросети превращаются в обычные аккуратные строки</div>
+    <div class="feat-card">История всех прошлых консультаций — под рукой в любой момент</div>
+    <div class="feat-card">Три темы оформления с фирменным волновым фоном: бирюзовая, синяя, тёмная</div>
+    <div class="feat-card">Гибкий профиль — технические настройки спрятаны по умолчанию, ничего не отвлекает от главного</div>
+    <div class="feat-card">Все данные хранятся локально, на самом устройстве</div>
+    <div class="feat-card">На каждом экране честная оговорка: приложение не заменяет врача, а помогает сориентироваться</div>
+  </div>
+
+  <div class="section-lbl">Как выглядит</div>
+  <div class="shots">
+    <figure><img src="doctor-app-shots/consultation-teal.png" alt="Экран консультации, бирюзовая тема" loading="lazy"></figure>
+    <figure><img src="doctor-app-shots/consultation-blue.png" alt="Экран консультации, синяя тема" loading="lazy"></figure>
+    <figure><img src="doctor-app-shots/consultation-dark.png" alt="Экран консультации, тёмная тема" loading="lazy"></figure>
+    <figure><img src="doctor-app-shots/history.png" alt="Экран истории консультаций" loading="lazy"></figure>
+    <figure><img src="doctor-app-shots/profile.png" alt="Экран профиля" loading="lazy"></figure>
+  </div>
+
+  <div class="status-box">
+    <h2>⏳ Статус: внутреннее тестирование</h2>
+    <p>Сейчас проект дорабатывается и проверяется на реальных сценариях — публичного релиза пока нет. Честно: спешить не будем, сначала всё должно работать без нареканий.</p>
+  </div>
+
+  <div class="cta-box">
+    <h2>Нужно похожее приложение?</h2>
+    <p>Когда решите, что вашему бизнесу нужно мобильное приложение с ИИ внутри — от идеи до собранного APK, — напишите нам, обсудим задачу за 5 минут.</p>
+    <a href="apps.html#" class="btn-primary" onclick="location.href='apps.html'">Обсудить задачу →</a>
+  </div>
+</div>
+<footer><a href="index.html">← OM-Digital Company</a> &nbsp;·&nbsp; AI-агентство &nbsp;·&nbsp; Москва &nbsp;·&nbsp; 9:00–21:00 МСК</footer>
+</body>
+</html>
