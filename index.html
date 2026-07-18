@@ -659,6 +659,8 @@ section { padding: 64px 40px; }
   transition: background 0.2s, box-shadow 0.2s;
 }
 .carousel-btn:hover { background: rgba(0,212,255,0.1); box-shadow: 0 0 16px rgba(0,212,255,0.3); }
+.portfolio-carousel-controls { margin-top: 0; margin-bottom: 24px; }
+.portfolio-carousel-btn { width: 56px; height: 30px; border-radius: 50% / 50%; font-size: 18px; }
 @media (max-width: 768px) {
   .review-card { flex: 0 0 100%; }
 }
@@ -979,6 +981,10 @@ footer {
     <div class="section-label" data-aos="fade-up">Примеры работ</div>
     <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Наше <span class="accent">портфолио</span></h2>
     <p class="section-sub" data-aos="fade-up" data-aos-delay="100">Реальные проекты. Реальные результаты.</p>
+    <div class="carousel-controls portfolio-carousel-controls">
+      <button class="carousel-btn portfolio-carousel-btn" id="portfolioPrevBtn">&#8249;</button>
+      <button class="carousel-btn portfolio-carousel-btn" id="portfolioNextBtn">&#8250;</button>
+    </div>
     <div class="portfolio-viewport" data-aos="fade-up" data-aos-delay="100">
     <div class="portfolio-track" id="portfolioTrack">
 
@@ -1112,10 +1118,6 @@ footer {
       </a>
 
     </div>
-    </div>
-    <div class="carousel-controls">
-      <button class="carousel-btn" id="portfolioPrevBtn">&#8249;</button>
-      <button class="carousel-btn" id="portfolioNextBtn">&#8250;</button>
     </div>
   </div>
 </section>
