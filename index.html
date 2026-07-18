@@ -403,6 +403,99 @@ section { padding: 64px 40px; }
   0% { left: -90px; }
   100% { left: 100%; }
 }
+.ai-robot-wrap {
+  position: absolute;
+  left: 0; width: 100%;
+  top: 50%;
+  transform: translateY(-50%);
+  aspect-ratio: 1242 / 742;
+}
+.robot-base { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; display: block; }
+.robot-arm {
+  position: absolute;
+  left: 31.8%; top: 0.7%; width: 22.1%; height: 54.6%;
+  transform-origin: 91% 96%;
+  animation: robotWave 1.9s ease-in-out infinite;
+  pointer-events: none;
+}
+@keyframes robotWave {
+  0%, 100% { transform: rotate(-4deg); }
+  25% { transform: rotate(6deg); }
+  50% { transform: rotate(-3deg); }
+  75% { transform: rotate(5deg); }
+}
+.robot-eye-dot {
+  position: absolute;
+  width: 3.4%; height: 3.4%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(170,245,255,1) 0%, rgba(80,210,235,0.75) 40%, rgba(80,210,235,0) 75%);
+  filter: blur(0.4px) brightness(1);
+  opacity: 0.2;
+  pointer-events: none;
+  animation: eyeSparkle 5s ease-in-out infinite;
+}
+.robot-eye-dot.e1 { left: calc(77.5% - 1.7%); top: calc(52.9% - 1.7%); }
+.robot-eye-dot.e2 { left: calc(80.9% - 1.7%); top: calc(63.7% - 1.7%); animation-delay: -2.3s; }
+@keyframes eyeSparkle {
+  0%, 100% { opacity: 0.2; filter: blur(0.4px) brightness(1); }
+  8%  { opacity: 1;   filter: blur(0.4px) brightness(2.5); }
+  14% { opacity: 0.3; filter: blur(0.4px) brightness(1); }
+  47% { opacity: 0.9; filter: blur(0.4px) brightness(2); }
+  52% { opacity: 0.25;filter: blur(0.4px) brightness(1); }
+  81% { opacity: 1;   filter: blur(0.4px) brightness(2.5); }
+  86% { opacity: 0.2; filter: blur(0.4px) brightness(1); }
+}
+.portfolio-img.books-sea {
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(155deg, #03192a 0%, #0a3a5c 28%, #126490 55%, #1c8ab8 78%, #3fb4d8 100%);
+  background-size: 200% 200%;
+  animation: booksSeaShimmer 10s ease-in-out infinite alternate;
+}
+.sea-wave {
+  position: absolute;
+  left: -40%;
+  width: 180%;
+  height: 34px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(160,230,250,0.55) 0%, rgba(160,230,250,0.2) 55%, rgba(160,230,250,0) 75%);
+  filter: blur(3px);
+  animation: seaWaveDrift linear infinite;
+  pointer-events: none;
+  z-index: 1;
+}
+.sea-wave-1 { top: 10%; animation-duration: 8s; opacity: 0.7; }
+.sea-wave-2 { top: 50%; animation-duration: 11s; animation-delay: -4s; opacity: 0.55; height:24px; }
+.sea-wave-3 { top: 86%; height:22px; animation-duration: 14s; animation-delay: -2s; opacity: 0.45; }
+@keyframes booksSeaShimmer {
+  0% { background-position: 15% 25%; }
+  100% { background-position: 85% 75%; }
+}
+@keyframes seaWaveDrift {
+  0% { transform: translateX(-6%); }
+  50% { transform: translateX(6%); }
+  100% { transform: translateX(-6%); }
+}
+.books-row {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  align-items: stretch;
+  width: 100%;
+  height: 100%;
+  gap: 10px;
+  padding: 12px 10px;
+  box-sizing: border-box;
+}
+.book-cover {
+  flex: 1 1 0;
+  min-width: 0;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  display: block;
+}
 .portfolio-video { width: 100%; height: 100%; object-fit: contain; display: block; }
 .portfolio-body { padding: 20px; }
 .portfolio-cat { font-size: 12px; letter-spacing: 2px; color: #00d4ff; text-transform: uppercase; margin-bottom: 8px; font-weight: 700; }
@@ -936,7 +1029,14 @@ footer {
       </a>
 
       <a href="teacher-bot.html" class="portfolio-card" data-aos="fade-up" data-aos-delay="40">
-        <div class="portfolio-img c2" style="padding:0;overflow:hidden"><video class="portfolio-video" autoplay loop muted playsinline preload="metadata"><source src="teacher-bot-preview.mp4" type="video/mp4"></video></div>
+        <div class="portfolio-img c2" style="padding:0;overflow:hidden">
+          <div class="ai-robot-wrap">
+            <img class="robot-base" src="ai-studio-robot-base-v2.jpg" alt="AI Studio — Claude AI ассистент">
+            <span class="robot-eye-dot e1"></span>
+            <span class="robot-eye-dot e2"></span>
+            <img class="robot-arm" src="ai-studio-robot-arm-v2.png" alt="">
+          </div>
+        </div>
         <div class="portfolio-body">
           <div class="portfolio-cat">AI Studio</div>
           <h4>AI Teacher Bot — обучение Claude</h4>
@@ -946,7 +1046,16 @@ footer {
       </a>
 
       <a href="books/books.html" class="portfolio-card" data-aos="fade-up" data-aos-delay="60">
-        <div class="portfolio-img c11" style="padding:0;overflow:hidden"><img src="books/covers/books_teacherbot_collage.png" alt="Обложки книг OM-Digital про AI Teacher Bot" style="width:100%;height:100%;object-fit:cover"></div>
+        <div class="portfolio-img books-sea" style="padding:0;overflow:hidden">
+          <span class="sea-wave sea-wave-1"></span>
+          <span class="sea-wave sea-wave-2"></span>
+          <span class="sea-wave sea-wave-3"></span>
+          <div class="books-row">
+            <img class="book-cover" src="books/covers/book1.png" alt="Нейросети для начинающих">
+            <img class="book-cover" src="books/covers/book2.png" alt="ИИ-ассистент для вашего бизнеса">
+            <img class="book-cover" src="books/covers/book3.png" alt="AI-агенты и мультиагентные системы">
+          </div>
+        </div>
         <div class="portfolio-body">
           <div class="portfolio-cat">AI Studio</div>
           <h4>Книги OM-Digital</h4>
