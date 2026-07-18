@@ -407,8 +407,8 @@ section { padding: 64px 40px; }
   position: relative;
   overflow: hidden;
   background: linear-gradient(155deg, #03192a 0%, #0a3a5c 28%, #126490 55%, #1c8ab8 78%, #3fb4d8 100%);
-  background-size: 200% 200%;
-  animation: booksSeaShimmer 10s ease-in-out infinite alternate;
+  background-size: 260% 260%;
+  animation: booksSeaShimmer 5s ease-in-out infinite alternate;
 }
 .sea-wave {
   position: absolute;
@@ -416,23 +416,23 @@ section { padding: 64px 40px; }
   width: 180%;
   height: 34px;
   border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(160,230,250,0.55) 0%, rgba(160,230,250,0.2) 55%, rgba(160,230,250,0) 75%);
-  filter: blur(3px);
+  background: radial-gradient(ellipse at center, rgba(180,240,255,0.8) 0%, rgba(180,240,255,0.3) 55%, rgba(180,240,255,0) 75%);
+  filter: blur(2px);
   animation: seaWaveDrift linear infinite;
   pointer-events: none;
   z-index: 1;
 }
-.sea-wave-1 { top: 10%; animation-duration: 8s; opacity: 0.7; }
-.sea-wave-2 { top: 50%; animation-duration: 11s; animation-delay: -4s; opacity: 0.55; height:24px; }
-.sea-wave-3 { top: 86%; height:22px; animation-duration: 14s; animation-delay: -2s; opacity: 0.45; }
+.sea-wave-1 { top: 10%; animation-duration: 4s; opacity: 0.9; }
+.sea-wave-2 { top: 50%; animation-duration: 5.5s; animation-delay: -2s; opacity: 0.75; height:24px; }
+.sea-wave-3 { top: 86%; height:22px; animation-duration: 7s; animation-delay: -1s; opacity: 0.6; }
 @keyframes booksSeaShimmer {
-  0% { background-position: 15% 25%; }
-  100% { background-position: 85% 75%; }
+  0% { background-position: 10% 15%; }
+  100% { background-position: 90% 85%; }
 }
 @keyframes seaWaveDrift {
-  0% { transform: translateX(-6%); }
-  50% { transform: translateX(6%); }
-  100% { transform: translateX(-6%); }
+  0% { transform: translateX(-14%); }
+  50% { transform: translateX(14%); }
+  100% { transform: translateX(-14%); }
 }
 .books-row {
   position: relative;
