@@ -276,6 +276,16 @@ section { padding: 64px 40px; }
   transform: scale(1.15) translateY(-6px);
   filter: drop-shadow(0 8px 28px rgba(0,212,255,0.55));
 }
+.service-card.has-photo { padding: 0; overflow: hidden; }
+.service-icon-area { position: relative; overflow: hidden; height: 130px; }
+.service-icon-area img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.si-glow {
+  position: absolute; inset: 0; pointer-events: none;
+  background: radial-gradient(circle at 30% 40%, rgba(80,200,255,0.28) 0%, rgba(80,200,255,0) 55%);
+  animation: siGlowPulse 4s ease-in-out infinite;
+}
+@keyframes siGlowPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+.service-body { padding: 24px 24px 28px; }
 .service-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 12px; }
 .service-card p { font-size: 15px; color: #cccccc; line-height: 1.7; margin-bottom: 20px; }
 .service-tags { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -892,8 +902,12 @@ footer {
     <p class="section-sub" data-aos="fade-up" data-aos-delay="100">Полный цикл цифровых услуг — от текста и сайта до SEO, автоматизации процессов и мобильных приложений.</p>
     <div class="services-grid">
 
-      <a href="sites-seo.html" class="service-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="service-icon">🌐</div>
+      <a href="sites-seo.html" class="service-card has-photo" data-aos="fade-up" data-aos-delay="0">
+        <div class="service-icon-area">
+          <img src="sites-seo-graded.jpg" alt="Создание сайтов и SEO">
+          <div class="si-glow"></div>
+        </div>
+        <div class="service-body">
         <h3>Создание сайтов и SEO</h3>
         <p>Сайты и лендинги под ключ, SEO-оптимизация и продвижение в поиске</p>
         <div class="service-tags">
@@ -906,6 +920,7 @@ footer {
           Лендинг под ключ — <strong>от 5 000 ₽</strong><br>
           Сайт-визитка / многостраничный — <strong>от 8 000 ₽</strong><br>
           SEO-оптимизация сайта — <strong>от 3 000 ₽</strong>
+        </div>
         </div>
       </a>
 
