@@ -603,6 +603,81 @@ section { padding: 64px 40px; }
 .why-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 10px; }
 .why-card p { font-size: 14px; color: #bbbbbb; line-height: 1.7; }
 
+/* Карточки раздела "Почему выбирают OM-Digital" — синим выделена ТОЛЬКО зона иконки, по образцу
+   карточек Портфолио (.portfolio-card/.portfolio-img: отдельная цветная зона сверху + обычное тело
+   карточки снизу), не вся карточка целиком (уточнение Михаила 19.07.2026 к задаче new_order_86b17f9a,
+   распространено на все 6 карточек в new_order_e6a42518). Внутри зоны — тот же синий градиент, что
+   у карточки Карманного Доктора, и топовая 3D-иконка с glow-пульсацией по центру (визуально
+   выверено пиксельным замером после гонки scrollIntoView/screenshot — см. урок new_order_ff1c2cb4,
+   класс .why-icon-glow ОБЯЗАН иметь top:50%;left:50%;transform:translate(-50%,-50%), иначе
+   position:absolute не наследует flex-центрирование родителя). Общие классы для всех 6 карточек —
+   различается только фоновая картинка иконки и alt-текст. */
+.why-card.icon-card { padding: 0; overflow: hidden; }
+.why-icon-zone {
+  position: relative;
+  overflow: hidden;
+  height: 120px;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(180deg, #05202e 0%, #0a4a63 32%, #12839f 66%, #4fd2e6 100%);
+  background-size: 100% 220%;
+  animation: doctorSkyShift 16s ease-in-out infinite alternate;
+}
+/* Облака - та же анимация, что у Карманного Доктора (доп. к new_order_e6a42518, задача
+   new_order_85fc0eb9), переиспользованы существующие keyframes doctorCloudDrift/doctorSkyShift. */
+.why-icon-zone::before,
+.why-icon-zone::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 26%;
+  width: 74px; height: 22px;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.45) 55%, rgba(255,255,255,0) 75%);
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: doctorCloudDrift 20s linear infinite;
+  pointer-events: none;
+}
+.why-icon-zone::after {
+  top: 66%;
+  width: 48px; height: 15px;
+  opacity: 0.6;
+  animation-duration: 26s;
+  animation-delay: -9s;
+}
+.why-icon-zone .why-cloud-3 {
+  position: absolute; z-index: 1; left: -90px;
+  top: 46%; width: 58px; height: 18px; opacity: 0.7;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.45) 55%, rgba(255,255,255,0) 75%);
+  border-radius: 50%;
+  filter: blur(2px);
+  animation: doctorCloudDrift 22s linear infinite;
+  animation-delay: -4s;
+  pointer-events: none;
+}
+.why-icon-body { padding: 24px 32px 32px; }
+.why-icon-wrap {
+  position: relative;
+  display: flex; justify-content: center; align-items: center;
+  width: 96px; height: 96px;
+}
+.why-icon-glow {
+  position: absolute; top: 50%; left: 50%; width: 130px; height: 130px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,235,180,0.55) 0%, rgba(255,214,130,0.18) 55%, rgba(255,214,130,0) 75%);
+  filter: blur(2px);
+  transform: translate(-50%, -50%) scale(1);
+  animation: whyGlowPulse 2.6s ease-in-out infinite;
+}
+.why-icon-img {
+  position: relative; width: 88px; height: 88px;
+  filter: drop-shadow(0 4px 14px rgba(0,0,0,0.4));
+  animation: whyIconPulse 2.6s ease-in-out infinite;
+}
+@keyframes whyGlowPulse {
+  0%, 100% { opacity: 0.65; transform: translate(-50%, -50%) scale(1); }
+  50% { opacity: 1; transform: translate(-50%, -50%) scale(1.08); }
+}
+@keyframes whyIconPulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.07); } }
+
 /* ===== PRICES ===== */
 .prices { background: #0d0d0d; }
 .prices-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 28px; }
@@ -1214,35 +1289,83 @@ footer {
       <h2 class="section-title" data-aos="fade-up" data-aos-delay="50">Почему выбирают <span class="accent">OM-Digital</span></h2>
     </div>
     <div class="why-grid">
-      <div class="why-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="why-icon">⚡</div>
-        <h3>Скорость</h3>
-        <p>Ответ за 1 час. Большинство задач — за 24–48 часов. Работаем 7 дней в неделю с 9 до 21 МСК.</p>
+      <div class="why-card icon-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-icon-zone">
+          <span class="why-cloud-3"></span>
+          <div class="why-icon-wrap">
+            <span class="why-icon-glow"></span>
+            <img class="why-icon-img" src="speed-bolt-3d.png" alt="Скорость">
+          </div>
+        </div>
+        <div class="why-icon-body">
+          <h3>Скорость</h3>
+          <p>Ответ за 1 час. Большинство задач — за 24–48 часов. Работаем 7 дней в неделю с 9 до 21 МСК.</p>
+        </div>
       </div>
-      <div class="why-card" data-aos="fade-up" data-aos-delay="80">
-        <div class="why-icon">🎯</div>
-        <h3>Точность</h3>
-        <p>Работаем строго по ТЗ. Вычитка каждого текста. Результат — готов к применению без лишних правок.</p>
+      <div class="why-card icon-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="why-icon-zone">
+          <span class="why-cloud-3"></span>
+          <div class="why-icon-wrap">
+            <span class="why-icon-glow"></span>
+            <img class="why-icon-img" src="precision-target-3d.png" alt="Точность">
+          </div>
+        </div>
+        <div class="why-icon-body">
+          <h3>Точность</h3>
+          <p>Работаем строго по ТЗ. Вычитка каждого текста. Результат — готов к применению без лишних правок.</p>
+        </div>
       </div>
-      <div class="why-card" data-aos="fade-up" data-aos-delay="160">
-        <div class="why-icon">🤖</div>
-        <h3>AI + Экспертиза</h3>
-        <p>AI-инструменты для скорости, экспертная проверка для качества. Без шаблонного контента.</p>
+      <div class="why-card icon-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="why-icon-zone">
+          <span class="why-cloud-3"></span>
+          <div class="why-icon-wrap">
+            <span class="why-icon-glow"></span>
+            <img class="why-icon-img" src="ai-spark-3d.png" alt="AI + Экспертиза">
+          </div>
+        </div>
+        <div class="why-icon-body">
+          <h3>AI + Экспертиза</h3>
+          <p>AI-инструменты для скорости, экспертная проверка для качества. Без шаблонного контента.</p>
+        </div>
       </div>
-      <div class="why-card" data-aos="fade-up" data-aos-delay="0">
-        <div class="why-icon">🔒</div>
-        <h3>Надёжность</h3>
-        <p>Работаем через безопасные сделки Kwork и FL.ru. Предоплата только по договорённости. Результат гарантирован.</p>
+      <div class="why-card icon-card" data-aos="fade-up" data-aos-delay="0">
+        <div class="why-icon-zone">
+          <span class="why-cloud-3"></span>
+          <div class="why-icon-wrap">
+            <span class="why-icon-glow"></span>
+            <img class="why-icon-img" src="reliability-lock-3d.png" alt="Надёжность">
+          </div>
+        </div>
+        <div class="why-icon-body">
+          <h3>Надёжность</h3>
+          <p>Работаем через безопасные сделки Kwork и FL.ru. Предоплата только по договорённости. Результат гарантирован.</p>
+        </div>
       </div>
-      <div class="why-card" data-aos="fade-up" data-aos-delay="80">
-        <div class="why-icon">💡</div>
-        <h3>Полный цикл</h3>
-        <p>6 направлений под одной крышей. Не нужно искать разных исполнителей — мы решаем всё.</p>
+      <div class="why-card icon-card" data-aos="fade-up" data-aos-delay="80">
+        <div class="why-icon-zone">
+          <span class="why-cloud-3"></span>
+          <div class="why-icon-wrap">
+            <span class="why-icon-glow"></span>
+            <img class="why-icon-img" src="fullcycle-loop-3d.png" alt="Полный цикл">
+          </div>
+        </div>
+        <div class="why-icon-body">
+          <h3>Полный цикл</h3>
+          <p>6 направлений под одной крышей. Не нужно искать разных исполнителей — мы решаем всё.</p>
+        </div>
       </div>
-      <div class="why-card" data-aos="fade-up" data-aos-delay="160">
-        <div class="why-icon">💬</div>
-        <h3>Связь 24/7</h3>
-        <p>Telegram-бот доступен круглосуточно. Уведомляем на каждом этапе. Никаких «пропало».</p>
+      <div class="why-card icon-card" data-aos="fade-up" data-aos-delay="160">
+        <div class="why-icon-zone">
+          <span class="why-cloud-3"></span>
+          <div class="why-icon-wrap">
+            <span class="why-icon-glow"></span>
+            <img class="why-icon-img" src="connect-chat-3d.png" alt="Связь 24/7">
+          </div>
+        </div>
+        <div class="why-icon-body">
+          <h3>Связь 24/7</h3>
+          <p>Telegram-бот доступен круглосуточно. Уведомляем на каждом этапе. Никаких «пропало».</p>
+        </div>
       </div>
     </div>
   </div>
