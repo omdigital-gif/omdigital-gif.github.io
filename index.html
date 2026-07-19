@@ -695,6 +695,19 @@ section { padding: 64px 40px; }
 .price-block-head .ico { font-size: 26px; }
 .price-block-head h3 { font-size: 19px; font-weight: 800; }
 .price-block-head span { font-size: 13px; color: #888; margin-left: auto; }
+/* Заголовок категории прайс-листа без иконки/цены, на синем фоне (задача new_order_ee3103c1,
+   уточнение Михаила 20.07.2026 00:33) - тот же градиент, что у карточек "Почему выбирают",
+   но БЕЗ анимации облаков ("только без облачков" - прямая просьба). Сначала только 1-я
+   категория, для сверки стиля перед применением ко всем 6. */
+.price-block-head.icon-free {
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(180deg, #05202e 0%, #0a4a63 32%, #12839f 66%, #4fd2e6 100%);
+  background-size: 100% 220%;
+  animation: doctorSkyShift 16s ease-in-out infinite alternate;
+  border-bottom: none;
+}
+.price-block-head.icon-free h3 { font-size: 20px; }
 .price-row {
   display: flex; justify-content: space-between; align-items: center;
   padding: 12px 28px;
@@ -1383,10 +1396,8 @@ footer {
     <div class="prices-grid">
 
       <div class="price-block" data-aos="fade-up" data-aos-delay="0">
-        <div class="price-block-head">
-          <span class="ico">🌐</span>
+        <div class="price-block-head icon-free">
           <h3>Создание сайтов и SEO</h3>
-          <span>от 800 ₽</span>
         </div>
         <div class="price-row"><span>Настройка мета-тегов и sitemap</span><span class="price-val">от 800 ₽</span></div>
         <div class="price-row"><span>Сбор семантического ядра</span><span class="price-val">от 1 000 ₽</span></div>
@@ -1398,10 +1409,8 @@ footer {
       </div>
 
       <div class="price-block" data-aos="fade-up" data-aos-delay="80">
-        <div class="price-block-head">
-          <span class="ico">📱</span>
+        <div class="price-block-head icon-free">
           <h3>Приложения для ПК и телефонов</h3>
-          <span>от 2 500 ₽</span>
         </div>
         <div class="price-row"><span>Доработка / новая функция в готовом приложении</span><span class="price-val">от 2 500 ₽</span></div>
         <div class="price-row"><span>UI/UX-дизайн приложения (иконка + все экраны)</span><span class="price-val">от 4 000 ₽</span></div>
@@ -1413,10 +1422,8 @@ footer {
       </div>
 
       <div class="price-block" data-aos="fade-up" data-aos-delay="0">
-        <div class="price-block-head">
-          <span class="ico">⚡</span>
+        <div class="price-block-head icon-free">
           <h3>Автоматизация и код</h3>
-          <span>от 1 000 ₽</span>
         </div>
         <div class="price-row"><span>SQL-запросы / работа с БД</span><span class="price-val">от 1 000 ₽</span></div>
         <div class="price-row"><span>Excel-автоматизация / дашборд</span><span class="price-val">от 1 500 ₽</span></div>
@@ -1431,10 +1438,8 @@ footer {
       </div>
 
       <div class="price-block" data-aos="fade-up" data-aos-delay="80">
-        <div class="price-block-head">
-          <span class="ico">🤖</span>
+        <div class="price-block-head icon-free">
           <h3>AI Studio</h3>
-          <span>от 1 000 ₽</span>
         </div>
         <div class="price-row"><span>Системный промпт для ChatGPT / Claude</span><span class="price-val">от 1 000 ₽</span></div>
         <div class="price-row"><span>Промпт-пакет (5 шт. под задачу)</span><span class="price-val">от 3 000 ₽</span></div>
@@ -1448,10 +1453,8 @@ footer {
       </div>
 
       <div class="price-block" data-aos="fade-up" data-aos-delay="0">
-        <div class="price-block-head">
-          <span class="ico">📊</span>
+        <div class="price-block-head icon-free">
           <h3>Бизнес-аналитика</h3>
-          <span>от 800 ₽</span>
         </div>
         <div class="price-row"><span>Должностная инструкция</span><span class="price-val">от 800 ₽</span></div>
         <div class="price-row"><span>SWOT-анализ компании</span><span class="price-val">от 1 000 ₽</span></div>
@@ -1465,10 +1468,8 @@ footer {
       </div>
 
       <div class="price-block" data-aos="fade-up" data-aos-delay="80">
-        <div class="price-block-head">
-          <span class="ico">📝</span>
+        <div class="price-block-head icon-free">
           <h3>Интернет-маркетинг</h3>
-          <span>от 150 ₽</span>
         </div>
         <div class="price-row"><span>Карточка товара WB / Ozon</span><span class="price-val">от 150 ₽</span></div>
         <div class="price-row"><span>Пост для соцсетей (ВК, TG, Insta)</span><span class="price-val">от 200 ₽</span></div>
