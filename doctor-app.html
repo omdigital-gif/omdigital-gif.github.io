@@ -60,9 +60,15 @@ h1{font-size:34px;font-weight:900;line-height:1.25;margin-bottom:14px;text-shado
 .lead{font-size:16.5px;color:#ddd;line-height:1.85;margin-bottom:40px}
 .features-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:44px}
 .feat-card{background:#141414;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:20px 22px;font-size:14.5px;color:#ccc;line-height:1.6}
-.shots{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:44px}
-.shots img{width:100%;border-radius:14px;border:1px solid rgba(255,255,255,0.08);box-shadow:0 12px 30px rgba(0,0,0,0.4);display:block}
+.shots{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;margin-bottom:44px}
+.shots img{width:100%;border-radius:14px;border:1px solid rgba(255,255,255,0.08);box-shadow:0 12px 30px rgba(0,0,0,0.4);display:block;cursor:zoom-in;transition:transform 0.15s ease}
+.shots img:hover{transform:scale(1.03)}
 .shots figcaption{text-align:center;font-size:12px;color:#888;margin-top:8px}
+.lightbox{position:fixed;inset:0;background:rgba(0,0,0,0.88);z-index:1000;display:none;align-items:center;justify-content:center;padding:40px 20px;cursor:zoom-out}
+.lightbox.open{display:flex}
+.lightbox img{max-width:min(500px,90vw);max-height:88vh;border-radius:16px;box-shadow:0 20px 60px rgba(0,0,0,0.6)}
+.lightbox-close{position:absolute;top:20px;right:28px;color:#fff;font-size:32px;line-height:1;cursor:pointer;background:rgba(255,255,255,0.08);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.lightbox-close:hover{background:rgba(255,255,255,0.16)}
 .status-box{background:#141414;border:1px solid rgba(240,192,64,0.2);border-radius:16px;padding:28px;margin-bottom:40px}
 .status-box h2{font-size:17px;font-weight:800;margin-bottom:10px;color:#f0c040}
 .status-box p{font-size:14.5px;color:#bbb;line-height:1.75}
@@ -134,10 +140,10 @@ footer a{color:#00d4ff;text-decoration:none}
   <div class="section-lbl">Как выглядит</div>
   <div class="shots">
     <figure><img src="doctor-app-shots/consultation-teal.png" alt="Экран консультации, бирюзовая тема" loading="lazy"></figure>
-    <figure><img src="doctor-app-shots/consultation-blue.png" alt="Экран консультации, синяя тема" loading="lazy"></figure>
-    <figure><img src="doctor-app-shots/consultation-dark.png" alt="Экран консультации, тёмная тема" loading="lazy"></figure>
-    <figure><img src="doctor-app-shots/history.png" alt="Экран истории консультаций" loading="lazy"></figure>
-    <figure><img src="doctor-app-shots/profile.png" alt="Экран профиля" loading="lazy"></figure>
+    <figure><img src="doctor-app-shots/consultation-typed-teal.png" alt="Экран консультации с описанием симптомов, бирюзовая тема" loading="lazy"></figure>
+    <figure><img src="doctor-app-shots/instruction-teal.png" alt="Экран инструкции «Как это работает», бирюзовая тема" loading="lazy"></figure>
+    <figure><img src="doctor-app-shots/profile-teal.png" alt="Экран профиля, бирюзовая тема" loading="lazy"></figure>
+    <figure><img src="doctor-app-shots/consultation-en-teal.png" alt="Экран консультации на английском языке, бирюзовая тема" loading="lazy"></figure>
   </div>
 
   <div class="status-box">
@@ -152,6 +158,12 @@ footer a{color:#00d4ff;text-decoration:none}
   </div>
 </div>
 <footer><a href="index.html">← OM-Digital Company</a> &nbsp;·&nbsp; AI-агентство &nbsp;·&nbsp; Москва &nbsp;·&nbsp; 9:00–21:00 МСК &nbsp;·&nbsp; <a href="sitemap.xml">Карта сайта</a></footer>
+
+<div class="lightbox" id="shotsLightbox">
+  <div class="lightbox-close" id="lightboxClose">&times;</div>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
 <script>
 document.getElementById('menuBtn').addEventListener('click', function(){
   this.classList.toggle('open');
@@ -161,6 +173,31 @@ function closeMenu(){
   document.getElementById('menuBtn').classList.remove('open');
   document.getElementById('mobileMenu').classList.remove('open');
 }
+
+// Лайтбокс для скриншотов приложения (19.07.2026, дополнение Михаила к задаче
+// про единую тему скриншотов): клик по любой карточке в разделе "Как выглядит"
+// открывает её крупно поверх страницы. Без зависимостей — просто клонируем src
+// кликнутой картинки в оверлей, закрытие по крестику/клику на фон/Escape.
+(function(){
+  var lightbox = document.getElementById('shotsLightbox');
+  var lightboxImg = document.getElementById('lightboxImg');
+  document.querySelectorAll('.shots img').forEach(function(img){
+    img.addEventListener('click', function(){
+      lightboxImg.src = img.src;
+      lightboxImg.alt = img.alt;
+      lightbox.classList.add('open');
+    });
+  });
+  function closeLightbox(){ lightbox.classList.remove('open'); }
+  lightbox.addEventListener('click', closeLightbox);
+  document.getElementById('lightboxClose').addEventListener('click', function(e){
+    e.stopPropagation();
+    closeLightbox();
+  });
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape') closeLightbox();
+  });
+})();
 </script>
 </body>
 </html>
