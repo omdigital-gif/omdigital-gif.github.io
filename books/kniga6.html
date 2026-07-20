@@ -5,10 +5,7 @@
 <meta name="description" content="Спокойный гид по тревожным симптомам: как понять, когда стоит срочно обратиться к врачу, а когда можно понаблюдать за состоянием дома без паники.">
 <meta name="keywords" content="когда идти к врачу с симптомами, тревожные симптомы когда паниковать, срочно к врачу или можно подождать, симптомы требующие немедленного обращения, гид по симптомам для дома, как понять серьёзность симптома">
 <style>
-:root{--bg:#0f1220;--panel:#171b2e;--text:#eef0f8;--muted:#a5abc4;--accent:#7c9cff;--accent2:#5ce0c6;--free:#5ce0c6;--paid:#ffb454;}
-@media (prefers-color-scheme: light){:root{--bg:#f6f7fb;--panel:#ffffff;--text:#1b1e2b;--muted:#5b6178;--accent:#3b5bdb;--accent2:#0f9d84;--free:#0f9d84;--paid:#c97a08;}}
-:root[data-theme="light"]{--bg:#f6f7fb;--panel:#ffffff;--text:#1b1e2b;--muted:#5b6178;--accent:#3b5bdb;--accent2:#0f9d84;--free:#0f9d84;--paid:#c97a08;}
-:root[data-theme="dark"]{--bg:#0f1220;--panel:#171b2e;--text:#eef0f8;--muted:#a5abc4;--accent:#7c9cff;--accent2:#5ce0c6;--free:#5ce0c6;--paid:#ffb454;}
+:root{--bg:#0a0a0a;--panel:#141414;--text:#fff;--muted:#aaa;--accent:#00d4ff;--accent2:#5ce0c6;--free:#5ce0c6;--paid:#ffb454;}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.65}
@@ -48,6 +45,31 @@ nav a:hover{color:#00d4ff}
 .mobile-menu a{color:#fff;text-decoration:none;font-size:17px;font-weight:600;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.06)}
 .mobile-menu a:last-child{border-bottom:none;color:#00d4ff}
 @media(max-width:768px){header{padding:0 20px}nav{display:none}.hamburger{display:flex}}
+
+.hero-sp{
+  padding:48px 20px 40px;text-align:center;
+  position:relative;overflow:hidden;
+  background:linear-gradient(180deg,#05202e 0%,#0a4a63 30%,#12839f 60%,#4fd2e6 100%);
+  background-size:100% 220%;
+  animation:kniga6SkyShift 16s ease-in-out infinite alternate;
+}
+.hero-sp .hs-cloud{
+  position:absolute;z-index:0;
+  background:radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.45) 55%, rgba(255,255,255,0) 75%);
+  border-radius:50%;filter:blur(2px);animation:kniga6CloudDrift linear infinite;pointer-events:none;
+}
+.hs-cloud-1{top:15%;width:120px;height:36px;opacity:0.65;animation-duration:26s;left:-120px}
+.hs-cloud-2{top:45%;width:90px;height:28px;opacity:0.5;animation-duration:34s;animation-delay:-12s;left:-90px}
+@keyframes kniga6SkyShift{0%{background-position:50% 0%}100%{background-position:50% 100%}}
+@keyframes kniga6CloudDrift{0%{left:-140px}100%{left:110%}}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg, rgba(5,15,20,0.15) 0%, rgba(5,12,18,0.35) 55%, rgba(4,10,15,0.85) 100%);
+}
+.hero-sp .backlink, .hero-sp .cover, .hero-sp .subtitle, .hero-sp h1{position:relative;z-index:2}
+.hero-sp h1{text-shadow:0 2px 12px rgba(0,0,0,0.55)}
+.hero-sp .subtitle{text-shadow:0 1px 8px rgba(0,0,0,0.5);color:#e8e8e8}
+.hero-sp .backlink{color:#cfd6e6}
 </style>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
@@ -86,11 +108,16 @@ nav a:hover{color:#00d4ff}
   <a href="../index.html#contact" onclick="closeMenu()">Контакты</a>
   <a href="../index.html#contact" onclick="closeMenu()">Заказать →</a>
 </div>
-<div class="wrap">
+<div class="hero-sp">
+  <div class="hs-cloud hs-cloud-1"></div>
+  <div class="hs-cloud hs-cloud-2"></div>
+  <div class="hero-overlay"></div>
 <a class="backlink" href="books.html">&larr; Все книги OM-Digital</a>
 <img class="cover" src="covers/kniga6_cover_E.png" alt="Когда идти к врачу, а когда можно подождать">
 <p class="subtitle">Как принять решение спокойно, а не в панике посреди ночи</p>
 <h1>Когда идти к врачу, а когда можно подождать: спокойный гид по тревожным симптомам</h1>
+</div>
+<div class="wrap">
 <p>Григорьев Михаил, Григорьева Ольга и Клод (личный ИИ-ассистент)</p>
 <p>Москва, 2026</p>
 

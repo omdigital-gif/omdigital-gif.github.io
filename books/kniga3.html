@@ -5,10 +5,7 @@
 <meta name="description" content="Книга о мультиагентных системах: как построить компанию, где ИИ-агенты самостоятельно ведут отделы — от поиска клиентов до производства и финансов.">
 <meta name="keywords" content="ai агенты книга, мультиагентные системы для бизнеса, компания управляемая искусственным интеллектом, автономные ии агенты, как построить бизнес на ai агентах, книга про мультиагентные системы">
 <style>
-:root{--bg:#0f1220;--panel:#171b2e;--text:#eef0f8;--muted:#a5abc4;--accent:#7c9cff;--accent2:#5ce0c6;--free:#5ce0c6;--paid:#ffb454;}
-@media (prefers-color-scheme: light){:root{--bg:#f6f7fb;--panel:#ffffff;--text:#1b1e2b;--muted:#5b6178;--accent:#3b5bdb;--accent2:#0f9d84;--free:#0f9d84;--paid:#c97a08;}}
-:root[data-theme="light"]{--bg:#f6f7fb;--panel:#ffffff;--text:#1b1e2b;--muted:#5b6178;--accent:#3b5bdb;--accent2:#0f9d84;--free:#0f9d84;--paid:#c97a08;}
-:root[data-theme="dark"]{--bg:#0f1220;--panel:#171b2e;--text:#eef0f8;--muted:#a5abc4;--accent:#7c9cff;--accent2:#5ce0c6;--free:#5ce0c6;--paid:#ffb454;}
+:root{--bg:#0a0a0a;--panel:#141414;--text:#fff;--muted:#aaa;--accent:#00d4ff;--accent2:#5ce0c6;--free:#5ce0c6;--paid:#ffb454;}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.65}
@@ -25,6 +22,31 @@ a{color:var(--accent)}
 .backlink:hover{color:var(--accent)}
 .cta{background:var(--panel);border-radius:16px;padding:24px;text-align:center;margin:40px 0}
 .cta a.btn{display:inline-block;margin-top:10px;background:var(--accent);color:#fff;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:600}
+
+.hero-sp{
+  padding:48px 20px 40px;text-align:center;
+  position:relative;overflow:hidden;
+  background:linear-gradient(180deg,#05202e 0%,#0a4a63 30%,#12839f 60%,#4fd2e6 100%);
+  background-size:100% 220%;
+  animation:kniga3SkyShift 16s ease-in-out infinite alternate;
+}
+.hero-sp .hs-cloud{
+  position:absolute;z-index:0;
+  background:radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.45) 55%, rgba(255,255,255,0) 75%);
+  border-radius:50%;filter:blur(2px);animation:kniga3CloudDrift linear infinite;pointer-events:none;
+}
+.hs-cloud-1{top:15%;width:120px;height:36px;opacity:0.65;animation-duration:26s;left:-120px}
+.hs-cloud-2{top:45%;width:90px;height:28px;opacity:0.5;animation-duration:34s;animation-delay:-12s;left:-90px}
+@keyframes kniga3SkyShift{0%{background-position:50% 0%}100%{background-position:50% 100%}}
+@keyframes kniga3CloudDrift{0%{left:-140px}100%{left:110%}}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg, rgba(5,15,20,0.15) 0%, rgba(5,12,18,0.35) 55%, rgba(4,10,15,0.85) 100%);
+}
+.hero-sp .backlink, .hero-sp .cover, .hero-sp .subtitle, .hero-sp h1{position:relative;z-index:2}
+.hero-sp h1{text-shadow:0 2px 12px rgba(0,0,0,0.55)}
+.hero-sp .subtitle{text-shadow:0 1px 8px rgba(0,0,0,0.5);color:#e8e8e8}
+.hero-sp .backlink{color:#cfd6e6}
 </style>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
@@ -39,11 +61,16 @@ a{color:var(--accent)}
 </script>
 <noscript><div><img src="https://mc.yandex.ru/watch/110894800" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
-</head><body><div class="wrap">
+</head><body><div class="hero-sp">
+  <div class="hs-cloud hs-cloud-1"></div>
+  <div class="hs-cloud hs-cloud-2"></div>
+  <div class="hero-overlay"></div>
 <a class="backlink" href="books.html">&larr; Все книги OM-Digital</a>
 <img class="cover" src="covers/kniga3_cover_E.png" alt="AI-агенты и мультиагентные системы: как построить компанию, которой управляет ИИ">
 <p class="subtitle">Как построить команду ИИ-агентов, которая работает без вас</p>
 <h1>AI-агенты и мультиагентные системы: как построить компанию, которой управляет ИИ</h1>
+</div>
+<div class="wrap">
 <p>Григорьев Михаил, Григорьева Ольга и Клод (личный ИИ-ассистент)</p>
 <p>Москва, 2026</p>
 <h2>Оглавление</h2>

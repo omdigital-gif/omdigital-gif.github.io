@@ -17,10 +17,16 @@ header{position:sticky;top:0;z-index:200;background:rgba(10,10,10,0.96);border-b
 .logo-txt .l2{font-size:9px;letter-spacing:5px;color:#aaa}
 .back-btn{color:#00d4ff;text-decoration:none;font-size:14px;font-weight:700;padding:8px 18px;border:1px solid rgba(0,212,255,0.3);border-radius:6px;transition:background .2s}
 .back-btn:hover{background:rgba(0,212,255,0.1)}
-.hero-sp{padding:72px 40px 52px;text-align:center}
+.hero-sp{
+  padding:72px 40px 52px;text-align:center;
+  position:relative;overflow:hidden;
+  background:linear-gradient(180deg,#05202e 0%,#0a4a63 30%,#12839f 60%,#4fd2e6 100%);
+  background-size:100% 220%;
+  animation:wbcardsSkyShift 16s ease-in-out infinite alternate;
+}
 .badge{display:inline-block;background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.3);color:#00d4ff;font-size:12px;letter-spacing:3px;text-transform:uppercase;padding:7px 20px;border-radius:20px;margin-bottom:24px;font-weight:600}
 .sp-icon{font-size:60px;margin-bottom:18px}
-h1{font-size:44px;font-weight:900;line-height:1.2;margin-bottom:14px}
+h1{font-size:44px;font-weight:900;line-height:1.2;margin-bottom:14px;text-shadow:0 2px 12px rgba(0,0,0,0.55)}
 .sub{font-size:18px;color:#ccc;line-height:1.8;max-width:600px;margin:0 auto 0}
 .main{max-width:900px;margin:0 auto;padding:40px 40px 80px}
 .section-lbl{font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#00d4ff;margin-bottom:10px}
@@ -51,7 +57,7 @@ footer a{color:#00d4ff;text-decoration:none}
 
 .p-hero{height:200px;display:flex;align-items:center;justify-content:center;font-size:72px;background:linear-gradient(135deg,rgba(0,212,255,0.15),rgba(0,136,204,0.08));border-radius:16px;margin-bottom:32px}
 .p-cat{font-size:12px;letter-spacing:2px;color:#00d4ff;text-transform:uppercase;font-weight:700;margin-bottom:10px}
-.p-desc{font-size:16px;color:#ccc;line-height:1.8;margin-bottom:24px}
+.p-desc{font-size:16px;color:#ccc;line-height:1.8;margin-bottom:24px;text-shadow:0 1px 8px rgba(0,0,0,0.5)}
 .p-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
 .results-list{background:#141414;border:1px solid rgba(255,255,255,0.07);border-radius:12px;padding:24px 28px;margin-bottom:40px}
 .results-list h3{font-size:16px;font-weight:700;margin-bottom:14px;color:#00d4ff}
@@ -91,6 +97,22 @@ footer a{color:#00d4ff;text-decoration:none}
 .contact-form .btn-submit:hover { opacity: 0.85; }
 .form-links { font-size: 14px; color: #999; text-align: center; margin-top: 4px; }
 .form-links a { color: #00d4ff; font-weight: 700; text-decoration: none; }
+
+.hero-sp .hs-cloud{
+  position:absolute;z-index:0;
+  background:radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.45) 55%, rgba(255,255,255,0) 75%);
+  border-radius:50%;filter:blur(2px);animation:wbcardsCloudDrift linear infinite;pointer-events:none;
+}
+.hs-cloud-1{top:18%;width:140px;height:42px;opacity:0.7;animation-duration:26s;left:-140px}
+.hs-cloud-2{top:40%;width:100px;height:32px;opacity:0.55;animation-duration:34s;animation-delay:-12s;left:-100px}
+.hs-cloud-3{top:65%;width:160px;height:46px;opacity:0.6;animation-duration:30s;animation-delay:-6s;left:-160px}
+@keyframes wbcardsSkyShift{0%{background-position:50% 0%}100%{background-position:50% 100%}}
+@keyframes wbcardsCloudDrift{0%{left:-160px}100%{left:110%}}
+.hero-overlay{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg, rgba(5,15,20,0.15) 0%, rgba(5,12,18,0.35) 55%, rgba(4,10,15,0.85) 100%);
+}
+.hero-sp .badge, .hero-sp h1, .hero-sp .p-hero, .hero-sp .p-desc, .hero-sp .p-tags{position:relative;z-index:2}
 </style>
 <!-- Yandex.Metrika counter -->
 <script type="text/javascript" >
@@ -114,12 +136,18 @@ footer a{color:#00d4ff;text-decoration:none}
   </a>
   <a href="../index.html" class="back-btn">← На главную</a>
 </header>
-<div class="main" style="padding-top:40px">
+<div class="hero-sp">
+  <div class="hs-cloud hs-cloud-1"></div>
+  <div class="hs-cloud hs-cloud-2"></div>
+  <div class="hs-cloud hs-cloud-3"></div>
+  <div class="hero-overlay"></div>
   <div class="badge" style="margin-bottom:16px">Маркетинг</div>
   <h1 style="margin-bottom:14px">Карточки WB — косметика</h1>
   <div class="p-hero">📦</div>
   <p class="p-desc">Разработали 40 карточек товаров для косметического бренда на Wildberries. Каждая карточка включала SEO-заголовок с ключевыми запросами, структурированное описание с выгодами, rich-контент и буллеты характеристик. Отдельно проработали семантику под поиск WB.</p>
   <div class="p-tags"><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">WB / Ozon</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">SEO-заголовки</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Rich-контент</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Косметика</span><span style="background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.25);color:#00d4ff;font-size:12px;padding:4px 12px;border-radius:20px;font-weight:600">Маркетинг</span></div>
+</div>
+<div class="main">
   <div class="section-lbl">Пример карточки в этом формате</div>
   <div class="example-card">
     <div class="example-head"><span class="ico">📦</span><span>Демонстрационный пример — структура как в проекте</span></div>
