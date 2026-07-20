@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Превью: морской фон карточки "Книги OM-Digital"</title>
+<style>
+  body { background:#0d0d0d; margin:0; padding:60px; font-family:-apple-system,Segoe UI,Roboto,sans-serif; }
+  .grid { display:grid; grid-template-columns: repeat(1, 400px); gap:24px; }
+  .note { color:#888; font-size:13px; margin-top:14px; max-width:400px; }
+  .portfolio-card {
+    background:#181818; border:1px solid rgba(255,255,255,0.08); border-radius:12px; overflow:hidden;
+  }
+  .portfolio-img {
+    height:140px; display:flex; align-items:center; justify-content:center; position:relative;
+  }
+  .portfolio-img.books-sea {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(160deg, #010d16 0%, #052236 30%, #0a3f5c 60%, #136e94 100%);
+    background-size: 180% 180%;
+    animation: booksSeaShimmer 12s ease-in-out infinite alternate;
+  }
+  .sea-wave {
+    position: absolute;
+    left: -40%;
+    width: 180%;
+    height: 26px;
+    border-radius: 50%;
+    background: radial-gradient(ellipse at center, rgba(120,210,235,0.35) 0%, rgba(120,210,235,0.12) 55%, rgba(120,210,235,0) 75%);
+    filter: blur(3px);
+    animation: seaWaveDrift linear infinite;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .sea-wave-1 { top: 18%; animation-duration: 9s; opacity: 0.6; }
+  .sea-wave-2 { top: 58%; animation-duration: 13s; animation-delay: -5s; opacity: 0.45; }
+  .sea-wave-3 { top: 85%; height:18px; animation-duration: 16s; animation-delay: -2s; opacity: 0.3; }
+  @keyframes booksSeaShimmer {
+    0% { background-position: 20% 30%; }
+    100% { background-position: 80% 70%; }
+  }
+  @keyframes seaWaveDrift {
+    0% { transform: translateX(-6%); }
+    50% { transform: translateX(6%); }
+    100% { transform: translateX(-6%); }
+  }
+  .books-sea img { position:relative; z-index:2; }
+  .portfolio-body { padding:20px; }
+  .portfolio-cat { font-size:12px; letter-spacing:2px; color:#00d4ff; text-transform:uppercase; margin-bottom:8px; font-weight:700; }
+  .portfolio-card h4 { font-size:20px; font-weight:800; margin-bottom:8px; line-height:1.3; color:#fff; }
+  .portfolio-card p { font-size:14px; color:#ccc; line-height:1.6; margin:0; }
+  h2 { color:#fff; font-size:20px; }
+</style>
+</head>
+<body>
+<h2>Превью: морской фон за карточками книг (было: плоский чёрный фон → станет: тёмно-синее море с переливами и волнами)</h2>
+<div class="grid">
+
+  <div>
+    <div class="portfolio-card">
+      <div class="portfolio-img books-sea" style="padding:0;overflow:hidden">
+        <span class="sea-wave sea-wave-1"></span>
+        <span class="sea-wave sea-wave-2"></span>
+        <span class="sea-wave sea-wave-3"></span>
+        <img src="books/covers/books_teacherbot_collage_sea.png" alt="Обложки книг OM-Digital" style="width:100%;height:100%;object-fit:cover">
+      </div>
+      <div class="portfolio-body">
+        <div class="portfolio-cat">AI Studio</div>
+        <h4>Книги OM-Digital</h4>
+        <p>Бесплатные книги о работе с Claude и AI-агентами, включая разбор кейса Карманного Доктора</p>
+      </div>
+    </div>
+    <div class="note">Чёрные полосы за обложками (там, где раньше лежал текст названий) стали полупрозрачными — сквозь них видно анимированное тёмно-синее море (переливы цвета + плавные волны), текст остаётся тёмной полупрозрачной подложкой поверх моря для контраста.</div>
+  </div>
+
+</div>
+</body>
+</html>

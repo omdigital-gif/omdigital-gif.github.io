@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Превью: фото приёма заявок стройкомпании</title>
+<style>
+  body { background:#0d0d0d; margin:0; padding:60px; font-family:-apple-system,Segoe UI,Roboto,sans-serif; }
+  .grid { display:grid; grid-template-columns: repeat(1, 340px); gap:28px; }
+  .note { color:#888; font-size:13px; margin-top:14px; max-width:520px; line-height:1.5; }
+  .portfolio-card {
+    background:#181818; border:1px solid rgba(255,255,255,0.08); border-radius:12px; overflow:hidden;
+  }
+  .portfolio-img {
+    height:140px; display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden;
+  }
+  .portfolio-img img { width:100%; height:100%; object-fit:cover; display:block; }
+  .order-badge {
+    position:absolute; left:34%; top:20%;
+    display:flex; align-items:center; gap:5px;
+    background:rgba(15,20,15,0.85); border:1px solid rgba(140,230,120,0.6);
+    border-radius:20px; padding:3px 9px 3px 6px;
+    font-size:10px; font-weight:700; color:#c8ffb0; letter-spacing:0.3px;
+    z-index:2;
+    animation: badgeAppear 3.6s ease-in-out infinite;
+  }
+  .order-badge .dot { width:6px; height:6px; border-radius:50%; background:#5cff5c; box-shadow:0 0 6px #5cff5c; }
+  @keyframes badgeAppear {
+    0%, 60% { opacity:0; transform:translateY(-4px); }
+    70%, 92% { opacity:1; transform:translateY(0); }
+    100% { opacity:0; transform:translateY(-4px); }
+  }
+  .portfolio-body { padding:20px; }
+  .portfolio-cat { font-size:12px; letter-spacing:2px; color:#00d4ff; text-transform:uppercase; margin-bottom:8px; font-weight:700; }
+  .portfolio-card h4 { font-size:20px; font-weight:800; margin-bottom:8px; line-height:1.3; color:#fff; }
+  .portfolio-card p { font-size:14px; color:#ccc; line-height:1.6; margin:0; }
+  h2 { color:#fff; font-size:20px; max-width:600px; }
+</style>
+</head>
+<body>
+<h2>Реальное фото приёма заявок на стройплощадке (Pexels, бесплатная лицензия) — обработано под фирменный стиль, поверх — частичная анимация: всплывающий значок "Новая заявка" рядом с планшетом (не вся картинка, только один акцент).</h2>
+<div class="grid">
+  <div>
+    <div class="portfolio-card">
+      <div class="portfolio-img">
+        <img src="construction-graded.png" alt="Приём заявок на стройплощадке — Telegram-бот">
+        <div class="order-badge"><span class="dot"></span>Новая заявка</div>
+      </div>
+      <div class="portfolio-body">
+        <div class="portfolio-cat">Автоматизация</div>
+        <h4>Telegram-бот приёма заявок</h4>
+        <p>Приём и обработка заявок для строительной компании через Telegram</p>
+      </div>
+    </div>
+    <div class="note">Фото: pexels.com/photo/8961008 (бесплатная лицензия, коммерческое использование разрешено) — прораб/инженер в каске с планшетом на стройплощадке. Обработка: цветокоррекция под фирменный синий (кривые R/B), контраст +10%, насыщенность +8%, мягкая виньетка. "Частичная анимация" — всплывающий бейдж "Новая заявка" с зелёной точкой рядом с планшетом, появляется и исчезает циклично (3.6с) — сама фотография статична.</div>
+  </div>
+</div>
+</body>
+</html>

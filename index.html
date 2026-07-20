@@ -1569,7 +1569,7 @@ footer {
       <input type="hidden" name="_subject" value="Новая заявка с сайта OM-Digital">
       <input type="hidden" name="_captcha" value="false">
       <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="https://omdigital-gif.github.io/?sent=1">
+      <input type="hidden" name="_next" value="https://om-digital.ru/?sent=1">
       <div class="cta-form">
         <input type="text" name="name" class="cta-input" placeholder="Ваше имя" required>
         <input type="text" name="contact" class="cta-input" placeholder="Telegram или email" required>
@@ -1792,9 +1792,8 @@ document.addEventListener('DOMContentLoaded', function() {
       console.log('[TG] OK:', d.ok);
     }).catch(function(err) {
       console.error('[TG] Error:', err);
-    }).finally(function() {
-      contactForm.submit();
     });
+    contactForm.submit();
   });
 });
 </script>

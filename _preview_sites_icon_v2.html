@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Превью v2: прямоугольная карточка "Создание сайтов и SEO" с фоном неба</title>
+<style>
+  body { background:#0d0d0d; margin:0; padding:60px; font-family:-apple-system,Segoe UI,Roboto,sans-serif; }
+  .grid { display:grid; grid-template-columns: repeat(1, 280px); gap:24px; }
+  .note { color:#888; font-size:13px; margin-top:14px; max-width:520px; line-height:1.5; }
+  .service-card {
+    background: #1c1c1c; border: 1px solid rgba(255,255,255,0.10);
+    border-radius: 14px; overflow:hidden;
+  }
+  .service-icon-area {
+    position: relative; overflow: hidden; height: 130px;
+    background: linear-gradient(180deg, #05202e 0%, #0a4a63 30%, #12839f 60%, #4fd2e6 100%);
+    background-size: 100% 220%;
+    animation: skyShift 16s ease-in-out infinite alternate;
+    display:flex; align-items:center; justify-content:center;
+  }
+  @keyframes skyShift { 0%{background-position:50% 0%;} 100%{background-position:50% 100%;} }
+  .si-cloud { position:absolute; z-index:1; background:radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.45) 55%, rgba(255,255,255,0) 75%); border-radius:50%; filter:blur(2px); animation:cloudDrift linear infinite; pointer-events:none; }
+  .si-cloud-1{ top:20%; width:70px; height:20px; opacity:0.7; animation-duration:20s; left:-70px; }
+  .si-cloud-2{ top:65%; width:50px; height:16px; opacity:0.5; animation-duration:26s; animation-delay:-9s; left:-50px; }
+  @keyframes cloudDrift{ 0%{left:-90px;} 100%{left:110%;} }
+  .service-icon-area img { position:relative; z-index:2; width:78%; height:auto; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.4)); }
+  .service-body { padding: 24px 24px 28px; }
+  .service-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 12px; color:#fff; }
+  .service-card p { font-size: 15px; color: #cccccc; line-height: 1.7; margin-bottom: 0; }
+  h2 { color:#fff; font-size:20px; max-width:600px; }
+</style>
+</head>
+<body>
+<h2>v2: карточка направления "Создание сайтов и SEO" - прямоугольная область с анимированным небом и облаками (как у Доктора), браузер+график поверх как акцентный визуал.</h2>
+<div class="grid">
+  <div>
+    <div class="service-card">
+      <div class="service-icon-area">
+        <span class="si-cloud si-cloud-1"></span>
+        <span class="si-cloud si-cloud-2"></span>
+        <img src="sites-seo-browser-chart.png" alt="Создание сайтов и SEO">
+      </div>
+      <div class="service-body">
+        <h3>Создание сайтов и SEO</h3>
+        <p>Сайты и лендинги под ключ, SEO-оптимизация и продвижение в поиске</p>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="note">Формат изменён по вашему замечанию: теперь это прямоугольная область (не квадратная app-иконка), фон - анимированное небо с облаками (переиспользовал ту же анимацию, что у Доктора), браузер со светящимся графиком - акцентный визуал поверх, не самостоятельная плитка.</div>
+</body>
+</html>

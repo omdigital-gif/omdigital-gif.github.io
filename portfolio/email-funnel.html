@@ -189,7 +189,7 @@ footer a{color:#00d4ff;text-decoration:none}
   <input type="hidden" name="_subject" value="Новая заявка с сайта OM-Digital">
   <input type="hidden" name="_captcha" value="false">
   <input type="hidden" name="_template" value="table">
-  <input type="hidden" name="_next" value="https://omdigital-gif.github.io/?sent=1">
+  <input type="hidden" name="_next" value="https://om-digital.ru/?sent=1">
       <div class="form-row">
         <input type="text" name="name" placeholder="Ваше имя" required>
         <input type="text" name="contact" placeholder="Telegram или email" required>
@@ -212,7 +212,8 @@ document.querySelectorAll("form.contact-form").forEach(function(form) {
     fetch("https://api.telegram.org/bot8873337285:AAEYvrOlbsiqmbbm546jfr8oA7e33o7YlVU/sendMessage", {
       method: "POST", headers: {"Content-Type": "application/json"},
       body: JSON.stringify({chat_id: "2088867074", text: msg})
-    }).finally(function() { form.submit(); });
+    }).catch(function(err) { console.error("[TG]", err); });
+    form.submit();
   });
 });
 </script>
