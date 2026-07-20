@@ -8,6 +8,30 @@
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.65}
 .wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}
 .cover{display:block;max-width:280px;width:60%;margin:0 auto 28px;border-radius:14px;box-shadow:0 12px 40px rgba(0,0,0,.35)}
+.hero-sp{
+  padding:64px 40px 56px;text-align:center;
+  position:relative;overflow:hidden;
+  background:linear-gradient(180deg,#05202e 0%,#0a4a63 30%,#12839f 60%,#4fd2e6 100%);
+  background-size:100% 220%;
+  animation:booksSkyShift 16s ease-in-out infinite alternate;
+}
+.hero-sp .hs-cloud{
+  position:absolute;z-index:0;
+  background:radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.45) 55%, rgba(255,255,255,0) 75%);
+  border-radius:50%;filter:blur(2px);animation:booksCloudDrift linear infinite;pointer-events:none;
+}
+.hs-cloud-1{top:20%;width:140px;height:42px;opacity:0.7;animation-duration:26s;left:-140px}
+.hs-cloud-2{top:45%;width:100px;height:32px;opacity:0.55;animation-duration:34s;animation-delay:-12s;left:-100px}
+.hs-cloud-3{top:65%;width:160px;height:46px;opacity:0.6;animation-duration:30s;animation-delay:-6s;left:-160px}
+@keyframes booksSkyShift{0%{background-position:50% 0%}100%{background-position:50% 100%}}
+@keyframes booksCloudDrift{0%{left:-160px}100%{left:110%}}
+.hero-sp-overlay{
+  position:absolute;inset:0;z-index:1;pointer-events:none;
+  background:linear-gradient(180deg, rgba(5,15,20,0.15) 0%, rgba(5,12,18,0.35) 55%, rgba(4,10,15,0.85) 100%);
+}
+.hero-sp h1, .hero-sp .subtitle{position:relative;z-index:2}
+.hero-sp h1{text-shadow:0 2px 12px rgba(0,0,0,0.55)}
+.hero-sp .subtitle{text-shadow:0 1px 8px rgba(0,0,0,0.5);color:#e8e8e8}
 h1{font-size:1.9rem;margin:0 0 6px;text-align:center}
 h2{font-size:1.35rem;margin:2.2em 0 .6em;color:var(--accent)}
 h3{font-size:1.1rem;margin:1.6em 0 .5em;color:var(--accent2)}
@@ -77,9 +101,15 @@ nav a:hover{color:#00d4ff}
   <a href="../index.html#contact" onclick="closeMenu()">Контакты</a>
   <a href="../index.html#contact" onclick="closeMenu()">Заказать →</a>
 </div>
+<div class="hero-sp">
+  <div class="hs-cloud hs-cloud-1"></div>
+  <div class="hs-cloud hs-cloud-2"></div>
+  <div class="hs-cloud hs-cloud-3"></div>
+  <div class="hero-sp-overlay"></div>
+  <h1>Книги OM-Digital</h1>
+  <p class="subtitle">Практические книги о работе с Claude и AI-агентами: от первых шагов до автономной мультиагентной компании</p>
+</div>
 <div class="wrap">
-<h1>Книги OM-Digital</h1>
-<p class="subtitle">Практические книги о работе с Claude и AI-агентами: от первых шагов до автономной мультиагентной компании</p>
 <div class="grid">
 <div class="card">
   <a href="kniga1.html"><img src="covers/kniga1_cover_E.png" alt="Нейросети для начинающих"></a>
