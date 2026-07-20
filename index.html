@@ -107,21 +107,39 @@ nav a:hover { color: #00d4ff; }
   text-align: center;
   padding: 60px 40px;
   position: relative; overflow: hidden;
+  background: linear-gradient(180deg,#05202e 0%,#0a4a63 30%,#12839f 60%,#4fd2e6 100%);
+  background-size: 100% 220%;
+  animation: homeSkyShift 16s ease-in-out infinite alternate;
+}
+.hero-sky-cloud {
+  position: absolute; z-index: 0;
+  background: radial-gradient(ellipse at center, rgba(255,255,255,0.9) 0%, rgba(255,255,255,0.45) 55%, rgba(255,255,255,0) 75%);
+  border-radius: 50%; filter: blur(2px); animation: homeCloudDrift linear infinite; pointer-events: none;
+}
+.hero-sky-cloud-1{top:14%;width:160px;height:48px;opacity:0.65;animation-duration:28s;left:-160px}
+.hero-sky-cloud-2{top:30%;width:110px;height:34px;opacity:0.5;animation-duration:36s;animation-delay:-14s;left:-110px}
+.hero-sky-cloud-3{top:50%;width:180px;height:52px;opacity:0.6;animation-duration:32s;animation-delay:-8s;left:-180px}
+.hero-sky-cloud-4{top:68%;width:100px;height:30px;opacity:0.4;animation-duration:24s;animation-delay:-18s;left:-100px}
+@keyframes homeSkyShift{0%{background-position:50% 0%}100%{background-position:50% 100%}}
+@keyframes homeCloudDrift{0%{left:-180px}100%{left:110%}}
+.hero-sky-overlay {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(5,15,20,0.25) 0%, rgba(5,12,18,0.45) 45%, rgba(4,10,15,0.9) 100%);
 }
 .hero-bg {
-  position: absolute; inset: 0; z-index: 0;
+  position: absolute; inset: 0; z-index: 1;
   background:
     radial-gradient(ellipse 600px 400px at 20% 50%, rgba(0,212,255,0.06) 0%, transparent 70%),
     radial-gradient(ellipse 400px 300px at 80% 30%, rgba(240,192,64,0.04) 0%, transparent 70%),
     radial-gradient(ellipse 300px 200px at 50% 80%, rgba(0,136,204,0.05) 0%, transparent 70%);
 }
 .hero-grid {
-  position: absolute; inset: 0;
+  position: absolute; inset: 0; z-index: 1;
   background-image: linear-gradient(rgba(0,212,255,0.03) 1px, transparent 1px),
                     linear-gradient(90deg, rgba(0,212,255,0.03) 1px, transparent 1px);
   background-size: 60px 60px;
 }
-.hero-content { position: relative; z-index: 1; max-width: 860px; }
+.hero-content { position: relative; z-index: 2; max-width: 860px; }
 .hero-badge {
   display: inline-block;
   background: rgba(0,212,255,0.08);
@@ -939,6 +957,11 @@ footer {
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-sky-cloud hero-sky-cloud-1"></div>
+  <div class="hero-sky-cloud hero-sky-cloud-2"></div>
+  <div class="hero-sky-cloud hero-sky-cloud-3"></div>
+  <div class="hero-sky-cloud hero-sky-cloud-4"></div>
+  <div class="hero-sky-overlay"></div>
   <div class="hero-bg"></div>
   <div class="hero-grid"></div>
   <div class="hero-content" data-aos="fade-up" data-aos-duration="800">

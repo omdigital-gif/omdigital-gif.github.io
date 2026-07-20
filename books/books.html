@@ -3,10 +3,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Книги OM-Digital — учимся работать с Claude и AI-агентами</title>
 <style>
-:root{--bg:#0f1220;--panel:#171b2e;--text:#eef0f8;--muted:#a5abc4;--accent:#7c9cff;--accent2:#5ce0c6;--free:#5ce0c6;--paid:#ffb454;}
-@media (prefers-color-scheme: light){:root{--bg:#f6f7fb;--panel:#ffffff;--text:#1b1e2b;--muted:#5b6178;--accent:#3b5bdb;--accent2:#0f9d84;--free:#0f9d84;--paid:#c97a08;}}
-:root[data-theme="light"]{--bg:#f6f7fb;--panel:#ffffff;--text:#1b1e2b;--muted:#5b6178;--accent:#3b5bdb;--accent2:#0f9d84;--free:#0f9d84;--paid:#c97a08;}
-:root[data-theme="dark"]{--bg:#0f1220;--panel:#171b2e;--text:#eef0f8;--muted:#a5abc4;--accent:#7c9cff;--accent2:#5ce0c6;--free:#5ce0c6;--paid:#ffb454;}
+:root{--bg:#0a0a0a;--panel:#141414;--text:#fff;--muted:#aaa;--accent:#00d4ff;--accent2:#5ce0c6;--free:#5ce0c6;--paid:#ffb454;}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.65}
 .wrap{max-width:760px;margin:0 auto;padding:32px 20px 80px}
@@ -20,11 +17,11 @@ a{color:var(--accent)}
 .subtitle{text-align:center;color:var(--muted);margin:0 0 28px}
 .backlink{display:inline-block;margin-bottom:18px;color:var(--muted);text-decoration:none;font-size:.9rem}
 .backlink:hover{color:var(--accent)}
-.cta{background:var(--panel);border-radius:16px;padding:24px;text-align:center;margin:40px 0}
+.cta{background:var(--panel);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:24px;text-align:center;margin:40px 0}
 .cta a.btn{display:inline-block;margin-top:10px;background:var(--accent);color:#fff;padding:12px 22px;border-radius:10px;text-decoration:none;font-weight:600}
 
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:24px}
-.card{background:var(--panel);border-radius:16px;padding:18px;text-align:center;display:flex;flex-direction:column}
+.card{background:var(--panel);border:1px solid rgba(255,255,255,0.07);border-radius:16px;padding:18px;text-align:center;display:flex;flex-direction:column}
 .card img{width:100%;max-width:220px;margin:0 auto 14px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.3)}
 .card .emoji-cover{width:100%;max-width:220px;aspect-ratio:3/4;margin:0 auto 14px;border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.3);background:linear-gradient(150deg,var(--panel),var(--bg));display:flex;align-items:center;justify-content:center;font-size:56px}
 .card h3{margin:.2em 0 .4em;font-size:1.05rem}
